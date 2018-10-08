@@ -1,0 +1,29 @@
+$ 管理工具
+
+$$管理工具
+
+msgs:B2T_GM_Start:0100
+msge
+
+@请求 GM登陆
+msgs:B2T_GM_Login
+	string:Account//账号
+	string:Password//密码
+msge
+@返回 GM登陆
+msgs:T2B_GM_Login
+msge
+
+@请求 GM特殊功能
+msgs:B2G_GM_Cmd
+	string:Cmd//指令
+	list:string:Args
+msge
+@请求 GM特殊功能
+msgs:G2B_GM_Cmd
+	string:Cmd//指令
+	list:string:Args
+msge
+
+msgs:B2T_GM_End
+msge

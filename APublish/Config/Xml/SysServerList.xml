@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Data>
+	<Node>
+		<Id>12000</Id>
+		<ServerType>1</ServerType>
+		<Desc>网关1</Desc>
+		<ServerTransit>0</ServerTransit>
+		<ServerExternal>0</ServerExternal>
+	</Node>
+	<Node>
+		<Id>12011</Id>
+		<ServerType>4</ServerType>
+		<Desc>游戏1</Desc>
+		<ServerTransit>0</ServerTransit>
+		<ServerExternal>0</ServerExternal>
+	</Node>
+	<Node>
+		<Id>12101</Id>
+		<ServerType>3</ServerType>
+		<Desc>登陆</Desc>
+		<ServerTransit>0</ServerTransit>
+		<ServerExternal>0</ServerExternal>
+	</Node>
+	<Node>
+		<Id>12201</Id>
+		<ServerType>2</ServerType>
+		<Desc>世界</Desc>
+		<ServerTransit>0</ServerTransit>
+		<ServerExternal>0</ServerExternal>
+	</Node>
+	<Node>
+		<Id>12301</Id>
+		<ServerType>5</ServerType>
+		<Desc>数据中心</Desc>
+		<ServerTransit>0</ServerTransit>
+		<ServerExternal>0</ServerExternal>
+	</Node>
+</Data>

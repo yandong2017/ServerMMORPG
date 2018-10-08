@@ -1,0 +1,8 @@
+F:\GameServer\Server\ServerWorld\obj\Debug\ServerWorld.csproj.CoreCompileInputs.cache
+F:\GameServer\Server\APublish\bin\ServerWorld.exe.config
+F:\GameServer\Server\APublish\bin\ServerWorld.exe
+F:\GameServer\Server\APublish\bin\ServerWorld.pdb
+F:\GameServer\Server\ServerWorld\obj\Debug\ServerWorld.csproj.CopyComplete
+F:\GameServer\Server\ServerWorld\obj\Debug\ServerWorld.exe
+F:\GameServer\Server\ServerWorld\obj\Debug\ServerWorld.pdb
+F:\GameServer\Server\ServerWorld\obj\Debug\ServerWorld.csprojAssemblyReference.cache

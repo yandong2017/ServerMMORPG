@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Data>
+	<Node>
+		<GlobalId>1</GlobalId>
+		<Value>6</Value>
+	</Node>
+	<Node>
+		<GlobalId>2</GlobalId>
+		<Value>12</Value>
+	</Node>
+	<Node>
+		<GlobalId>3</GlobalId>
+		<Value>6</Value>
+	</Node>
+	<Node>
+		<GlobalId>4</GlobalId>
+		<Value>12</Value>
+	</Node>
+	<Node>
+		<GlobalId>5</GlobalId>
+		<Value>2</Value>
+	</Node>
+	<Node>
+		<GlobalId>6</GlobalId>
+		<Value>6</Value>
+	</Node>
+	<Node>
+		<GlobalId>8</GlobalId>
+		<Value>1</Value>
+	</Node>
+	<Node>
+		<GlobalId>9</GlobalId>
+		<Value>5000</Value>
+	</Node>
+</Data>

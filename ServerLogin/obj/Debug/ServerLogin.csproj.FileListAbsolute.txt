@@ -1,0 +1,8 @@
+F:\GameServer\Server\ServerLogin\obj\Debug\ServerLogin.csproj.CoreCompileInputs.cache
+F:\GameServer\Server\APublish\bin\ServerLogin.exe.config
+F:\GameServer\Server\APublish\bin\ServerLogin.exe
+F:\GameServer\Server\APublish\bin\ServerLogin.pdb
+F:\GameServer\Server\ServerLogin\obj\Debug\ServerLogin.csproj.CopyComplete
+F:\GameServer\Server\ServerLogin\obj\Debug\ServerLogin.exe
+F:\GameServer\Server\ServerLogin\obj\Debug\ServerLogin.pdb
+F:\GameServer\Server\ServerLogin\obj\Debug\ServerLogin.csprojAssemblyReference.cache

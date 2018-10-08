@@ -1,0 +1,31 @@
+$ µÇÂ¼·şÎñÆ÷
+
+msgs:L2E_Game_Start:400
+msge
+
+msgs:E2L_Game_LoginServer
+	string:Account//ÕËºÅ
+	string:Password//ÃÜÂë
+msge
+
+msgs:L2E_Game_LoginServer
+msge
+
+msgs:E2L_Game_Register
+	string:Account//ÕËºÅ
+	string:Password//ÃÜÂë
+msge
+
+msgs:L2E_Game_Register
+msge
+
+msgs:E2L_Game_Create
+	string:Name
+	int:HeroID//½ÇÉ«ID
+msge
+
+msgs:L2E_Game_Create
+msge
+
+msgs:L2E_Game_End
+msge

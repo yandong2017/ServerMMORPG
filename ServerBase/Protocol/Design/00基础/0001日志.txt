@@ -1,0 +1,14 @@
+﻿@日志类型
+enums:ERecordType
+	注册游戏:1
+	登录游戏
+	退出游戏	
+
+	管理员登陆:20
+enume
+
+@操作来源
+enums:EActionSource
+	系统:0
+	GM:10
+enume

@@ -1,0 +1,1444 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UtilLib</name>
+    </assembly>
+    <members>
+        <member name="T:UtilLib.DictDict`3">
+            <summary>
+            公共函数类  Dictionary 嵌套 Dictionary
+            </summary>
+        </member>
+        <member name="M:UtilLib.DictDict`3.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilLib.DictDict`3.TryGetValues(`0,System.Collections.Generic.Dictionary{`1,`2}@,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="keybase"></param>
+            <param name="values"></param>
+            <param name="newDict"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.DictDict`3.Add(`0,`1,`2)">
+            <summary>
+            
+            </summary>
+            <param name="keybase"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:UtilLib.DictDict`3.TryGetValueValue(`0,`1,`2@)">
+            <summary>
+            
+            </summary>
+            <param name="keybase"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UtilLib.DictList`2">
+            <summary>
+            公共函数类  Dictionary 嵌套 List
+            </summary>
+        </member>
+        <member name="M:UtilLib.DictList`2.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilLib.DictList`2.TryGetValues(`0,System.Collections.Generic.List{`1}@,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="values"></param>
+            <param name="newList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.DictList`2.Add(`0,`1)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:UtilLib.DictList`2.ContainsValue(`0,`1)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.DictList`2.Remove(`0,`1)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.DictList`2.Merge(UtilLib.DictList{`0,`1})">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:UtilLib.DictList`2.TryGetIndexValue(`0,System.Int32,`1@)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="index"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UtilLib.Util">
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            扩展
+            </summary>
+            <summary>
+            公共函数类
+            </summary>
+            <summary>
+            公共函数类  递归检查类并初始化    
+            </summary>
+            <summary>
+            公共函数类  时间部分 
+            </summary>
+            <summary>
+            公共函数类  文件和文件夹处理
+            </summary>
+            <summary>
+            公共函数类  随机
+            </summary>
+            <summary>
+            公共函数类  随机
+            </summary>
+            <summary>
+            公共函数类  随机
+            </summary>
+        </member>
+        <member name="M:UtilLib.Util.IsNullOrEmpty(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.HasValue(System.String)">
+            <summary>
+            Determines whether the specified string is not <see cref="M:UtilLib.Util.IsNullOrEmpty(System.String)"/>.
+            </summary>
+            <param name="value">The value to check.</param>
+            <returns>
+              <c>true</c> if the specified <paramref name="value"/> is not <see cref="M:UtilLib.Util.IsNullOrEmpty(System.String)"/>; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:UtilLib.Util.FormatWith(System.String,System.Object[])">
+            <summary>
+            Uses the string as a format
+            </summary>
+            <param name="format">A string reference</param>
+            <param name="args">Object parameters that should be formatted</param>
+            <returns>Formatted string</returns>
+        </member>
+        <member name="M:UtilLib.Util.EnsureEndsWith(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <param name="ending"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.TakeFirst(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <param name="howMany"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Split(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToBool(System.String)">
+            <summary>
+            string->bool
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToInt(System.String)">
+            <summary>
+            string->int
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToLong(System.String)">
+            <summary>
+            string->long
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToFloat(System.String)">
+            <summary>
+            string->float
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToDateTime(System.String)">
+            <summary>
+            string->float
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListString(System.String,System.String)">
+            <summary>
+            string->List(string)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListInt(System.String,System.String)">
+            <summary>
+            string->List(int)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListLong(System.String,System.String)">
+            <summary>
+            string->List(long)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListFloat(System.String,System.String)">
+            <summary>
+            string->List(float)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListListString(System.String,System.String,System.String)">
+            <summary>
+            string->List(List(string))
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListListInt(System.String,System.String,System.String)">
+            <summary>
+            string->List(List(int))
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToListListFloat(System.String,System.String,System.String)">
+            <summary>
+            string->List(List(float))
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToDictionaryString(System.String,System.String,System.String)">
+            <summary>
+            string->Dictionary(string, string)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToDictionaryInt(System.String,System.String,System.String)">
+            <summary>
+            string->Dictionary(int, int)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToDictionaryLong(System.String,System.String,System.String)">
+            <summary>
+            string->Dictionary(long, long)
+            </summary>
+            <param name="str"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToStr``1(System.Collections.Generic.List{``0},System.String)">
+            <summary>
+            List(T)->string
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="input"></param>
+            <param name="strSeparator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToStr``2(System.Collections.Generic.Dictionary{``0,``1},System.String,System.String)">
+            <summary>
+            Dictionary(T1, T2)->string
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="input"></param>
+            <param name="strSeparator1"></param>
+            <param name="strSeparator2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToStr(System.DateTime,System.Int32)">
+            <summary>
+            获取时间字符串
+            </summary>
+            <param name="dt"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToStr(System.TimeSpan,System.Int32)">
+            <summary>
+            获取时间字符串
+            </summary>
+            <param name="ts"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IntervalDays(System.DateTime,System.DateTime)">
+            <summary>
+            获取两个日期之间天数
+            </summary>
+            <param name="dtLast">时间一</param>
+            <param name="dtThis">时间二</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IntervalTicks(System.DateTime,System.DateTime,System.Boolean)">
+            <summary>
+            获取剩余时间Ticks
+            </summary>
+            <param name="dtLast"></param>
+            <param name="dtThis"></param>
+            <param name="abs">是否取绝对值</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.WeekOfYear(System.DateTime)">
+            <summary>
+            获取指定日期，在为一年中为第几周
+            </summary>
+            <param name="dt">指定时间</param>
+            <reutrn>返回第几周</reutrn>
+        </member>
+        <member name="M:UtilLib.Util.SameDay(System.DateTime,System.DateTime)">
+            <summary>
+            判断是否是同一天
+            </summary>
+            <param name="dt1"></param>
+            <param name="dt2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SameOClock(System.DateTime,System.DateTime)">
+            <summary>
+            判断是否是同一点钟
+            </summary>
+            <param name="dt1"></param>
+            <param name="dt2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SameWeek(System.DateTime,System.DateTime)">
+            <summary>
+            判断是否是在同一周
+            </summary>
+            <param name="dt1"></param>
+            <param name="dt2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SameMonth(System.DateTime,System.DateTime)">
+            <summary>
+            判断是否是在同一月
+            </summary>
+            <param name="dt1"></param>
+            <param name="dt2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Min(System.TimeSpan,System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Max(System.TimeSpan,System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToDateTime(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="ticks"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToTimeSpan(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="ticks"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.FromUnixTimeSeconds(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="seconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.FromUnixTimeMilliseconds(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="milliseconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToUnixTimeSeconds(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToUnixTimeMilliseconds(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ListSameElement``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+            <summary>
+            比较两个List相等 
+            数量相等，元素值相等即为True；与元素顺序无关；
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ListA"></param>
+            <param name="ListB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RemoveAll``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            移除成员
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="collection"></param>
+        </member>
+        <member name="M:UtilLib.Util.ToDictionaryInt(System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}})">
+            <summary>
+            
+            </summary>
+            <param name="ListListInt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Compress(System.Byte[])">
+            <summary>
+            压缩
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Decompress(System.Byte[],System.String)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="data"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RandomSingle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            随机出一个元素
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RandomMultiple``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            随机出N个不重复元素
+            </summary>
+            <param name="list"></param>
+            <param name="n">数目</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RandomSingle``2(System.Collections.Generic.Dictionary{``0,``1})">
+            <summary>
+            从Dictionary里随机出一个元素
+            </summary>
+            <param name="dict"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RandomMultiple``2(System.Collections.Generic.Dictionary{``0,``1},System.Int32)">
+            <summary>
+            从Dictionary里随机出N个不重复元素
+            </summary>
+            <param name="dict"></param>
+            <param name="n">数目</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RandomShuffle``1(System.Collections.Generic.List{``0})">
+            <summary>
+            随机洗牌List
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="inputList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IsAnyFlagOn``1(System.Enum,``0)">
+            <summary>
+            Determines whether any flag is on for the specified mask.
+            </summary>
+            <typeparam name="T">The flag type.</typeparam>
+            <param name="mask">The mask to check if the flag is on.</param>
+            <param name="flag">The flag to check for in the mask.</param>
+            <returns>
+            	<c>true</c> if any flag is on for the specified mask; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:UtilLib.Util.IsFlagOn``1(System.Enum,``0)">
+            <summary>
+            Determines whether the flag is on for the specified mask.
+            </summary>
+            <typeparam name="T">The flag type.</typeparam>
+            <param name="mask">The mask to check if the flag is on.</param>
+            <param name="flag">The flag to check for in the mask.</param>
+            <returns>
+            	<c>true</c> if the flag is on for the specified mask; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:UtilLib.Util.SetFlagOn``1(System.Enum,``0)">
+            <summary>
+            Sets the flag on in the specified mask.
+            </summary>
+            <typeparam name="T">The flag type.</typeparam>
+            <param name="mask">The mask to set flag on.</param>
+            <param name="flag">The flag to set.</param>
+            <returns>The mask with the flag set to on.</returns>
+        </member>
+        <member name="M:UtilLib.Util.SetFlagOff``1(System.Enum,``0)">
+            <summary>
+            Sets the flag off in the specified mask.
+            </summary>
+            <typeparam name="T">The flag type.</typeparam>
+            <param name="mask">The mask to set flag off.</param>
+            <param name="flag">The flag to set.</param>
+            <returns>The mask with the flag set to off.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToggleFlag``1(System.Enum,``0)">
+            <summary>
+            Toggles the flag in the specified mask.
+            </summary>
+            <typeparam name="T">The flag type.</typeparam>
+            <param name="mask">The mask to toggle the flag against.</param>
+            <param name="flag">The flag to toggle.</param>
+            <returns>The mask with the flag set in the opposite position then it was.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToStringHex``1(System.Enum)">
+            <summary>
+            Gets the string hex of the enum.
+            </summary>
+            <typeparam name="T">The enum type.</typeparam>
+            <param name="enum">The enum to get the string hex from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.TryParseEnum``1(System.Enum,System.String,``0@)">
+            <summary>
+            Tries to get an enum from a String.
+            </summary>
+            <typeparam name="T">The enum type.</typeparam>
+            <param name="value">The enum value.</param>
+            <param name="input">The input String.</param>
+            <param name="returnValue">The return enum value.</param>
+            <returns>
+            	<c>true</c> if the string was able to be parsed to an enum; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:UtilLib.Util.ConvertFlag``1(System.UInt64)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="maskInt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.TryEnumIsDefined(System.Type,System.Object)">
+            <summary>
+            Will try and parse an enum and it's default type.
+            </summary>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns>True if the enum value is defined.</returns>
+        </member>
+        <member name="M:UtilLib.Util.TryEnumIsDefined``1(System.Type,System.Object)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetEnumDefaultValue(System.Type)">
+            <summary>
+            Gets the default defined value of an enum.
+            </summary>
+            <param name="type">The enum.</param>
+            <returns>If the value cannot be determined, 0 will be returned.</returns>
+        </member>
+        <member name="M:UtilLib.Util.TryGetEnumDefaultValue``1(System.Type,System.Object@)">
+            <summary>
+            Attempts to get the default value of an enum.
+            </summary>
+            <typeparam name="T">The System Type.</typeparam>
+            <param name="type"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetDescription(System.Enum)">
+            <summary>
+            Retrieve the description on the enum, e.g.
+            [Description("Bright Pink")]
+            BrightPink = 2,
+            Then when you pass in the enum, it will retrieve the description
+            </summary>
+            <param name="en">The Enumeration</param>
+            <returns>A string representing the friendly name</returns>
+        </member>
+        <member name="M:UtilLib.Util.GetValues``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetValue(System.Collections.Specialized.NameValueCollection,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetInt(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetInt(System.Collections.Specialized.NameValueCollection,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetBool(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetBool(System.Collections.Specialized.NameValueCollection,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetEnum``1(System.Collections.Specialized.NameValueCollection,System.String,System.Nullable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetStringList(System.Collections.Specialized.NameValueCollection,System.String,System.String,System.Char[])">
+            <summary>
+            
+            </summary>
+            <param name="collection"></param>
+            <param name="name"></param>
+            <param name="defaultValues"></param>
+            <param name="separators"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:UtilLib.Util.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="range"></param>
+        </member>
+        <member name="M:UtilLib.Util.FullOuterJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``2,``3},``0,``1,System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TA"></typeparam>
+            <typeparam name="TB"></typeparam>
+            <typeparam name="TK"></typeparam>
+            <typeparam name="TR"></typeparam>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="selectKeyA"></param>
+            <param name="selectKeyB"></param>
+            <param name="projection"></param>
+            <param name="defaultA"></param>
+            <param name="defaultB"></param>
+            <param name="cmp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Contains``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable"></param>
+            <param name="function"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <typeparam name="TKey"></typeparam>
+            <param name="source"></param>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <typeparam name="TKey"></typeparam>
+            <param name="source"></param>
+            <param name="keySelector"></param>
+            <param name="comparer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.DistinctByImpl``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <typeparam name="TKey"></typeparam>
+            <param name="source"></param>
+            <param name="keySelector"></param>
+            <param name="comparer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.AsNullIfEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IndexOf``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <param name="selector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <param name="item"></param>
+            <param name="itemComparer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToHashSet``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.HashSet`1"/> from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The type of the elements of source.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to create a <see cref="T:System.Collections.Generic.HashSet`1"/> from.</param>
+            <returns>A <see cref="T:System.Collections.Generic.HashSet`1"/> that contains elements from the input sequence.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToHashSet``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.HashSet`1"/> from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The type of the elements of source.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to create a <see cref="T:System.Collections.Generic.HashSet`1"/> from.</param>
+            <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare elements.</param>
+            <returns>
+            A <see cref="T:System.Collections.Generic.HashSet`1"/> that contains elements from the input sequence.
+            </returns>
+        </member>
+        <member name="M:UtilLib.Util.Page``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Helper method for paging objects in a given source
+            reference:  http://stackoverflow.com/questions/2380413/paging-with-linq-for-objects
+            author:     http://stackoverflow.com/users/921321/lukazoid
+            </summary>
+            <typeparam name="T">type of object in source collection</typeparam>
+            <param name="source">source collection to be paged</param>
+            <param name="pageSize">page size</param>
+            <returns>a collection of sub-collections by page size</returns>
+        </member>
+        <member name="M:UtilLib.Util.ComputeHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>Compute hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <param name="algorithm"> </param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ComputeHash(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
+            <summary>Compute hash on input stream</summary>
+            <param name="input">The stream to compute hash on.</param>
+            <param name="algorithm"> </param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ComputeHash(System.Byte[],System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Compute hash on byte array
+            </summary>
+            <param name="input">The byte array to get hash from.</param>
+            <param name="algorithm"> </param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ComputeHash(System.IO.FileInfo,System.Security.Cryptography.HashAlgorithm)">
+            <summary>Compute hash on input string</summary>
+            <param name="file">The file to get hash from.</param>
+            <param name="algorithm"> </param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ComputeHash(System.Text.StringBuilder,System.Security.Cryptography.HashAlgorithm)">
+            <summary>Compute hash on input string</summary>
+            <param name="buffer">The string to compute hash on.</param>
+            <param name="algorithm"> </param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA1(System.String)">
+            <summary>Compute SHA1 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA1(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Compute SHA1 hash on a collection of input string</summary>
+            <param name="inputs">The collection of strings to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA1(System.IO.Stream)">
+            <summary>Compute SHA1 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA1(System.Byte[])">
+            <summary>
+            Compute SHA1 hash on input string
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA1(System.IO.FileInfo)">
+            <summary>Compute SHA1 hash on input string</summary>
+            <param name="file">The file to get hash from.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA1(System.Text.StringBuilder)">
+            <summary>Compute SHA1 hash on input string</summary>
+            <param name="buffer">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA256(System.String)">
+            <summary>Compute SHA256 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA256(System.IO.Stream)">
+            <summary>Compute SHA256 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA256(System.Byte[])">
+            <summary>
+            Compute SHA256 hash on input string
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA256(System.IO.FileInfo)">
+            <summary>Compute SHA256 hash on input string</summary>
+            <param name="file">The file to get hash from.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA256(System.Text.StringBuilder)">
+            <summary>Compute SHA256 hash on input string</summary>
+            <param name="buffer">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA512(System.String)">
+            <summary>Compute SHA512 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA512(System.IO.Stream)">
+            <summary>Compute SHA512 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA512(System.Byte[])">
+            <summary>
+            Compute SHA512 hash on input string
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA512(System.IO.FileInfo)">
+            <summary>Compute SHA512 hash on input string</summary>
+            <param name="file">The file to get hash from.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToSHA512(System.Text.StringBuilder)">
+            <summary>Compute SHA512 hash on input string</summary>
+            <param name="buffer">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToMD5(System.String)">
+            <summary>Compute MD5 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToMD5(System.IO.Stream)">
+            <summary>Compute MD5 hash on input string</summary>
+            <param name="input">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToMD5(System.Byte[])">
+            <summary>
+            Compute MD5 hash on input string
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToMD5(System.IO.FileInfo)">
+            <summary>Compute MD5 hash on input string</summary>
+            <param name="file">The file to get hash from.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToMD5(System.Text.StringBuilder)">
+            <summary>Compute MD5 hash on input string</summary>
+            <param name="buffer">The string to compute hash on.</param>
+            <returns>The hash as a hexadecimal String.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToHex(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Converts a byte array to Hexadecimal.
+            </summary>
+            <param name="bytes">The bytes to convert.</param>
+            <returns>Hexadecimal string of the byte array.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToBase64(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Converts a byte array to Hexadecimal.
+            </summary>
+            <param name="bytes">The bytes to convert.</param>
+            <returns>Hexadecimal string of the byte array.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToByteArray(System.String)">
+            <summary>
+            Converts a hexadecimal string into a byte array.
+            </summary>
+            <param name="hex">The hex String.</param>
+            <returns>A byte array.</returns>
+        </member>
+        <member name="M:UtilLib.Util.ToFileSizeDisplay(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToFileSizeDisplay(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="decimals"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToFileSizeDisplay(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToFileSizeDisplay(System.Int64,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="decimals"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.ToOrdinal(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.CastTo``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.IfNull``1(``0,``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetState(System.Int64,System.Int64)">
+            <summary>
+            获取标识
+            </summary>
+            <param name="_state"></param>
+            <param name="_flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SetState(System.Int64,System.Int64)">
+            <summary>
+            设置标识
+            </summary>
+            <param name="_state"></param>
+            <param name="_flag"></param>
+        </member>
+        <member name="M:UtilLib.Util.ClearState(System.Int64,System.Int64)">
+            <summary>
+            清除标识
+            </summary>
+            <param name="_state"></param>
+            <param name="_flag"></param>
+        </member>
+        <member name="M:UtilLib.Util.Show(System.Object)">
+            <summary>
+            输出一些反馈消息
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:UtilLib.Util.ShowError(System.Object)">
+            <summary>
+            输出一些反馈消息
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:UtilLib.Util.ShowError(System.Object,System.Exception)">
+            <summary>
+            输出一些反馈消息
+            </summary>
+            <param name="obj"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:UtilLib.Util.GUID">
+            <summary>
+            获取64位唯一ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SGUID">
+            <summary>
+            获取字符串唯一ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GuidIncreasing">
+            <summary>
+            获取一个随时间递增的数 (14位)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GuidDescending">
+            <summary>
+            获取一个随时间递减的数 (14位)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SimpleVerifyCode(System.Int64)">
+            <summary>
+            获取一个简单验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.Swap``1(``0@,``0@)">
+            <summary>
+            交换
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="a"></param>
+            <param name="b"></param>
+        </member>
+        <member name="M:UtilLib.Util.GetDistance(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="x1"></param>
+            <param name="y1"></param>
+            <param name="x2"></param>
+            <param name="y2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.CheckInitObj``1(``0@,System.Type)">
+            <summary>
+            检查数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="Attribute"> 筛选的属性，为null则不筛选 </param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetDateTimeOfWeekend">
+            <summary>
+            获取本周最后一天日期
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:UtilLib.Util.BenchmarkStopwatch">
+            <summary>
+            处理时间显示
+            </summary>
+        </member>
+        <member name="F:UtilLib.Util.BenchmarkMode">
+            <summary>
+            处理对象
+            </summary>
+        </member>
+        <member name="M:UtilLib.Util.BenchmarkStart(System.String)">
+            <summary>
+            开始处理
+            </summary>
+            <param name="mode">处理对象</param>
+        </member>
+        <member name="M:UtilLib.Util.BenchmarkEnd">
+            <summary>
+            结束处理
+            </summary>
+        </member>
+        <member name="M:UtilLib.Util.RunBenchmark(System.Int32,System.Int32,System.Action)">
+            <summary>
+            用来测试执行时间
+            </summary>
+            <param name="warmupIterations">热身次数</param>
+            <param name="benchmarkIterations">执行次数</param>
+            <param name="action"></param>
+        </member>
+        <member name="M:UtilLib.Util.DeleteFile(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:UtilLib.Util.EmptyFolder(System.String)">
+            <summary>
+            清空目录
+            </summary>
+            <param name="dir"></param>
+        </member>
+        <member name="M:UtilLib.Util.DeleteFolder(System.String)">
+            <summary>
+            删除目录
+            </summary>
+            <param name="dir"></param>
+        </member>
+        <member name="M:UtilLib.Util.GetParentFolder(System.String,System.Int32)">
+            <summary>
+            获取父目录
+            </summary>
+            <param name="dir"></param>
+            <param name="layer"></param>
+            <returns></returns>
+        </member>
+        <member name="F:UtilLib.Util.Random">
+            <summary>
+            随机种子
+            </summary>
+        </member>
+        <member name="M:UtilLib.Util.RandomReset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UtilLib.Util.RandomMultiple(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            生成指定范围内的不重复随机数
+            </summary>
+            <param name="count">随机数个数</param>
+            <param name="minNum">随机数下限（随机数可以取该下界值）</param>
+            <param name="maxNum">随机数上限（随机数不能取该上界值）</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.CalculateLineRank(System.Int32@,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            排序 线性
+            </summary>
+            <param name="score">分数</param>
+            <param name="rank">排名</param>
+            <param name="rankStart">开始排名</param>
+            <param name="rankEnd">最大排名</param>
+            <param name="scoreStart">开始分数</param>
+            <param name="scoreEnd">最小分数</param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetNearestEle(System.Collections.Generic.List{System.Int32},System.Int32)">
+            <summary>
+            获取最近的一个大于值
+            </summary>
+            <param name="ll"></param>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.SortedDictionaryRemoveFirst``2(System.Collections.Generic.SortedDictionary{``0,``1}@,System.Int32)">
+            <summary>
+            移除 SortedDictionary 多余的元素 从头移除
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="dict"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.PortInUse(System.Int32)">
+            <summary>
+            检查端口是否被占用
+            </summary>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.RunSnippet(System.String)">
+            <summary>
+            检查ip地址是否合法
+            </summary>
+            <param name="sIP"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetIntranetNetIP">
+            <summary>
+            获取内网IP地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.GetExtranetNetIP">
+            <summary>
+            获取外网IP地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UtilLib.Util.CheckIsIntranetIP(System.String)">
+            <summary>
+            判断是否是内网IP
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UtilLib.UtilEnum">
+            <summary>
+            公共常量类
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.每毫秒的ticks数">
+            <summary>
+            每毫秒的ticks数
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.每秒的ticks数">
+            <summary>
+            每秒的ticks数
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.分隔符空格">
+            <summary>
+            分隔符
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.分隔符逗号">
+            <summary>
+            ,
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.分隔符冒号">
+            <summary>
+            ;
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.分隔符分号">
+            <summary>
+            ;
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.分隔符竖线">
+            <summary>
+            |
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilEnum.分隔符下划线">
+            <summary>
+            _
+            </summary>
+        </member>
+        <member name="T:UtilLib.UtilRate`1">
+            <summary>
+            公共函数类  比率表抽取
+            </summary>
+        </member>
+        <member name="F:UtilLib.UtilRate`1.RateDic">
+            <summary>
+            比率表
+            </summary>
+        </member>
+        <member name="M:UtilLib.UtilRate`1.#ctor(System.Collections.Generic.Dictionary{`0,System.Int32},System.Boolean)">
+            <summary>
+            RateDic:k是ID或者其他什么, v是万份比
+            </summary>
+            <param name="ratedic"></param>
+            <param name="RateResetFlag"></param>
+        </member>
+        <member name="M:UtilLib.UtilRate`1.RateReset">
+            <summary>
+            把超过的或者不足的,重新分配为万分之几
+            </summary>
+        </member>
+        <member name="M:UtilLib.UtilRate`1.RateSingle">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:UtilLib.UtilRate`1.RateMultiple(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="count"></param>
+             <returns></returns>
+        </member>
+    </members>
+</doc>

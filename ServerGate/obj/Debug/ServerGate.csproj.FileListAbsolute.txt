@@ -1,0 +1,7 @@
+F:\GameServer\Server\ServerGate\obj\Debug\ServerGate.csproj.CoreCompileInputs.cache
+F:\GameServer\Server\APublish\bin\ServerGate.exe.config
+F:\GameServer\Server\APublish\bin\ServerGate.exe
+F:\GameServer\Server\APublish\bin\ServerGate.pdb
+F:\GameServer\Server\ServerGate\obj\Debug\ServerGate.exe
+F:\GameServer\Server\ServerGate\obj\Debug\ServerGate.pdb
+F:\GameServer\Server\ServerGate\obj\Debug\ServerGate.csprojAssemblyReference.cache
