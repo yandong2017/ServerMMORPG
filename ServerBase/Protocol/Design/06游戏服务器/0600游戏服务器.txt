@@ -22,6 +22,11 @@ msgs:E2G_Game_MapIn
 msge
 
 msgs:G2E_Game_MapIn
+	CLS_PlayerXY:PlayerXY
+msge
+
+msgs:G2E_Game_MapInOther
+	list:CLS_PlayerXY:ListPlayerXY
 msge
 
 msgs:E2G_Game_MapOut

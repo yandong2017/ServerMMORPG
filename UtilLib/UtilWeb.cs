@@ -1,26 +1,4 @@
-﻿
- 
-
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;

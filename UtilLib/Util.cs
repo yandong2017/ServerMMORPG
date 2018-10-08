@@ -1,26 +1,4 @@
-﻿
- 
-
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-using System;
+﻿using System;
 
 namespace UtilLib
 {

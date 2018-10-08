@@ -37,7 +37,5 @@ namespace SuperSocket.SocketLuanr
         /// 连接状态 0=未登陆 1=已登陆 2=GM登陆
         /// </summary>
         public short SessionState { get; set; } = 0;
-
-        public Player player { get; set; }
     }
 }

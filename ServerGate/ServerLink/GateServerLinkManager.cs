@@ -70,17 +70,16 @@ namespace ServerGate.ServerLink
                 loger.Error($"客户端未找到！{sessionID}");
                 return;
             }
-            Dispatcher.DictSessionPuid[sessionID] = req.Puid;
-            Dispatcher.SendByServerID(12011, req);
+            if (req.Success)
+            {
+                Dispatcher.SendByServerID(12011, req);
+                Dispatcher.DictPuidSession[req.Puid] = req.Shuttle;
+                session.SessionUuid = req.Puid;
+            }
+           
             Send(session, req);
         }
-
-        internal static void OnGamePlayerXY(byte[] buffer)
-        {
-            var req = new G2E_Game_PlayerXY(buffer);
-            SendAll(req);
-        }
-
+        
         //连接列表
         public static Dictionary<int, ClientLink> DictServerLinkGame = new Dictionary<int, ClientLink>();
         public static Dictionary<int, ClientLink> DictServerLinkLogin = new Dictionary<int, ClientLink>();

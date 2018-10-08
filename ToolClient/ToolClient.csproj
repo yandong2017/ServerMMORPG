@@ -85,10 +85,6 @@
       <Project>{eca4b40c-9d62-4185-805d-9c08221b343c}</Project>
       <Name>ServerBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UtilLib\UtilLib.csproj">
-      <Project>{457723f2-7ebd-47b8-b236-229f7842115d}</Project>
-      <Name>UtilLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

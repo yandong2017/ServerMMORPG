@@ -29,17 +29,20 @@ namespace ServerGame.Manager
         public static void OnPlayerXY(LunarSession session, LunarRequestInfo requestInfo)
         {            
             var Req = new E2G_Game_PlayerXY(requestInfo.Body);
-            var player = session.player;
+            DictPlayerOnline.TryGetValue(Req.Puid,out var player);
+            Req.PlayerXY.Uid = player.XY.Uid;
+            player.XY = Req.PlayerXY;
             var rsp = new G2E_Game_PlayerXY();
             rsp.PlayerXY = Req.PlayerXY;
+            
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)
                 {
                     continue;
                 }
-                rsp.Shuttle = Req.Shuttle;
-                BaseDispatch.SendAll(rsp);
+                rsp.Puid = item.Id;
+                BaseDispatch.Send(session, rsp);
             }
             //m_DictPlayerXY[player.Id] =  Req.PlayerXY;
             //isMove = true;
@@ -67,17 +70,16 @@ namespace ServerGame.Manager
         {
             var Req = new E2G_Game_LoginOut(requestInfo.Body);
             DictPlayerOnline.Remove(Req.Puid);
-            //m_DictPlayerXY.Remove(Req.Puid);
-                        
-            var rsp = new G2E_Game_LoginOut();
-            rsp.Puid = Req.Puid;
+                   
+            var rsp = new G2E_Game_LoginOut();            
             foreach (var item in DictPlayerOnline.Values)
             {
-                if (item.Id == session.player.Id)
+                if (item.Id == Req.Puid)
                 {
                     continue;
                 }
-                BaseDispatch.SendAll(rsp);
+                rsp.Puid = item.Id;
+                BaseDispatch.Send(session, rsp);
             }
         }
 
@@ -90,24 +92,37 @@ namespace ServerGame.Manager
             {
                 
             }
-            session.player = player;
-            player.ClientSession = session;
-            DictPlayerOnline[Req.Puid] = player;
+            player.XY.Uid = player.Id;
+
+            DictPlayerOnline[Req.Puid] = player;  
+            
             var rsp = new G2E_Game_MapIn();
-            rsp.Puid = Req.Puid;
+            rsp.PlayerXY = player.XY;
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)
                 {
                     continue;
                 }
-                rsp.Shuttle = Req.Shuttle;
-                BaseDispatch.SendAll(rsp);
-
-
+                //rsp.Shuttle = Req.Shuttle;
+                rsp.Puid = item.Id;
+                BaseDispatch.Send(session,rsp);
             }
 
-
+            var rsp2 = new G2E_Game_MapInOther();
+            
+            foreach (var item in DictPlayerOnline.Values)
+            {
+                if (item.Id == player.Id)
+                {
+                    continue;
+                }
+                rsp2.ListPlayerXY.Add(item.XY);
+                //rsp.Shuttle = Req.Shuttle;
+                
+            }
+            rsp2.Puid = player.Id;
+            BaseDispatch.Send(session, rsp2);
         }
 
         internal static void OnRegister(LunarSession session, LunarRequestInfo requestInfo)

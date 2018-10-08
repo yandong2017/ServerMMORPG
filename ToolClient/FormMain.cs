@@ -37,7 +37,7 @@ namespace ToolSimulator
             ClientDispatcher.BindEventHandler(OnLoginUserRegister, EProtocolId.L2E_GAME_REGISTER);
             ClientDispatcher.BindEventHandler(OnPlayerXY, EProtocolId.G2E_GAME_PLAYERXY);
             ClientDispatcher.BindEventHandler(OnPlayerLoginOut, EProtocolId.G2E_GAME_LOGINOUT);
-            //ClientDispatcher.BindEventHandler(OnLoginPlayerCreate, EProtocolId.G2C_LOGIN_PLAYERCREATE);
+            ClientDispatcher.BindEventHandler(OnPlayerMapInOther, EProtocolId.G2E_GAME_MAPINOTHER);
             ClientDispatcher.BindEventHandler(OnPlayerMapIn, EProtocolId.G2E_GAME_MAPIN);
             tabControl1.SelectedIndex = 0;
         }
@@ -315,12 +315,7 @@ namespace ToolSimulator
         {
             var Req = new G2E_Game_PlayerXY(buffer);
             if (Req.Success)
-            {               
-                if (!uidButton.ContainsKey(Req.PlayerXY.Uid))
-                {
-                    //AddButton(Req.PlayerXY, Req.PlayerXY.Uid);                        
-                }
-
+            {   
                 Button btn = uidButton[Req.PlayerXY.Uid];
                 btn.Top = Req.PlayerXY.Top;
                 btn.Left = Req.PlayerXY.Left;                
@@ -333,28 +328,38 @@ namespace ToolSimulator
         private void OnPlayerMapIn(byte[] buffer)
         {
             var Req = new G2E_Game_MapIn(buffer);
-            if (!uidButton.ContainsKey(Req.Puid))
+            if (!uidButton.ContainsKey(Req.PlayerXY.Uid))
             {
-                AddButton(new CLS_PlayerXY(), Req.Puid);                        
+                AddButton(Req.PlayerXY);                        
             }
         }
-
-
-        private void AddButton(CLS_PlayerXY playerXY,long id)
+        private void OnPlayerMapInOther(byte[] buffer)
+        {
+            var Req = new G2E_Game_MapInOther(buffer);
+            foreach (var item in Req.ListPlayerXY)
+            {
+                if (!uidButton.ContainsKey(item.Uid))
+                {
+                    AddButton(item);
+                }
+            }            
+        }
+        
+        private void AddButton(CLS_PlayerXY playerXY)
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new MethodInvoker(delegate { AddButton(playerXY,id); }));
+                this.Invoke(new MethodInvoker(delegate { AddButton(playerXY); }));
                 return;
             }
 
             Button btn = new Button();
             btn.Location = new System.Drawing.Point(playerXY.Left, playerXY.Top);
-            btn.Name = "BtnPlayer" + id;
+            btn.Name = "BtnPlayer" + playerXY.Uid;
             btn.Size = new System.Drawing.Size(50, 43);
-            btn.Text = id.ToString();
+            btn.Text = playerXY.Uid.ToString();
             panel2.Controls.Add(btn); ;
-            uidButton[id] = btn;            
+            uidButton[playerXY.Uid] = btn;            
         }
 
         private void BtnPlayer_KeyDown(object sender, KeyEventArgs e)
@@ -442,7 +447,7 @@ namespace ToolSimulator
             }
             while (true)
             {
-                System.Threading.Thread.CurrentThread.Join(500);
+                System.Threading.Thread.CurrentThread.Join(100);
                 int index= rd.Next(1,5);
                 bool err = false;
                 switch (index)

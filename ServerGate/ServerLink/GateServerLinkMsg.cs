@@ -51,14 +51,20 @@ namespace ServerGate.ServerLink
             {
                 return;
             }
-            var sessionID = ((ProtocolMsgBase)objMsg).Shuttle;
-            var session = Dispatcher.GetSession(sessionID);
-            if (session == null)
+            if (Dispatcher.DictPuidSession.TryGetValue(((ProtocolMsgBase)objMsg).Puid, out var sessionID))
             {
-                loger.Error($"客户端未找到！{sessionID}");
-                return;
+                var session = Dispatcher.GetSession(sessionID);
+                if (session == null)
+                {
+                    loger.Error($"客户端未找到！{sessionID}");
+                    return;
+                }
+                BaseDispatch.Send(session, objMsg);
             }
-            BaseDispatch.Send(session, objMsg);
+            else
+            {
+                loger.Error($"客户端ID错误！{((ProtocolMsgBase)objMsg).Puid}");
+            }
         }
     }
 }

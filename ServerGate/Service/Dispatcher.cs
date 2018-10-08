@@ -27,12 +27,12 @@ namespace ServerGate.Service
         internal static void OnSessionClosed(LunarSession session, CloseReason value)
         {
             BaseServerInfo.AllSessions.TryRemove(session.SessionID, out var tt);
-            if (DictSessionPuid.TryGetValue(session.SessionID, out var uid))
+
             {
                 var rsp = new E2G_Game_LoginOut();
-                rsp.Puid = uid;
+                rsp.Puid = session.SessionUuid;
                 SendToGame(rsp);
-                DictSessionPuid.Remove(session.SessionID);
+                DictPuidSession.Remove(rsp.Puid);
             }
         }
 
@@ -47,7 +47,7 @@ namespace ServerGate.Service
                 return null;
             }
         }
-        public static Dictionary<string, long> DictSessionPuid = new Dictionary<string, long>();
+        public static Dictionary<long, string> DictPuidSession = new Dictionary<long, string>();
         internal static void OnDispatch(LunarSession session, LunarRequestInfo requestInfo)
         {
             if (requestInfo.ProtocolID <= 0)
@@ -55,6 +55,7 @@ namespace ServerGate.Service
                 loger.Warn("收到空消息");
                 return;
             }
+            
             EProtocolId id = (EProtocolId)requestInfo.ProtocolID;
             loger.Info($"处理{(EServerType)session.SessionType} 协议->{id} -> {(int)id} 。");
             var objMsg = ProtocolDump.Dump(id, requestInfo.Body);
@@ -88,11 +89,11 @@ namespace ServerGate.Service
                     loger.Warn($"错误的GM协议->  {id} -> {(int)id} 。");
                     return;
                 }
-
             }
             else
             {
-                DictSessionPuid.TryGetValue(session.SessionID,out ((ProtocolMsgBase)objMsg).Puid);
+                ((ProtocolMsgBase)objMsg).Puid = session.SessionUuid;
+                //DictPuidSession.TryGetValue(session.SessionID,out ((ProtocolMsgBase)objMsg).Puid);
                 SendToGame(objMsg);
             }
         }
