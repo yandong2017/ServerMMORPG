@@ -3,3 +3,7 @@
 /ServerLogin/obj
 /ServerWorld/obj
 /ServerBase/obj
+/APublish/Logs
+/APublish/bin
+/ToolClient/obj
+/ToolClient/bin

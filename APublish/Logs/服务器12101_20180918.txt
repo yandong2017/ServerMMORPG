@@ -1,6 +1,0 @@
-2018-09-18 10:08:10,384 [11] FATAL log_file - 处理协议->  E2G_GAME_PLAYERXY -> 603出错 玩家ID:0
-System.Collections.Generic.KeyNotFoundException: 给定关键字不在字典中。
-   在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
-   在 ServerGame.Manager.PlayerManager.OnPlayerXY(LunarSession session, LunarRequestInfo requestInfo) 位置 F:\GameServer\Server\ServerGame\Manager\PlayerManager.cs:行号 24
-   在 ServerBase.Dispatch.BaseDispatch.ProtocolEvent.ExecuteProtocolEventImm(LunarSession session, LunarRequestInfo requestInfo) 位置 F:\GameServer\Server\ServerBase\Dispatch\BaseDispatch.cs:行号 29
-   在 ServerBase.Dispatch.BaseDispatch.ProcessMessageImm(LunarSession session, LunarRequestInfo requestInfo) 位置 F:\GameServer\Server\ServerBase\Dispatch\BaseDispatch.cs:行号 141
