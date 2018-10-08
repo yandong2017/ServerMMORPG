@@ -25,7 +25,6 @@ namespace ServerGate.ServerLink
         {
             ClientDispatcher.EventHandler = GateEventHandler;
             ClientDispatcher.BindEventHandler(GateServerLinkManager.OnServerConnect, EProtocolId.S2C_SERVER_CONNECT);
-            ClientDispatcher.BindEventHandler(GateServerLinkManager.OnGamePlayerXY, EProtocolId.G2E_GAME_PLAYERXY);
             ClientDispatcher.BindEventHandler(GateServerLinkManager.OnLogin, EProtocolId.L2E_GAME_LOGINSERVER);
             ClientDispatcher.BindEventHandler(GateServerLinkManager.OnRegister, EProtocolId.L2E_GAME_REGISTER);
             ClientDispatcher.BindEventHandler(GateServerLinkManager.OnPlayerLoginOut, EProtocolId.G2E_GAME_LOGINOUT);

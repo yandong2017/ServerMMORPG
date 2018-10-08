@@ -14,9 +14,13 @@ namespace ServerBase.GameObject
         /// </summary>
         public long Id;
         /// <summary>
-        /// 连接
+        /// 网关连接
         /// </summary>
-        public LunarSession Session { get; set; }
+        public LunarSession GateSession { get; set; }
+        /// <summary>
+        /// 客户端连接
+        /// </summary>
+        public LunarSession ClientSession { get; set; }
 
         // 心跳开始时间
         public DateTime TimeHeartbeat = DateTime.Now;
@@ -39,9 +43,9 @@ namespace ServerBase.GameObject
         /// 玩家登入
         /// </summary>
         public void LoginOn()
-        {     
+        {
             //设置连接已登陆
-            Session.SessionState = (short)ESessionState.Logined;         
+            ClientSession.SessionState = (short)ESessionState.Logined;         
         }
 
         /// <summary>
@@ -50,9 +54,9 @@ namespace ServerBase.GameObject
         public void LoginOut()
         {
             //设置连接未登陆
-            if (Session != null)
+            if (ClientSession != null)
             {
-                Session.SessionState = (short)ESessionState.Logining;
+                ClientSession.SessionState = (short)ESessionState.Logining;
             }
         }
 
@@ -60,7 +64,7 @@ namespace ServerBase.GameObject
         /// 判断是否登陆
         /// </summary>
         /// <returns></returns>
-        public bool Logined => (Session != null ? (Session.SessionState == (short)ESessionState.Logined) : false);
+        public bool Logined => (ClientSession != null ? (ClientSession.SessionState == (short)ESessionState.Logined) : false);
 
     }
 }
