@@ -4,6 +4,7 @@ using ServerBase.Protocol;
 using SuperSocket.SocketLuanr;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace ServerGame.Manager
 {
@@ -34,7 +35,8 @@ namespace ServerGame.Manager
             player.XY = Req.PlayerXY;
             var rsp = new G2E_Game_PlayerXY();
             rsp.PlayerXY = Req.PlayerXY;
-            
+
+            //Thread.Sleep(1000);
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)
