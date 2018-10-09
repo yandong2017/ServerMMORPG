@@ -47,9 +47,15 @@ namespace ServerGate.Service
                 return null;
             }
         }
-        public static Dictionary<long, string> DictPuidSession = new Dictionary<long, string>();
+        //public static Dictionary<long, string> DictPuidSession = new Dictionary<long, string>();
+        public static Dictionary<long, LunarSession> DictPuidSession = new Dictionary<long, LunarSession>();
         internal static void OnDispatch(LunarSession session, LunarRequestInfo requestInfo)
         {
+            if (!session.Connected)
+            {
+                loger.Warn("收到断开连接的客户端消息");
+                return;
+            }
             if (requestInfo.ProtocolID <= 0)
             {
                 loger.Warn("收到空消息");
@@ -57,7 +63,7 @@ namespace ServerGate.Service
             }
             
             EProtocolId id = (EProtocolId)requestInfo.ProtocolID;
-            loger.Info($"处理{(EServerType)session.SessionType} 协议->{id} -> {(int)id} 。");
+            loger.Info($"中转{(EServerType)session.SessionType} 协议->{id} -> {(int)id} 。");
             var objMsg = ProtocolDump.Dump(id, requestInfo.Body);
             if (objMsg == null)
             {
@@ -91,7 +97,7 @@ namespace ServerGate.Service
             }
             //游戏服消息
             else
-            {
+            {                
                 ((ProtocolMsgBase)objMsg).Puid = session.SessionUuid;
                 //DictPuidSession.TryGetValue(session.SessionID,out ((ProtocolMsgBase)objMsg).Puid);
                 SendToGame(objMsg);

@@ -51,12 +51,12 @@ namespace ServerGate.ServerLink
             {
                 return;
             }
-            if (Dispatcher.DictPuidSession.TryGetValue(((ProtocolMsgBase)objMsg).Puid, out var sessionID))
+            if (Dispatcher.DictPuidSession.TryGetValue(((ProtocolMsgBase)objMsg).Puid, out var session))
             {
-                var session = Dispatcher.GetSession(sessionID);
+                //var session = Dispatcher.GetSession(sessionID);
                 if (session == null)
                 {
-                    loger.Error($"客户端未找到！{sessionID}");
+                    loger.Error($"客户端未找到！{((ProtocolMsgBase)objMsg).Puid}");
                     return;
                 }
                 BaseDispatch.Send(session, objMsg);

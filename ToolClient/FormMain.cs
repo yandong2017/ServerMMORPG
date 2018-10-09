@@ -447,22 +447,22 @@ namespace ToolSimulator
             }
             while (true)
             {
-                System.Threading.Thread.CurrentThread.Join(100);
+                System.Threading.Thread.CurrentThread.Join(10);
                 int index= rd.Next(1,5);
                 bool err = false;
                 switch (index)
                 {
                     case 1:
-                        BtnPlayer.Top -= 5;
+                        BtnPlayer.Top -= 1;
                         break;
                     case 2:
-                        BtnPlayer.Top += 5;
+                        BtnPlayer.Top += 1;
                         break;
                     case 3:
-                        BtnPlayer.Left -= 5;
+                        BtnPlayer.Left -= 1;
                         break;
                     case 4:
-                        BtnPlayer.Left += 5;
+                        BtnPlayer.Left += 1;
                         break;
                     default:
                         err = true;

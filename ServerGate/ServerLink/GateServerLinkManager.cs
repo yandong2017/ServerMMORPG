@@ -73,7 +73,7 @@ namespace ServerGate.ServerLink
             if (req.Success)
             {
                 Dispatcher.SendByServerID(12011, req);
-                Dispatcher.DictPuidSession[req.Puid] = req.Shuttle;
+                Dispatcher.DictPuidSession[req.Puid] = session;
                 session.SessionUuid = req.Puid;
             }
            
