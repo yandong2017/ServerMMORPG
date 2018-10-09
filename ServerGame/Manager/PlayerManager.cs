@@ -36,7 +36,6 @@ namespace ServerGame.Manager
             var rsp = new G2E_Game_PlayerXY();
             rsp.PlayerXY = Req.PlayerXY;
 
-            //Thread.Sleep(1000);
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)

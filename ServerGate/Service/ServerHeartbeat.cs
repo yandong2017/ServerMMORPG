@@ -28,7 +28,7 @@ namespace ServerGate.Service
 
         // 心跳计时
         private static long TicksSecond = 0;
-
+        private static long TicksSecond10 = 0;
         /// <summary>
         /// 服务器心跳
         /// </summary>
@@ -43,9 +43,14 @@ namespace ServerGate.Service
             //秒心跳
             if (TicksSecond < TicksCur)
             {
-                //HeartbeatSecond();
+                HeartbeatSecond();
                 TicksSecond = TicksCur + UtilEnum.每秒的ticks数;
-            }
+                if (TicksSecond10 < TicksCur)
+                {
+                    HeartbeatSecond10();
+                    TicksSecond10 = TicksCur + 10 * UtilEnum.每秒的ticks数;
+                }
+           }
 
             TicksEnd = DateTime.Now.Ticks;
 
@@ -66,6 +71,11 @@ namespace ServerGate.Service
         public static void HeartbeatSecond()
         {
                        
-        }       
+        }
+        // 10秒心跳
+        public static void HeartbeatSecond10()
+        {
+            GateServerLinkManager.HeartbeatSecond10();            
+        }
     }
 }

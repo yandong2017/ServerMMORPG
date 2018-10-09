@@ -80,8 +80,7 @@ namespace ServerGate.Service
                 {   //后期人多则会添加登录服务器获取人少的服
                     SendToLogin(objMsg);
                 }
-            }
-            //游戏服消息
+            }            
             else if (id > EProtocolId.B2T_GM_START && id < EProtocolId.B2T_GM_END)
             {
                 if (session.SessionType != (short)EServerType.后台工具)
@@ -90,6 +89,7 @@ namespace ServerGate.Service
                     return;
                 }
             }
+            //游戏服消息
             else
             {
                 ((ProtocolMsgBase)objMsg).Puid = session.SessionUuid;
