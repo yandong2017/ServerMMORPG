@@ -26,6 +26,7 @@ namespace SuperSocket.SocketLuanr
         public bool SetupEx(int port, string encoding)
         {
             var conf = LuanrServer.GetConfig(port, encoding);
+            conf.SendingQueueSize = 100;
             return Setup(conf);
         }
 

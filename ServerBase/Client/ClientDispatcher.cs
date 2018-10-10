@@ -65,7 +65,7 @@ namespace ServerBase.Client
             nbs.BeginRead(Buffer);            
             EProtocolId id = (EProtocolId)nbs.ReadProtocolHeader();
 
-            Debug($"处理协议->  {id} -> {(int)id} ......");
+            //Debug($"处理协议->  {id} -> {(int)id} ......");
 
             if (EventHandler!=null)
             {

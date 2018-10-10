@@ -1,9 +1,12 @@
 ﻿using ServerBase.Protocol;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ServerBase.Client
@@ -45,7 +48,7 @@ namespace ServerBase.Client
                 LinkState = true;
 
                 ClientDispatcher.Debug($"连接成功 {Desc} {LinkType} {LinkIp} {LinkId}！");
-
+                               
                 //连接后开始从服务器读取网络消息
                 clientSocket.BeginReceive(ReadM, recvoffest, 65536 - recvoffest, SocketFlags.None, new System.AsyncCallback(ReceiveCallBack), ReadM);
 
@@ -63,7 +66,7 @@ namespace ServerBase.Client
                 return false;
             }
         }
-
+        Stopwatch StopwatchProcess;
         //接收网络消息回调函数
         private void ReceiveCallBack(System.IAsyncResult ar)
         {
@@ -71,7 +74,9 @@ namespace ServerBase.Client
 
             try
             {
-                //读取消息长度
+                StopwatchProcess = Stopwatch.StartNew();                
+                
+                 //读取消息长度
                 readCount = clientSocket.EndReceive(ar);//调用这个函数来结束本次接收并返回接收到的数据长度。
                 recvoffest += readCount;
                 if (recvoffest > 65536)
@@ -132,6 +137,13 @@ namespace ServerBase.Client
                 decodeOffest += datalen;
 
                 ClientDispatcher.OnReceiveData(buffer);
+                StopwatchProcess.Stop();
+                var UseMs = StopwatchProcess.ElapsedMilliseconds;
+                if (UseMs > maxMs)
+                {
+                    maxMs = UseMs;
+                    ClientDispatcher.Debug($"{maxMs}");
+                }
             }
 
             if (decodeOffest > 0 && decodeOffest < recvOffest)
@@ -143,7 +155,7 @@ namespace ServerBase.Client
 
             return 1;
         }
-
+        long maxMs = 0;
         //解包处理
 
 

@@ -319,10 +319,10 @@ namespace ToolSimulator
         {
             var Req = new G2E_Game_PlayerXY(buffer);
             if (Req.Success)
-            {   
+            {
                 Button btn = uidButton[Req.PlayerXY.Uid];
                 btn.Top = Req.PlayerXY.Top;
-                btn.Left = Req.PlayerXY.Left;                
+                btn.Left = Req.PlayerXY.Left;
             }
             else
             {

@@ -168,6 +168,7 @@ namespace ServerBase.Dispatch
             {
                 try
                 {
+                    Thread.CurrentThread.Join(BaseServerInfo.ServerHeartbeat);
                     Send();
                 }
                 catch (Exception ex)
