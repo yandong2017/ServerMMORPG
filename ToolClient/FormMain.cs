@@ -23,6 +23,10 @@ namespace ToolSimulator
         private void Form_Closed(object sender, EventArgs e)
         {
             isLogined = false;
+            if (thread != null)
+            {
+                thread.Abort();
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -433,8 +437,7 @@ namespace ToolSimulator
                 Account = TestID,
                 Password = textBox2.Text,
             };
-            ClientNetSingle.Send(Req1);
-            Thread.Sleep(1000);
+            ClientNetSingle.Send(Req1);            
             var Req2 = new E2L_Game_LoginServer()
             {
                 Account = TestID,
@@ -447,7 +450,7 @@ namespace ToolSimulator
             }
             while (true)
             {
-                System.Threading.Thread.CurrentThread.Join(10);
+                System.Threading.Thread.CurrentThread.Join(100);
                 int index= rd.Next(1,5);
                 bool err = false;
                 switch (index)
@@ -483,10 +486,10 @@ namespace ToolSimulator
             }
         }
         #endregion
-
+        Thread thread;
         private void button3_Click(object sender, EventArgs e)
         {
-            var thread = new Thread(new ThreadStart(Test));
+            thread = new Thread(new ThreadStart(Test));
             thread.Start();
         }
 

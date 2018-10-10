@@ -38,7 +38,7 @@ namespace ServerGate.Service
             TicksCur = DtNow.Ticks;
 
             //需要心跳循环的管理器
-            HeartbeatExecute();
+            //HeartbeatExecute();
             
             //秒心跳
             if (TicksSecond < TicksCur)
@@ -63,8 +63,17 @@ namespace ServerGate.Service
 
         // 心跳循环内容
         public static void HeartbeatExecute()
-        {            
-
+        {
+            foreach (var session in BaseServerInfo.AllSessions.Values)
+            {
+                if (session != null && session.Connected)
+                {
+                    while (session.ListReq.TryDequeue(out var msg))
+                    {
+                        Dispatcher.ProcessMessage(session, msg);
+                    }
+                }
+            }
         }
 
         // 秒心跳

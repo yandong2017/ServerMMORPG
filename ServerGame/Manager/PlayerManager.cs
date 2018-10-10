@@ -35,7 +35,7 @@ namespace ServerGame.Manager
             player.XY = Req.PlayerXY;
             var rsp = new G2E_Game_PlayerXY();
             rsp.PlayerXY = Req.PlayerXY;
-
+            //Thread.Sleep(1000);
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)
@@ -43,7 +43,7 @@ namespace ServerGame.Manager
                     continue;
                 }
                 rsp.Puid = item.Id;
-                BaseDispatch.Send(session, rsp);
+                session.Send(rsp);
             }
             //m_DictPlayerXY[player.Id] =  Req.PlayerXY;
             //isMove = true;
@@ -80,7 +80,7 @@ namespace ServerGame.Manager
                     continue;
                 }
                 rsp.Puid = item.Id;
-                BaseDispatch.Send(session, rsp);
+                session.Send(rsp);
             }
         }
 
@@ -107,7 +107,7 @@ namespace ServerGame.Manager
                 }
                 //rsp.Shuttle = Req.Shuttle;
                 rsp.Puid = item.Id;
-                BaseDispatch.Send(session,rsp);
+                session.Send(rsp);
             }
 
             var rsp2 = new G2E_Game_MapInOther();
@@ -123,7 +123,7 @@ namespace ServerGame.Manager
                 
             }
             rsp2.Puid = player.Id;
-            BaseDispatch.Send(session, rsp2);
+            session.Send(rsp2);
         }
 
         internal static void OnRegister(LunarSession session, LunarRequestInfo requestInfo)

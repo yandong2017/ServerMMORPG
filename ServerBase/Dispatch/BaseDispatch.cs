@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UtilLib;
 using ServerBase.Config;
 using System.Diagnostics;
+using System.Threading;
 
 namespace ServerBase.Dispatch
 {
@@ -77,9 +78,27 @@ namespace ServerBase.Dispatch
                 loger.Warn("收到空消息");
                 return;
             }
+            loger.Info($"收到消息 {(EProtocolId)requestInfo.ProtocolID}");
             ProcessMessage(session, requestInfo);           
+            //session.ListReq.Enqueue(requestInfo);
         }
-
+        //当前心跳处理消息数目
+        public static int CountMsgs = 0;
+        public static void Heartbeat()
+        {
+            CountMsgs = 0;
+            //foreach (var session in BaseServerInfo.AllSessions.Values)
+            //{
+            //    if (session != null && session.Connected)
+            //    {
+            //        while (session.ListReq.TryDequeue(out var msg))
+            //        {
+            //            ProcessMessage(session, msg);
+            //            loger.Info($"处理{session.ListReq.Count}消息 {(EProtocolId)msg.ProtocolID}");
+            //        }
+            //    }
+            //}
+        }
         /// <summary>
         /// 处理消息立即
         /// </summary>
@@ -114,7 +133,7 @@ namespace ServerBase.Dispatch
                     var UseMs = StopwatchProcess.ElapsedMilliseconds;
                     if (UseMs > 500)
                     {
-                        loger.Error($"消息处理超时，消息:{id} 玩家ID:{session.SessionUuid} 耗时:{UseMs} Ms__________");
+                        loger.Error($"消息处理超时，消息:{id} 玩家ID:{session.SessionUuid} 耗时:{UseMs} Ms__{CountMsgs}");
                     }
                 }
                 catch (Exception e)
@@ -143,7 +162,35 @@ namespace ServerBase.Dispatch
                 return null;
             }
         }
-
+        public static void ThreadSendMain()
+        {
+            while (true)
+            {
+                try
+                {
+                    Send();
+                }
+                catch (Exception ex)
+                {
+                    loger.Fatal("消息发送线程 执行失败", ex);
+                }                
+            }
+        }
+       
+        public static void Send()
+        {
+            foreach (var session in BaseServerInfo.AllSessions.Values)
+            {
+                if (session != null && session.Connected)
+                {  
+                    while (session.ListSend.TryDequeue(out var msg))
+                    {
+                        loger.Info($"消息发送线程{session.ListSend.Count}");
+                        Send(session, msg);
+                    }
+                }
+            }
+        }
         /// <summary>
         /// 立即发送消息(通过session)
         /// </summary>

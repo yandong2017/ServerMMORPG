@@ -18,7 +18,8 @@ namespace ServerLogin.Service
         // 心跳循环内容
         public static void HeartbeatExecute()
         {
-
+            //消息分发
+            BaseDispatch.Heartbeat();
         }
     }
 }

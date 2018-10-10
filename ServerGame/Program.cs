@@ -100,9 +100,18 @@ namespace ServerGame
 
             #endregion 添加读取指令的线程
 
+            #region 添加发送消息线程
+
+            BaseServerInfo.threadSend = new Thread(new ThreadStart(BaseDispatch.ThreadSendMain));
+            BaseServerInfo.threadSend.Start();
+            Thread.Sleep(1000);
+
+            #endregion
+
             BaseProgram.StartThreadDbMysqlSecond();
 
             #region 进入主循环
+
 
             while (true)
             {

@@ -61,9 +61,13 @@ namespace ServerGate.Service
                 loger.Warn("收到空消息");
                 return;
             }
-            
+            //session.ListReq.Enqueue(requestInfo);
+            ProcessMessage(session,requestInfo);
+        }
+        public static void ProcessMessage(LunarSession session, LunarRequestInfo requestInfo) { 
+
             EProtocolId id = (EProtocolId)requestInfo.ProtocolID;
-            loger.Info($"中转{(EServerType)session.SessionType} 协议->{id} -> {(int)id} 。");
+            loger.Info($"中转{(EServerType)session.SessionType} 协议->{id} -> {session.SessionUuid} 。");
             var objMsg = ProtocolDump.Dump(id, requestInfo.Body);
             if (objMsg == null)
             {
