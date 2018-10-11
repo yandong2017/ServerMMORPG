@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -19,7 +20,7 @@ namespace GameServerApp
         //接收数据的线程
         private Thread m_ReceiveThread;
 
-
+       
         #region 接收消息所需变量
         //接收数据包的字节数组缓冲区
         private byte[] m_ReceiveBuffer = new byte[2048];
@@ -30,7 +31,7 @@ namespace GameServerApp
 
         #region 发送消息所需变量
         //发送消息队列
-        private Queue<byte[]> m_SendQueue = new Queue<byte[]>();
+        private ConcurrentQueue<byte[]> m_SendQueue = new ConcurrentQueue<byte[]>();
 
         //检查队列的委托
         private Action m_CheckSendQuene;
@@ -217,13 +218,17 @@ namespace GameServerApp
         /// </summary>
         private void OnCheckSendQueueCallBack()
         {
-            lock (m_SendQueue)
+            //lock(m_SendQueue)
             {
                 //如果队列中有数据包 则发送数据包
                 if (m_SendQueue.Count > 0)
                 {
                     //发送数据包
-                    Send(m_SendQueue.Dequeue());
+                    if (m_SendQueue.TryDequeue(out var msg))
+                    {
+                        Send(msg);
+                    }
+                    
                 }
             }
         }
@@ -261,7 +266,7 @@ namespace GameServerApp
             //得到封装后的数据包
             byte[] sendBuffer = MakeData(buffer);
 
-            lock (m_SendQueue)
+            //lock (m_SendQueue)
             {
                 //把数据包加入队列
                 m_SendQueue.Enqueue(sendBuffer);

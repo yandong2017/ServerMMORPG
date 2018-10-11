@@ -5,6 +5,7 @@ using System.Net;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Collections.Concurrent;
 
 /// <summary>
 /// 网络传输Socket
@@ -13,7 +14,7 @@ public class NetWorkSocket
 {
     #region 发送消息所需变量
     //发送消息队列
-    private Queue<byte[]> m_SendQueue = new Queue<byte[]>();
+    private ConcurrentQueue<byte[]> m_SendQueue = new ConcurrentQueue<byte[]>();
 
     //检查队列的委托
     private Action m_CheckSendQuene;
@@ -33,7 +34,7 @@ public class NetWorkSocket
     private MMO_MemoryStream m_ReceiveMS = new MMO_MemoryStream();
 
     //接收消息的队列
-    private Queue<byte[]> m_ReceiveQueue = new Queue<byte[]>();
+    private ConcurrentQueue<byte[]> m_ReceiveQueue = new ConcurrentQueue<byte[]>();
 
     private int m_ReceiveCount = 0;
     #endregion
@@ -42,16 +43,22 @@ public class NetWorkSocket
     /// 客户端socket
     /// </summary>
     private Socket m_Client;
+    /// <summary>
+    /// 通知一个或多个正在等待的线程已发生事件
+    /// </summary>
+    protected ManualResetEvent are = new ManualResetEvent(false);
 
     public Action OnConnectOK;
-
-    public NetWorkSocket()
+    Thread thread;
+    public NetWorkSocket(int Id = 0)
     {
-        Thread thread = new Thread(OnUpdate);
+        id = Id;
+        thread = new Thread(OnUpdate);
         thread.Start();
 
     }
-    
+    int id = 0;
+    int num = 0;
     protected void OnUpdate()
     {
         while (true)
@@ -67,70 +74,49 @@ public class NetWorkSocket
             }
 
             #region 从队列中获取数据
-            while (true)
+            while (m_ReceiveQueue.Count > 0)
             {
-                Thread.Sleep(10);
-                if (m_ReceiveCount <= 5)
+                if (m_ReceiveQueue.Count > ConsoleAppClient.Program.maxnum)
                 {
-                    m_ReceiveCount++;
-                    lock (m_ReceiveQueue)
-                    {
-                        if (m_ReceiveQueue.Count > 0)
-                        {
-                            if (m_ReceiveQueue.Count > ConsoleAppClient.Program.maxnum)
-                            {
-                                ConsoleAppClient.Program.maxnum = m_ReceiveQueue.Count;
-                                Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} 接收队列{ConsoleAppClient.Program.maxnum}");
-                            }
-                            //得到队列中的数据包
-                            byte[] buffer = m_ReceiveQueue.Dequeue();
-
-                            //异或之后的数组
-                            byte[] bufferNew = new byte[buffer.Length];
-
-                            bool isCompress = false;
-                            ushort crc = 0;
-
-                            using (MMO_MemoryStream ms = new MMO_MemoryStream(buffer))
-                            {
-                                isCompress = ms.ReadBool();
-                                crc = ms.ReadUShort();
-                                ms.Read(bufferNew, 0, bufferNew.Length);
-                            }
-                            ushort protoCode = 0;
-                            byte[] protoContent = new byte[bufferNew.Length - 2];
-                            using (MMO_MemoryStream ms = new MMO_MemoryStream(bufferNew))
-                            {
-                                //协议编号
-                                protoCode = ms.ReadUShort();
-                                ms.Read(protoContent, 0, protoContent.Length);
-
-                                //处理消息
-                                //SocketDispatcher.Instance.Dispatch(protoCode, protoContent);
-                            }
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    ConsoleAppClient.Program.maxnum = m_ReceiveQueue.Count;
+                    Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} {id}接收队列{ConsoleAppClient.Program.maxnum}");
                 }
-                else
+                if (!m_ReceiveQueue.TryDequeue(out var buffer))
                 {
-                    m_ReceiveCount = 0;
                     break;
                 }
+
+                //异或之后的数组
+                byte[] bufferNew = new byte[buffer.Length];
+
+                bool isCompress = false;
+                ushort crc = 0;
+
+                using (MMO_MemoryStream ms = new MMO_MemoryStream(buffer))
+                {
+                    isCompress = ms.ReadBool();
+                    crc = ms.ReadUShort();
+                    ms.Read(bufferNew, 0, bufferNew.Length);
+                }
+                ushort protoCode = 0;
+                byte[] protoContent = new byte[bufferNew.Length - 2];
+                using (MMO_MemoryStream ms = new MMO_MemoryStream(bufferNew))
+                {
+                    //协议编号
+                    protoCode = ms.ReadUShort();
+                    ms.Read(protoContent, 0, protoContent.Length);
+
+                    //处理消息
+                    //SocketDispatcher.Instance.Dispatch(protoCode, protoContent);
+                }                
             }
+            are.Reset();
+            /*队列为空等待200毫秒继续*/
+            are.WaitOne(200);
         }
         #endregion
     }
-
-
-    protected void BeforeOnDestroy()
-    {
-        DisConnect();
-    }
-
+       
     #region Connect 连接到socket服务器
     /// <summary>
     /// 连接到socket服务器
@@ -184,6 +170,7 @@ public class NetWorkSocket
             m_Client.Shutdown(SocketShutdown.Both);
             m_Client.Close();
         }
+        thread.Abort();
     }
 
     #region OnCheckSendQueueCallBack 检查队列的委托回调
@@ -192,13 +179,17 @@ public class NetWorkSocket
     /// </summary>
     private void OnCheckSendQueueCallBack()
     {
-        lock (m_SendQueue)
+        //lock (m_SendQueue)
         {
             //如果队列中有数据包 则发送数据包
             if (m_SendQueue.Count > 0)
             {
                 //发送数据包
-                Send(m_SendQueue.Dequeue());
+                //Send(m_SendQueue.Dequeue());
+                if (m_SendQueue.TryDequeue(out var msg))
+                {
+                    Send(msg);
+                }
             }
         }
     }
@@ -236,7 +227,7 @@ public class NetWorkSocket
         //得到封装后的数据包
         byte[] sendBuffer = MakeData(buffer);
 
-        lock (m_SendQueue)
+        //lock (m_SendQueue)
         {
             //把数据包加入队列
             m_SendQueue.Enqueue(sendBuffer);
@@ -338,9 +329,10 @@ public class NetWorkSocket
                             //把包体读到byte[]数组
                             m_ReceiveMS.Read(buffer, 0, currMsgLen);
 
-                            lock (m_ReceiveQueue)
+                            //lock (m_ReceiveQueue)
                             {
                                 m_ReceiveQueue.Enqueue(buffer);
+                                are.Set();
                             }
                             //==============处理剩余字节数组===================
 
