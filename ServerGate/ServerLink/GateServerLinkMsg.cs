@@ -63,7 +63,8 @@ namespace ServerGate.ServerLink
             }
             else
             {
-                loger.Error($"客户端ID错误！{((ProtocolMsgBase)objMsg).Puid}");
+                //客户端断开连接
+                //loger.Error($"客户端ID错误！{((ProtocolMsgBase)objMsg).Puid}");
             }
         }
     }

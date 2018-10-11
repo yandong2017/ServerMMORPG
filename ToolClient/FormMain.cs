@@ -317,6 +317,7 @@ namespace ToolSimulator
         Dictionary<long,Button> uidButton = new Dictionary<long, Button>();
         private void OnPlayerXY(byte[] buffer)
         {
+            return;
             var Req = new G2E_Game_PlayerXY(buffer);
             if (Req.Success)
             {

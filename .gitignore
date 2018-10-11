@@ -11,3 +11,8 @@
 /UtilLib/obj
 /ServerGate/obj
 /packages/StackExchange.Redis.1.2.6
+/GameServerApp/.vs
+/GameServerApp/ConsoleAppClient/bin
+/GameServerApp/ConsoleAppClient/obj
+/GameServerApp/GameServerApp/obj
+/GameServerApp/GameServerApp/bin
