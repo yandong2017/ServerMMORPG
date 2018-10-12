@@ -59,7 +59,8 @@ namespace ServerGate.ServerLink
                     loger.Error($"客户端未找到！{((ProtocolMsgBase)objMsg).Puid}");
                     return;
                 }
-                BaseDispatch.Send(session, objMsg);
+                session.Send(objMsg);
+                //BaseDispatch.Send(session, objMsg);
             }
             else
             {

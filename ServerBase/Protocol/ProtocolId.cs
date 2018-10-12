@@ -62,22 +62,24 @@ namespace ServerBase.Protocol
         E2G_GAME_PLAYERXY = 602, 
         // G2E_Game_PlayerXY - OnGamePlayerXY
         G2E_GAME_PLAYERXY = 603, 
+        // G2E_Game_PlayerXYOther - OnGamePlayerXYOther
+        G2E_GAME_PLAYERXYOTHER = 604, 
         // E2G_Game_MapIn - OnGameMapIn
-        E2G_GAME_MAPIN = 604, 
+        E2G_GAME_MAPIN = 605, 
         // G2E_Game_MapIn - OnGameMapIn
-        G2E_GAME_MAPIN = 605, 
+        G2E_GAME_MAPIN = 606, 
         // G2E_Game_MapInOther - OnGameMapInOther
-        G2E_GAME_MAPINOTHER = 606, 
+        G2E_GAME_MAPINOTHER = 607, 
         // E2G_Game_MapOut - OnGameMapOut
-        E2G_GAME_MAPOUT = 607, 
+        E2G_GAME_MAPOUT = 608, 
         // G2E_Game_MapOut - OnGameMapOut
-        G2E_GAME_MAPOUT = 608, 
+        G2E_GAME_MAPOUT = 609, 
         // E2G_Game_LoginOut - OnGameLoginOut
-        E2G_GAME_LOGINOUT = 609, 
+        E2G_GAME_LOGINOUT = 610, 
         // G2E_Game_LoginOut - OnGameLoginOut
-        G2E_GAME_LOGINOUT = 610, 
+        G2E_GAME_LOGINOUT = 611, 
         // E2G_Game_End - OnGameEnd
-        E2G_GAME_END = 611, 
+        E2G_GAME_END = 612, 
 
     }
 }

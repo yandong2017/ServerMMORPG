@@ -79,25 +79,25 @@ namespace ServerBase.Dispatch
                 return;
             }
             loger.Info($"收到消息 {(EProtocolId)requestInfo.ProtocolID}");
-            ProcessMessage(session, requestInfo);           
-            //session.ListReq.Enqueue(requestInfo);
+            //ProcessMessage(session, requestInfo);           
+            session.ListReq.Enqueue(requestInfo);
         }
         //当前心跳处理消息数目
         public static int CountMsgs = 0;
         public static void Heartbeat()
         {
             CountMsgs = 0;
-            //foreach (var session in BaseServerInfo.AllSessions.Values)
-            //{
-            //    if (session != null && session.Connected)
-            //    {
-            //        while (session.ListReq.TryDequeue(out var msg))
-            //        {
-            //            ProcessMessage(session, msg);
-            //            loger.Info($"处理{session.ListReq.Count}消息 {(EProtocolId)msg.ProtocolID}");
-            //        }
-            //    }
-            //}
+            foreach (var session in BaseServerInfo.AllSessions.Values)
+            {
+                if (session != null && session.Connected)
+                {
+                    while (session.ListReq.TryDequeue(out var msg))
+                    {
+                        ProcessMessage(session, msg);
+                        loger.Info($"处理{session.ListReq.Count}消息 {(EProtocolId)msg.ProtocolID}");
+                    }
+                }
+            }
         }
         /// <summary>
         /// 处理消息立即
@@ -188,6 +188,24 @@ namespace ServerBase.Dispatch
                     {
                         loger.Info($"消息发送线程{session.ListSend.Count}");
                         Send(session, msg);
+                    }
+                    if (session.duilie == 0)
+                    {
+                        session.duilie = 1;
+                        while (session.ListSendMerge.TryDequeue(out var msg))
+                        {
+                            loger.Info($"合并消息发送线程{session.ListSendMerge.Count}");
+                            Send(session, msg);
+                        }
+                    }
+                    else
+                    {
+                        session.duilie = 0;
+                        while (session.ListSendMerge2.TryDequeue(out var msg))
+                        {
+                            loger.Info($"合并2消息发送线程{session.ListSendMerge2.Count}");
+                            Send(session, msg);
+                        }
                     }
                 }
             }

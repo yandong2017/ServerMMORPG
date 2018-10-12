@@ -224,6 +224,13 @@ namespace ServerBase.Protocol
         public G2E_Game_PlayerXY(byte[] buffer) { Unserialize(buffer); }
     };
     [Desc("类示例")]
+    public partial class G2E_Game_PlayerXYOther : ProtocolMsgBase, INbsSerializer
+    {
+        public CLS_PlayerXY PlayerXY = new CLS_PlayerXY();
+        public G2E_Game_PlayerXYOther() { ProtocolId = EProtocolId.G2E_GAME_PLAYERXYOTHER; }
+        public G2E_Game_PlayerXYOther(byte[] buffer) { Unserialize(buffer); }
+    };
+    [Desc("类示例")]
     public partial class E2G_Game_MapIn : ProtocolMsgBase, INbsSerializer
     {
         public E2G_Game_MapIn() { ProtocolId = EProtocolId.E2G_GAME_MAPIN; }

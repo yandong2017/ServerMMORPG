@@ -1,5 +1,6 @@
 ﻿using ServerBase.BaseManagers;
 using ServerBase.Config;
+using ServerBase.Dispatch;
 using ServerBase.ServerLoger;
 using ServerBase.Service;
 using ServerGate.ServerLink;
@@ -57,6 +58,14 @@ namespace ServerGate
             Thread.Sleep(1000);
 
             #endregion 添加读取指令的线程
+
+            #region 添加发送消息线程
+
+            BaseServerInfo.threadSend = new Thread(new ThreadStart(BaseDispatch.ThreadSendMain));
+            BaseServerInfo.threadSend.Start();
+            Thread.Sleep(1000);
+
+            #endregion
 
             #region 进入主循环
 

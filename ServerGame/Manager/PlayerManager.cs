@@ -33,8 +33,7 @@ namespace ServerGame.Manager
             DictPlayerOnline.TryGetValue(Req.Puid,out var player);
             Req.PlayerXY.Uid = player.XY.Uid;
             player.XY = Req.PlayerXY;
-            var rsp = new G2E_Game_PlayerXY();
-            rsp.PlayerXY = Req.PlayerXY;
+            
             //Thread.Sleep(1000);
             foreach (var item in DictPlayerOnline.Values)
             {
@@ -42,9 +41,15 @@ namespace ServerGame.Manager
                 {
                     continue;
                 }
-                rsp.Puid = item.Id;
-                session.Send(rsp);
+                var rsp = new G2E_Game_PlayerXYOther();
+                rsp.PlayerXY = Req.PlayerXY;
+                rsp.Puid = item.Id;                
+                session.SendMerge(rsp);
             }
+            var rspself = new G2E_Game_PlayerXY();
+            rspself.Puid = Req.Puid;
+            rspself.PlayerXY = Req.PlayerXY;
+            session.Send(rspself);
             //m_DictPlayerXY[player.Id] =  Req.PlayerXY;
             //isMove = true;
         }
@@ -72,13 +77,14 @@ namespace ServerGame.Manager
             var Req = new E2G_Game_LoginOut(requestInfo.Body);
             DictPlayerOnline.Remove(Req.Puid);
                    
-            var rsp = new G2E_Game_LoginOut();            
+                     
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == Req.Puid)
                 {
                     continue;
                 }
+                var rsp = new G2E_Game_LoginOut();
                 rsp.Puid = item.Id;
                 session.Send(rsp);
             }
@@ -97,14 +103,15 @@ namespace ServerGame.Manager
 
             DictPlayerOnline[Req.Puid] = player;  
             
-            var rsp = new G2E_Game_MapIn();
-            rsp.PlayerXY = player.XY;
+            
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)
                 {
                     continue;
                 }
+                var rsp = new G2E_Game_MapIn();
+                rsp.PlayerXY = player.XY;
                 //rsp.Shuttle = Req.Shuttle;
                 rsp.Puid = item.Id;
                 session.Send(rsp);
@@ -118,6 +125,7 @@ namespace ServerGame.Manager
                 {
                     continue;
                 }
+                item.XY.Uid = item.Id;
                 rsp2.ListPlayerXY.Add(item.XY);
                 //rsp.Shuttle = Req.Shuttle;
                 

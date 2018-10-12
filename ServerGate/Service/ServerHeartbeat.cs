@@ -1,4 +1,5 @@
-﻿using ServerBase.Dispatch;
+﻿using ServerBase.Client;
+using ServerBase.Dispatch;
 using ServerBase.ServerLoger;
 using ServerBase.Service;
 using ServerGate.ServerLink;
@@ -38,7 +39,7 @@ namespace ServerGate.Service
             TicksCur = DtNow.Ticks;
 
             //需要心跳循环的管理器
-            //HeartbeatExecute();
+            HeartbeatExecute();
             
             //秒心跳
             if (TicksSecond < TicksCur)
@@ -73,6 +74,24 @@ namespace ServerGate.Service
                         Dispatcher.ProcessMessage(session, msg);
                     }
                 }
+            }
+            foreach (var item in GateServerLinkManager.DictServerLinkLogin.Values)
+            {
+                //if(item!=null &&item.)
+                while (item.ListReq.TryDequeue(out var msg))
+                {
+                    ClientDispatcher.ProcessMessage(msg);
+                }
+
+            }
+            foreach (var item in GateServerLinkManager.DictServerLinkGame.Values)
+            {
+                //if(item!=null &&item.)
+                while (item.ListReq.TryDequeue(out var msg))
+                {
+                    ClientDispatcher.ProcessMessage(msg);
+                }
+
             }
         }
 

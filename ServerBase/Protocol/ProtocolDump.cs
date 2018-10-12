@@ -64,6 +64,8 @@ namespace ServerBase.Protocol
                     return new E2G_Game_PlayerXY(buffer);
                 case EProtocolId.G2E_GAME_PLAYERXY:
                     return new G2E_Game_PlayerXY(buffer);
+                case EProtocolId.G2E_GAME_PLAYERXYOTHER:
+                    return new G2E_Game_PlayerXYOther(buffer);
                 case EProtocolId.E2G_GAME_MAPIN:
                     return new E2G_Game_MapIn(buffer);
                 case EProtocolId.G2E_GAME_MAPIN:

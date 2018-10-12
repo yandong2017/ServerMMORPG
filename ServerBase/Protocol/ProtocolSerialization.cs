@@ -1319,6 +1319,54 @@ namespace ServerBase.Protocol
         }
     };
     /// <summary>
+    /// 对应协议枚举-> G2E_GAME_PLAYERXYOTHER
+    /// 类示例
+    /// <summary>
+    public partial class G2E_Game_PlayerXYOther : ProtocolMsgBase, INbsSerializer
+    {
+        public NetBitStream Serialize()
+        {
+            NetBitStream nbs = new NetBitStream();
+            nbs.Write(_protocol);
+            nbs.Write(_result);
+            nbs.Write(Pin);
+            nbs.Write(Puid);
+            nbs.Write(Shuttle);
+            PlayerXY.Serialize(ref nbs);
+            nbs.WriteEnd();
+            return nbs;
+        }
+        public void Unserialize(byte[] buffer)
+        {
+            NetBitStream nbs = new NetBitStream();
+            nbs.BeginRead(buffer);
+            nbs.Read(out _protocol);
+            nbs.Read(out _result);
+            nbs.Read(out Pin);
+            nbs.Read(out Puid);
+            nbs.Read(out Shuttle);
+            PlayerXY.Unserialize(ref nbs);
+        }
+        public void Serialize(ref NetBitStream nbs)
+        {
+            nbs.Write(_protocol);
+            nbs.Write(_result);
+            nbs.Write(Pin);
+            nbs.Write(Puid);
+            nbs.Write(Shuttle);
+            PlayerXY.Serialize(ref nbs);
+        }
+        public void Unserialize(ref NetBitStream nbs)
+        {
+            nbs.Read(out _protocol);
+            nbs.Read(out _result);
+            nbs.Read(out Pin);
+            nbs.Read(out Puid);
+            nbs.Read(out Shuttle);
+            PlayerXY.Unserialize(ref nbs);
+        }
+    };
+    /// <summary>
     /// 对应协议枚举-> E2G_GAME_MAPIN
     /// 类示例
     /// <summary>
@@ -1441,10 +1489,10 @@ namespace ServerBase.Protocol
             nbs.Read(out Pin);
             nbs.Read(out Puid);
             nbs.Read(out Shuttle);
-            int var83 = nbs.ReadInt();
-            for (int k = 0; k < var83; k++)
+            int var85 = nbs.ReadInt();
+            for (int k = 0; k < var85; k++)
             {
-                var var84 = new CLS_PlayerXY(); var84.Unserialize(ref nbs);ListPlayerXY.Add(var84);
+                var var86 = new CLS_PlayerXY(); var86.Unserialize(ref nbs);ListPlayerXY.Add(var86);
             }
         }
         public void Serialize(ref NetBitStream nbs)
@@ -1467,10 +1515,10 @@ namespace ServerBase.Protocol
             nbs.Read(out Pin);
             nbs.Read(out Puid);
             nbs.Read(out Shuttle);
-            int var85 = nbs.ReadInt();
-            for (int k = 0; k < var85; k++)
+            int var87 = nbs.ReadInt();
+            for (int k = 0; k < var87; k++)
             {
-                var var86 = new CLS_PlayerXY(); var86.Unserialize(ref nbs);ListPlayerXY.Add(var86);
+                var var88 = new CLS_PlayerXY(); var88.Unserialize(ref nbs);ListPlayerXY.Add(var88);
             }
         }
     };

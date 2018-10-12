@@ -344,7 +344,7 @@
             // 
             this.BtnPlayer.Location = new System.Drawing.Point(284, 329);
             this.BtnPlayer.Name = "BtnPlayer";
-            this.BtnPlayer.Size = new System.Drawing.Size(50, 43);
+            this.BtnPlayer.Size = new System.Drawing.Size(20, 20);
             this.BtnPlayer.TabIndex = 0;
             this.BtnPlayer.Text = "A";
             this.BtnPlayer.UseVisualStyleBackColor = true;
@@ -358,7 +358,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // FormMain

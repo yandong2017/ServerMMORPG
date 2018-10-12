@@ -50,13 +50,7 @@ namespace ServerBase.Client
                 Error(string.Format("注册消息->  {0,-30} -> {1,-10} 失败", id, (int)id));
             }
         }
-
-        //消息处理
-        public static void OnReceiveData(byte[] msg)
-        {
-            ProcessMessage(msg);
-        }
-
+        
         public static DispatcherEventHandler EventHandler;
         // 处理消息
         public static void ProcessMessage(byte[] Buffer)

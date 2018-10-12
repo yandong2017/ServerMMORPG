@@ -40,6 +40,7 @@ namespace ToolSimulator
             ClientDispatcher.BindEventHandler(OnLoginUserLogin, EProtocolId.L2E_GAME_LOGINSERVER);
             ClientDispatcher.BindEventHandler(OnLoginUserRegister, EProtocolId.L2E_GAME_REGISTER);
             ClientDispatcher.BindEventHandler(OnPlayerXY, EProtocolId.G2E_GAME_PLAYERXY);
+            ClientDispatcher.BindEventHandler(OnPlayerXYOther, EProtocolId.G2E_GAME_PLAYERXYOTHER);
             ClientDispatcher.BindEventHandler(OnPlayerLoginOut, EProtocolId.G2E_GAME_LOGINOUT);
             ClientDispatcher.BindEventHandler(OnPlayerMapInOther, EProtocolId.G2E_GAME_MAPINOTHER);
             ClientDispatcher.BindEventHandler(OnPlayerMapIn, EProtocolId.G2E_GAME_MAPIN);
@@ -66,20 +67,31 @@ namespace ToolSimulator
         {
             textBox3.Text += $"{o}\r\n";
         }
+        int maxnum = 0;
+        int maxnumbtn = 0;
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            //if (ClientNetSingle.LinkState && tabControl1.SelectedIndex == 3 && this.IsMoving)
-            //{
-            //    if (pCursorOffset.X == 0 && pCursorOffset.Y == 0)
-            //    {
-            //        return;
-            //    }
-            //    var Req = new E2G_Game_PlayerXY()
-            //    {
-            //        PlayerXY = new CLS_PlayerXY() { Top = BtnPlayer.Top, Left = BtnPlayer.Left }
-            //    };
-            //    ClientNetSingle.Send(Req);
-            //}
+            if (ClientNetSingle.LinkState)
+            {
+                if (ClientNetSingle.ListReq.Count > maxnum)
+                {
+                    maxnum = ClientNetSingle.ListReq.Count;
+                    Debug($"{uidButton.Count}:{maxnum}");
+                }
+                while (ClientNetSingle.ListReq.TryDequeue(out var msg))
+                {
+                    ClientDispatcher.ProcessMessage(msg);
+                }
+                //if (pCursorOffset.X == 0 && pCursorOffset.Y == 0)
+                //{
+                //    return;
+                //}
+                //var Req = new E2G_Game_PlayerXY()
+                //{
+                //    PlayerXY = new CLS_PlayerXY() { Top = BtnPlayer.Top, Left = BtnPlayer.Left }
+                //};
+                //ClientNetSingle.Send(Req);
+            }
         }
 
         #endregion
@@ -139,7 +151,8 @@ namespace ToolSimulator
             {
                 Info("用户登录成功");
                 puid = Req.Puid;
-                uidButton[puid] = BtnPlayer;
+                BtnPlayer.Text = "A"+ puid;
+                //uidButton[puid] = BtnPlayer;
                 isLogined = true;
             }
             else
@@ -316,11 +329,29 @@ namespace ToolSimulator
         }
         Dictionary<long,Button> uidButton = new Dictionary<long, Button>();
         private void OnPlayerXY(byte[] buffer)
-        {
-            return;
+        {            
             var Req = new G2E_Game_PlayerXY(buffer);
             if (Req.Success)
             {
+                //Button btn = uidButton[Req.PlayerXY.Uid];
+                BtnPlayer.Top = Req.PlayerXY.Top;
+                BtnPlayer.Left = Req.PlayerXY.Left;
+                are.Set();
+            }
+            else
+            {
+                Error(Req.Result);
+            }
+        }
+        private void OnPlayerXYOther(byte[] buffer)
+        {            
+            var Req = new G2E_Game_PlayerXYOther(buffer);
+            if (Req.Success)
+            {
+                if (!uidButton.ContainsKey(Req.PlayerXY.Uid))
+                {
+                    AddButton(Req.PlayerXY);
+                }
                 Button btn = uidButton[Req.PlayerXY.Uid];
                 btn.Top = Req.PlayerXY.Top;
                 btn.Left = Req.PlayerXY.Left;
@@ -330,6 +361,7 @@ namespace ToolSimulator
                 Error(Req.Result);
             }
         }
+        //之后加入的玩家
         private void OnPlayerMapIn(byte[] buffer)
         {
             var Req = new G2E_Game_MapIn(buffer);
@@ -337,7 +369,9 @@ namespace ToolSimulator
             {
                 AddButton(Req.PlayerXY);                        
             }
+            Debug("OnPlayerMapIn按钮数：" + uidButton.Count);
         }
+        //之前已经加入的玩家
         private void OnPlayerMapInOther(byte[] buffer)
         {
             var Req = new G2E_Game_MapInOther(buffer);
@@ -347,7 +381,8 @@ namespace ToolSimulator
                 {
                     AddButton(item);
                 }
-            }            
+            }
+            Debug("OnPlayerMapInOther按钮数：" + uidButton.Count);
         }
         
         private void AddButton(CLS_PlayerXY playerXY)
@@ -361,7 +396,7 @@ namespace ToolSimulator
             Button btn = new Button();
             btn.Location = new System.Drawing.Point(playerXY.Left, playerXY.Top);
             btn.Name = "BtnPlayer" + playerXY.Uid;
-            btn.Size = new System.Drawing.Size(50, 43);
+            btn.Size = new System.Drawing.Size(20, 20);
             btn.Text = playerXY.Uid.ToString();
             panel2.Controls.Add(btn); ;
             uidButton[playerXY.Uid] = btn;            
@@ -420,6 +455,7 @@ namespace ToolSimulator
             }
         }
         #region 压力测试
+        protected ManualResetEvent are = new ManualResetEvent(false);
         public void Test()
         {
             tabControl1.SelectedIndex = 3;
@@ -454,31 +490,34 @@ namespace ToolSimulator
                 System.Threading.Thread.CurrentThread.Join(100);
                 int index= rd.Next(1,5);
                 bool err = false;
+                var Req = new E2G_Game_PlayerXY()
+                {
+                    PlayerXY = new CLS_PlayerXY() { Top = BtnPlayer.Top, Left = BtnPlayer.Left }
+                };
                 switch (index)
                 {
                     case 1:
-                        BtnPlayer.Top -= 1;
+                        Req.PlayerXY.Top -= 1;
                         break;
                     case 2:
-                        BtnPlayer.Top += 1;
+                        Req.PlayerXY.Top += 1;
                         break;
                     case 3:
-                        BtnPlayer.Left -= 1;
+                        Req.PlayerXY.Left -= 1;
                         break;
                     case 4:
-                        BtnPlayer.Left += 1;
+                        Req.PlayerXY.Left += 1;
                         break;
                     default:
                         err = true;
                         break;
                 }
                 if (!err)
-                {
-                    var Req = new E2G_Game_PlayerXY()
-                    {
-                        PlayerXY = new CLS_PlayerXY() { Top = BtnPlayer.Top, Left = BtnPlayer.Left }
-                    };
+                {                   
                     ClientNetSingle.Send(Req);
+                    //are.Reset();
+                    /*队列为空等待200毫秒继续*/
+                    are.WaitOne(-1);
                 }
                 if (!isLogined)
                 {

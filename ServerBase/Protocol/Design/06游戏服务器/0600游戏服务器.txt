@@ -18,6 +18,10 @@ msgs:G2E_Game_PlayerXY
 	CLS_PlayerXY:PlayerXY
 msge
 
+msgs:G2E_Game_PlayerXYOther
+	CLS_PlayerXY:PlayerXY
+msge
+
 msgs:E2G_Game_MapIn
 msge
 

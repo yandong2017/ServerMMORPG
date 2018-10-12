@@ -104,7 +104,7 @@ namespace ServerBase.Client
             }
             clientSocket.BeginReceive(ReadM, recvoffest, 65536 - recvoffest, SocketFlags.None, new System.AsyncCallback(ReceiveCallBack), ReadM);
         }
-
+        public ConcurrentQueue<byte[]> ListReq = new ConcurrentQueue<byte[]>();
         private int DeCodePacket(ref byte[] buf, ref int recvOffest)
         {
             int decodeOffest = 0;
@@ -136,13 +136,14 @@ namespace ServerBase.Client
                 Buffer.BlockCopy(buf, decodeOffest, buffer, 0, datalen);
                 decodeOffest += datalen;
 
-                ClientDispatcher.OnReceiveData(buffer);
+                ListReq.Enqueue(buffer);
+                //ClientDispatcher.OnReceiveData(buffer);
                 StopwatchProcess.Stop();
                 var UseMs = StopwatchProcess.ElapsedMilliseconds;
                 if (UseMs > maxMs)
                 {
                     maxMs = UseMs;
-                    ClientDispatcher.Debug($"{maxMs}");
+                    ClientDispatcher.Debug($"消息处理最大耗时：{maxMs}毫秒");
                 }
             }
 

@@ -61,8 +61,8 @@ namespace ServerGate.Service
                 loger.Warn("收到空消息");
                 return;
             }
-            //session.ListReq.Enqueue(requestInfo);
-            ProcessMessage(session,requestInfo);
+            session.ListReq.Enqueue(requestInfo);
+            //ProcessMessage(session,requestInfo);
         }
         public static void ProcessMessage(LunarSession session, LunarRequestInfo requestInfo) { 
 
