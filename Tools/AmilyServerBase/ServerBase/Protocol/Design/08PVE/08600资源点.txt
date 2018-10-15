@@ -1,0 +1,88 @@
+﻿
+$$资源点
+
+
+@矿点信息
+pubs:CLS_Grab_ArmyInfo
+	int:Id//矿点ID
+	long:PalyerId//占领者
+	string:Name//占领者
+	string:GuildName//占领者所属势力
+	dict:int:long:DictWarrior//队伍列表 <位置 武将唯一ID>
+	dt:BeginTime//占领时间
+	dt:EndTime//结束时间
+pube
+
+
+@请求 资源点信息
+msgs:C2G_Grab_List:8600
+	int:StateId//州ID
+	int:Type//资源类型
+msge
+@返回 资源点信息
+msgs:G2C_Grab_List
+	int:Buy//购买次数
+	int:Total//剩余挑战次数
+	list:CLS_Grab_ArmyInfo:ListItem
+msge
+
+@请求 矿点战斗
+msgs:C2G_Grab_Battle
+	int:Id//矿点ID
+msge
+@返回 矿点战斗
+msgs:G2C_Grab_Battle
+	list:CLS_WarriorInfo:ListWarriorOther//对战武将战斗信息列表
+msge
+
+@请求 占领矿点
+msgs:C2G_Grab_Fight
+	long:BattleUid//战斗ID
+	bool:BattleResult//战斗结果 攻击方胜利=true 防守方胜利=false
+	dict:long:int:DictExpendHpAtt//武将消耗兵力//攻击方
+	dict:long:int:DictExpendHpDef//武将消耗兵力//防守方
+msge
+@返回 占领矿点
+msgs:G2C_Grab_Fight
+	bool:bSuccess//胜利与否
+msge
+
+@请求 查看矿点
+msgs:C2G_Grab_Info
+	int:Id//矿点ID
+msge
+@返回 查看矿点
+msgs:G2C_Grab_Info
+	int:Id//矿点ID
+	long:PalyerId//占领者
+	string:Name//占领者
+	string:GuildName//占领者所属势力
+	dict:int:CLS_WarriorInfo:DictWarrior//防守队伍信息<位置，信息>
+	dt:EndTime//结束时间
+msge
+
+@请求 放弃矿点
+msgs:C2G_Grab_GiveUp
+	int:Id//矿点ID
+msge
+@返回 放弃矿点
+msgs:G2C_Grab_GiveUp
+	int:Id//矿点ID
+msge
+
+@请求 自己的资源点信息
+msgs:C2G_Grab_Mine
+msge
+@返回 自己的资源点信息
+msgs:G2C_Grab_Mine
+	list:CLS_Grab_ArmyInfo:ListItem
+msge
+
+@请求 购买挑战次数
+msgs:C2G_Grab_Buy
+msge
+@返回 购买挑战次数
+msgs:G2C_Grab_Buy
+	int:Buy//购买次数
+	int:Total//剩余挑战次数
+msge

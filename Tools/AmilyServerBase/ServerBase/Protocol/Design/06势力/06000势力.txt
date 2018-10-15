@@ -1,0 +1,316 @@
+﻿$$势力
+
+@势力职位
+enums:EGuildOffice
+	平民:0
+	成员:1
+	太守:99
+	诸侯:100
+enume
+
+@势力加入方式
+enums:EGuildJoinMode
+	自由加入:0
+	审核加入
+enume
+
+@势力基本信息
+pubs:CLS_GuildInfoBase
+	long:Uid//唯一ID
+	string:Name//名字
+	string:LeaderName//领袖名字
+	int:StateId//所属州
+	int:Level//等级
+	byte:JoinMode//势力加入方式 EGuildJoinMode
+	CLS_CountInfo:CountMember//人数
+	bool:IsAlliance//是否同盟关系
+pube
+
+@势力详细信息
+pubs:CLS_GuildInfoDetails
+	long:Uid//唯一ID
+	string:Name//名字
+	string:LeaderName//领袖名字
+	int:StateId//所属州
+	int:Level//等级
+	int:Exp//经验
+	int:Fund//势力资金
+	int:Revenue//总收入
+	byte:JoinMode//势力加入方式 EGuildJoinMode
+	CLS_CountInfo:CountMember//人数
+	int:CapitalCity//都城ID
+	int:CountCity//城池数
+	string:Manifesto//宣言
+	string:Notice//公告
+	string:GoddessName//圣女名字
+	int:GoddessCity//圣女驻守城池
+pube
+
+@势力详细我的
+pubs:CLS_GuildInfoMy
+	CLS_GuildInfoDetails:GuildInfoDetails//详细信息
+pube
+
+@请求 势力列表
+msgs:C2G_Guild_List:6000
+msge
+@返回 势力列表
+msgs:G2C_Guild_List
+	list:CLS_GuildInfoBase:ListGuildInfoBase//势力列表
+	ts:CdCanJoin//剩余可加入时间(0为可加入)
+msge
+
+@请求 势力详情
+msgs:C2G_Guild_ListDetails
+	long:Uid//唯一ID
+msge
+@返回 势力详情
+msgs:G2C_Guild_ListDetails
+	CLS_GuildInfoDetails:GuildInfoDetails//势力详情
+msge
+
+@请求 势力创建
+msgs:C2G_Guild_Create
+	string:Name//名字
+msge
+@返回 势力创建
+msgs:G2C_Guild_Create
+msge
+
+@请求 脱离
+msgs:C2G_Guild_TryLeave
+msge
+@返回 脱离
+msgs:G2C_Guild_TryLeave
+msge
+
+@请求 逐出
+msgs:C2G_Guild_TryKick
+	long:TargetPuid//对象玩家ID
+msge
+@返回 逐出
+msgs:G2C_Guild_TryKick
+msge
+
+@请求 禅让
+msgs:C2G_Guild_Abdicate
+	long:TargetPuid//对象玩家ID
+msge
+@返回 禅让
+msgs:G2C_Guild_Abdicate
+msge
+
+@请求 申请加入
+msgs:C2G_Guild_TryJoin
+	long:Uid//唯一ID
+msge
+@返回 申请加入
+msgs:G2C_Guild_TryJoin
+msge
+
+@请求 申请列表
+msgs:C2G_Guild_ListApply
+msge
+@返回 申请列表
+msgs:G2C_Guild_ListApply
+	list:CLS_PubPlayerBase:ListApply//势力申请列表
+msge
+
+@请求 申请处理
+msgs:C2G_Guild_ApplyAction
+	long:TargetPuid//对象玩家ID
+	int:HandleAction//处理方式 EHandleAction
+msge
+@返回 申请处理
+msgs:G2C_Guild_ApplyAction
+	long:TargetPuid//对象玩家ID
+	int:HandleAction//处理方式 EHandleAction
+	CLS_CountInfo:CountMember//人数
+msge
+
+@势力成员信息
+pubs:CLS_GuildMbsInfo
+	CLS_PubPlayerBase:PubPlayerBase//基本信息
+	int:Contribution//贡献
+	int:ContributionTotal//历史贡献
+	dt:TimeJoin//加入势力时间
+pube
+
+@请求 成员列表
+msgs:C2G_Guild_ListMbs
+msge
+@返回 成员列表
+msgs:G2C_Guild_ListMbs
+	list:CLS_GuildMbsInfo:ListMember//势力成员列表
+msge
+
+@请求 动态列表
+msgs:C2G_Guild_ListLogRecord
+msge
+@返回 动态列表
+msgs:G2C_Guild_ListLogRecord
+	list:CLS_GameLog:ListLog//势力动态列表
+msge
+
+@请求 改名
+msgs:C2G_Guild_Rename
+	string:Name//名字
+msge
+@返回 改名
+msgs:G2C_Guild_Rename
+msge
+
+@请求 修改加入设置
+msgs:C2G_Guild_JoinMode
+	byte:JoinMode//势力加入方式 EGuildJoinMode
+msge
+@返回 修改加入设置
+msgs:G2C_Guild_JoinMode
+msge
+
+@请求 修改宣言
+msgs:C2G_Guild_Manifesto
+	string:Manifesto//宣言
+msge
+@返回 修改宣言
+msgs:G2C_Guild_Manifesto
+msge
+
+@请求 修改公告
+msgs:C2G_Guild_Notice
+	string:Notice//公告
+msge
+@返回 修改公告
+msgs:G2C_Guild_Notice
+msge
+
+@请求 捐献信息
+msgs:C2G_Guild_DonateInfo
+msge
+@返回 捐献信息
+msgs:G2C_Guild_DonateInfo
+	list:CLS_GameLog:ListLog//捐献记录
+	dict:int:int:DictDonateCount//捐献次数(key=捐献id value=今日次数)
+	int:Contribution//贡献值
+msge
+
+@请求 捐献
+msgs:C2G_Guild_Donate
+	int:DonateId
+msge
+@返回 捐献
+msgs:G2C_Guild_Donate
+	int:DonateId
+	CLS_GameLog:DonateLog//新增捐献记录
+	CLS_GuildInfoDetails:GuildInfoDetails//详细信息
+	int:Contribution//贡献值
+msge
+
+@请求 势力关系列表
+msgs:C2G_Guild_ListDiplomacy
+msge
+@返回 势力关系列表
+msgs:G2C_Guild_ListDiplomacy
+	list:CLS_GuildInfoBase:ListGuildInfoBase//势力关系列表
+msge
+
+@请求 势力名搜索
+msgs:C2G_Guild_SearchName
+	string:Key//关键字
+msge
+@返回 势力名搜索
+msgs:G2C_Guild_SearchName
+	list:CLS_GuildInfoBase:ListGuildInfoBase//势力名搜索结果
+msge
+
+@请求 同盟申请列表
+msgs:C2G_Guild_ListAllianceApply
+msge
+@返回 同盟申请列表
+msgs:G2C_Guild_ListAllianceApply
+	list:CLS_GuildInfoBase:ListGuildInfoBase//同盟申请列表
+msge
+
+@请求 同盟申请
+msgs:C2G_Guild_AllianceApply
+	long:Uid//唯一ID
+msge
+@返回 同盟申请
+msgs:G2C_Guild_AllianceApply
+msge
+
+@请求 同盟解除
+msgs:C2G_Guild_AllianceRemove
+	long:Uid//唯一ID
+msge
+@返回 同盟解除
+msgs:G2C_Guild_AllianceRemove
+msge
+
+@请求 同盟申请处理
+msgs:C2G_Guild_AllianceApplyAction
+	long:Uid//对象ID
+	int:HandleAction//处理方式 EHandleAction
+msge
+@返回 同盟申请处理
+msgs:G2C_Guild_AllianceApplyAction
+msge
+
+@请求 城池列表
+msgs:C2G_Guild_ListCity
+msge
+@返回 城池列表
+msgs:G2C_Guild_ListCity
+	int:CapitalCity//都城ID
+	list:CLS_CityInfo4Guild:ListCity//城池列表
+msge
+
+@请求 设置都城
+msgs:C2G_Guild_SetCapitalCity
+	int:Uid//城池ID
+msge
+@返回 设置都城
+msgs:G2C_Guild_SetCapitalCity
+msge
+
+@请求 任命太守
+msgs:C2G_Guild_SetCityLeader
+	int:Uid//城池ID
+	long:LeaderPuid//新任命的玩家ID
+msge
+@返回 任命太守
+msgs:G2C_Guild_SetCityLeader
+msge
+
+@请求 撤销太守
+msgs:C2G_Guild_RemoveCityLeader
+	int:Uid//城池ID
+msge
+@返回 撤销太守
+msgs:G2C_Guild_RemoveCityLeader
+msge
+
+@请求 军情
+msgs:C2G_Guild_ListLogSituation
+msge
+@返回 军情
+msgs:G2C_Guild_ListLogSituation
+	list:CLS_GameLog:ListLog//军情列表
+msge
+
+@势力排行信息单条
+pubs:CLS_GuildTopInfo
+	long:GuildUid//唯一ID
+	string:Name//名字
+	int:CountryId//所属国
+	int:CountCity//城池数
+	long:TsLastSeize//最后占领时间
+pube
+
+@请求 势力排行
+msgs:C2G_Guild_ListTop
+msge
+@返回 势力排行
+msgs:G2C_Guild_ListTop
+	list:CLS_GuildTopInfo:ListTop//势力排行
+msge

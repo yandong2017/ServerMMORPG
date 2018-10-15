@@ -1,0 +1,25 @@
+﻿$$城池守备营
+
+@守军NPC信息
+pubs:CLS_CampNpcInfo
+	int:Uid//唯一ID(1-n)
+	int:StageId//关卡配置ID
+	bool:IsAlive//存活
+	ts:TsRevive//剩余复活时间
+pube
+
+@守备营信息
+pubs:CLS_CampInfo
+	int:Uid//唯一ID(1-5)(1=主营)
+	dict:int:CLS_CampNpcInfo:DictCampNpc//守军NPC
+pube
+
+@请求 守备营信息
+msgs:C2G_Camp_Info:2700
+	int:CityUid//城池ID
+msge
+@返回 守备营信息
+msgs:G2C_Camp_Info
+	int:CityUid//城池ID
+	dict:int:CLS_CampInfo:DictCamp//守备营信息
+msge

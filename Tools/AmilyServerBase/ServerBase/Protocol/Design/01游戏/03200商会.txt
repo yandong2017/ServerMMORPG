@@ -1,0 +1,217 @@
+﻿$$商会
+
+@是否包含自己的单子
+enums:EAuctionFlag
+	Self:0//自己
+	Other:1//其余
+enume
+
+@商会单子信息 基础
+pubs:CLS_AuctionInfoBase
+	long:Id//单号 唯一ID
+	long:Puid//挂单玩家唯一ID
+	string:Name//挂单玩家名字
+	long:Price//价格(单位：分)
+	dt:DtExpire//到期时间
+	ts:TsRemainder//剩余时间
+pube
+
+
+@商会单子信息 道具
+pubs:CLS_AuctionInfoItem:3200
+	CLS_AuctionInfoBase:AuctionInfoBase//基础信息
+	CLS_ItemInfo:ItemInfo//道具信息
+pube
+
+@请求 商会列表 道具
+msgs:C2G_Auction_ListItem
+	int:Order//排序类型 对应EOrder
+	int:AuctionFlag//交易类型 对应EAuctionFlag
+	int:SubType//子类ID
+	int:PageIndex//页码1-n (返回每页100条)
+msge
+@返回 商会列表 道具
+msgs:G2C_Auction_ListItem
+	int:Order//排序类型 对应EOrder
+	int:AuctionFlag//交易类型 对应EAuctionFlag
+	int:SubType//子类ID
+	int:PageIndex//页码1-n (返回每页100条)
+	int:TotalCount//总数目
+	dict:long:CLS_AuctionInfoItem:DictItem//列表
+msge
+
+@请求 商会出售 道具
+msgs:C2G_Auction_SellItem
+	CLS_ItemInfo:ItemInfo//道具信息
+	long:Price//出售单价(单位：分)
+msge
+@返回 商会出售 道具
+msgs:G2C_Auction_SellItem
+	CLS_AuctionInfoItem:AuctionInfoItem//商会单子信息
+	CLS_ItemInfo:ItemInfo//刷新道具信息
+msge
+
+@请求 商会撤卖 道具
+msgs:C2G_Auction_ReturnItem
+	long:Id//单号 唯一ID
+msge
+@返回 商会撤卖 道具
+msgs:G2C_Auction_ReturnItem
+	CLS_ItemInfo:ItemInfo//刷新道具信息
+msge
+
+@请求 商会买入 道具
+msgs:C2G_Auction_BuyItem
+	long:Id//单号 唯一ID
+msge
+@返回 商会买入 道具
+msgs:G2C_Auction_BuyItem
+	CLS_ItemInfo:ItemInfo//刷新道具信息
+msge
+
+
+@商会单子信息 装备
+pubs:CLS_AuctionInfoEquip
+	CLS_AuctionInfoBase:AuctionInfoBase//基础信息
+	CLS_EquipInfo:EquipInfo//装备信息
+pube
+
+@请求 商会列表 装备
+msgs:C2G_Auction_ListEquip
+	int:Order//排序类型 对应EOrder
+	int:AuctionFlag//交易类型 对应EAuctionFlag
+	int:SubType//子类ID
+	int:PageIndex//页码1-n (返回每页100条)
+msge
+@返回 商会列表 装备
+msgs:G2C_Auction_ListEquip
+	int:Order//排序类型 对应EOrder
+	int:AuctionFlag//交易类型 对应EAuctionFlag
+	int:SubType//子类ID
+	int:PageIndex//页码1-n (返回每页100条)
+	int:TotalCount//总数目
+	dict:long:CLS_AuctionInfoEquip:DictEquip//列表
+msge
+
+@请求 商会出售 装备
+msgs:C2G_Auction_SellEquip
+	long:EquipId//装备唯一ID
+	long:Price//出售单价(单位：分)
+msge
+@返回 商会出售 装备
+msgs:G2C_Auction_SellEquip
+	CLS_AuctionInfoEquip:AuctionInfoEquip//商会单子信息
+msge
+
+@请求 商会撤卖 装备
+msgs:C2G_Auction_ReturnEquip
+	long:Id//单号 唯一ID
+msge
+@返回 商会撤卖 装备
+msgs:G2C_Auction_ReturnEquip
+	CLS_EquipInfo:EquipInfo//刷新装备信息
+msge
+
+@请求 商会买入 装备
+msgs:C2G_Auction_BuyEquip
+	long:Id//单号 唯一ID
+msge
+@返回 商会买入 装备
+msgs:G2C_Auction_BuyEquip
+	CLS_EquipInfo:EquipInfo//刷新装备信息
+msge
+
+
+@商会单子信息 武将
+pubs:CLS_AuctionInfoWarrior
+	CLS_AuctionInfoBase:AuctionInfoBase//基础信息
+	CLS_WarriorInfo:WarriorInfo//武将信息
+pube
+
+@请求 商会列表 武将
+msgs:C2G_Auction_ListWarrior
+	int:Order//排序类型 对应EOrder
+	int:AuctionFlag//交易类型 对应EAuctionFlag
+	int:SubType//子类ID
+	int:PageIndex//页码1-n (返回每页100条)
+msge
+@返回 商会列表 武将
+msgs:G2C_Auction_ListWarrior
+	int:Order//排序类型 对应EOrder
+	int:AuctionFlag//交易类型 对应EAuctionFlag
+	int:SubType//子类ID
+	int:PageIndex//页码1-n (返回每页100条)
+	int:TotalCount//总数目
+	dict:long:CLS_AuctionInfoWarrior:DictWarrior//列表
+msge
+
+@请求 商会出售 武将
+msgs:C2G_Auction_SellWarrior
+	long:WarriorId//武将唯一ID
+	long:Price//出售单价(单位：分)
+msge
+@返回 商会出售 武将
+msgs:G2C_Auction_SellWarrior
+	CLS_AuctionInfoWarrior:AuctionInfoWarrior//商会单子信息
+msge
+
+@请求 商会撤卖 武将
+msgs:C2G_Auction_ReturnWarrior
+	long:Id//单号 唯一ID
+msge
+@返回 商会撤卖 武将
+msgs:G2C_Auction_ReturnWarrior
+	CLS_WarriorInfo:WarriorInfo//刷新武将信息
+msge
+
+@请求 商会买入 武将
+msgs:C2G_Auction_BuyWarrior
+	long:Id//单号 唯一ID
+msge
+@返回 商会买入 武将
+msgs:G2C_Auction_BuyWarrior
+	CLS_WarriorInfo:WarriorInfo//刷新武将信息
+msge
+
+@请求 商会搜索
+msgs:C2G_Auction_Search
+	string:SearchKey//搜索关键字
+msge
+@返回 商会搜索
+msgs:G2C_Auction_Search
+	dict:long:CLS_AuctionInfoItem:DictItem//列表
+	dict:long:CLS_AuctionInfoEquip:DictEquip//列表
+	dict:long:CLS_AuctionInfoWarrior:DictWarrior//列表
+msge
+
+
+@商会交易记录类型
+enums:EAuctionLogType
+	Sell:0//卖
+	Buy:1//买
+enume
+@商会交易记录类型
+enums:EAuctionLogItemType
+	Item:0//道具
+	Equip:1//装备
+	Warrior:2//武将
+enume
+
+@商会交易记录
+pubs:CLS_AuctionLog
+	short:AuctionLogItemType//大类 见EAuctionLogItemType
+	int:ConfigId//配置ID
+	int:Count//数量
+	string:PlayerName//交易对象名字
+	long:Price//价格(单位：分)
+pube
+
+@请求 商会交易记录
+msgs:C2G_Auction_GetLog
+	int:AuctionLogType//查询类型 EAuctionLogType
+msge
+@返回 商会交易记录
+msgs:G2C_Auction_GetLog
+	int:AuctionLogType//查询类型 EAuctionLogType
+	list:CLS_AuctionLog:ListAuctionLog//交易记录
+msge

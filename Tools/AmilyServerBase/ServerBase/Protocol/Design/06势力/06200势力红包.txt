@@ -1,0 +1,87 @@
+﻿
+$$红包
+
+
+@红包状态
+enums:ERedPacketState
+	可领取:1 
+	已领取:2
+	已抢完:3
+enume
+
+@红包成员信息
+pubs:CLS_RedPacketMember
+	long:PlayerID//玩家ID
+	int:HeadId//头像ID
+	string:Name
+	int:Bonus//抢到金额
+pube
+
+@//红包列表
+pubs:CLS_RedPacketsInfo
+	long:RedPacketsID//红包ID
+	CLS_RedPacketMember:Owner//发起者
+	int:State//状态 ERedPacketState
+	int:TimeEnd//还剩多少时间(秒)
+pube
+
+@//红包信息
+pubs:CLS_RedPacket
+	long:RedPacketsID//红包ID
+	int:TotalSugar//总金额
+	int:TotalNumber//总个数
+	int:SurplusSugar//剩余金额
+	int:SurplusNumber//剩余个数
+	CLS_RedPacketMember:Owner//发起者
+	int:TimeEnd//还剩多少时间(秒)
+	list:CLS_RedPacketMember:ListMember//已抢列表
+	string:Txt//祝福语
+pube
+
+
+
+@请求 红包列表
+msgs:C2G_Red_Packet_List:6200
+msge
+@返回 红包列表
+msgs:G2C_Red_Packet_List
+	int:GetMax//0:领红包未达到上限,1:领红包达到上限
+	list:CLS_RedPacketsInfo:Info//红包列表
+msge
+
+@请求 单个红包信息
+msgs:C2G_Red_Packet_Info
+	long:RedPacketsID//红包ID
+msge
+@返回 单个红包信息
+msgs:G2C_Red_Packet_Info
+	int:Error//状态
+	CLS_RedPacket:Info//红包信息
+msge
+
+@请求 发红包
+msgs:C2G_Give_Red_Packet
+	int:Sugar//金额
+	int:Number//个数
+	string:Txt//祝福语
+msge
+@返回 发红包
+msgs:G2C_Give_Red_Packet
+msge
+
+msgs:G2C_Red_Packet_Receive
+	CLS_RedPacketsInfo:Info//红包信息
+	list:CLS_RedPacketsInfo:InfoList//红包列表
+msge
+
+@请求 抢红包
+msgs:C2G_Get_Red_Packet
+	long:RedPacketsID//红包ID
+msge
+@返回 抢红包
+msgs:G2C_Get_Red_Packet
+	int:Error//状态
+	int:Bonus//抢到的金额
+	int:GetMax//0:领红包未达到上限,1:领红包达到上限
+	CLS_RedPacket:Info//红包信息
+msge

@@ -1,0 +1,202 @@
+﻿$$战略
+
+@战略状态
+enums:EStrategyStatus
+	待命:0
+	防守队列中:1
+	进攻队列中:2
+	郡城匹配队列中:3
+enume
+
+@城池战略信息基础
+pubs:CLS_StrategyCityInfoBase
+	long:GuildUid//所属势力唯一ID(0=无人占领)
+	string:GuildName//所属势力名
+	int:CountryId//势力所属国家ID
+	byte:Ownership//归属 EOwnership
+	ts:TsCooldownProtected//倒计时受保护
+pube
+
+@战略城池信息
+pubs:CLS_StrategyCityInfo
+	int:Uid//唯一ID(配置ID)
+	long:LeaderPuid//太守Id
+	string:LeaderName//太守名字
+	long:Prosperity//繁荣度
+	CLS_StrategyCityInfoBase:CityInfoBase//城池战略信息基础
+	CLS_StrategyCityInfoMetro:CityInfoMetro//城池战略信息大城池
+pube
+
+@请求 战略地图
+msgs:C2G_Strategy_Map:9100
+msge
+@返回 战略地图
+msgs:G2C_Strategy_Map
+	dict:int:CLS_StrategyCityInfo:DictCity//城池列表
+	CLS_MetroPvpInfo:MetroPvpInfo//大城池PVP综合信息
+	list:long:ListAlliance//同盟势力
+	list:int:ListGuildCityMy//我方城池
+	list:int:ListGuildCityAlliance//同盟城池
+	CLS_BanditsInfo:BanditsInfo//征讨匪寇信息
+msge
+
+@请求 城池信息
+msgs:C2G_Strategy_CityInfo
+	int:Uid//城池唯一ID(配置ID)
+msge
+@返回 城池信息
+msgs:G2C_Strategy_CityInfo
+	CLS_StrategyCityInfo:CityInfo//城池信息
+msge
+
+@城池战斗守备营信息
+pubs:CLS_StrategyFightCampInfo
+	int:Uid//唯一ID(1-5)(1=主营)
+	CLS_CountInfo:WallHp//城墙耐久
+	list:string:ListLastAttacker//攻击者列表
+pube
+
+@城池战斗信息
+pubs:CLS_StrategyFightInfo
+	int:Uid//唯一ID(配置ID)
+	CLS_StrategyCityInfoBase:CityInfoBase//城池战略信息基础
+	dict:int:CLS_StrategyFightCampInfo:DictCamp//城池战斗守备营信息
+pube
+
+@请求 城池战斗信息
+msgs:C2G_Strategy_FightInfo
+	int:Uid//城池唯一ID(配置ID)
+msge
+@返回 城池战斗信息
+msgs:G2C_Strategy_FightInfo
+	CLS_StrategyFightInfo:CityInfo//城池战斗信息
+msge
+
+@通知 城墙血量刷新
+msgs:G2C_Strategy_NotifyRefreshWallHp
+	int:CityUid//城池ID
+	int:CampUid//唯一ID(1-5)(1=主营)
+	CLS_CountInfo:WallHp//城墙耐久
+msge
+
+@通知 城池信息刷新
+msgs:G2C_Strategy_NotifyRefreshCityInfo
+	CLS_StrategyCityInfo:CityInfo//城池信息
+msge
+
+@通知 城池信息刷新多个
+msgs:G2C_Strategy_NotifyRefreshCitys
+	dict:int:CLS_StrategyCityInfo:DictCity//城池列表
+msge
+
+@请求 城池战斗匹配取消
+msgs:C2G_Strategy_MatchingCancel
+msge
+@返回 城池战斗匹配取消
+msgs:G2C_Strategy_MatchingCancel
+msge
+
+@请求 城池战斗防守
+msgs:C2G_Strategy_Defense
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+msge
+@返回 城池战斗防守
+msgs:G2C_Strategy_Defense
+	dt:DtMatchingStart//匹配开始时间
+	dt:DtMatchingEnd//匹配结束时间
+msge
+
+@请求 城池战斗进攻
+msgs:C2G_Strategy_Attack
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+msge
+@返回 城池战斗进攻
+msgs:G2C_Strategy_Attack
+	dt:DtMatchingStart//匹配开始时间
+	dt:DtMatchingEnd//匹配结束时间
+msge
+
+@通知 城池战斗匹配结束防守
+msgs:G2C_Strategy_NotifyMatchingEndDefense
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+	long:WallHp//城墙血量当前值
+	long:WallHpAdded//城墙血量增加值
+msge
+
+
+@通知 城池战斗匹配攻击NPC
+msgs:G2C_Strategy_NotifyMatchingAttackNpc
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+	CLS_CampNpc:CampNpc//被攻击的NPC信息
+msge
+
+@通知 城池战斗匹配攻击城墙
+msgs:G2C_Strategy_NotifyMatchingAttackWall
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+	int:WallLevel//城墙等级
+	CLS_CountInfo:WallHp//城墙耐久
+msge
+
+@守军NPC兵力
+pubs:CLS_CampNpcMonster
+	int:MonsterUid//ID(位置0-n)
+	int:MonsterId//怪物ID
+	long:Hp//兵力
+pube
+
+@守军NPC
+pubs:CLS_CampNpc
+	int:NpcUid//ID(1-n)
+	int:StageId//关卡配置ID
+	dict:int:CLS_CampNpcMonster:DictMonster//NPC部队兵力 k=位置0-n
+pube
+
+@请求 城池战斗匹配攻击NPC结算
+msgs:C2G_Strategy_AttackNpcBalance
+	long:BattleCode//战斗验证码
+	int:BattleResult//战斗结果 EBattleResult
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+	int:NpcUid//ID(1-n)
+	dict:int:CLS_CampNpcMonster:DictMonster//NPC部队兵力 k=位置0-n
+	dict:long:int:DictExpendHp//武将消耗兵力
+msge
+@返回 城池战斗匹配攻击NPC结算
+msgs:G2C_Strategy_AttackNpcBalance
+msge
+
+@请求 城池战斗匹配攻击城墙结算
+msgs:C2G_Strategy_AttackWallBalance
+	long:BattleCode//战斗验证码
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+	long:WallHpDamage//城墙血量损失
+	dict:long:int:DictExpendHp//武将消耗兵力
+msge
+@返回 城池战斗匹配攻击城墙结算
+msgs:G2C_Strategy_AttackWallBalance
+	list:CLS_AwardItem:ListAwardFirst//首次攻占城池奖励
+msge
+
+@通知 城池战斗匹配攻击玩家
+msgs:G2C_Strategy_NotifyMatchingAttackPlayer
+	CLS_BattleInfo:BattleInfo//战场信息
+msge
+
+@请求 城池战斗匹配攻击玩家结算
+msgs:C2G_Strategy_AttackPlayerBalance
+	int:BattleUid//战斗ID
+	bool:BattleResult//战斗结果 攻击方胜利=true 防守方胜利=false
+	dict:long:int:DictExpendHpAtt//武将消耗兵力//攻击方
+	dict:long:int:DictExpendHpDef//武将消耗兵力//防守方
+msge
+@返回 城池战斗匹配攻击玩家结算
+msgs:G2C_Strategy_AttackPlayerBalance
+	int:BattleUid//战斗ID
+	dict:long:bool:DictBattleResult//k=Puid v=结果 胜利=true 失败=false
+msge

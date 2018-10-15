@@ -1,0 +1,117 @@
+﻿$$Arena
+
+@Arena排行榜信息
+pubs:CLS_ArenaTopData
+	int:Rank//排行
+	long:Puid//唯一ID
+	string:Name//名字
+	string:GuildName//势力名字
+	int:Score//分数		
+	int:HeadIndex//头像ID
+	int:Level//等级 排行榜用
+pube
+
+@请求 获取竞技场信息
+msgs:C2G_Arena_Info:8300
+msge
+
+@返回 获取竞技场信息
+msgs:G2C_Arena_Info	
+	int:Rank//排名
+	int:HistoryRank//历史排名
+	float:WinRate//胜率	
+	int:MatchTicks//挑战次数	
+	int:MaxTicks//最大挑战次数
+	int:BuyMatchTicks//竞技场已购买次数
+	list:CLS_ArenaTopData:ArenaMatchPlayers//匹配的玩家
+	long:TsEnd//挑战刷新剩余时间
+msge
+
+@请求 获取竞技场排行榜
+msgs:C2G_Arena_TOP	
+msge
+
+@返回 Arena排行榜
+msgs:G2C_Arena_TOP	
+	list:CLS_ArenaTopData:ListArenaTopData//Arena排行榜数据
+	CLS_ArenaTopData:PlayerData//玩家数据	
+msge
+
+@请求 Arena刷新
+msgs:C2G_ArenaMatch_Refresh
+msge
+
+@返回 Arena刷新
+msgs:G2C_ArenaMatch_Refresh
+msge
+
+@请求 Arena战斗
+msgs:C2G_ArenaMatch_Battle
+	int:index//挑战的第几位玩家 0,1,2,3
+msge
+@返回 Arena战斗
+msgs:G2C_ArenaMatch_Battle
+	int:StageId//关卡配置 0则是玩家
+	list:CLS_WarriorInfo:ListWarriorOther//对战武将战斗信息列表
+msge
+
+@请求 Arena结算
+msgs:C2G_ArenaMatch_Balance
+	long:BattleKey//战斗Key	
+	int:State//战斗结果
+msge
+@返回 Arena结算
+msgs:G2C_ArenaMatch_Balance	
+	int:PlayerRank//玩家当前排名
+	int:PlayerNewRank//玩家新排名
+	list:CLS_AwardItem:AwardItem//奖励
+msge
+
+@Arena战报单条信息
+pubs:CLS_ArenaBattleReport
+	bool:Victory//胜利
+	bool:IsAttack//是否是进攻
+	
+	string:MatchPlayerName//名字
+	int:MatchPlayerHeadIndex//头像
+	string:GuildName//势力名称
+
+	float:Rank//排名变化
+	int:CurRank//当前排名
+pube
+
+@请求 Arena战报
+msgs:C2G_ArenaBattleReport
+msge
+
+@返回 Arena战报
+msgs:G2C_ArenaBattleReport
+	list:CLS_ArenaBattleReport:ArenaBattleReportList//战报列表
+msge
+
+@请求 竞技场次数购买
+msgs:C2G_ArenaMatch_Buy
+msge
+
+@返回 竞技场次数购买
+msgs:G2C_ArenaMatch_Buy
+	int:MatchTicks//挑战次数
+msge
+
+@请求 查看竞技场防守队伍
+msgs:C2G_Arena_Defense	
+msge
+
+@返回 查看竞技场防守队伍
+msgs:G2C_Arena_Defense
+	dict:int:CLS_WarriorInfo:DictWarriorInfo//防守队伍信息<位置，信息>
+msge
+
+@请求 竞技场设置防守队伍
+msgs:C2G_Arena_SetDefense
+	dict:int:long:DictDefenses//防守队伍<位置，ID>
+msge
+
+@返回 竞技场设置防守队伍
+msgs:G2C_Arena_SetDefense	
+msge

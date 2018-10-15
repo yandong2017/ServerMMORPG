@@ -1,0 +1,75 @@
+﻿$$商城
+
+
+@商城页面信息
+pubs:CLS_ShopPageInfo
+	int:Id//ID
+	dict:int:CLS_ShopGoodsInfo:DictGoods//商品列表
+	int:Cooldown//剩余刷新时间 -1=无限制
+pube
+
+@商城货物信息
+pubs:CLS_ShopGoodsInfo
+	int:Id//ID
+	int:Count//已有数量
+	int:AmoutCanBuy//可买数量 -1=无限制
+pube
+
+@请求 商城列表
+msgs:C2G_Shop_List:3000
+msge
+@返回 商城列表
+msgs:G2C_Shop_List
+	dict:int:CLS_ShopPageInfo:DictPage//商城页面
+	int:RefreshTotal			//钻石商城累计刷新次数
+	int:RefreshCost				//钻石商城当前刷新消耗
+msge
+
+@请求 商城购买
+msgs:C2G_Shop_Buy
+	int:Id//ID
+	int:Amount//购买数量
+msge
+@返回 商城购买
+msgs:G2C_Shop_Buy
+	dict:int:CLS_ShopPageInfo:DictPage//商城页面
+msge
+
+@请求 商城快捷购买
+msgs:C2G_Shop_QuickBuy
+	int:Id//ID
+	int:Amount//购买数量
+msge
+@返回 商城快捷购买
+msgs:G2C_Shop_QuickBuy
+	int:Id//ID
+msge
+
+@请求 刷新钻石商城
+msgs:C2G_Refresh_Diamond_Store
+msge
+@返回 刷新钻石商城
+msgs:G2C_Refresh_Diamond_Store
+	int:RefreshTotal			//累计刷新次数
+	int:RefreshCost				//当前刷新消耗
+	dict:int:CLS_ShopPageInfo:DictPage//商城页面
+msge
+
+@请求 商城购买武将背包上限
+msgs:C2G_Shop_BuyWarriorBag
+	int:Id//ID
+msge
+@返回 商城购买武将背包上限
+msgs:G2C_Shop_BuyWarriorBag
+	int:Id//ID
+msge
+
+@请求 金币兑换
+msgs:C2G_Buy_Gold
+	int:times
+msge
+@返回
+msgs:G2C_Buy_Gold
+	int:addGold//增加的金币
+	int:useGem//消耗的元宝
+msge

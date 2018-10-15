@@ -1,0 +1,210 @@
+﻿$$信息
+
+@玩家基本信息
+pubs:CLS_Info_Base
+	long:Puid//玩家唯一ID
+	string:Name//名字
+	int:HeadIndex//头像序号(序号为0时使用图像数据)
+	int:StateId//所属州ID
+	long:Gem//元宝
+	long:Gold//金币
+	long:FuYu//府玉
+
+	long:Silver//银两
+	long:Wood//木材
+	long:Iron//铁矿
+	long:Food//粮草
+
+	long:CapacityWood//木材容量
+	long:CapacityIron//铁矿容量
+	long:CapacityFood//粮草容量
+
+	int:Level//等级
+	int:Exp//经验值
+	int:VipLevel//VIP等级
+	int:VipExp//Vip经验值
+
+	int:Spirit//体力
+	int:TowerToken//挑战令牌
+	int:TowerScore//武神积分
+
+	int:Card//军牌
+	int:Prestige//声望
+
+	int:DrawScore//宴会厅积分
+
+	long:GuildUid//所属势力唯一ID
+	int:GuildOffice//势力官职 EGuildOffice
+	string:GuildName//所属势力名字
+	int:MyCapitalCity//势力都城
+	int:GuildState//势力所属州
+
+	int:Soldiers1//预备步兵
+	int:Soldiers2//预备骑兵
+	int:Soldiers3//预备弓兵
+
+	int:BuyGoldTimes//购买金币次数
+pube
+
+@玩家杂项信息
+pubs:CLS_Info_Misc
+	dict:int:int:dictFlagClient//客户端特殊标记
+	bool:WoodFull//木材已满
+	bool:IronFull//铁矿已满
+	bool:FoodFull//粮草已满
+	bool:CanSign//可以签到
+	int:MailUnread//未读邮件数目
+	int:BankStatus//长安夺宝活动状态 1 开启 0未开启
+	int:WarriorBagId//武将背包当前已买ID
+	int:WarriorCount//当前武将数目
+	int:WarriorCountMax//武将背包上限
+	string:Signature//个人签名
+	bool:bFriend//好友提示
+	bool:bChat//私聊提示
+	long:TickTimeRegister//注册时间
+	list:long:ListAlliance//同盟势力
+	list:int:ListGuildCityMy//我方城池
+	list:int:ListGuildCityAlliance//同盟城池
+	bool:WelfareIsOpen//福利开启
+	int:WelfareNoticeNum//福利完成数目
+	bool:Acitvity7DayLoginIsOpen//七日登录开启
+	bool:Acitvity7DayLoginCanGet//七日登录可领
+pube
+
+@请求 玩家全部信息
+msgs:C2G_Info_GetAll:1100
+msge
+@返回 玩家全部信息
+msgs:G2C_Info_GetAll
+	CLS_Info_Base:InfoBase
+	CLS_Info_Misc:InfoMisc
+	list:CLS_ItemInfo:ListItem//道具列表
+msge
+
+@推送 玩家信息 全部
+msgs:G2C_Info_PushAll
+	CLS_Info_Base:InfoBase
+	CLS_Info_Misc:InfoMisc
+msge
+
+@推送 玩家信息 道具
+msgs:G2C_Info_PushItem
+	list:CLS_ItemInfo:ListItem//道具列表
+msge
+
+@推送 玩家信息 装备
+msgs:G2C_Info_PushEquip
+	int:PageIndex//页码1-n (返回每页100条) (0=结束)
+	dict:long:CLS_EquipInfo:DictEquip//装备列表
+msge
+
+@推送 玩家信息 武将
+msgs:G2C_Info_PushWarrior
+	int:PageIndex//页码1-n (返回每页100条) (0=结束)
+	list:CLS_WarriorInfo:ListWarrior//武将列表
+msge
+
+@更新方式
+enums:EInfoUpdateMode
+	Add:1//添加
+	Remove:2//删除
+	Update:3//刷新
+enume
+
+@更新 道具
+pubs:CLS_UpdateInfoItem
+	byte:Mode
+	CLS_ItemInfo:ItemInfo
+pube
+
+@更新 装备
+pubs:CLS_UpdateInfoEquip
+	byte:Mode
+	CLS_EquipInfo:EquipInfo
+pube
+
+@更新 武将
+pubs:CLS_UpdateInfoWarrior
+	byte:Mode
+	CLS_WarriorInfo:WarriorInfo
+pube
+
+@推送 玩家信息 更新
+msgs:G2C_Info_PushUpdate
+	list:CLS_UpdateInfoItem:ListUpdateItem
+	list:CLS_UpdateInfoEquip:ListUpdateEquip
+	list:CLS_UpdateInfoWarrior:ListUpdateWarrior
+msge
+
+
+@请求 更改姓名
+msgs:C2G_Info_ChangeName
+	string:Name
+msge
+@返回 更改姓名
+msgs:G2C_Info_ChangeName
+	string:Name
+msge
+
+@请求 更改客户端特殊标记
+msgs:C2G_Info_ChangeFlagClient
+	int:FlagKey
+	int:FlagValue
+msge
+@返回 更改客户端特殊标记
+msgs:G2C_Info_ChangeFlagClient
+	int:FlagKey
+	int:FlagValue
+msge
+
+@请求 更换头像
+msgs:C2G_Info_ChangeHeadIndex
+	int:HeadIndex//头像序号(序号为0时使用图像数据)
+msge
+@返回 更换头像
+msgs:G2C_Info_ChangeHeadIndex
+	int:HeadIndex//头像序号(序号为0时使用图像数据)
+msge
+
+@请求 上传头像数据
+msgs:C2G_Info_ChangeHeadData
+	list:byte:HeadData//头像数据
+msge
+@返回 上传头像数据
+msgs:G2C_Info_ChangeHeadData
+msge
+
+@请求 反馈问题
+msgs:C2G_Info_SubmitBug
+	string:Text
+msge
+@返回 反馈问题
+msgs:G2C_Info_SubmitBug
+msge
+
+@通知 玩家升级
+msgs:G2C_Info_NotifyLevelUp
+	CLS_ValueChangeInfo:ChangeLevel//等级变化
+	CLS_ValueChangeInfo:ChangeExp//经验变化
+	CLS_ValueChangeInfo:ChangeSpirit//体力变化
+msge
+
+@请求 玩家单条信息
+msgs:C2G_Info_PlayerData
+	long:Id//唯一ID
+msge
+@返回 玩家单条信息
+msgs:G2C_Info_PlayerData
+	CLS_PlayerData:PlayerInfo//玩家单条信息
+	bool:bFriend//是否是好友
+	bool:bScreen//是否已屏蔽
+msge
+
+@请求 更改个人签名
+msgs:C2G_Info_ChangeSignature
+	string:Signature
+msge
+@返回 更改个人签名
+msgs:G2C_Info_ChangeSignature
+	string:Signature
+msge

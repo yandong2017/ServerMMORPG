@@ -1,0 +1,45 @@
+﻿$$势力俸禄
+
+@势力成员俸禄信息
+pubs:CLS_GuildSalaryMbsInfo
+	CLS_PubPlayerBase:PubPlayerBase//基本信息
+	int:ContributionWeekLast//上周贡献
+	int:ContributionWeekThis//本周贡献
+pube
+
+@请求 俸禄成员列表
+msgs:C2G_GuildSalary_ListMbs:6600
+msge
+@返回 俸禄成员列表
+msgs:G2C_GuildSalary_ListMbs
+	dt:DtAutoBalance//自动结算时间
+	list:CLS_GuildSalaryMbsInfo:ListMember//势力成员列表
+msge
+
+@请求 俸禄发放
+msgs:C2G_GuildSalary_Pay
+	dict:long:int:DictPay//<对象玩家ID, 金币数量>
+msge
+@返回 俸禄发放
+msgs:G2C_GuildSalary_Pay
+	dict:long:int:DictPay//<对象玩家ID, 金币数量>
+msge
+
+@势力城市俸禄信息
+pubs:CLS_GuildSalaryCityInfo
+	int:Uid//唯一ID(配置ID)
+	long:LeaderPuid//太守Id
+	string:LeaderName//太守名字
+	long:Prosperity//繁荣度
+	int:Revenue//预期收益
+pube
+
+@请求 俸禄城市列表
+msgs:C2G_GuildSalary_ListCity
+msge
+@返回 俸禄城市列表
+msgs:G2C_GuildSalary_ListCity
+	list:CLS_GuildSalaryCityInfo:ListCity//势力城市列表
+msge
+
+

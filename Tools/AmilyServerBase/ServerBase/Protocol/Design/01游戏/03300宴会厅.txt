@@ -1,0 +1,36 @@
+﻿$$宴会厅
+
+@活跃度状态
+enums:EDrawType
+	元宝十次:1
+	元宝一次:2
+	道具十次:3
+	道具一次:4
+enume
+
+
+@请求 宴会厅数据
+msgs:C2G_Draw_GetInfo:3300
+msge
+@返回 宴会厅数据
+msgs:G2C_Draw_GetInfo
+	int:DrawScore//奖励积分
+msge
+
+@请求 宴会厅抽奖
+msgs:C2G_Draw_Luck
+	int:DrawPoolId//(配置ID)
+	int:DrawType//(EDrawType)
+msge
+@返回 宴会厅抽奖
+msgs:G2C_Draw_Luck
+	list:CLS_AwardItem:ListAward//奖励列表
+msge
+
+@请求 宴会厅奖励
+msgs:C2G_Draw_GetAward
+msge
+@返回 宴会厅奖励
+msgs:G2C_Draw_GetAward
+	list:CLS_AwardItem:ListAward//奖励列表
+msge

@@ -1,0 +1,27 @@
+﻿$$城池珍宝阁
+
+@请求 城池珍宝阁信息
+msgs:C2G_City_ShopInfo:2800
+	int:CityUid//城池ID
+msge
+@返回 城池珍宝阁信息
+msgs:G2C_City_ShopInfo
+	int:CityUid//城池ID
+	list:CLS_ShopGoodsInfo:GoodsInfo//商品信息
+	dict:int:int:SpecialtyGoodsInfo//特产商品信息
+	int:Contribution//拥有的贡献
+msge
+
+@请求 处理城池珍宝阁购买
+msgs:C2G_City_ShopBuy
+	int:CityUid//城池ID
+	int:Config//配置ID
+	int:Amount//数量
+msge
+@返回 处理城池珍宝阁购买
+msgs:G2C_City_ShopBuy
+	list:CLS_ShopGoodsInfo:GoodsInfo//商品信息
+	int:Contribution//拥有的贡献
+	int:CityUid//城池ID
+	dict:int:int:SpecialtyGoodsInfo//特产商品信息
+msge

@@ -1,0 +1,101 @@
+﻿$$交易所
+
+@交易方式
+enums:EDesignMode
+	ShelvesBuy:1//挂单买
+	TransactionSell:1//交易卖
+	ShelvesSell:2//挂单卖
+	TransactionBuy:2//交易买
+enume
+
+@是否包含自己的单子
+enums:EDesignFlag
+	Self:0//自己
+	Other:1//其余
+enume
+
+@单子信息
+pubs:CLS_DesignInfo
+	long:Id//单号 唯一ID
+	int:DesignMode//交易方式 对应EDesignMode
+	long:Puid//挂单玩家唯一ID
+	string:Name//挂单玩家名字
+	long:Price//单手价格(每手100)
+	long:Count//挂单数量
+	dt:DtExpire//到期时间
+	ts:TsRemainder//剩余时间
+pube
+
+@上次交易信息
+pubs:CLS_TransactionInfo
+	long:Price//成交单价(每手100)
+	dt:DtTransaction//交易时间
+pube
+
+@请求 挂单列表
+msgs:C2G_Exchange_List:3100
+	int:DesignFlag//交易类型 对应EDesignFlag
+	int:DesignMode//交易方式 对应EDesignMode
+	int:PageIndex//页码1-n
+msge
+@返回 挂单列表
+msgs:G2C_Exchange_List
+	int:DesignFlag//交易类型 对应EDesignFlag
+	int:DesignMode//交易方式 对应EDesignMode
+	int:PageIndex//页码1-n
+	int:DesignCount//单子总数目
+	list:CLS_DesignInfo:ListDesign//挂单列表
+	CLS_TransactionInfo:TransactionInfo//上次交易信息(Price=0时未发生交易)
+msge
+
+@请求 挂单买卖
+msgs:C2G_Exchange_Shelves
+	int:DesignMode//交易方式 对应EDesignMode
+	long:Price//单手价格(每手100)
+	long:Count//挂单数量
+msge
+@返回 挂单买卖
+msgs:G2C_Exchange_Shelves
+	int:DesignMode//交易方式 对应EDesignMode
+	CLS_DesignInfo:DesignInfo//更新单子信息
+msge
+
+@请求 挂单撤销
+msgs:C2G_Exchange_Revoke
+	int:DesignMode//交易方式 对应EDesignMode
+	long:Id//单号 唯一ID
+msge
+@返回 挂单撤销
+msgs:G2C_Exchange_Revoke
+msge
+
+@请求 交易买卖
+msgs:C2G_Exchange_Transaction
+	int:DesignMode//交易方式 对应EDesignMode
+	long:Id//单号 唯一ID
+	long:Count//交易数量
+msge
+@返回 交易买卖
+msgs:G2C_Exchange_Transaction
+	int:DesignMode//交易方式 对应EDesignMode
+	CLS_DesignInfo:DesignInfo//更新单子信息
+msge
+
+@ 交易信息
+pubs:CLS_TransactionLog
+	int:DesignMode//交易方式 对应EDesignMode
+	int:MoneyType//货币类型
+	long:Price//交易单价
+	long:Count//交易数量
+pube
+
+@请求 交易记录
+msgs:C2G_GetTransactionLogList
+	int:Type//查询类型（1:购买记录;2:出售记录）
+msge
+
+@返回 交易记录
+msgs:G2C_GetTransactionLogList
+	int:Type//查询类型（1:购买记录;2:出售记录）
+	list:CLS_TransactionLog:ListTransactionLog//交易记录
+msge

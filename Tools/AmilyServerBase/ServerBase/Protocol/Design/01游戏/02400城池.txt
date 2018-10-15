@@ -1,0 +1,47 @@
+﻿$$城池
+
+@城池信息
+pubs:CLS_CityInfoBase
+	int:Uid//唯一ID(配置ID)
+	long:LeaderPuid//太守Id
+	string:LeaderName//太守名字
+	long:Prosperity//繁荣度
+pube
+
+@势力城池信息
+pubs:CLS_CityInfo4Guild
+	int:Uid//唯一ID(配置ID)
+	long:LeaderPuid//太守Id
+	string:LeaderName//太守名字
+	long:Prosperity//繁荣度
+	int:Revenue//本周收入(府库库存)
+pube
+
+@请求 城池信息
+msgs:C2G_City_CityInfo:2400
+	int:Uid//城池唯一ID(配置ID)
+msge
+@返回 城池信息
+msgs:G2C_City_CityInfo
+	CLS_CityInfoBase:CityInfo//城池信息
+msge
+
+@请求 城池列表
+msgs:C2G_City_ListCity
+msge
+@返回 城池列表
+msgs:G2C_City_ListCity
+	int:CapitalCity//都城ID
+	dict:int:CLS_CityInfoBase:DictCity//城池列表
+msge
+
+@请求 府库
+msgs:C2G_City_DepotInfo
+	int:CityUid//城池ID
+msge
+@返回 府库
+msgs:G2C_City_DepotInfo
+	long:Prosperity//繁荣度
+	int:RevenueDay//本日预期收益
+    int:RevenueAll//本期预期收益
+msge

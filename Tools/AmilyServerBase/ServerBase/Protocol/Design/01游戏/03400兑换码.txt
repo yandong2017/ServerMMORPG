@@ -1,0 +1,12 @@
+﻿
+$$兑换码
+
+@请求 使用兑换码
+msgs:C2G_Cdkey_Use:3400
+	string:Cdkey//兑换码
+msge
+@返回 使用兑换码
+msgs:G2C_Cdkey_Use
+	string:Cdkey//兑换码
+	list:CLS_AwardItem:ListAward//奖励列表
+msge

@@ -1,0 +1,73 @@
+﻿$$任务
+
+@任务类型
+enums:ETaskType
+	主线任务:1
+	每日任务
+	势力任务
+enume
+
+@任务状态
+enums:ETaskState
+	未激活:0
+	等级不够
+	未完成条件
+	已完成条件
+	已领取奖励
+enume
+
+@任务信息
+pubs:CLS_TaskInfo
+	long:Tuid//任务唯一ID(府衙任务用 其他任务和配置ID相同)
+	int:Id//任务ID(配置ID)
+	byte:State//任务状态 对应ETaskState
+	long:Schedule//当前进度
+	long:ScheduleMax//最大进度
+pube
+
+@请求 任务列表
+msgs:C2G_Task_List:4100
+	byte:TaskType//任务类型 对应ETaskType
+msge
+@返回 任务列表
+msgs:G2C_Task_List
+	byte:TaskType//任务类型 对应ETaskType
+	list:CLS_TaskInfo:ListTask//任务列表
+msge
+
+@请求 任务领奖
+msgs:C2G_Task_Get
+	byte:TaskType//任务类型 对应ETaskType
+	long:Tuid//任务唯一ID(府衙任务用 其他任务和配置ID相同)
+msge
+@返回 任务领奖
+msgs:G2C_Task_Get
+	list:CLS_AwardItem:ListAward//奖励项
+msge
+
+@请求 任务领奖一键领取
+msgs:C2G_Task_GetAll
+	byte:TaskType//任务类型 对应ETaskType
+msge
+@返回 任务领奖一键领取
+msgs:G2C_Task_GetAll
+	list:CLS_AwardItem:ListAward//奖励项
+msge
+
+@请求 日常任务
+msgs:C2G_Task_Everyday
+msge
+@返回 日常任务
+msgs:G2C_Task_Everyday	
+	list:CLS_TaskInfo:ListTask//任务列表
+	int:Activity//活跃值
+	dict:int:int:DictTaskActivity//活跃奖励领取状态(等级ID，ETaskState)
+msge
+@请求 每日活跃奖励
+msgs:C2G_Task_EverydayAward
+	int:ActivityID//活跃ID
+msge
+@返回 每日活跃奖励
+msgs:G2C_Task_EverydayAward	
+	list:CLS_AwardItem:ListAward//奖励项
+msge

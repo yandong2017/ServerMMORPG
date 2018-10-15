@@ -1,0 +1,37 @@
+﻿$$城池建筑
+
+@建筑道具需求
+pubs:CLS_BuildingItemNeedInfo
+	int:ItemId//道具Id
+	int:Built//已建
+	int:Need//需求
+	int:Value//自己拥有
+pube
+
+@城池建筑信息
+pubs:CLS_CityBuildingInfo
+	int:Pos//(位置)
+	int:BuildingType//建筑类型
+	int:Level//等级
+	dict:int:CLS_BuildingItemNeedInfo:DictNeedInfo//建筑道具需求
+pube
+
+@请求 建筑列表
+msgs:C2G_CityBuilding_List:2500
+	int:Uid//城池ID
+msge
+@返回 建筑列表
+msgs:G2C_CityBuilding_List
+	dict:int:CLS_CityBuildingInfo:DictBuilding//府城建筑列表
+msge
+
+@请求 建筑升级
+msgs:C2G_CityBuilding_Build
+	int:Uid//城池ID
+	int:Pos//(位置)
+	dict:int:int:DictBuildUse//建筑使用(道具ID 数量)
+msge
+@返回 建筑升级
+msgs:G2C_CityBuilding_Build
+	CLS_CityBuildingInfo:BuildingInfo//建筑信息
+msge

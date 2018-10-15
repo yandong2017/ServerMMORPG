@@ -1,0 +1,285 @@
+﻿$$封地
+
+
+@封地建筑信息
+pubs:CLS_BuildingPlayerInfo
+	int:Id//ID(位置)
+	int:BuildingType//建筑类型
+	int:Level//等级
+
+	long:Capacity//容量
+	long:Stock//库存
+	long:StoreCapacity//仓库容量
+	long:StoreStock//仓库库存
+	long:CapacityNextLevelAdd//容量下一级增量
+	bool:IsInBuilding//是否在建造中
+	long:BuildEndMs//剩余毫秒数
+
+	int:YieldPerHour//每小时产量
+	int:YieldPerHourNextLevelAdd//每小时产量下一级增量
+	ts:CostTime//建造消耗时间
+	int:CostGold//建造消耗游戏币
+	int:CostFood//建造消耗粮草
+	int:CostWood//建造消耗木材
+	int:CostIron//建造消耗铁矿
+pube
+
+@封地建筑简易信息 用来推送
+pubs:CLS_BuildingPlayerInfoSimple
+	int:Id//ID(位置)
+	long:Stock//库存
+pube
+
+@请求 封地建筑列表
+msgs:C2G_BuildingPlayer_List:2300
+msge
+@返回 封地建筑列表
+msgs:G2C_BuildingPlayer_List
+	dict:int:CLS_BuildingPlayerInfo:DictBuilding//封地建筑列表
+msge
+
+@推送 封地建筑简易信息
+msgs:G2C_BuildingPlayer_PushInfoSimple
+	dict:int:CLS_BuildingPlayerInfoSimple:DictBuilding//封地建筑简易信息
+msge
+
+@请求 封地建筑收获
+msgs:C2G_BuildingPlayer_Harvest
+	int:Id//ID(位置)
+msge
+@返回 封地建筑收获
+msgs:G2C_BuildingPlayer_Harvest
+	int:CountHarvest//收取数量
+	CLS_BuildingPlayerInfo:Building//刷新建筑信息
+msge
+
+@请求 封地建筑一键收获
+msgs:C2G_BuildingPlayer_HarvestAll
+msge
+@返回 封地建筑一键收获
+msgs:G2C_BuildingPlayer_HarvestAll
+	dict:int:CLS_BuildingPlayerInfo:DictBuilding//封地建筑列表
+msge
+
+@请求 封地建筑建造/升级
+msgs:C2G_BuildingPlayer_Build
+	int:Id//ID(位置)
+msge
+@返回 封地建筑建造/升级
+msgs:G2C_BuildingPlayer_Build
+	CLS_BuildingPlayerInfo:Building//刷新建筑信息
+msge
+
+@通知建筑完成
+msgs:G2C_BuildingPlayer_NotifyBuilt
+	CLS_BuildingPlayerInfo:Building//刷新建筑信息
+msge
+
+
+@匠工坊单条信息 用来推送
+pubs:CLS_SmithSimple
+	int:Id//ID
+	list:CLS_ItemNeedInfo:ListItemNeedInfo//需求道具列表
+	bool:Lock//是否解锁
+	int:num//已有数量
+pube
+
+@请求 匠工坊列表
+msgs:C2G_Smith_Start
+msge
+@返回 匠工坊列表
+msgs:G2C_Smith_Start
+	dict:int:CLS_SmithSimple:DicSmithInfo//唯一ID列表  匠工房制作消耗
+msge
+
+@请求 匠工坊制作
+msgs:C2G_Smith_Do
+	int:ID//唯一ID
+	int:Count//制作数量
+msge
+@返回 匠工坊制作 产出
+msgs:G2C_Smith_Do
+	list:CLS_AwardItem:Items//匠工房产出
+	list:CLS_EquipInfo:EquipInfo//装备信息
+msge
+
+@兵法信息
+pubs:CLS_ScienceInfo
+	int:ScienceType//兵法类型
+	int:Level//等级
+	int:ConfigID//配置ID
+	bool:IsInLearning//是否在建造中
+	long:LearnEndMs//剩余毫秒数
+	long:CompleteNeed//立即完成需要金币
+pube
+@请求 兵法列表
+msgs:C2G_Science_List
+msge
+@返回 兵法列表
+msgs:G2C_Science_List
+	dict:int:CLS_ScienceInfo:DictScience//兵法列表
+msge
+
+@请求 兵法研究
+msgs:C2G_Science_Learn
+	int:Id//ID(位置)
+msge
+@返回 兵法研究
+msgs:G2C_Science_Learn
+	CLS_ScienceInfo:Info//兵法信息
+msge
+
+@请求 兵法信息
+msgs:C2G_Science_Info
+	int:Id//ID(位置)
+msge
+@返回 兵法信息
+msgs:G2C_Science_Info
+	CLS_ScienceInfo:Info//兵法信息
+msge
+
+
+@请求 兵法取消研究
+msgs:C2G_Science_Cancel
+	int:Id//ID(位置)
+msge
+@返回 兵法取消研究
+msgs:G2C_Science_Cancel
+	CLS_ScienceInfo:Info//兵法信息
+msge
+
+@通知兵法完成
+msgs:G2C_Science_Notify
+	CLS_ScienceInfo:ScienceInfo//刷新兵法信息
+msge
+
+@兵营募兵状态
+enums:ERecruitStatus
+	不在募兵:0
+	募兵中
+	募兵完成
+enume
+
+@兵营募兵信息
+pubs:CLS_RecruitInfo
+	int:Id//ID(位置)
+	byte:ERecruitStatus//募兵状态 ERecruitStatus
+	dt:DtRecruitStart//募兵开始时间
+	dt:DtRecruitEnd//募兵结束时间
+pube
+
+@请求 兵营募兵信息
+msgs:C2G_Recruit_Info
+	int:Id//ID(位置)
+msge
+@返回 兵营募兵信息
+msgs:G2C_Recruit_Info
+	int:Id//ID(位置)
+	CLS_RecruitInfo:RecruitInfo//兵营募兵信息
+msge
+
+@请求 兵营募兵
+msgs:C2G_Recruit_Start
+	int:Id//ID(位置)
+	int:Count//数量
+msge
+@返回 兵营募兵
+msgs:G2C_Recruit_Start
+	int:Id//ID(位置)
+	int:Count//数量
+	CLS_RecruitInfo:RecruitInfo//兵营募兵信息
+msge
+
+@通知募兵完成
+msgs:G2C_Recruit_NotifyComplete
+	CLS_BuildingPlayerInfo:Building//刷新建筑信息
+msge
+
+@加速类型
+enums:ESpeedup
+	建筑:0
+	募兵
+	兵法
+enume
+
+@请求 通用加速信息
+msgs:C2G_Player_SpeedupInfo
+	int:Id//ID(位置)
+	int:Type//类型ESpeedup
+msge
+@返回 通用加速信息
+msgs:G2C_Player_SpeedupInfo
+	long:EndMs//剩余毫秒数
+	long:CompleteNeed//立即完成需要金币
+	list:CLS_ItemInfo:ListItem//道具列表(加速类)
+msge
+
+@请求 封地建筑建造加速立即完成
+msgs:C2G_BuildingPlayer_SpeedupComplete
+	int:Id//ID(位置)
+msge
+@返回 封地建筑建造加速立即完成
+msgs:G2C_BuildingPlayer_SpeedupComplete
+	CLS_BuildingPlayerInfo:Building//刷新建筑信息
+msge
+
+@请求 兵营募兵加速
+msgs:C2G_Recruit_Speedup
+	int:Id//ID(位置)
+	int:Type//类型ESpeedup
+msge
+@返回 兵营募兵加速
+msgs:G2C_Recruit_Speedup
+	int:Id//ID(位置)
+	CLS_RecruitInfo:RecruitInfo//兵营募兵信息
+msge
+
+@请求 兵法立即研究或加速信息
+msgs:C2G_Science_Fast
+	int:Id//ID(位置)
+msge
+@返回 兵法立即研究或加速信息
+msgs:G2C_Science_Fast
+	CLS_ScienceInfo:Info//兵法信息
+msge
+
+@请求 加速道具购买
+msgs:C2G_Player_SpeedupBuy
+	int:Id//ID ShopSpeedUp表里的ID
+	int:Amount//数量
+	int:Type//类型ESpeedup
+msge
+@返回 加速道具购买
+msgs:G2C_Player_SpeedupBuy
+	list:CLS_ItemInfo:ListItem//道具列表(加速类)
+msge
+
+@请求 加速使用道具
+msgs:C2G_Player_Speedup
+	int:Id//ID(位置)
+	list:CLS_ItemInfo:Items//道具
+	int:Type//类型ESpeedup
+msge
+@返回 加速使用道具
+msgs:G2C_Player_Speedup
+	int:Type//类型ESpeedup
+	CLS_BuildingPlayerInfo:Building//刷新建筑信息
+	CLS_RecruitInfo:RecruitInfo//兵营募兵信息
+	CLS_ScienceInfo:ScienceInfo//兵法信息
+	list:CLS_ItemInfo:ListItem//道具列表(加速类)
+	long:EndMs//剩余毫秒数
+	long:CompleteNeed//立即完成需要金币
+msge
+
+@请求 小助手
+msgs:C2G_Help_Fast	
+msge
+@返回 小助手
+msgs:G2C_Help_Fast
+	CLS_BuildingPlayerInfo:Building1//建筑队列1信息
+	CLS_BuildingPlayerInfo:Building2//建筑队列2信息
+	CLS_ScienceInfo:ScienceInfo//兵法信息
+	CLS_RecruitInfo:RecruitInfoBu//步兵营募兵信息
+	CLS_RecruitInfo:RecruitInfoQi//骑兵营募兵信息
+	CLS_RecruitInfo:RecruitInfoGong//弓兵营募兵信息
+msge

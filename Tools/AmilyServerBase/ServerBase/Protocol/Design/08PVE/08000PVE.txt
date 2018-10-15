@@ -1,0 +1,64 @@
+﻿$$PVE
+
+
+@请求 武将上阵PVE
+msgs:C2G_Warrior_InBattle:8000
+	list:long:ListInBattle//上阵列表
+msge
+@返回 武将上阵PVE
+msgs:G2C_Warrior_InBattle
+msge
+
+@单个队伍信息
+pubs:CLS_ArmyInfo
+	int:ArmyId//PVE阵容ID(012)
+	dict:int:long:DictWarrior//成员列表 <位置 武将唯一ID>
+pube
+
+@PVE某种战斗类型队伍信息
+pubs:CLS_PveTypeArmyInfo
+	int:PveType//PVE类型(ETeamType)
+	int:PveArmyId//当前PVE阵容ID(012)
+	dict:int:CLS_ArmyInfo:DictArmyInfo//k=ArmyId v=ArmyInfo
+pube
+
+@请求 PVE阵容信息
+msgs:C2G_Pve_ArmyInfo
+	int:PveType//PVE类型
+msge
+@返回 PVE阵容信息
+msgs:G2C_Pve_ArmyInfo
+	int:PveType//PVE类型(ETeamType)
+	int:PveArmyId//当前PVE阵容ID(012)
+	dict:int:CLS_ArmyInfo:DictArmyInfo//k=ArmyId v=ArmyInfo
+msge
+
+@请求 PVE阵容更改
+msgs:C2G_Pve_ArmyChange
+	int:PveType//PVE类型(ETeamType)
+	int:PveArmyId//当前PVE阵容ID(012)
+	dict:int:CLS_ArmyInfo:DictArmyInfo//k=ArmyId v=ArmyInfo
+msge
+@返回 PVE阵容更改
+msgs:G2C_Pve_ArmyChange
+	int:PveType//PVE类型(ETeamType)
+msge
+
+@请求 PVE出征
+msgs:C2G_Pve_GoBattle
+	int:PveType//PVE类型(ETeamType)
+	int:BattleId//对应战斗内容ID
+msge
+@返回 PVE出征
+msgs:G2C_Pve_GoBattle
+	int:PveType//PVE类型(ETeamType)
+	int:BattleId//对应战斗内容ID
+	long:BattleCode//战斗验证码
+	dict:int:CLS_WarriorInfo:DictWarrior//成员列表 <位置 武将战斗信息>
+msge
+
+@推送 战斗结束武将数据
+msgs:G2C_Pve_BattleBalance
+	int:PveType//PVE类型(ETeamType)
+	dict:int:CLS_WarriorInfo:DictWarrior//成员列表 <位置 武将战斗信息>
+msge

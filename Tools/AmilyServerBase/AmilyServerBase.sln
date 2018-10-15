@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolTool", "ProtocolTool\ProtocolTool.csproj", "{6813AC4F-22A8-470B-A7E3-E25B60CA742D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketLuanr", "SocketLuanr\SuperSocket.SocketLuanr.csproj", "{15AF9205-4532-420D-8D7D-A4D436F14756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelTool", "ExcelTool\ExcelTool.csproj", "{A81B2D03-0689-43A5-8DBC-AA6A8AF907EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6813AC4F-22A8-470B-A7E3-E25B60CA742D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6813AC4F-22A8-470B-A7E3-E25B60CA742D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6813AC4F-22A8-470B-A7E3-E25B60CA742D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6813AC4F-22A8-470B-A7E3-E25B60CA742D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15AF9205-4532-420D-8D7D-A4D436F14756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15AF9205-4532-420D-8D7D-A4D436F14756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15AF9205-4532-420D-8D7D-A4D436F14756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15AF9205-4532-420D-8D7D-A4D436F14756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A81B2D03-0689-43A5-8DBC-AA6A8AF907EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81B2D03-0689-43A5-8DBC-AA6A8AF907EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81B2D03-0689-43A5-8DBC-AA6A8AF907EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81B2D03-0689-43A5-8DBC-AA6A8AF907EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

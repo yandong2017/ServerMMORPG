@@ -1,0 +1,124 @@
+﻿$$邮件
+
+
+@邮件类型
+enums:EMailType
+	系统邮件:0
+	普通邮件
+	势力邮件
+enume
+
+@邮件信息
+pubs:CLS_MailInfo
+	long:Id//邮件ID
+	short:MailType//邮件类型
+	string:Title//标题
+	bool:HasAttachments//是否有附件
+	bool:Readed//已读
+	bool:Got//已领
+	bool:Saved//保存
+	string:CreateTime//发送时间
+	bool:Sended//已发邮件
+	string:ReceiveName//收件人(已发邮件生效 个人邮件:名字 郡邮件:郡ID 府邮件:府ID)
+	string:SenderName//发件人名字
+pube
+
+@邮件信息 详细
+pubs:CLS_MailInfoDetails
+	long:Id//邮件ID
+	CLS_MailInfo:MailInfo//邮件信息
+	string:Body//正文
+	list:CLS_AwardItem:listAward//附件列表
+pube
+
+@邮件信息 发送
+pubs:CLS_MailInfoSend
+	short:MailType
+	string:Title//标题
+	string:Body//正文
+	string:SenderName//发件人名字
+	string:ReceiveName//收件人名字
+pube
+
+@ 系统给玩家发送邮件信息
+pubs:CLS_SystemMailInfoSend
+	long:Id//邮件ID
+	short:TargetType
+	list:string:ListTarget//接收者列表
+	string:Title//标题
+	string:Body//正文
+	string:SenderName//邮件发送者
+	list:CLS_AwardItem:ListAttachments//附件列表
+pube
+
+@请求 邮件列表
+msgs:C2G_Mail_List:1300
+msge
+@返回 邮件列表
+msgs:G2C_Mail_List
+	list:CLS_MailInfo:ListMail//邮件列表
+msge
+
+@请求 邮件读取
+msgs:C2G_Mail_Read
+	long:Id//邮件ID
+msge
+@返回 邮件读取
+msgs:G2C_Mail_Read
+	long:Id//邮件ID
+	CLS_MailInfoDetails:Details//邮件信息详细
+msge
+
+@请求 邮件领取附件
+msgs:C2G_Mail_Get
+	long:Id//邮件ID
+msge
+@返回 邮件领取附件
+msgs:G2C_Mail_Get
+	long:Id//邮件ID
+	list:CLS_AwardItem:listAward//附件列表
+msge
+
+@请求 邮件一键领取
+msgs:C2G_Mail_GetAll
+msge
+@返回 邮件一键领取
+msgs:G2C_Mail_GetAll
+	list:CLS_AwardItem:listAward//附件列表
+msge
+
+@请求 邮件删除
+msgs:C2G_Mail_Delete
+	long:Id//邮件ID
+msge
+@返回 邮件删除
+msgs:G2C_Mail_Delete
+	long:Id//邮件ID
+msge
+
+@请求 邮件清理已读
+msgs:C2G_Mail_DeleteReaded
+	short:MailType//要删除的当前页面类型
+msge
+@返回 邮件清理已读
+msgs:G2C_Mail_DeleteReaded
+	list:CLS_MailInfo:ListMail//刷新后邮件列表
+msge
+
+@请求 邮件保存/取消保存
+msgs:C2G_Mail_Save
+	long:Id//邮件ID
+msge
+@返回 邮件保存/取消保存
+msgs:G2C_Mail_Save
+	long:Id//邮件ID
+msge
+
+@请求 邮件发送
+msgs:C2G_Mail_Send
+	CLS_MailInfoSend:MailInfoSend//邮件发送信息
+msge
+@返回 邮件发送
+msgs:G2C_Mail_Send
+	CLS_MailInfo:MailInfo//新加的已发邮件列表
+msge

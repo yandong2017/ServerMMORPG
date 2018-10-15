@@ -1,0 +1,16 @@
+﻿
+$$BUFF
+
+@BUFF信息
+pubs:CLS_BuffInfo
+	int:Id			//配置ID
+	long:AliveTime	//剩余秒数(-1:永久有效)
+pube
+
+@请求 获取BUFF信息
+msgs:C2G_Buff_Info:4400
+msge
+@返回 获取BUFF信息
+msgs:G2C_Buff_Info
+	list:CLS_BuffInfo:Info//BUFF信息
+msge

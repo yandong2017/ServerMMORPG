@@ -1,0 +1,44 @@
+﻿
+$$福利
+
+@福利状态
+enums:EWelfareState
+	未完成条件
+	已完成条件
+	已领取奖励
+enume
+
+@福利信息
+pubs:CLS_WelfareTaskInfo
+	int:Id//任务ID(配置ID)
+	EWelfareState:State//任务状态 对应EWelfareState
+	long:Schedule//当前进度
+	long:ScheduleMax//最大进度
+pube
+
+@福利大类信息
+pubs:CLS_WelfareInfo
+	int:Id//活动大类ID
+	bool:IsOpen//是否开启
+	dt:TimeOpen//开启时间
+	dt:TimeEnd//截止时间
+	dict:int:CLS_WelfareTaskInfo:ListTask//任务列表
+pube
+
+@请求 获取福利信息
+msgs:C2G_Welfare_Info:5300
+msge
+@返回 获取福利信息
+msgs:G2C_Welfare_Info
+	dict:int:CLS_WelfareInfo:ListInfo//信息列表
+msge
+
+@请求 领取福利
+msgs:C2G_Welfare_Award
+	int:Id//ID(配置ID)
+msge
+@返回 领取福利
+msgs:G2C_Welfare_Award
+	int:Id//ID(配置ID)
+	list:CLS_AwardItem:ListAward//奖励列表
+msge

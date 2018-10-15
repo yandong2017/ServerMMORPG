@@ -1,0 +1,66 @@
+﻿
+$$征讨匪寇
+
+@匪寇信息单条
+pubs:CLS_BanditsArmyInfo
+	int:Uid//队伍ID
+	int:ConfigId//配置ID
+	bool:IsAlive//存活
+	long:TicksDeath//死亡时间
+pube
+
+@匪寇信息
+pubs:CLS_BanditsInfo
+	int:BanditsBuyTimes//今天购买次数
+	int:BanditsCount//剩余挑战次数
+	dict:int:CLS_BanditsArmyInfo:DictBandits//匪寇列表
+pube
+
+@请求 征讨匪寇信息
+msgs:C2G_Bandits_Info:8700
+msge
+@返回 征讨匪寇信息
+msgs:G2C_Bandits_Info
+	CLS_BanditsInfo:BanditsInfo//征讨匪寇信息
+msge
+
+@请求 征讨匪寇战斗
+msgs:C2G_Bandits_Battle
+	int:Uid//队伍ID
+msge
+@返回 征讨匪寇战斗
+msgs:G2C_Bandits_Battle
+	int:Uid//队伍ID
+	int:BanditsCount//剩余挑战次数
+msge
+
+@请求 征讨匪寇战斗结束
+msgs:C2G_Bandits_BattleEnd
+	int:Uid//队伍ID
+	long:BattleKey//战斗Key
+	int:State//战斗结果
+	dict:long:int:DictExpendHp//武将消耗兵力
+msge
+@返回 征讨匪寇战斗结束
+msgs:G2C_Bandits_BattleEnd
+	int:Uid//队伍ID
+	list:CLS_AwardItem:ListAward//奖励列表
+	CLS_BanditsInfo:BanditsInfo//征讨匪寇信息
+msge
+
+@请求 购买挑战次数
+msgs:C2G_Bandits_Buy
+msge
+@返回 购买挑战次数
+msgs:G2C_Bandits_Buy
+	int:BanditsBuyTimes//今天购买次数
+	int:BanditsCount//剩余挑战次数
+msge
+
+@请求 购买怪物重置
+msgs:C2G_Bandits_Reset
+msge
+@返回 购买怪物重置
+msgs:G2C_Bandits_Reset
+	CLS_BanditsInfo:BanditsInfo//征讨匪寇信息
+msge

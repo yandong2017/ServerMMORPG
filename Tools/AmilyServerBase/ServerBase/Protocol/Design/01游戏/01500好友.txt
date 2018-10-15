@@ -1,0 +1,95 @@
+﻿$$好友
+
+@玩家单条信息
+pubs:CLS_FriendInfo
+	long:Uid//玩家唯一ID
+	int:HeadIndex//头像
+	string:Name//名字
+	int:Level//等级
+	string:Signature//个人签名
+	int:GiveState//体力状态：1-可领取 2-可赠送 3-已赠送
+	bool:bOnline//是否在线
+pube
+
+@请求 好友列表
+msgs:C2G_Friend_List:1500
+msge
+@返回 好友列表
+msgs:G2C_Friend_List
+	list:CLS_FriendInfo:ListItem//好友列表
+msge
+
+@请求 申请列表
+msgs:C2G_Friend_ListApply
+msge
+@返回 申请列表
+msgs:G2C_Friend_ListApply
+	list:CLS_FriendInfo:ListItem//申请列表
+msge
+
+@请求 推荐列表
+msgs:C2G_Friend_ListRecommend
+msge
+@返回 推荐列表
+msgs:G2C_Friend_ListRecommend
+	list:CLS_FriendInfo:ListItem//推荐列表
+msge
+
+@请求 申请好友
+msgs:C2G_Friend_Apply
+	long:Uid//对象玩家唯一ID
+msge
+@返回 申请好友
+msgs:G2C_Friend_Apply
+	long:Uid//对象玩家唯一ID
+	bool:bFriend
+msge
+
+@请求 添加好友
+msgs:C2G_Friend_Add
+	bool:bAgree//是否同意
+	bool:bAll//是否全部
+	long:Uid//对象玩家唯一ID
+msge
+@返回 添加好友
+msgs:G2C_Friend_Add
+msge
+
+@请求 请求删除
+msgs:C2G_Friend_Remove
+	long:Uid//对象玩家唯一ID
+msge
+@返回 请求删除
+msgs:G2C_Friend_Remove
+msge
+
+@请求 赠送体力
+msgs:C2G_Friend_Give
+	bool:bAll//全部赠送
+	long:Uid//对象玩家唯一ID
+msge
+@返回 赠送体力
+msgs:G2C_Friend_Give
+	int:total//赠送体力
+msge
+
+@请求 领取体力
+msgs:C2G_Friend_Receive
+	bool:bAll//全部领取
+	long:Uid//对象玩家唯一ID
+msge
+@返回 领取体力
+msgs:G2C_Friend_Receive
+	int:total//领取体力
+msge
+
+@请求 屏蔽好友
+msgs:C2G_Friend_Screen
+	long:Uid//对象玩家唯一ID
+	bool:bScreen//是否屏蔽
+msge
+@返回 屏蔽好友
+msgs:G2C_Friend_Screen
+	long:Uid//对象玩家唯一ID
+	bool:bScreen//是否屏蔽
+msge

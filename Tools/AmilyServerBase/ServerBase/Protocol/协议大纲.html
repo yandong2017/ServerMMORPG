@@ -1,0 +1,4412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" >
+<script src = "http://code.jquery.com/jquery-1.8.3.min.js"></script >
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js" ></script>
+</head>
+<body>
+
+<div data-role="page" id="pageone" >
+    <div data-role="header" >
+        <h1>协议大纲</h1>
+    </div>
+
+    <div data-role="content" >
+
+<div data-role="collapsible">
+<h1>公共类</h1>
+<div data-role="collapsible">
+<h1>公共类</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_AwardItem 奖励物品</h1>
+<p>-----CLS_AwardItem-----CLS_AWARDITEM-----</p>
+<p>short Type  //类型 对应 EAwardType</p>
+<p>int ConfigId  //奖励配置ID</p>
+<p>long Count  //奖励数量</p>
+<p>int Level  //等级</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_CountInfo 当前数量和上限数量</h1>
+<p>-----CLS_CountInfo-----CLS_COUNTINFO-----</p>
+<p>long Value  //当前</p>
+<p>long Limit  //上限</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_NeedInfo 需求数量和当前数量</h1>
+<p>-----CLS_NeedInfo-----CLS_NEEDINFO-----</p>
+<p>long Need  //需求</p>
+<p>long Value  //当前</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ValueChangeInfo 当前数量和原来数量</h1>
+<p>-----CLS_ValueChangeInfo-----CLS_VALUECHANGEINFO-----</p>
+<p>long ValueOld  //原数值</p>
+<p>long ValueNew  //当前</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ItemNeedInfo 道具需求信息</h1>
+<p>-----CLS_ItemNeedInfo-----CLS_ITEMNEEDINFO-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>int Count  //数量</p>
+<p>int CountNeed  //需求数量</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_PubPlayerBase 玩家公共信息</h1>
+<p>-----CLS_PubPlayerBase-----CLS_PUBPLAYERBASE-----</p>
+<p>long Puid  //玩家唯一ID</p>
+<p>string Name  //名字</p>
+<p>int HeadIndex  //头像序号</p>
+<p>int StateId  //所属州ID</p>
+<p>int Level  //等级</p>
+<p>long GuildUid  //所属势力唯一ID</p>
+<p>int GuildOffice  //势力官职 EGuildOffice</p>
+<p>int CombatPower  //战斗力</p>
+<p>long TickTimeLastLogin  //上次登录时间</p>
+<p>bool bGoddess  //圣女资格</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_DataSnap 快照数据</h1>
+<p>-----CLS_DataSnap-----CLS_DATASNAP-----</p>
+<p>long Puid  //玩家唯一ID</p>
+<p>int ServerID  //服务器ID</p>
+<p>string Name  //昵称</p>
+<p>int HeadIndex  //头像序号(序号为0时使用图像数据)</p>
+<p>int StateId  //所属州ID</p>
+<p>long Gem  //元宝</p>
+<p>int Level  //等级</p>
+<p>long TickTimeLastLogin  //上次登录时间</p>
+<p>int ActivityLevel  //活跃度状态 见EActivityLevel</p>
+<p>long Mansion  //所属府ID</p>
+<p>long GuildUid  //所属势力唯一ID</p>
+<p>int GuildOffice  //势力官职 EGuildOffice</p>
+<p>int Contribution  //贡献</p>
+<p>int ContributionTotal  //历史贡献</p>
+<p>int CombatPower  //战斗力</p>
+<p>int AllArenaCombatPower  //主角加竞技场武将战力</p>
+<p>CLS_PlayerData PlayerData  //玩家单条信息</p>
+<p>bool bGoddess  //圣女资格</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_PlayerData 玩家单条信息</h1>
+<p>-----CLS_PlayerData-----CLS_PLAYERDATA-----</p>
+<p>long Puid  //玩家唯一ID</p>
+<p>int HeadIndex  //头像序号(序号为0时使用图像数据)</p>
+<p>string Name  //名字</p>
+<p>long Score  //分数</p>
+<p>int Level  //等级</p>
+<p>Dictionary[int, CLS_WarriorInfo] DictArenaWarrior  //防守队伍信息<位置，信息></p>
+<p>string Signature  //个人签名</p>
+<p>string GuildName  //势力名称</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GameLog 动态日志</h1>
+<p>-----CLS_GameLog-----CLS_GAMELOG-----</p>
+<p>DateTime GameLogTime</p>
+<p>EGameLogType GameLogType  //动态日志类型 EGameLogType</p>
+<p>List[string] Args  //参数</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1> 通用协议 1-99</h1>
+<div data-role="collapsible">
+<h1> 通用协议 All 10+</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BaseDemo 类示例</h1>
+<p>-----CLS_BaseDemo-----CLS_BASEDEMO-----</p>
+<p>byte a1</p>
+<p>short a2</p>
+<p>int a3</p>
+<p>long a4</p>
+<p>float a5</p>
+<p>string a6</p>
+<p>bool a7</p>
+<p>DateTime d1</p>
+<p>TimeSpan d2</p>
+<p>EnumBaseDemo BaseDemo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_Demo 示例</h1>
+<p>-----All_Base_Demo-----ALL_BASE_DEMO-----</p>
+<p>byte a1</p>
+<p>short a2</p>
+<p>int a3</p>
+<p>long a4</p>
+<p>float a5</p>
+<p>string a6</p>
+<p>bool a7</p>
+<p>DateTime d1</p>
+<p>TimeSpan d2</p>
+<p>EnumBaseDemo eBaseDemo</p>
+<p>CLS_BaseDemo BaseDemo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_Result 结果返回</h1>
+<p>-----All_Base_Result-----ALL_BASE_RESULT-----</p>
+<p>int HandleId  //协议ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_Ping Ping服务器</h1>
+<p>-----All_Base_Ping-----ALL_BASE_PING-----</p>
+<p>DateTime ServerTime  //服务器时间刻度</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_GameVersion 同步版本号</h1>
+<p>-----All_Base_GameVersion-----ALL_BASE_GAMEVERSION-----</p>
+<p>string GameVersion  //同步版本号</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>客户端服务器通讯</h1>
+<div data-role="collapsible">
+<h1>客户端调试</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Debug_Cmd 请求 调试指令</h1>
+<p>-----C2G_Debug_Cmd-----C2G_DEBUG_CMD-----</p>
+<p>int Cmd</p>
+<p>List[string] ListArgs</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Debug_Cmd 返回 调试指令</h1>
+<p>-----G2C_Debug_Cmd-----G2C_DEBUG_CMD-----</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>角色登录和创建</h1>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_Connect 连接成功</h1>
+<p>-----G2C_Login_Connect-----G2C_LOGIN_CONNECT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2L_Login_UserLogin 请求 登陆用户账号</h1>
+<p>-----C2L_Login_UserLogin-----C2L_LOGIN_USERLOGIN-----</p>
+<p>string Account  //账号</p>
+<p>string Password  //密码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 L2C_Login_UserLogin 返回 登陆用户账号</h1>
+<p>-----L2C_Login_UserLogin-----L2C_LOGIN_USERLOGIN-----</p>
+<p>long Uuid  //用户id</p>
+<p>long Code  //验证码</p>
+<p>bool NeedAgree  //是否需要显示协议</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Login_PlayerLogin 请求 登陆玩家</h1>
+<p>-----C2G_Login_PlayerLogin-----C2G_LOGIN_PLAYERLOGIN-----</p>
+<p>long Uuid  //用户id</p>
+<p>long Code  //验证码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_PlayerLogin 返回 登陆玩家</h1>
+<p>-----G2C_Login_PlayerLogin-----G2C_LOGIN_PLAYERLOGIN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Login_PlayerCreate 请求 玩家创建</h1>
+<p>-----C2G_Login_PlayerCreate-----C2G_LOGIN_PLAYERCREATE-----</p>
+<p>string Name  //玩家名字</p>
+<p>int Head  //头像</p>
+<p>int StateId  //所属州ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_PlayerCreate 返回 玩家创建</h1>
+<p>-----G2C_Login_PlayerCreate-----G2C_LOGIN_PLAYERCREATE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_Replaced 通知玩家被取代连接</h1>
+<p>-----G2C_Login_Replaced-----G2C_LOGIN_REPLACED-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_Ban 通知玩家被封号</h1>
+<p>-----G2C_Login_Ban-----G2C_LOGIN_BAN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_LoginStateInfo 州信息</h1>
+<p>-----CLS_LoginStateInfo-----CLS_LOGINSTATEINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>long Population  //人口数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Login_ListState 请求 州信息</h1>
+<p>-----C2G_Login_ListState-----C2G_LOGIN_LISTSTATE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_ListState 返回 州信息</h1>
+<p>-----G2C_Login_ListState-----G2C_LOGIN_LISTSTATE-----</p>
+<p>List[CLS_LoginStateInfo] ListState  //州信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Login_CheckName 请求 检测名字</h1>
+<p>-----C2G_Login_CheckName-----C2G_LOGIN_CHECKNAME-----</p>
+<p>string Name  //玩家名字</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Login_CheckName 返回 检测名字</h1>
+<p>-----G2C_Login_CheckName-----G2C_LOGIN_CHECKNAME-----</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>信息</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_Info_Base 玩家基本信息</h1>
+<p>-----CLS_Info_Base-----CLS_INFO_BASE-----</p>
+<p>long Puid  //玩家唯一ID</p>
+<p>string Name  //名字</p>
+<p>int HeadIndex  //头像序号(序号为0时使用图像数据)</p>
+<p>int StateId  //所属州ID</p>
+<p>long Gem  //元宝</p>
+<p>long Gold  //金币</p>
+<p>long FuYu  //府玉</p>
+<p>long Silver  //银两</p>
+<p>long Wood  //木材</p>
+<p>long Iron  //铁矿</p>
+<p>long Food  //粮草</p>
+<p>long CapacityWood  //木材容量</p>
+<p>long CapacityIron  //铁矿容量</p>
+<p>long CapacityFood  //粮草容量</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验值</p>
+<p>int VipLevel  //VIP等级</p>
+<p>int VipExp  //Vip经验值</p>
+<p>int Spirit  //体力</p>
+<p>int TowerToken  //挑战令牌</p>
+<p>int TowerScore  //武神积分</p>
+<p>int Card  //军牌</p>
+<p>int Prestige  //声望</p>
+<p>int DrawScore  //宴会厅积分</p>
+<p>long GuildUid  //所属势力唯一ID</p>
+<p>int GuildOffice  //势力官职 EGuildOffice</p>
+<p>string GuildName  //所属势力名字</p>
+<p>int MyCapitalCity  //势力都城</p>
+<p>int GuildState  //势力所属州</p>
+<p>int Soldiers1  //预备步兵</p>
+<p>int Soldiers2  //预备骑兵</p>
+<p>int Soldiers3  //预备弓兵</p>
+<p>int BuyGoldTimes  //购买金币次数</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_Info_Misc 玩家杂项信息</h1>
+<p>-----CLS_Info_Misc-----CLS_INFO_MISC-----</p>
+<p>Dictionary[int, int] dictFlagClient  //客户端特殊标记</p>
+<p>bool WoodFull  //木材已满</p>
+<p>bool IronFull  //铁矿已满</p>
+<p>bool FoodFull  //粮草已满</p>
+<p>bool CanSign  //可以签到</p>
+<p>int MailUnread  //未读邮件数目</p>
+<p>int BankStatus  //长安夺宝活动状态 1 开启 0未开启</p>
+<p>int WarriorBagId  //武将背包当前已买ID</p>
+<p>int WarriorCount  //当前武将数目</p>
+<p>int WarriorCountMax  //武将背包上限</p>
+<p>string Signature  //个人签名</p>
+<p>bool bFriend  //好友提示</p>
+<p>bool bChat  //私聊提示</p>
+<p>long TickTimeRegister  //注册时间</p>
+<p>List[long] ListAlliance  //同盟势力</p>
+<p>List[int] ListGuildCityMy  //我方城池</p>
+<p>List[int] ListGuildCityAlliance  //同盟城池</p>
+<p>bool WelfareIsOpen  //福利开启</p>
+<p>int WelfareNoticeNum  //福利完成数目</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_GetAll 请求 玩家全部信息</h1>
+<p>-----C2G_Info_GetAll-----C2G_INFO_GETALL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_GetAll 返回 玩家全部信息</h1>
+<p>-----G2C_Info_GetAll-----G2C_INFO_GETALL-----</p>
+<p>CLS_Info_Base InfoBase</p>
+<p>CLS_Info_Misc InfoMisc</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_PushAll 推送 玩家信息 全部</h1>
+<p>-----G2C_Info_PushAll-----G2C_INFO_PUSHALL-----</p>
+<p>CLS_Info_Base InfoBase</p>
+<p>CLS_Info_Misc InfoMisc</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_PushItem 推送 玩家信息 道具</h1>
+<p>-----G2C_Info_PushItem-----G2C_INFO_PUSHITEM-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_PushEquip 推送 玩家信息 装备</h1>
+<p>-----G2C_Info_PushEquip-----G2C_INFO_PUSHEQUIP-----</p>
+<p>int PageIndex  //页码1-n (返回每页100条) (0=结束)</p>
+<p>Dictionary[long, CLS_EquipInfo] DictEquip  //装备列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_PushWarrior 推送 玩家信息 武将</h1>
+<p>-----G2C_Info_PushWarrior-----G2C_INFO_PUSHWARRIOR-----</p>
+<p>int PageIndex  //页码1-n (返回每页100条) (0=结束)</p>
+<p>List[CLS_WarriorInfo] ListWarrior  //武将列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_UpdateInfoItem 更新 道具</h1>
+<p>-----CLS_UpdateInfoItem-----CLS_UPDATEINFOITEM-----</p>
+<p>byte Mode</p>
+<p>CLS_ItemInfo ItemInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_UpdateInfoEquip 更新 装备</h1>
+<p>-----CLS_UpdateInfoEquip-----CLS_UPDATEINFOEQUIP-----</p>
+<p>byte Mode</p>
+<p>CLS_EquipInfo EquipInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_UpdateInfoWarrior 更新 武将</h1>
+<p>-----CLS_UpdateInfoWarrior-----CLS_UPDATEINFOWARRIOR-----</p>
+<p>byte Mode</p>
+<p>CLS_WarriorInfo WarriorInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_PushUpdate 推送 玩家信息 更新</h1>
+<p>-----G2C_Info_PushUpdate-----G2C_INFO_PUSHUPDATE-----</p>
+<p>List[CLS_UpdateInfoItem] ListUpdateItem</p>
+<p>List[CLS_UpdateInfoEquip] ListUpdateEquip</p>
+<p>List[CLS_UpdateInfoWarrior] ListUpdateWarrior</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_ChangeName 请求 更改姓名</h1>
+<p>-----C2G_Info_ChangeName-----C2G_INFO_CHANGENAME-----</p>
+<p>string Name</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_ChangeName 返回 更改姓名</h1>
+<p>-----G2C_Info_ChangeName-----G2C_INFO_CHANGENAME-----</p>
+<p>string Name</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_ChangeFlagClient 请求 更改客户端特殊标记</h1>
+<p>-----C2G_Info_ChangeFlagClient-----C2G_INFO_CHANGEFLAGCLIENT-----</p>
+<p>int FlagKey</p>
+<p>int FlagValue</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_ChangeFlagClient 返回 更改客户端特殊标记</h1>
+<p>-----G2C_Info_ChangeFlagClient-----G2C_INFO_CHANGEFLAGCLIENT-----</p>
+<p>int FlagKey</p>
+<p>int FlagValue</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_ChangeHeadIndex 请求 更换头像</h1>
+<p>-----C2G_Info_ChangeHeadIndex-----C2G_INFO_CHANGEHEADINDEX-----</p>
+<p>int HeadIndex  //头像序号(序号为0时使用图像数据)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_ChangeHeadIndex 返回 更换头像</h1>
+<p>-----G2C_Info_ChangeHeadIndex-----G2C_INFO_CHANGEHEADINDEX-----</p>
+<p>int HeadIndex  //头像序号(序号为0时使用图像数据)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_ChangeHeadData 请求 上传头像数据</h1>
+<p>-----C2G_Info_ChangeHeadData-----C2G_INFO_CHANGEHEADDATA-----</p>
+<p>List[byte] HeadData  //头像数据</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_ChangeHeadData 返回 上传头像数据</h1>
+<p>-----G2C_Info_ChangeHeadData-----G2C_INFO_CHANGEHEADDATA-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_SubmitBug 请求 反馈问题</h1>
+<p>-----C2G_Info_SubmitBug-----C2G_INFO_SUBMITBUG-----</p>
+<p>string Text</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_SubmitBug 返回 反馈问题</h1>
+<p>-----G2C_Info_SubmitBug-----G2C_INFO_SUBMITBUG-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_NotifyLevelUp 通知 玩家升级</h1>
+<p>-----G2C_Info_NotifyLevelUp-----G2C_INFO_NOTIFYLEVELUP-----</p>
+<p>CLS_ValueChangeInfo ChangeLevel  //等级变化</p>
+<p>CLS_ValueChangeInfo ChangeExp  //经验变化</p>
+<p>CLS_ValueChangeInfo ChangeSpirit  //体力变化</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_PlayerData 请求 玩家单条信息</h1>
+<p>-----C2G_Info_PlayerData-----C2G_INFO_PLAYERDATA-----</p>
+<p>long Id  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_PlayerData 返回 玩家单条信息</h1>
+<p>-----G2C_Info_PlayerData-----G2C_INFO_PLAYERDATA-----</p>
+<p>CLS_PlayerData PlayerInfo  //玩家单条信息</p>
+<p>bool bFriend  //是否是好友</p>
+<p>bool bScreen  //是否已屏蔽</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Info_ChangeSignature 请求 更改个人签名</h1>
+<p>-----C2G_Info_ChangeSignature-----C2G_INFO_CHANGESIGNATURE-----</p>
+<p>string Signature</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Info_ChangeSignature 返回 更改个人签名</h1>
+<p>-----G2C_Info_ChangeSignature-----G2C_INFO_CHANGESIGNATURE-----</p>
+<p>string Signature</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>玩家进入游戏时弹出的游戏公告</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Notice_System 请求 系统公告</h1>
+<p>-----C2G_Notice_System-----C2G_NOTICE_SYSTEM-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Notice_System 返回 系统公告</h1>
+<p>-----G2C_Notice_System-----G2C_NOTICE_SYSTEM-----</p>
+<p>string Text  //内容</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Notice_Activity 请求 活动公告</h1>
+<p>-----C2G_Notice_Activity-----C2G_NOTICE_ACTIVITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Notice_Activity 返回 活动公告</h1>
+<p>-----G2C_Notice_Activity-----G2C_NOTICE_ACTIVITY-----</p>
+<p>List[string] ListText  //内容</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Notice_Rolling 发送 走马灯</h1>
+<p>-----G2C_Notice_Rolling-----G2C_NOTICE_ROLLING-----</p>
+<p>byte Type  //走马灯类型 见ENoticeRollingType</p>
+<p>string Text  //内容</p>
+<p>int Count  //播放次数</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>邮件</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_MailInfo 邮件信息</h1>
+<p>-----CLS_MailInfo-----CLS_MAILINFO-----</p>
+<p>long Id  //邮件ID</p>
+<p>short MailType  //邮件类型</p>
+<p>string Title  //标题</p>
+<p>bool HasAttachments  //是否有附件</p>
+<p>bool Readed  //已读</p>
+<p>bool Got  //已领</p>
+<p>bool Saved  //保存</p>
+<p>string CreateTime  //发送时间</p>
+<p>bool Sended  //已发邮件</p>
+<p>string ReceiveName  //收件人(已发邮件生效 个人邮件:名字 郡邮件:郡ID 府邮件:府ID)</p>
+<p>string SenderName  //发件人名字</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_MailInfoDetails 邮件信息 详细</h1>
+<p>-----CLS_MailInfoDetails-----CLS_MAILINFODETAILS-----</p>
+<p>long Id  //邮件ID</p>
+<p>CLS_MailInfo MailInfo  //邮件信息</p>
+<p>string Body  //正文</p>
+<p>List[CLS_AwardItem] listAward  //附件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_MailInfoSend 邮件信息 发送</h1>
+<p>-----CLS_MailInfoSend-----CLS_MAILINFOSEND-----</p>
+<p>short MailType</p>
+<p>string Title  //标题</p>
+<p>string Body  //正文</p>
+<p>string SenderName  //发件人名字</p>
+<p>string ReceiveName  //收件人名字</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_SystemMailInfoSend  系统给玩家发送邮件信息</h1>
+<p>-----CLS_SystemMailInfoSend-----CLS_SYSTEMMAILINFOSEND-----</p>
+<p>long Id  //邮件ID</p>
+<p>short TargetType</p>
+<p>List[string] ListTarget  //接收者列表</p>
+<p>string Title  //标题</p>
+<p>string Body  //正文</p>
+<p>string SenderName  //邮件发送者</p>
+<p>List[CLS_AwardItem] ListAttachments  //附件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_List 请求 邮件列表</h1>
+<p>-----C2G_Mail_List-----C2G_MAIL_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_List 返回 邮件列表</h1>
+<p>-----G2C_Mail_List-----G2C_MAIL_LIST-----</p>
+<p>List[CLS_MailInfo] ListMail  //邮件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_Read 请求 邮件读取</h1>
+<p>-----C2G_Mail_Read-----C2G_MAIL_READ-----</p>
+<p>long Id  //邮件ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_Read 返回 邮件读取</h1>
+<p>-----G2C_Mail_Read-----G2C_MAIL_READ-----</p>
+<p>long Id  //邮件ID</p>
+<p>CLS_MailInfoDetails Details  //邮件信息详细</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_Get 请求 邮件领取附件</h1>
+<p>-----C2G_Mail_Get-----C2G_MAIL_GET-----</p>
+<p>long Id  //邮件ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_Get 返回 邮件领取附件</h1>
+<p>-----G2C_Mail_Get-----G2C_MAIL_GET-----</p>
+<p>long Id  //邮件ID</p>
+<p>List[CLS_AwardItem] listAward  //附件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_GetAll 请求 邮件一键领取</h1>
+<p>-----C2G_Mail_GetAll-----C2G_MAIL_GETALL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_GetAll 返回 邮件一键领取</h1>
+<p>-----G2C_Mail_GetAll-----G2C_MAIL_GETALL-----</p>
+<p>List[CLS_AwardItem] listAward  //附件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_Delete 请求 邮件删除</h1>
+<p>-----C2G_Mail_Delete-----C2G_MAIL_DELETE-----</p>
+<p>long Id  //邮件ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_Delete 返回 邮件删除</h1>
+<p>-----G2C_Mail_Delete-----G2C_MAIL_DELETE-----</p>
+<p>long Id  //邮件ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_DeleteReaded 请求 邮件清理已读</h1>
+<p>-----C2G_Mail_DeleteReaded-----C2G_MAIL_DELETEREADED-----</p>
+<p>short MailType  //要删除的当前页面类型</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_DeleteReaded 返回 邮件清理已读</h1>
+<p>-----G2C_Mail_DeleteReaded-----G2C_MAIL_DELETEREADED-----</p>
+<p>List[CLS_MailInfo] ListMail  //刷新后邮件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_Save 请求 邮件保存/取消保存</h1>
+<p>-----C2G_Mail_Save-----C2G_MAIL_SAVE-----</p>
+<p>long Id  //邮件ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_Save 返回 邮件保存/取消保存</h1>
+<p>-----G2C_Mail_Save-----G2C_MAIL_SAVE-----</p>
+<p>long Id  //邮件ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Mail_Send 请求 邮件发送</h1>
+<p>-----C2G_Mail_Send-----C2G_MAIL_SEND-----</p>
+<p>CLS_MailInfoSend MailInfoSend  //邮件发送信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Mail_Send 返回 邮件发送</h1>
+<p>-----G2C_Mail_Send-----G2C_MAIL_SEND-----</p>
+<p>CLS_MailInfo MailInfo  //新加的已发邮件列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>聊天</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_ChatPlayerBase 聊天玩家信息</h1>
+<p>-----CLS_ChatPlayerBase-----CLS_CHATPLAYERBASE-----</p>
+<p>long Puid  //玩家唯一ID</p>
+<p>string Name  //名字</p>
+<p>int HeadIndex  //头像序号</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ChatMsg 聊天信息</h1>
+<p>-----CLS_ChatMsg-----CLS_CHATMSG-----</p>
+<p>DateTime ChatTime  //消息时间</p>
+<p>short Channel  //聊天频道 见EChatChannel</p>
+<p>CLS_ChatPlayerBase SenderInfo  //发送者信息</p>
+<p>string Text  //文本</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ChatList 私聊记录</h1>
+<p>-----CLS_ChatList-----CLS_CHATLIST-----</p>
+<p>CLS_ChatPlayerBase Info  //对方信息</p>
+<p>List[CLS_ChatMsg] ListChatMsgs</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Chat_Send 请求 聊天信息发送</h1>
+<p>-----C2G_Chat_Send-----C2G_CHAT_SEND-----</p>
+<p>short Channel  //聊天频道 见EChatChannel</p>
+<p>string Text  //文本</p>
+<p>long Uid  //对方唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Chat_Send 返回 聊天信息发送</h1>
+<p>-----G2C_Chat_Send-----G2C_CHAT_SEND-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Chat_Receive 通知 聊天信息接收</h1>
+<p>-----G2C_Chat_Receive-----G2C_CHAT_RECEIVE-----</p>
+<p>List[CLS_ChatMsg] ListChatMsgs  //聊天信息列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Chat_GetPrivateChat 请求 请求私聊数据</h1>
+<p>-----C2G_Chat_GetPrivateChat-----C2G_CHAT_GETPRIVATECHAT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Chat_GetPrivateChat 返回 聊天信息发送</h1>
+<p>-----G2C_Chat_GetPrivateChat-----G2C_CHAT_GETPRIVATECHAT-----</p>
+<p>Dictionary[long, CLS_ChatList] DictChatInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Chat_Remove 请求 删除最近联系人</h1>
+<p>-----C2G_Chat_Remove-----C2G_CHAT_REMOVE-----</p>
+<p>long Uid</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Chat_Remove 返回 删除最近联系人</h1>
+<p>-----G2C_Chat_Remove-----G2C_CHAT_REMOVE-----</p>
+<p>long Uid</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>好友</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_FriendInfo 玩家单条信息</h1>
+<p>-----CLS_FriendInfo-----CLS_FRIENDINFO-----</p>
+<p>long Uid  //玩家唯一ID</p>
+<p>int HeadIndex  //头像</p>
+<p>string Name  //名字</p>
+<p>int Level  //等级</p>
+<p>string Signature  //个人签名</p>
+<p>int GiveState  //体力状态：1-可领取 2-可赠送 3-已赠送</p>
+<p>bool bOnline  //是否在线</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_List 请求 好友列表</h1>
+<p>-----C2G_Friend_List-----C2G_FRIEND_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_List 返回 好友列表</h1>
+<p>-----G2C_Friend_List-----G2C_FRIEND_LIST-----</p>
+<p>List[CLS_FriendInfo] ListItem  //好友列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_ListApply 请求 申请列表</h1>
+<p>-----C2G_Friend_ListApply-----C2G_FRIEND_LISTAPPLY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_ListApply 返回 申请列表</h1>
+<p>-----G2C_Friend_ListApply-----G2C_FRIEND_LISTAPPLY-----</p>
+<p>List[CLS_FriendInfo] ListItem  //申请列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_ListRecommend 请求 推荐列表</h1>
+<p>-----C2G_Friend_ListRecommend-----C2G_FRIEND_LISTRECOMMEND-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_ListRecommend 返回 推荐列表</h1>
+<p>-----G2C_Friend_ListRecommend-----G2C_FRIEND_LISTRECOMMEND-----</p>
+<p>List[CLS_FriendInfo] ListItem  //推荐列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_Apply 请求 申请好友</h1>
+<p>-----C2G_Friend_Apply-----C2G_FRIEND_APPLY-----</p>
+<p>long Uid  //对象玩家唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_Apply 返回 申请好友</h1>
+<p>-----G2C_Friend_Apply-----G2C_FRIEND_APPLY-----</p>
+<p>long Uid  //对象玩家唯一ID</p>
+<p>bool bFriend</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_Add 请求 添加好友</h1>
+<p>-----C2G_Friend_Add-----C2G_FRIEND_ADD-----</p>
+<p>bool bAgree  //是否同意</p>
+<p>bool bAll  //是否全部</p>
+<p>long Uid  //对象玩家唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_Add 返回 添加好友</h1>
+<p>-----G2C_Friend_Add-----G2C_FRIEND_ADD-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_Remove 请求 请求删除</h1>
+<p>-----C2G_Friend_Remove-----C2G_FRIEND_REMOVE-----</p>
+<p>long Uid  //对象玩家唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_Remove 返回 请求删除</h1>
+<p>-----G2C_Friend_Remove-----G2C_FRIEND_REMOVE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_Give 请求 赠送体力</h1>
+<p>-----C2G_Friend_Give-----C2G_FRIEND_GIVE-----</p>
+<p>bool bAll  //全部赠送</p>
+<p>long Uid  //对象玩家唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_Give 返回 赠送体力</h1>
+<p>-----G2C_Friend_Give-----G2C_FRIEND_GIVE-----</p>
+<p>int total  //赠送体力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_Receive 请求 领取体力</h1>
+<p>-----C2G_Friend_Receive-----C2G_FRIEND_RECEIVE-----</p>
+<p>bool bAll  //全部领取</p>
+<p>long Uid  //对象玩家唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_Receive 返回 领取体力</h1>
+<p>-----G2C_Friend_Receive-----G2C_FRIEND_RECEIVE-----</p>
+<p>int total  //领取体力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Friend_Screen 请求 屏蔽好友</h1>
+<p>-----C2G_Friend_Screen-----C2G_FRIEND_SCREEN-----</p>
+<p>long Uid  //对象玩家唯一ID</p>
+<p>bool bScreen  //是否屏蔽</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Friend_Screen 返回 屏蔽好友</h1>
+<p>-----G2C_Friend_Screen-----G2C_FRIEND_SCREEN-----</p>
+<p>long Uid  //对象玩家唯一ID</p>
+<p>bool bScreen  //是否屏蔽</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>世界地图</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_MapCitySimple 城池信息简单</h1>
+<p>-----CLS_MapCitySimple-----CLS_MAPCITYSIMPLE-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>byte Ownership  //城池归属 EOwnership</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Map_ListCity 请求 城池列表</h1>
+<p>-----C2G_Map_ListCity-----C2G_MAP_LISTCITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Map_ListCity 返回 城池列表</h1>
+<p>-----G2C_Map_ListCity-----G2C_MAP_LISTCITY-----</p>
+<p>List[CLS_MapCitySimple] ListCity  //城池列表</p>
+<p>List[long] ListAlliance  //同盟势力</p>
+<p>List[int] ListGuildCityMy  //我方城池</p>
+<p>List[int] ListGuildCityAlliance  //同盟城池</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_MapCityInfo 城池信息</h1>
+<p>-----CLS_MapCityInfo-----CLS_MAPCITYINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>string GuildName  //占据势力名</p>
+<p>string LeaderName  //太守名</p>
+<p>long Prosperity  //繁荣度</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Map_CityInfo 请求 城池信息</h1>
+<p>-----C2G_Map_CityInfo-----C2G_MAP_CITYINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Map_CityInfo 返回 城池信息</h1>
+<p>-----G2C_Map_CityInfo-----G2C_MAP_CITYINFO-----</p>
+<p>CLS_MapCityInfo CityInfo  //城池信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_MapMyCityInfo 我方城池信息</h1>
+<p>-----CLS_MapMyCityInfo-----CLS_MAPMYCITYINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>long Prosperity  //繁荣度</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Map_ListMyCity 请求 我方城池列表</h1>
+<p>-----C2G_Map_ListMyCity-----C2G_MAP_LISTMYCITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Map_ListMyCity 返回 我方城池列表</h1>
+<p>-----G2C_Map_ListMyCity-----G2C_MAP_LISTMYCITY-----</p>
+<p>List[CLS_MapMyCityInfo] ListMyCity  //我方城池列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>道具</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_ItemInfo 道具信息</h1>
+<p>-----CLS_ItemInfo-----CLS_ITEMINFO-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>int Count  //数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_List 请求 道具列表</h1>
+<p>-----C2G_Item_List-----C2G_ITEM_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_List 返回 道具列表</h1>
+<p>-----G2C_Item_List-----G2C_ITEM_LIST-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_Sell 请求 道具卖店</h1>
+<p>-----C2G_Item_Sell-----C2G_ITEM_SELL-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>int Count  //数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_Sell 返回 道具卖店</h1>
+<p>-----G2C_Item_Sell-----G2C_ITEM_SELL-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_Use 请求 道具使用</h1>
+<p>-----C2G_Item_Use-----C2G_ITEM_USE-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>int Type  //类型0:使用，1:合成</p>
+<p>int Count  //数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_Use 返回 道具使用</h1>
+<p>-----G2C_Item_Use-----G2C_ITEM_USE-----</p>
+<p>int Type  //类型0:使用，1:合成</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_ResourcesList 请求 资源道具列表</h1>
+<p>-----C2G_Item_ResourcesList-----C2G_ITEM_RESOURCESLIST-----</p>
+<p>int Type  //道具类型 EUseEffect</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_ResourcesList 返回 资源道具列表</h1>
+<p>-----G2C_Item_ResourcesList-----G2C_ITEM_RESOURCESLIST-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_ResourcesUse 请求 资源道具使用</h1>
+<p>-----C2G_Item_ResourcesUse-----C2G_ITEM_RESOURCESUSE-----</p>
+<p>List[CLS_ItemInfo] Items  //道具</p>
+<p>int Type  //道具类型 EUseEffect</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_ResourcesUse 返回 资源道具使用</h1>
+<p>-----G2C_Item_ResourcesUse-----G2C_ITEM_RESOURCESUSE-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_ResourcesBuy 请求 资源道具购买</h1>
+<p>-----C2G_Item_ResourcesBuy-----C2G_ITEM_RESOURCESBUY-----</p>
+<p>int ID  //道具ID ShopSpeedUp表里的ID</p>
+<p>int Amount  //数量</p>
+<p>int Type  //道具类型 EUseEffect</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_ResourcesBuy 返回 资源道具购买</h1>
+<p>-----G2C_Item_ResourcesBuy-----G2C_ITEM_RESOURCESBUY-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Item_CombatUse 请求 战斗使用道具</h1>
+<p>-----C2G_Item_CombatUse-----C2G_ITEM_COMBATUSE-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>int Count  //数量</p>
+<p>int CombatType  //转发战斗效果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Item_CombatUse 返回 战斗使用道具</h1>
+<p>-----G2C_Item_CombatUse-----G2C_ITEM_COMBATUSE-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>int Count  //数量</p>
+<p>int CombatType  //转发战斗效果</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>装备</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_EquipSuffix 装备高级属性</h1>
+<p>-----CLS_EquipSuffix-----CLS_EQUIPSUFFIX-----</p>
+<p>int ConfigId  //配置ID</p>
+<p>int PassiveType  //属性类型 见EPassiveType</p>
+<p>float SuffixValue  //属性制</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_EquipInfo 装备信息</h1>
+<p>-----CLS_EquipInfo-----CLS_EQUIPINFO-----</p>
+<p>long Id  //装备唯一ID</p>
+<p>int ConfigId  //配置ID</p>
+<p>int EquipType  //装备类型 见EEquipType</p>
+<p>int Intensify  //强化等级</p>
+<p>Dictionary[int, float] CombatProperty  //战斗属性</p>
+<p>string MarkName  //自定义名称</p>
+<p>List[CLS_EquipSuffix] SuffixProperty</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_List 请求 装备列表</h1>
+<p>-----C2G_Equip_List-----C2G_EQUIP_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_List 返回 装备列表</h1>
+<p>-----G2C_Equip_List-----G2C_EQUIP_LIST-----</p>
+<p>int PageIndex  //页码1-n (返回每页100条) (0=结束)</p>
+<p>Dictionary[long, CLS_EquipInfo] DictEquip  //装备列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_WarriorList 请求 武将装备列表</h1>
+<p>-----C2G_Equip_WarriorList-----C2G_EQUIP_WARRIORLIST-----</p>
+<p>long Id  //武将唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_WarriorList 返回 武将装备列表</h1>
+<p>-----G2C_Equip_WarriorList-----G2C_EQUIP_WARRIORLIST-----</p>
+<p>Dictionary[int, CLS_EquipInfo] DictEquiped  //武将已装备列表<装备位置, 信息></p>
+<p>Dictionary[long, CLS_EquipInfo] DictEquip  //武将装备列表</p>
+<p>CLS_WarriorInfo WarriorInfo  //武将现信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_WarriorAll 请求 所有武将装备列表</h1>
+<p>-----C2G_Equip_WarriorAll-----C2G_EQUIP_WARRIORALL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_WarriorAll 返回 所有武将装备列表</h1>
+<p>-----G2C_Equip_WarriorAll-----G2C_EQUIP_WARRIORALL-----</p>
+<p>Dictionary[long, CLS_EquipInfo] DictEquip  //武将装备列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_WarriorWield 请求 武将装备运用</h1>
+<p>-----C2G_Equip_WarriorWield-----C2G_EQUIP_WARRIORWIELD-----</p>
+<p>long WarriorId  //武将唯一ID</p>
+<p>long Id  //装备唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_WarriorWield 返回 武将装备运用</h1>
+<p>-----G2C_Equip_WarriorWield-----G2C_EQUIP_WARRIORWIELD-----</p>
+<p>Dictionary[int, CLS_EquipInfo] DictEquiped  //武将已装备列表<装备位置, 信息></p>
+<p>Dictionary[long, CLS_EquipInfo] DictEquip  //武将装备列表</p>
+<p>CLS_WarriorInfo WarriorInfo  //武将现信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_WarriorRemove 请求 武将装备卸下</h1>
+<p>-----C2G_Equip_WarriorRemove-----C2G_EQUIP_WARRIORREMOVE-----</p>
+<p>long WarriorId  //武将唯一ID</p>
+<p>int EquipType  //装备位置(装备类型)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_WarriorRemove 返回 武将装备卸下</h1>
+<p>-----G2C_Equip_WarriorRemove-----G2C_EQUIP_WARRIORREMOVE-----</p>
+<p>Dictionary[int, CLS_EquipInfo] DictEquiped  //武将已装备列表<装备位置, 信息></p>
+<p>Dictionary[long, CLS_EquipInfo] DictEquip  //武将装备列表</p>
+<p>CLS_WarriorInfo WarriorInfo  //武将现信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_WarriorResolve 请求 武将装备分解</h1>
+<p>-----C2G_Equip_WarriorResolve-----C2G_EQUIP_WARRIORRESOLVE-----</p>
+<p>List[long] Id  //分解装备列表唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_WarriorResolve 返回 武将装备分解</h1>
+<p>-----G2C_Equip_WarriorResolve-----G2C_EQUIP_WARRIORRESOLVE-----</p>
+<p>List[CLS_AwardItem] ListAward</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_Rename 请求 装备修改名称</h1>
+<p>-----C2G_Equip_Rename-----C2G_EQUIP_RENAME-----</p>
+<p>string MarkName  //装备自定义名称</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_Rename 返回 装备修改名称</h1>
+<p>-----G2C_Equip_Rename-----G2C_EQUIP_RENAME-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_IntensifyInfo 请求 装备强化信息</h1>
+<p>-----C2G_Equip_IntensifyInfo-----C2G_EQUIP_INTENSIFYINFO-----</p>
+<p>long EquipID  //装备ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_IntensifyInfo 返回 装备强化信息</h1>
+<p>-----G2C_Equip_IntensifyInfo-----G2C_EQUIP_INTENSIFYINFO-----</p>
+<p>CLS_EquipIntensifyInfo IntensityInfo  //强化信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Equip_Intensify 请求 装备强化</h1>
+<p>-----C2G_Equip_Intensify-----C2G_EQUIP_INTENSIFY-----</p>
+<p>long EquipID  //装备ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Equip_Intensify 返回 装备强化</h1>
+<p>-----G2C_Equip_Intensify-----G2C_EQUIP_INTENSIFY-----</p>
+<p>CLS_EquipIntensifyInfo IntensityInfo  //强化信息</p>
+<p>int IntensifyResult  //结果 对应EIntensifyResult</p>
+<p>List[CLS_AwardItem] AwardItem  //产物</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_EquipIntensifyInfo 装备强化信息</h1>
+<p>-----CLS_EquipIntensifyInfo-----CLS_EQUIPINTENSIFYINFO-----</p>
+<p>int IntensityId  //强化等级</p>
+<p>float Atk  //攻击</p>
+<p>float Def  //防御</p>
+<p>int Hp  //兵力</p>
+<p>float Inte  //谋略</p>
+<p>float IntensityAtk  //强化后攻击</p>
+<p>float IntensityDef  //强化后防御</p>
+<p>float IntensityInte  //强化后谋略</p>
+<p>int IntensityHp  //强化后兵力</p>
+<p>int Gold  //银两消耗</p>
+<p>List[CLS_ItemNeedInfo] ListItemNeedInfo  //需求道具列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>武将</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_SkillInfo 技能信息</h1>
+<p>-----CLS_SkillInfo-----CLS_SKILLINFO-----</p>
+<p>int SkillId  //技能ID(配置ID SkillId)</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验值</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_WarriorCollect 组合信息</h1>
+<p>-----CLS_WarriorCollect-----CLS_WARRIORCOLLECT-----</p>
+<p>int CollectId  //组合ID(配置ID)</p>
+<p>bool Valid  //是否生效</p>
+<p>Dictionary[int, bool] DictHas  //已有武将配置ID<武将ID 是否有></p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_WarriorInfo 武将信息</h1>
+<p>-----CLS_WarriorInfo-----CLS_WARRIORINFO-----</p>
+<p>long Id  //唯一ID</p>
+<p>int ConfigId  //配置ID</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验</p>
+<p>string MarkName  //武将自定义名称</p>
+<p>bool Lock  //锁定</p>
+<p>bool InRecruit  //募兵</p>
+<p>bool InBattle  //上阵</p>
+<p>bool Captive  //被俘虏</p>
+<p>bool Employed  //被雇佣</p>
+<p>bool InArmy  //出征PVP</p>
+<p>bool InAffairs  //军务中</p>
+<p>bool InGrab  //矿点占领</p>
+<p>List[CLS_SkillInfo] ListSkill  //武将技能列表</p>
+<p>int AdvanceLv  //进阶等级</p>
+<p>float BaseAtk  //固定攻击</p>
+<p>float BaseDef  //固定防御</p>
+<p>int BaseHp  //固定生命</p>
+<p>float BaseInte  //固定谋略</p>
+<p>float BaseBreak  //固定攻城</p>
+<p>Dictionary[int, float] CombatProperty  //战斗属性</p>
+<p>int CurrentHp  //当前兵力</p>
+<p>int CombatPower  //战斗力</p>
+<p>Dictionary[int, CLS_EquipInfo] DictEquiped  //武将已装备列表<装备位置, 信息></p>
+<p>int Satr  //星级</p>
+<p>int WakeLevel  //觉醒等级</p>
+<p>Dictionary[int, int] DictWake  //武将觉醒列表<觉醒位置, 等级></p>
+<p>Dictionary[int, float] DictStremgthen  //武将强化列表<强化id, 值></p>
+<p>Dictionary[int, CLS_WarriorCollect] DictWarriorCollect  //武将组合列表<组合id, 组合内容></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_WarriorList 请求 武将列表</h1>
+<p>-----C2G_Warrior_WarriorList-----C2G_WARRIOR_WARRIORLIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_WarriorList 返回 武将列表</h1>
+<p>-----G2C_Warrior_WarriorList-----G2C_WARRIOR_WARRIORLIST-----</p>
+<p>List[CLS_WarriorInfo] ListWarrior  //武将列表</p>
+<p>List[long] ListInBattle  //上阵列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Lock 请求 武将锁定/解锁</h1>
+<p>-----C2G_Warrior_Lock-----C2G_WARRIOR_LOCK-----</p>
+<p>long Id  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Lock 返回 武将锁定/解锁</h1>
+<p>-----G2C_Warrior_Lock-----G2C_WARRIOR_LOCK-----</p>
+<p>long Id  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Advance 请求 武将进阶</h1>
+<p>-----C2G_Warrior_Advance-----C2G_WARRIOR_ADVANCE-----</p>
+<p>long Id  //唯一ID</p>
+<p>List[long] MateriaWarriorID  //材料武将ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Advance 返回 武将进阶</h1>
+<p>-----G2C_Warrior_Advance-----G2C_WARRIOR_ADVANCE-----</p>
+<p>CLS_WarriorInfo WarriorInfo  //武将信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Rename 请求 武将修改昵称</h1>
+<p>-----C2G_Warrior_Rename-----C2G_WARRIOR_RENAME-----</p>
+<p>long Id  //唯一ID</p>
+<p>string MarkName  //武将自定义名称</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Rename 返回 武将修改昵称</h1>
+<p>-----G2C_Warrior_Rename-----G2C_WARRIOR_RENAME-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_UpLevel 请求 武将升级</h1>
+<p>-----C2G_Warrior_UpLevel-----C2G_WARRIOR_UPLEVEL-----</p>
+<p>long Id  //唯一ID</p>
+<p>List[long] ListWarrior  //使用武将信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_UpLevel 返回 武将升级</h1>
+<p>-----G2C_Warrior_UpLevel-----G2C_WARRIOR_UPLEVEL-----</p>
+<p>long Id  //唯一ID</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_NotifyLevelUp 通知 武将升级</h1>
+<p>-----G2C_Warrior_NotifyLevelUp-----G2C_WARRIOR_NOTIFYLEVELUP-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_ImproveInfo 请求 武将培养信息</h1>
+<p>-----C2G_Warrior_ImproveInfo-----C2G_WARRIOR_IMPROVEINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_ImproveInfo 返回 武将培养信息</h1>
+<p>-----G2C_Warrior_ImproveInfo-----G2C_WARRIOR_IMPROVEINFO-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表(武将培养类)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Improve 请求 武将培养</h1>
+<p>-----C2G_Warrior_Improve-----C2G_WARRIOR_IMPROVE-----</p>
+<p>long Id  //唯一ID</p>
+<p>CLS_ItemInfo ItemInfo  //使用道具信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Improve 返回 武将培养</h1>
+<p>-----G2C_Warrior_Improve-----G2C_WARRIOR_IMPROVE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Star 请求 武将升星</h1>
+<p>-----C2G_Warrior_Star-----C2G_WARRIOR_STAR-----</p>
+<p>long Id  //升星武将唯一ID</p>
+<p>List[long] MateriaWarriorID  //材料武将ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Star 返回 武将升星</h1>
+<p>-----G2C_Warrior_Star-----G2C_WARRIOR_STAR-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Skill 请求 武将技能</h1>
+<p>-----C2G_Warrior_Skill-----C2G_WARRIOR_SKILL-----</p>
+<p>long Id  //武将唯一ID</p>
+<p>int Skill  //技能ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Skill 返回 武将技能</h1>
+<p>-----G2C_Warrior_Skill-----G2C_WARRIOR_SKILL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_WakeUnlock 请求 武将觉醒条件激活</h1>
+<p>-----C2G_Warrior_WakeUnlock-----C2G_WARRIOR_WAKEUNLOCK-----</p>
+<p>long Id  //武将唯一ID</p>
+<p>int Type  //激活类型  EWakeDataType</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_WakeUnlock 返回 武将觉醒条件激活</h1>
+<p>-----G2C_Warrior_WakeUnlock-----G2C_WARRIOR_WAKEUNLOCK-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_WakeInfo 请求 武将觉醒材料信息</h1>
+<p>-----C2G_Warrior_WakeInfo-----C2G_WARRIOR_WAKEINFO-----</p>
+<p>long Id  //武将唯一ID</p>
+<p>int Type  //激活类型  EWakeDataType</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_WakeInfo 返回 武将觉醒材料信息</h1>
+<p>-----G2C_Warrior_WakeInfo-----G2C_WARRIOR_WAKEINFO-----</p>
+<p>List[CLS_ItemNeedInfo] ListItemNeedInfo  //需求道具列表</p>
+<p>int maxStoryId  //最大关卡ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_WakeUp 请求 武将觉醒</h1>
+<p>-----C2G_Warrior_WakeUp-----C2G_WARRIOR_WAKEUP-----</p>
+<p>long Id  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_WakeUp 返回 武将觉醒</h1>
+<p>-----G2C_Warrior_WakeUp-----G2C_WARRIOR_WAKEUP-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_Sell 请求 武将出售</h1>
+<p>-----C2G_Warrior_Sell-----C2G_WARRIOR_SELL-----</p>
+<p>List[long] ListIds  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_Sell 返回 武将出售</h1>
+<p>-----G2C_Warrior_Sell-----G2C_WARRIOR_SELL-----</p>
+<p>int Money  //卖店价格</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>封地</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BuildingPlayerInfo 封地建筑信息</h1>
+<p>-----CLS_BuildingPlayerInfo-----CLS_BUILDINGPLAYERINFO-----</p>
+<p>int Id  //ID(位置)</p>
+<p>int BuildingType  //建筑类型</p>
+<p>int Level  //等级</p>
+<p>long Capacity  //容量</p>
+<p>long Stock  //库存</p>
+<p>long StoreCapacity  //仓库容量</p>
+<p>long StoreStock  //仓库库存</p>
+<p>long CapacityNextLevelAdd  //容量下一级增量</p>
+<p>bool IsInBuilding  //是否在建造中</p>
+<p>long BuildEndMs  //剩余毫秒数</p>
+<p>int YieldPerHour  //每小时产量</p>
+<p>int YieldPerHourNextLevelAdd  //每小时产量下一级增量</p>
+<p>TimeSpan CostTime  //建造消耗时间</p>
+<p>int CostGold  //建造消耗游戏币</p>
+<p>int CostFood  //建造消耗粮草</p>
+<p>int CostWood  //建造消耗木材</p>
+<p>int CostIron  //建造消耗铁矿</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_BuildingPlayerInfoSimple 封地建筑简易信息 用来推送</h1>
+<p>-----CLS_BuildingPlayerInfoSimple-----CLS_BUILDINGPLAYERINFOSIMPLE-----</p>
+<p>int Id  //ID(位置)</p>
+<p>long Stock  //库存</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_BuildingPlayer_List 请求 封地建筑列表</h1>
+<p>-----C2G_BuildingPlayer_List-----C2G_BUILDINGPLAYER_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_List 返回 封地建筑列表</h1>
+<p>-----G2C_BuildingPlayer_List-----G2C_BUILDINGPLAYER_LIST-----</p>
+<p>Dictionary[int, CLS_BuildingPlayerInfo] DictBuilding  //封地建筑列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_PushInfoSimple 推送 封地建筑简易信息</h1>
+<p>-----G2C_BuildingPlayer_PushInfoSimple-----G2C_BUILDINGPLAYER_PUSHINFOSIMPLE-----</p>
+<p>Dictionary[int, CLS_BuildingPlayerInfoSimple] DictBuilding  //封地建筑简易信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_BuildingPlayer_Harvest 请求 封地建筑收获</h1>
+<p>-----C2G_BuildingPlayer_Harvest-----C2G_BUILDINGPLAYER_HARVEST-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_Harvest 返回 封地建筑收获</h1>
+<p>-----G2C_BuildingPlayer_Harvest-----G2C_BUILDINGPLAYER_HARVEST-----</p>
+<p>int CountHarvest  //收取数量</p>
+<p>CLS_BuildingPlayerInfo Building  //刷新建筑信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_BuildingPlayer_HarvestAll 请求 封地建筑一键收获</h1>
+<p>-----C2G_BuildingPlayer_HarvestAll-----C2G_BUILDINGPLAYER_HARVESTALL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_HarvestAll 返回 封地建筑一键收获</h1>
+<p>-----G2C_BuildingPlayer_HarvestAll-----G2C_BUILDINGPLAYER_HARVESTALL-----</p>
+<p>Dictionary[int, CLS_BuildingPlayerInfo] DictBuilding  //封地建筑列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_BuildingPlayer_Build 请求 封地建筑建造/升级</h1>
+<p>-----C2G_BuildingPlayer_Build-----C2G_BUILDINGPLAYER_BUILD-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_Build 返回 封地建筑建造/升级</h1>
+<p>-----G2C_BuildingPlayer_Build-----G2C_BUILDINGPLAYER_BUILD-----</p>
+<p>CLS_BuildingPlayerInfo Building  //刷新建筑信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_NotifyBuilt 通知建筑完成</h1>
+<p>-----G2C_BuildingPlayer_NotifyBuilt-----G2C_BUILDINGPLAYER_NOTIFYBUILT-----</p>
+<p>CLS_BuildingPlayerInfo Building  //刷新建筑信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_SmithSimple 匠工坊单条信息 用来推送</h1>
+<p>-----CLS_SmithSimple-----CLS_SMITHSIMPLE-----</p>
+<p>int Id  //ID</p>
+<p>List[CLS_ItemNeedInfo] ListItemNeedInfo  //需求道具列表</p>
+<p>bool Lock  //是否解锁</p>
+<p>int num  //已有数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Smith_Start 请求 匠工坊列表</h1>
+<p>-----C2G_Smith_Start-----C2G_SMITH_START-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Smith_Start 返回 匠工坊列表</h1>
+<p>-----G2C_Smith_Start-----G2C_SMITH_START-----</p>
+<p>Dictionary[int, CLS_SmithSimple] DicSmithInfo  //唯一ID列表  匠工房制作消耗</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Smith_Do 请求 匠工坊制作</h1>
+<p>-----C2G_Smith_Do-----C2G_SMITH_DO-----</p>
+<p>int ID  //唯一ID</p>
+<p>int Count  //制作数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Smith_Do 返回 匠工坊制作 产出</h1>
+<p>-----G2C_Smith_Do-----G2C_SMITH_DO-----</p>
+<p>List[CLS_AwardItem] Items  //匠工房产出</p>
+<p>List[CLS_EquipInfo] EquipInfo  //装备信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ScienceInfo 兵法信息</h1>
+<p>-----CLS_ScienceInfo-----CLS_SCIENCEINFO-----</p>
+<p>int ScienceType  //兵法类型</p>
+<p>int Level  //等级</p>
+<p>int ConfigID  //配置ID</p>
+<p>bool IsInLearning  //是否在建造中</p>
+<p>long LearnEndMs  //剩余毫秒数</p>
+<p>long CompleteNeed  //立即完成需要金币</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Science_List 请求 兵法列表</h1>
+<p>-----C2G_Science_List-----C2G_SCIENCE_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Science_List 返回 兵法列表</h1>
+<p>-----G2C_Science_List-----G2C_SCIENCE_LIST-----</p>
+<p>Dictionary[int, CLS_ScienceInfo] DictScience  //兵法列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Science_Learn 请求 兵法研究</h1>
+<p>-----C2G_Science_Learn-----C2G_SCIENCE_LEARN-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Science_Learn 返回 兵法研究</h1>
+<p>-----G2C_Science_Learn-----G2C_SCIENCE_LEARN-----</p>
+<p>CLS_ScienceInfo Info  //兵法信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Science_Info 请求 兵法信息</h1>
+<p>-----C2G_Science_Info-----C2G_SCIENCE_INFO-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Science_Info 返回 兵法信息</h1>
+<p>-----G2C_Science_Info-----G2C_SCIENCE_INFO-----</p>
+<p>CLS_ScienceInfo Info  //兵法信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Science_Cancel 请求 兵法取消研究</h1>
+<p>-----C2G_Science_Cancel-----C2G_SCIENCE_CANCEL-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Science_Cancel 返回 兵法取消研究</h1>
+<p>-----G2C_Science_Cancel-----G2C_SCIENCE_CANCEL-----</p>
+<p>CLS_ScienceInfo Info  //兵法信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Science_Notify 通知兵法完成</h1>
+<p>-----G2C_Science_Notify-----G2C_SCIENCE_NOTIFY-----</p>
+<p>CLS_ScienceInfo ScienceInfo  //刷新兵法信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_RecruitInfo 兵营募兵信息</h1>
+<p>-----CLS_RecruitInfo-----CLS_RECRUITINFO-----</p>
+<p>int Id  //ID(位置)</p>
+<p>byte ERecruitStatus  //募兵状态 ERecruitStatus</p>
+<p>DateTime DtRecruitStart  //募兵开始时间</p>
+<p>DateTime DtRecruitEnd  //募兵结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Recruit_Info 请求 兵营募兵信息</h1>
+<p>-----C2G_Recruit_Info-----C2G_RECRUIT_INFO-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Recruit_Info 返回 兵营募兵信息</h1>
+<p>-----G2C_Recruit_Info-----G2C_RECRUIT_INFO-----</p>
+<p>int Id  //ID(位置)</p>
+<p>CLS_RecruitInfo RecruitInfo  //兵营募兵信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Recruit_Start 请求 兵营募兵</h1>
+<p>-----C2G_Recruit_Start-----C2G_RECRUIT_START-----</p>
+<p>int Id  //ID(位置)</p>
+<p>int Count  //数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Recruit_Start 返回 兵营募兵</h1>
+<p>-----G2C_Recruit_Start-----G2C_RECRUIT_START-----</p>
+<p>int Id  //ID(位置)</p>
+<p>int Count  //数量</p>
+<p>CLS_RecruitInfo RecruitInfo  //兵营募兵信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Recruit_NotifyComplete 通知募兵完成</h1>
+<p>-----G2C_Recruit_NotifyComplete-----G2C_RECRUIT_NOTIFYCOMPLETE-----</p>
+<p>CLS_BuildingPlayerInfo Building  //刷新建筑信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Player_SpeedupInfo 请求 通用加速信息</h1>
+<p>-----C2G_Player_SpeedupInfo-----C2G_PLAYER_SPEEDUPINFO-----</p>
+<p>int Id  //ID(位置)</p>
+<p>int Type  //类型ESpeedup</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Player_SpeedupInfo 返回 通用加速信息</h1>
+<p>-----G2C_Player_SpeedupInfo-----G2C_PLAYER_SPEEDUPINFO-----</p>
+<p>long EndMs  //剩余毫秒数</p>
+<p>long CompleteNeed  //立即完成需要金币</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表(加速类)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_BuildingPlayer_SpeedupComplete 请求 封地建筑建造加速立即完成</h1>
+<p>-----C2G_BuildingPlayer_SpeedupComplete-----C2G_BUILDINGPLAYER_SPEEDUPCOMPLETE-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_BuildingPlayer_SpeedupComplete 返回 封地建筑建造加速立即完成</h1>
+<p>-----G2C_BuildingPlayer_SpeedupComplete-----G2C_BUILDINGPLAYER_SPEEDUPCOMPLETE-----</p>
+<p>CLS_BuildingPlayerInfo Building  //刷新建筑信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Recruit_Speedup 请求 兵营募兵加速</h1>
+<p>-----C2G_Recruit_Speedup-----C2G_RECRUIT_SPEEDUP-----</p>
+<p>int Id  //ID(位置)</p>
+<p>int Type  //类型ESpeedup</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Recruit_Speedup 返回 兵营募兵加速</h1>
+<p>-----G2C_Recruit_Speedup-----G2C_RECRUIT_SPEEDUP-----</p>
+<p>int Id  //ID(位置)</p>
+<p>CLS_RecruitInfo RecruitInfo  //兵营募兵信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Science_Fast 请求 兵法立即研究或加速信息</h1>
+<p>-----C2G_Science_Fast-----C2G_SCIENCE_FAST-----</p>
+<p>int Id  //ID(位置)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Science_Fast 返回 兵法立即研究或加速信息</h1>
+<p>-----G2C_Science_Fast-----G2C_SCIENCE_FAST-----</p>
+<p>CLS_ScienceInfo Info  //兵法信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Player_SpeedupBuy 请求 加速道具购买</h1>
+<p>-----C2G_Player_SpeedupBuy-----C2G_PLAYER_SPEEDUPBUY-----</p>
+<p>int Id  //ID ShopSpeedUp表里的ID</p>
+<p>int Amount  //数量</p>
+<p>int Type  //类型ESpeedup</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Player_SpeedupBuy 返回 加速道具购买</h1>
+<p>-----G2C_Player_SpeedupBuy-----G2C_PLAYER_SPEEDUPBUY-----</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表(加速类)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Player_Speedup 请求 加速使用道具</h1>
+<p>-----C2G_Player_Speedup-----C2G_PLAYER_SPEEDUP-----</p>
+<p>int Id  //ID(位置)</p>
+<p>List[CLS_ItemInfo] Items  //道具</p>
+<p>int Type  //类型ESpeedup</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Player_Speedup 返回 加速使用道具</h1>
+<p>-----G2C_Player_Speedup-----G2C_PLAYER_SPEEDUP-----</p>
+<p>int Type  //类型ESpeedup</p>
+<p>CLS_BuildingPlayerInfo Building  //刷新建筑信息</p>
+<p>CLS_RecruitInfo RecruitInfo  //兵营募兵信息</p>
+<p>CLS_ScienceInfo ScienceInfo  //兵法信息</p>
+<p>List[CLS_ItemInfo] ListItem  //道具列表(加速类)</p>
+<p>long EndMs  //剩余毫秒数</p>
+<p>long CompleteNeed  //立即完成需要金币</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Help_Fast 请求 小助手</h1>
+<p>-----C2G_Help_Fast-----C2G_HELP_FAST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Help_Fast 返回 小助手</h1>
+<p>-----G2C_Help_Fast-----G2C_HELP_FAST-----</p>
+<p>CLS_BuildingPlayerInfo Building1  //建筑队列1信息</p>
+<p>CLS_BuildingPlayerInfo Building2  //建筑队列2信息</p>
+<p>CLS_ScienceInfo ScienceInfo  //兵法信息</p>
+<p>CLS_RecruitInfo RecruitInfoBu  //步兵营募兵信息</p>
+<p>CLS_RecruitInfo RecruitInfoQi  //骑兵营募兵信息</p>
+<p>CLS_RecruitInfo RecruitInfoGong  //弓兵营募兵信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>城池</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_CityInfoBase 城池信息</h1>
+<p>-----CLS_CityInfoBase-----CLS_CITYINFOBASE-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>long LeaderPuid  //太守Id</p>
+<p>string LeaderName  //太守名字</p>
+<p>long Prosperity  //繁荣度</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_CityInfo4Guild 势力城池信息</h1>
+<p>-----CLS_CityInfo4Guild-----CLS_CITYINFO4GUILD-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>long LeaderPuid  //太守Id</p>
+<p>string LeaderName  //太守名字</p>
+<p>long Prosperity  //繁荣度</p>
+<p>int Revenue  //本周收入(府库库存)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_City_CityInfo 请求 城池信息</h1>
+<p>-----C2G_City_CityInfo-----C2G_CITY_CITYINFO-----</p>
+<p>int Uid  //城池唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_City_CityInfo 返回 城池信息</h1>
+<p>-----G2C_City_CityInfo-----G2C_CITY_CITYINFO-----</p>
+<p>CLS_CityInfoBase CityInfo  //城池信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_City_ListCity 请求 城池列表</h1>
+<p>-----C2G_City_ListCity-----C2G_CITY_LISTCITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_City_ListCity 返回 城池列表</h1>
+<p>-----G2C_City_ListCity-----G2C_CITY_LISTCITY-----</p>
+<p>int CapitalCity  //都城ID</p>
+<p>Dictionary[int, CLS_CityInfoBase] DictCity  //城池列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_City_DepotInfo 请求 府库</h1>
+<p>-----C2G_City_DepotInfo-----C2G_CITY_DEPOTINFO-----</p>
+<p>int CityUid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_City_DepotInfo 返回 府库</h1>
+<p>-----G2C_City_DepotInfo-----G2C_CITY_DEPOTINFO-----</p>
+<p>long Prosperity  //繁荣度</p>
+<p>int RevenueDay  //本日预期收益</p>
+<p>int RevenueAll  //本期预期收益</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>城池建筑</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BuildingItemNeedInfo 建筑道具需求</h1>
+<p>-----CLS_BuildingItemNeedInfo-----CLS_BUILDINGITEMNEEDINFO-----</p>
+<p>int ItemId  //道具Id</p>
+<p>int Built  //已建</p>
+<p>int Need  //需求</p>
+<p>int Value  //自己拥有</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_CityBuildingInfo 城池建筑信息</h1>
+<p>-----CLS_CityBuildingInfo-----CLS_CITYBUILDINGINFO-----</p>
+<p>int Pos  //(位置)</p>
+<p>int BuildingType  //建筑类型</p>
+<p>int Level  //等级</p>
+<p>Dictionary[int, CLS_BuildingItemNeedInfo] DictNeedInfo  //建筑道具需求</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_CityBuilding_List 请求 建筑列表</h1>
+<p>-----C2G_CityBuilding_List-----C2G_CITYBUILDING_LIST-----</p>
+<p>int Uid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_CityBuilding_List 返回 建筑列表</h1>
+<p>-----G2C_CityBuilding_List-----G2C_CITYBUILDING_LIST-----</p>
+<p>Dictionary[int, CLS_CityBuildingInfo] DictBuilding  //府城建筑列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_CityBuilding_Build 请求 建筑升级</h1>
+<p>-----C2G_CityBuilding_Build-----C2G_CITYBUILDING_BUILD-----</p>
+<p>int Uid  //城池ID</p>
+<p>int Pos  //(位置)</p>
+<p>Dictionary[int, int] DictBuildUse  //建筑使用(道具ID 数量)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_CityBuilding_Build 返回 建筑升级</h1>
+<p>-----G2C_CityBuilding_Build-----G2C_CITYBUILDING_BUILD-----</p>
+<p>CLS_CityBuildingInfo BuildingInfo  //建筑信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>城池城墙</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_CampWallInfo 守备营城墙信息</h1>
+<p>-----CLS_CampWallInfo-----CLS_CAMPWALLINFO-----</p>
+<p>int Uid  //唯一ID(1-5)(1=主营)</p>
+<p>CLS_CountInfo WallHp  //城墙耐久</p>
+<p>TimeSpan TsCooldownRepair  //可修复CD</p>
+<p>int Bowls  //滚木</p>
+<p>int Frise  //拒马</p>
+<p>int Trap  //陷阱</p>
+<p>Dictionary[int, CLS_ItemNeedInfo] DictNeedInfo  //建筑道具需求</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_WallInfo 城墙信息</h1>
+<p>-----CLS_WallInfo-----CLS_WALLINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>int Level  //等级</p>
+<p>Dictionary[int, CLS_CampWallInfo] DictCampWall  //守备营城墙信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Wall_Info 请求 城墙信息</h1>
+<p>-----C2G_Wall_Info-----C2G_WALL_INFO-----</p>
+<p>int CityUid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Wall_Info 返回 城墙信息</h1>
+<p>-----G2C_Wall_Info-----G2C_WALL_INFO-----</p>
+<p>int CityUid  //城池ID</p>
+<p>CLS_WallInfo WallInfo  //城墙信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Wall_Repair 请求 城墙修复</h1>
+<p>-----C2G_Wall_Repair-----C2G_WALL_REPAIR-----</p>
+<p>int CityUid  //城池ID</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Wall_Repair 返回 城墙修复</h1>
+<p>-----G2C_Wall_Repair-----G2C_WALL_REPAIR-----</p>
+<p>int CityUid  //城池ID</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>CLS_WallInfo WallInfo  //城墙信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Wall_MakeWork 请求 城墙建造器械</h1>
+<p>-----C2G_Wall_MakeWork-----C2G_WALL_MAKEWORK-----</p>
+<p>int CityUid  //城池ID</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>int WallWorkType  //城墙器械类型 EWallWorkType</p>
+<p>int MakeCount  //建造数目</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Wall_MakeWork 返回 城墙建造器械</h1>
+<p>-----G2C_Wall_MakeWork-----G2C_WALL_MAKEWORK-----</p>
+<p>int CityUid  //城池ID</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>int WallWorkType  //城墙器械类型 EWallWorkType</p>
+<p>int MakeCount  //建造数目</p>
+<p>CLS_WallInfo WallInfo  //城墙信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>城池守备营</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_CampNpcInfo 守军NPC信息</h1>
+<p>-----CLS_CampNpcInfo-----CLS_CAMPNPCINFO-----</p>
+<p>int Uid  //唯一ID(1-n)</p>
+<p>int StageId  //关卡配置ID</p>
+<p>bool IsAlive  //存活</p>
+<p>TimeSpan TsRevive  //剩余复活时间</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_CampInfo 守备营信息</h1>
+<p>-----CLS_CampInfo-----CLS_CAMPINFO-----</p>
+<p>int Uid  //唯一ID(1-5)(1=主营)</p>
+<p>Dictionary[int, CLS_CampNpcInfo] DictCampNpc  //守军NPC</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Camp_Info 请求 守备营信息</h1>
+<p>-----C2G_Camp_Info-----C2G_CAMP_INFO-----</p>
+<p>int CityUid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Camp_Info 返回 守备营信息</h1>
+<p>-----G2C_Camp_Info-----G2C_CAMP_INFO-----</p>
+<p>int CityUid  //城池ID</p>
+<p>Dictionary[int, CLS_CampInfo] DictCamp  //守备营信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>城池珍宝阁</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_City_ShopInfo 请求 城池珍宝阁信息</h1>
+<p>-----C2G_City_ShopInfo-----C2G_CITY_SHOPINFO-----</p>
+<p>int CityUid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_City_ShopInfo 返回 城池珍宝阁信息</h1>
+<p>-----G2C_City_ShopInfo-----G2C_CITY_SHOPINFO-----</p>
+<p>int CityUid  //城池ID</p>
+<p>List[CLS_ShopGoodsInfo] GoodsInfo  //商品信息</p>
+<p>Dictionary[int, int] SpecialtyGoodsInfo  //特产商品信息</p>
+<p>int Contribution  //拥有的贡献</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_City_ShopBuy 请求 处理城池珍宝阁购买</h1>
+<p>-----C2G_City_ShopBuy-----C2G_CITY_SHOPBUY-----</p>
+<p>int CityUid  //城池ID</p>
+<p>int Config  //配置ID</p>
+<p>int Amount  //数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_City_ShopBuy 返回 处理城池珍宝阁购买</h1>
+<p>-----G2C_City_ShopBuy-----G2C_CITY_SHOPBUY-----</p>
+<p>List[CLS_ShopGoodsInfo] GoodsInfo  //商品信息</p>
+<p>int Contribution  //拥有的贡献</p>
+<p>int CityUid  //城池ID</p>
+<p>Dictionary[int, int] SpecialtyGoodsInfo  //特产商品信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>商城</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_ShopPageInfo 商城页面信息</h1>
+<p>-----CLS_ShopPageInfo-----CLS_SHOPPAGEINFO-----</p>
+<p>int Id  //ID</p>
+<p>Dictionary[int, CLS_ShopGoodsInfo] DictGoods  //商品列表</p>
+<p>int Cooldown  //剩余刷新时间 -1=无限制</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ShopGoodsInfo 商城货物信息</h1>
+<p>-----CLS_ShopGoodsInfo-----CLS_SHOPGOODSINFO-----</p>
+<p>int Id  //ID</p>
+<p>int Count  //已有数量</p>
+<p>int AmoutCanBuy  //可买数量 -1=无限制</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Shop_List 请求 商城列表</h1>
+<p>-----C2G_Shop_List-----C2G_SHOP_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Shop_List 返回 商城列表</h1>
+<p>-----G2C_Shop_List-----G2C_SHOP_LIST-----</p>
+<p>Dictionary[int, CLS_ShopPageInfo] DictPage  //商城页面</p>
+<p>int RefreshTotal  //钻石商城累计刷新次数</p>
+<p>int RefreshCost  //钻石商城当前刷新消耗</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Shop_Buy 请求 商城购买</h1>
+<p>-----C2G_Shop_Buy-----C2G_SHOP_BUY-----</p>
+<p>int Id  //ID</p>
+<p>int Amount  //购买数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Shop_Buy 返回 商城购买</h1>
+<p>-----G2C_Shop_Buy-----G2C_SHOP_BUY-----</p>
+<p>Dictionary[int, CLS_ShopPageInfo] DictPage  //商城页面</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Shop_QuickBuy 请求 商城快捷购买</h1>
+<p>-----C2G_Shop_QuickBuy-----C2G_SHOP_QUICKBUY-----</p>
+<p>int Id  //ID</p>
+<p>int Amount  //购买数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Shop_QuickBuy 返回 商城快捷购买</h1>
+<p>-----G2C_Shop_QuickBuy-----G2C_SHOP_QUICKBUY-----</p>
+<p>int Id  //ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Refresh_Diamond_Store 请求 刷新钻石商城</h1>
+<p>-----C2G_Refresh_Diamond_Store-----C2G_REFRESH_DIAMOND_STORE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Refresh_Diamond_Store 返回 刷新钻石商城</h1>
+<p>-----G2C_Refresh_Diamond_Store-----G2C_REFRESH_DIAMOND_STORE-----</p>
+<p>int RefreshTotal  //累计刷新次数</p>
+<p>int RefreshCost  //当前刷新消耗</p>
+<p>Dictionary[int, CLS_ShopPageInfo] DictPage  //商城页面</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Shop_BuyWarriorBag 请求 商城购买武将背包上限</h1>
+<p>-----C2G_Shop_BuyWarriorBag-----C2G_SHOP_BUYWARRIORBAG-----</p>
+<p>int Id  //ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Shop_BuyWarriorBag 返回 商城购买武将背包上限</h1>
+<p>-----G2C_Shop_BuyWarriorBag-----G2C_SHOP_BUYWARRIORBAG-----</p>
+<p>int Id  //ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Buy_Gold 请求 金币兑换</h1>
+<p>-----C2G_Buy_Gold-----C2G_BUY_GOLD-----</p>
+<p>int times</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Buy_Gold 返回</h1>
+<p>-----G2C_Buy_Gold-----G2C_BUY_GOLD-----</p>
+<p>int addGold  //增加的金币</p>
+<p>int useGem  //消耗的元宝</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>交易所</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_DesignInfo 单子信息</h1>
+<p>-----CLS_DesignInfo-----CLS_DESIGNINFO-----</p>
+<p>long Id  //单号 唯一ID</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>long Puid  //挂单玩家唯一ID</p>
+<p>string Name  //挂单玩家名字</p>
+<p>long Price  //单手价格(每手100)</p>
+<p>long Count  //挂单数量</p>
+<p>DateTime DtExpire  //到期时间</p>
+<p>TimeSpan TsRemainder  //剩余时间</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_TransactionInfo 上次交易信息</h1>
+<p>-----CLS_TransactionInfo-----CLS_TRANSACTIONINFO-----</p>
+<p>long Price  //成交单价(每手100)</p>
+<p>DateTime DtTransaction  //交易时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Exchange_List 请求 挂单列表</h1>
+<p>-----C2G_Exchange_List-----C2G_EXCHANGE_LIST-----</p>
+<p>int DesignFlag  //交易类型 对应EDesignFlag</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>int PageIndex  //页码1-n</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Exchange_List 返回 挂单列表</h1>
+<p>-----G2C_Exchange_List-----G2C_EXCHANGE_LIST-----</p>
+<p>int DesignFlag  //交易类型 对应EDesignFlag</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>int PageIndex  //页码1-n</p>
+<p>int DesignCount  //单子总数目</p>
+<p>List[CLS_DesignInfo] ListDesign  //挂单列表</p>
+<p>CLS_TransactionInfo TransactionInfo  //上次交易信息(Price=0时未发生交易)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Exchange_Shelves 请求 挂单买卖</h1>
+<p>-----C2G_Exchange_Shelves-----C2G_EXCHANGE_SHELVES-----</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>long Price  //单手价格(每手100)</p>
+<p>long Count  //挂单数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Exchange_Shelves 返回 挂单买卖</h1>
+<p>-----G2C_Exchange_Shelves-----G2C_EXCHANGE_SHELVES-----</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>CLS_DesignInfo DesignInfo  //更新单子信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Exchange_Revoke 请求 挂单撤销</h1>
+<p>-----C2G_Exchange_Revoke-----C2G_EXCHANGE_REVOKE-----</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Exchange_Revoke 返回 挂单撤销</h1>
+<p>-----G2C_Exchange_Revoke-----G2C_EXCHANGE_REVOKE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Exchange_Transaction 请求 交易买卖</h1>
+<p>-----C2G_Exchange_Transaction-----C2G_EXCHANGE_TRANSACTION-----</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>long Id  //单号 唯一ID</p>
+<p>long Count  //交易数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Exchange_Transaction 返回 交易买卖</h1>
+<p>-----G2C_Exchange_Transaction-----G2C_EXCHANGE_TRANSACTION-----</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>CLS_DesignInfo DesignInfo  //更新单子信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_TransactionLog  交易信息</h1>
+<p>-----CLS_TransactionLog-----CLS_TRANSACTIONLOG-----</p>
+<p>int DesignMode  //交易方式 对应EDesignMode</p>
+<p>int MoneyType  //货币类型</p>
+<p>long Price  //交易单价</p>
+<p>long Count  //交易数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GetTransactionLogList 请求 交易记录</h1>
+<p>-----C2G_GetTransactionLogList-----C2G_GETTRANSACTIONLOGLIST-----</p>
+<p>int Type  //查询类型（1:购买记录;2:出售记录）</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GetTransactionLogList 返回 交易记录</h1>
+<p>-----G2C_GetTransactionLogList-----G2C_GETTRANSACTIONLOGLIST-----</p>
+<p>int Type  //查询类型（1:购买记录;2:出售记录）</p>
+<p>List[CLS_TransactionLog] ListTransactionLog  //交易记录</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>商会</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_AuctionInfoBase 商会单子信息 基础</h1>
+<p>-----CLS_AuctionInfoBase-----CLS_AUCTIONINFOBASE-----</p>
+<p>long Id  //单号 唯一ID</p>
+<p>long Puid  //挂单玩家唯一ID</p>
+<p>string Name  //挂单玩家名字</p>
+<p>long Price  //价格(单位：分)</p>
+<p>DateTime DtExpire  //到期时间</p>
+<p>TimeSpan TsRemainder  //剩余时间</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_AuctionInfoItem 商会单子信息 道具</h1>
+<p>-----CLS_AuctionInfoItem-----CLS_AUCTIONINFOITEM-----</p>
+<p>CLS_AuctionInfoBase AuctionInfoBase  //基础信息</p>
+<p>CLS_ItemInfo ItemInfo  //道具信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_ListItem 请求 商会列表 道具</h1>
+<p>-----C2G_Auction_ListItem-----C2G_AUCTION_LISTITEM-----</p>
+<p>int Order  //排序类型 对应EOrder</p>
+<p>int AuctionFlag  //交易类型 对应EAuctionFlag</p>
+<p>int SubType  //子类ID</p>
+<p>int PageIndex  //页码1-n (返回每页100条)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_ListItem 返回 商会列表 道具</h1>
+<p>-----G2C_Auction_ListItem-----G2C_AUCTION_LISTITEM-----</p>
+<p>int Order  //排序类型 对应EOrder</p>
+<p>int AuctionFlag  //交易类型 对应EAuctionFlag</p>
+<p>int SubType  //子类ID</p>
+<p>int PageIndex  //页码1-n (返回每页100条)</p>
+<p>int TotalCount  //总数目</p>
+<p>Dictionary[long, CLS_AuctionInfoItem] DictItem  //列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_SellItem 请求 商会出售 道具</h1>
+<p>-----C2G_Auction_SellItem-----C2G_AUCTION_SELLITEM-----</p>
+<p>CLS_ItemInfo ItemInfo  //道具信息</p>
+<p>long Price  //出售单价(单位：分)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_SellItem 返回 商会出售 道具</h1>
+<p>-----G2C_Auction_SellItem-----G2C_AUCTION_SELLITEM-----</p>
+<p>CLS_AuctionInfoItem AuctionInfoItem  //商会单子信息</p>
+<p>CLS_ItemInfo ItemInfo  //刷新道具信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_ReturnItem 请求 商会撤卖 道具</h1>
+<p>-----C2G_Auction_ReturnItem-----C2G_AUCTION_RETURNITEM-----</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_ReturnItem 返回 商会撤卖 道具</h1>
+<p>-----G2C_Auction_ReturnItem-----G2C_AUCTION_RETURNITEM-----</p>
+<p>CLS_ItemInfo ItemInfo  //刷新道具信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_BuyItem 请求 商会买入 道具</h1>
+<p>-----C2G_Auction_BuyItem-----C2G_AUCTION_BUYITEM-----</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_BuyItem 返回 商会买入 道具</h1>
+<p>-----G2C_Auction_BuyItem-----G2C_AUCTION_BUYITEM-----</p>
+<p>CLS_ItemInfo ItemInfo  //刷新道具信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_AuctionInfoEquip 商会单子信息 装备</h1>
+<p>-----CLS_AuctionInfoEquip-----CLS_AUCTIONINFOEQUIP-----</p>
+<p>CLS_AuctionInfoBase AuctionInfoBase  //基础信息</p>
+<p>CLS_EquipInfo EquipInfo  //装备信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_ListEquip 请求 商会列表 装备</h1>
+<p>-----C2G_Auction_ListEquip-----C2G_AUCTION_LISTEQUIP-----</p>
+<p>int Order  //排序类型 对应EOrder</p>
+<p>int AuctionFlag  //交易类型 对应EAuctionFlag</p>
+<p>int SubType  //子类ID</p>
+<p>int PageIndex  //页码1-n (返回每页100条)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_ListEquip 返回 商会列表 装备</h1>
+<p>-----G2C_Auction_ListEquip-----G2C_AUCTION_LISTEQUIP-----</p>
+<p>int Order  //排序类型 对应EOrder</p>
+<p>int AuctionFlag  //交易类型 对应EAuctionFlag</p>
+<p>int SubType  //子类ID</p>
+<p>int PageIndex  //页码1-n (返回每页100条)</p>
+<p>int TotalCount  //总数目</p>
+<p>Dictionary[long, CLS_AuctionInfoEquip] DictEquip  //列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_SellEquip 请求 商会出售 装备</h1>
+<p>-----C2G_Auction_SellEquip-----C2G_AUCTION_SELLEQUIP-----</p>
+<p>long EquipId  //装备唯一ID</p>
+<p>long Price  //出售单价(单位：分)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_SellEquip 返回 商会出售 装备</h1>
+<p>-----G2C_Auction_SellEquip-----G2C_AUCTION_SELLEQUIP-----</p>
+<p>CLS_AuctionInfoEquip AuctionInfoEquip  //商会单子信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_ReturnEquip 请求 商会撤卖 装备</h1>
+<p>-----C2G_Auction_ReturnEquip-----C2G_AUCTION_RETURNEQUIP-----</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_ReturnEquip 返回 商会撤卖 装备</h1>
+<p>-----G2C_Auction_ReturnEquip-----G2C_AUCTION_RETURNEQUIP-----</p>
+<p>CLS_EquipInfo EquipInfo  //刷新装备信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_BuyEquip 请求 商会买入 装备</h1>
+<p>-----C2G_Auction_BuyEquip-----C2G_AUCTION_BUYEQUIP-----</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_BuyEquip 返回 商会买入 装备</h1>
+<p>-----G2C_Auction_BuyEquip-----G2C_AUCTION_BUYEQUIP-----</p>
+<p>CLS_EquipInfo EquipInfo  //刷新装备信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_AuctionInfoWarrior 商会单子信息 武将</h1>
+<p>-----CLS_AuctionInfoWarrior-----CLS_AUCTIONINFOWARRIOR-----</p>
+<p>CLS_AuctionInfoBase AuctionInfoBase  //基础信息</p>
+<p>CLS_WarriorInfo WarriorInfo  //武将信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_ListWarrior 请求 商会列表 武将</h1>
+<p>-----C2G_Auction_ListWarrior-----C2G_AUCTION_LISTWARRIOR-----</p>
+<p>int Order  //排序类型 对应EOrder</p>
+<p>int AuctionFlag  //交易类型 对应EAuctionFlag</p>
+<p>int SubType  //子类ID</p>
+<p>int PageIndex  //页码1-n (返回每页100条)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_ListWarrior 返回 商会列表 武将</h1>
+<p>-----G2C_Auction_ListWarrior-----G2C_AUCTION_LISTWARRIOR-----</p>
+<p>int Order  //排序类型 对应EOrder</p>
+<p>int AuctionFlag  //交易类型 对应EAuctionFlag</p>
+<p>int SubType  //子类ID</p>
+<p>int PageIndex  //页码1-n (返回每页100条)</p>
+<p>int TotalCount  //总数目</p>
+<p>Dictionary[long, CLS_AuctionInfoWarrior] DictWarrior  //列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_SellWarrior 请求 商会出售 武将</h1>
+<p>-----C2G_Auction_SellWarrior-----C2G_AUCTION_SELLWARRIOR-----</p>
+<p>long WarriorId  //武将唯一ID</p>
+<p>long Price  //出售单价(单位：分)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_SellWarrior 返回 商会出售 武将</h1>
+<p>-----G2C_Auction_SellWarrior-----G2C_AUCTION_SELLWARRIOR-----</p>
+<p>CLS_AuctionInfoWarrior AuctionInfoWarrior  //商会单子信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_ReturnWarrior 请求 商会撤卖 武将</h1>
+<p>-----C2G_Auction_ReturnWarrior-----C2G_AUCTION_RETURNWARRIOR-----</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_ReturnWarrior 返回 商会撤卖 武将</h1>
+<p>-----G2C_Auction_ReturnWarrior-----G2C_AUCTION_RETURNWARRIOR-----</p>
+<p>CLS_WarriorInfo WarriorInfo  //刷新武将信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_BuyWarrior 请求 商会买入 武将</h1>
+<p>-----C2G_Auction_BuyWarrior-----C2G_AUCTION_BUYWARRIOR-----</p>
+<p>long Id  //单号 唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_BuyWarrior 返回 商会买入 武将</h1>
+<p>-----G2C_Auction_BuyWarrior-----G2C_AUCTION_BUYWARRIOR-----</p>
+<p>CLS_WarriorInfo WarriorInfo  //刷新武将信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_Search 请求 商会搜索</h1>
+<p>-----C2G_Auction_Search-----C2G_AUCTION_SEARCH-----</p>
+<p>string SearchKey  //搜索关键字</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_Search 返回 商会搜索</h1>
+<p>-----G2C_Auction_Search-----G2C_AUCTION_SEARCH-----</p>
+<p>Dictionary[long, CLS_AuctionInfoItem] DictItem  //列表</p>
+<p>Dictionary[long, CLS_AuctionInfoEquip] DictEquip  //列表</p>
+<p>Dictionary[long, CLS_AuctionInfoWarrior] DictWarrior  //列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_AuctionLog 商会交易记录</h1>
+<p>-----CLS_AuctionLog-----CLS_AUCTIONLOG-----</p>
+<p>short AuctionLogItemType  //大类 见EAuctionLogItemType</p>
+<p>int ConfigId  //配置ID</p>
+<p>int Count  //数量</p>
+<p>string PlayerName  //交易对象名字</p>
+<p>long Price  //价格(单位：分)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Auction_GetLog 请求 商会交易记录</h1>
+<p>-----C2G_Auction_GetLog-----C2G_AUCTION_GETLOG-----</p>
+<p>int AuctionLogType  //查询类型 EAuctionLogType</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Auction_GetLog 返回 商会交易记录</h1>
+<p>-----G2C_Auction_GetLog-----G2C_AUCTION_GETLOG-----</p>
+<p>int AuctionLogType  //查询类型 EAuctionLogType</p>
+<p>List[CLS_AuctionLog] ListAuctionLog  //交易记录</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>宴会厅</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Draw_GetInfo 请求 宴会厅数据</h1>
+<p>-----C2G_Draw_GetInfo-----C2G_DRAW_GETINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Draw_GetInfo 返回 宴会厅数据</h1>
+<p>-----G2C_Draw_GetInfo-----G2C_DRAW_GETINFO-----</p>
+<p>int DrawScore  //奖励积分</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Draw_Luck 请求 宴会厅抽奖</h1>
+<p>-----C2G_Draw_Luck-----C2G_DRAW_LUCK-----</p>
+<p>int DrawPoolId  //(配置ID)</p>
+<p>int DrawType  //(EDrawType)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Draw_Luck 返回 宴会厅抽奖</h1>
+<p>-----G2C_Draw_Luck-----G2C_DRAW_LUCK-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Draw_GetAward 请求 宴会厅奖励</h1>
+<p>-----C2G_Draw_GetAward-----C2G_DRAW_GETAWARD-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Draw_GetAward 返回 宴会厅奖励</h1>
+<p>-----G2C_Draw_GetAward-----G2C_DRAW_GETAWARD-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>兑换码</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Cdkey_Use 请求 使用兑换码</h1>
+<p>-----C2G_Cdkey_Use-----C2G_CDKEY_USE-----</p>
+<p>string Cdkey  //兑换码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Cdkey_Use 返回 使用兑换码</h1>
+<p>-----G2C_Cdkey_Use-----G2C_CDKEY_USE-----</p>
+<p>string Cdkey  //兑换码</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>排行榜</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_TopData 排行榜单条信息</h1>
+<p>-----CLS_TopData-----CLS_TOPDATA-----</p>
+<p>int Rank  //排行</p>
+<p>long Puid  //唯一ID</p>
+<p>string Name  //名字</p>
+<p>long Score  //分数</p>
+<p>string Other  //存储其他信息，身份或武将名称或道具名称</p>
+<p>int ConfigId  //配置ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Top_Toplist 请求 排行榜</h1>
+<p>-----C2G_Top_Toplist-----C2G_TOP_TOPLIST-----</p>
+<p>int type  //排行榜类型</p>
+<p>int PageIndex  //页码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Top_Toplist 返回 排行榜</h1>
+<p>-----G2C_Top_Toplist-----G2C_TOP_TOPLIST-----</p>
+<p>List[CLS_TopData] TopDataList  //排行榜数据</p>
+<p>CLS_TopData playerTopData  //玩家数据</p>
+<p>int type  //排行榜类型</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Top_Info 请求 排行榜单条具体数据信息</h1>
+<p>-----C2G_Top_Info-----C2G_TOP_INFO-----</p>
+<p>int type  //排行榜类型</p>
+<p>long ID  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Top_Info 返回 排行榜单条具体数据信息</h1>
+<p>-----G2C_Top_Info-----G2C_TOP_INFO-----</p>
+<p>int type  //排行榜类型</p>
+<p>CLS_EquipInfo EquipInfo  //装备信息</p>
+<p>CLS_WarriorInfo WarriorInfo  //武将信息</p>
+<p>CLS_PlayerData PlayerInfo  //主角信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>任务</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_TaskInfo 任务信息</h1>
+<p>-----CLS_TaskInfo-----CLS_TASKINFO-----</p>
+<p>long Tuid  //任务唯一ID(府衙任务用 其他任务和配置ID相同)</p>
+<p>int Id  //任务ID(配置ID)</p>
+<p>byte State  //任务状态 对应ETaskState</p>
+<p>long Schedule  //当前进度</p>
+<p>long ScheduleMax  //最大进度</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Task_List 请求 任务列表</h1>
+<p>-----C2G_Task_List-----C2G_TASK_LIST-----</p>
+<p>byte TaskType  //任务类型 对应ETaskType</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Task_List 返回 任务列表</h1>
+<p>-----G2C_Task_List-----G2C_TASK_LIST-----</p>
+<p>byte TaskType  //任务类型 对应ETaskType</p>
+<p>List[CLS_TaskInfo] ListTask  //任务列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Task_Get 请求 任务领奖</h1>
+<p>-----C2G_Task_Get-----C2G_TASK_GET-----</p>
+<p>byte TaskType  //任务类型 对应ETaskType</p>
+<p>long Tuid  //任务唯一ID(府衙任务用 其他任务和配置ID相同)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Task_Get 返回 任务领奖</h1>
+<p>-----G2C_Task_Get-----G2C_TASK_GET-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Task_GetAll 请求 任务领奖一键领取</h1>
+<p>-----C2G_Task_GetAll-----C2G_TASK_GETALL-----</p>
+<p>byte TaskType  //任务类型 对应ETaskType</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Task_GetAll 返回 任务领奖一键领取</h1>
+<p>-----G2C_Task_GetAll-----G2C_TASK_GETALL-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Task_Everyday 请求 日常任务</h1>
+<p>-----C2G_Task_Everyday-----C2G_TASK_EVERYDAY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Task_Everyday 返回 日常任务</h1>
+<p>-----G2C_Task_Everyday-----G2C_TASK_EVERYDAY-----</p>
+<p>List[CLS_TaskInfo] ListTask  //任务列表</p>
+<p>int Activity  //活跃值</p>
+<p>Dictionary[int, int] DictTaskActivity  //活跃奖励领取状态(等级ID，ETaskState)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Task_EverydayAward 请求 每日活跃奖励</h1>
+<p>-----C2G_Task_EverydayAward-----C2G_TASK_EVERYDAYAWARD-----</p>
+<p>int ActivityID  //活跃ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Task_EverydayAward 返回 每日活跃奖励</h1>
+<p>-----G2C_Task_EverydayAward-----G2C_TASK_EVERYDAYAWARD-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>签到</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_SignInfo 签到信息</h1>
+<p>-----CLS_SignInfo-----CLS_SIGNINFO-----</p>
+<p>bool IsSigned  //今天是否已签</p>
+<p>int SignDays  //本轮签到总数</p>
+<p>int ReSignDays  //本轮补签次数</p>
+<p>int SignIndex  //本轮天数索引</p>
+<p>long AliveTime  //剩余秒数</p>
+<p>long TotalTime  //周期秒数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Sign_Info 请求 获取签到信息</h1>
+<p>-----C2G_Sign_Info-----C2G_SIGN_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Sign_Info 返回 获取签到信息</h1>
+<p>-----G2C_Sign_Info-----G2C_SIGN_INFO-----</p>
+<p>CLS_SignInfo SignInfo  //签到信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Sign 请求 处理签到</h1>
+<p>-----C2G_Sign-----C2G_SIGN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Sign 返回 处理签到</h1>
+<p>-----G2C_Sign-----G2C_SIGN-----</p>
+<p>CLS_SignInfo SignInfo  //签到信息</p>
+<p>List[CLS_AwardItem] ListAward  //奖励信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_ReSign 请求 处理补签</h1>
+<p>-----C2G_ReSign-----C2G_RESIGN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_ReSign 返回 处理补签</h1>
+<p>-----G2C_ReSign-----G2C_RESIGN-----</p>
+<p>CLS_SignInfo SignInfo  //签到信息</p>
+<p>List[CLS_AwardItem] ListAward  //奖励信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>BUFF</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BuffInfo BUFF信息</h1>
+<p>-----CLS_BuffInfo-----CLS_BUFFINFO-----</p>
+<p>int Id  //配置ID</p>
+<p>long AliveTime  //剩余秒数(-1:永久有效)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Buff_Info 请求 获取BUFF信息</h1>
+<p>-----C2G_Buff_Info-----C2G_BUFF_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Buff_Info 返回 获取BUFF信息</h1>
+<p>-----G2C_Buff_Info-----G2C_BUFF_INFO-----</p>
+<p>List[CLS_BuffInfo] Info  //BUFF信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>活动通用</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_AcitvityInfo 城池信息</h1>
+<p>-----CLS_AcitvityInfo-----CLS_ACITVITYINFO-----</p>
+<p>int Id  //活动ID(配置ID)</p>
+<p>bool IsOpen  //是否开启</p>
+<p>DateTime TimeOpen  //开启时间</p>
+<p>DateTime TimeEnd  //截止时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Acitvity_List 请求 获取活动列表</h1>
+<p>-----C2G_Acitvity_List-----C2G_ACITVITY_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Acitvity_List 返回 获取活动列表</h1>
+<p>-----G2C_Acitvity_List-----G2C_ACITVITY_LIST-----</p>
+<p>Dictionary[int, CLS_AcitvityInfo] ListInfo  //信息列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>活动杂项</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Acitvity_RebateInfo 请求 返利信息</h1>
+<p>-----C2G_Acitvity_RebateInfo-----C2G_ACITVITY_REBATEINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Acitvity_RebateInfo 返回 返利信息</h1>
+<p>-----G2C_Acitvity_RebateInfo-----G2C_ACITVITY_REBATEINFO-----</p>
+<p>long Rebate  //本周返利</p>
+<p>long RebateTotal  //历史返利</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>七日活动</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Acitvity_7Day 请求 获取七日试炼</h1>
+<p>-----C2G_Acitvity_7Day-----C2G_ACITVITY_7DAY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Acitvity_7Day 返回 获取七日试炼</h1>
+<p>-----G2C_Acitvity_7Day-----G2C_ACITVITY_7DAY-----</p>
+<p>List[CLS_TaskInfo] ListTask  //任务列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Acitvity_7DayGet 请求 七日试炼领奖</h1>
+<p>-----C2G_Acitvity_7DayGet-----C2G_ACITVITY_7DAYGET-----</p>
+<p>int confID  //配置ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Acitvity_7DayGet 返回 七日试炼领奖</h1>
+<p>-----G2C_Acitvity_7DayGet-----G2C_ACITVITY_7DAYGET-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Acitvity_7DayLoginInfo 请求 获取七日登录信息</h1>
+<p>-----C2G_Acitvity_7DayLoginInfo-----C2G_ACITVITY_7DAYLOGININFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Acitvity_7DayLoginInfo 返回 获取七日登录信息</h1>
+<p>-----G2C_Acitvity_7DayLoginInfo-----G2C_ACITVITY_7DAYLOGININFO-----</p>
+<p>Dictionary[int, byte] DictData  //七日登录信息<k=日1-7 value=E7DayLoginState></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Acitvity_7DayLoginGet 请求 七日登录领奖</h1>
+<p>-----C2G_Acitvity_7DayLoginGet-----C2G_ACITVITY_7DAYLOGINGET-----</p>
+<p>int Day  //日1-7</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Acitvity_7DayLoginGet 返回 七日登录领奖</h1>
+<p>-----G2C_Acitvity_7DayLoginGet-----G2C_ACITVITY_7DAYLOGINGET-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励项</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>福利</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_WelfareTaskInfo 福利信息</h1>
+<p>-----CLS_WelfareTaskInfo-----CLS_WELFARETASKINFO-----</p>
+<p>int Id  //任务ID(配置ID)</p>
+<p>EWelfareState State  //任务状态 对应EWelfareState</p>
+<p>long Schedule  //当前进度</p>
+<p>long ScheduleMax  //最大进度</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_WelfareInfo 福利大类信息</h1>
+<p>-----CLS_WelfareInfo-----CLS_WELFAREINFO-----</p>
+<p>int Id  //活动大类ID</p>
+<p>bool IsOpen  //是否开启</p>
+<p>DateTime TimeOpen  //开启时间</p>
+<p>DateTime TimeEnd  //截止时间</p>
+<p>Dictionary[int, CLS_WelfareTaskInfo] ListTask  //任务列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Welfare_Info 请求 获取福利信息</h1>
+<p>-----C2G_Welfare_Info-----C2G_WELFARE_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Welfare_Info 返回 获取福利信息</h1>
+<p>-----G2C_Welfare_Info-----G2C_WELFARE_INFO-----</p>
+<p>Dictionary[int, CLS_WelfareInfo] ListInfo  //信息列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Welfare_Award 请求 领取福利</h1>
+<p>-----C2G_Welfare_Award-----C2G_WELFARE_AWARD-----</p>
+<p>int Id  //ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Welfare_Award 返回 领取福利</h1>
+<p>-----G2C_Welfare_Award-----G2C_WELFARE_AWARD-----</p>
+<p>int Id  //ID(配置ID)</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>势力</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildInfoBase 势力基本信息</h1>
+<p>-----CLS_GuildInfoBase-----CLS_GUILDINFOBASE-----</p>
+<p>long Uid  //唯一ID</p>
+<p>string Name  //名字</p>
+<p>string LeaderName  //领袖名字</p>
+<p>int StateId  //所属州</p>
+<p>int Level  //等级</p>
+<p>byte JoinMode  //势力加入方式 EGuildJoinMode</p>
+<p>CLS_CountInfo CountMember  //人数</p>
+<p>bool IsAlliance  //是否同盟关系</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildInfoDetails 势力详细信息</h1>
+<p>-----CLS_GuildInfoDetails-----CLS_GUILDINFODETAILS-----</p>
+<p>long Uid  //唯一ID</p>
+<p>string Name  //名字</p>
+<p>string LeaderName  //领袖名字</p>
+<p>int StateId  //所属州</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验</p>
+<p>int Fund  //势力资金</p>
+<p>int Revenue  //总收入</p>
+<p>byte JoinMode  //势力加入方式 EGuildJoinMode</p>
+<p>CLS_CountInfo CountMember  //人数</p>
+<p>int CapitalCity  //都城ID</p>
+<p>int CountCity  //城池数</p>
+<p>string Manifesto  //宣言</p>
+<p>string Notice  //公告</p>
+<p>string GoddessName  //圣女名字</p>
+<p>int GoddessCity  //圣女驻守城池</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildInfoMy 势力详细我的</h1>
+<p>-----CLS_GuildInfoMy-----CLS_GUILDINFOMY-----</p>
+<p>CLS_GuildInfoDetails GuildInfoDetails  //详细信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_List 请求 势力列表</h1>
+<p>-----C2G_Guild_List-----C2G_GUILD_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_List 返回 势力列表</h1>
+<p>-----G2C_Guild_List-----G2C_GUILD_LIST-----</p>
+<p>List[CLS_GuildInfoBase] ListGuildInfoBase  //势力列表</p>
+<p>TimeSpan CdCanJoin  //剩余可加入时间(0为可加入)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListDetails 请求 势力详情</h1>
+<p>-----C2G_Guild_ListDetails-----C2G_GUILD_LISTDETAILS-----</p>
+<p>long Uid  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListDetails 返回 势力详情</h1>
+<p>-----G2C_Guild_ListDetails-----G2C_GUILD_LISTDETAILS-----</p>
+<p>CLS_GuildInfoDetails GuildInfoDetails  //势力详情</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_Create 请求 势力创建</h1>
+<p>-----C2G_Guild_Create-----C2G_GUILD_CREATE-----</p>
+<p>string Name  //名字</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_Create 返回 势力创建</h1>
+<p>-----G2C_Guild_Create-----G2C_GUILD_CREATE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_TryLeave 请求 脱离</h1>
+<p>-----C2G_Guild_TryLeave-----C2G_GUILD_TRYLEAVE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_TryLeave 返回 脱离</h1>
+<p>-----G2C_Guild_TryLeave-----G2C_GUILD_TRYLEAVE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_TryKick 请求 逐出</h1>
+<p>-----C2G_Guild_TryKick-----C2G_GUILD_TRYKICK-----</p>
+<p>long TargetPuid  //对象玩家ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_TryKick 返回 逐出</h1>
+<p>-----G2C_Guild_TryKick-----G2C_GUILD_TRYKICK-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_Abdicate 请求 禅让</h1>
+<p>-----C2G_Guild_Abdicate-----C2G_GUILD_ABDICATE-----</p>
+<p>long TargetPuid  //对象玩家ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_Abdicate 返回 禅让</h1>
+<p>-----G2C_Guild_Abdicate-----G2C_GUILD_ABDICATE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_TryJoin 请求 申请加入</h1>
+<p>-----C2G_Guild_TryJoin-----C2G_GUILD_TRYJOIN-----</p>
+<p>long Uid  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_TryJoin 返回 申请加入</h1>
+<p>-----G2C_Guild_TryJoin-----G2C_GUILD_TRYJOIN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListApply 请求 申请列表</h1>
+<p>-----C2G_Guild_ListApply-----C2G_GUILD_LISTAPPLY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListApply 返回 申请列表</h1>
+<p>-----G2C_Guild_ListApply-----G2C_GUILD_LISTAPPLY-----</p>
+<p>List[CLS_PubPlayerBase] ListApply  //势力申请列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ApplyAction 请求 申请处理</h1>
+<p>-----C2G_Guild_ApplyAction-----C2G_GUILD_APPLYACTION-----</p>
+<p>long TargetPuid  //对象玩家ID</p>
+<p>int HandleAction  //处理方式 EHandleAction</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ApplyAction 返回 申请处理</h1>
+<p>-----G2C_Guild_ApplyAction-----G2C_GUILD_APPLYACTION-----</p>
+<p>long TargetPuid  //对象玩家ID</p>
+<p>int HandleAction  //处理方式 EHandleAction</p>
+<p>CLS_CountInfo CountMember  //人数</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildMbsInfo 势力成员信息</h1>
+<p>-----CLS_GuildMbsInfo-----CLS_GUILDMBSINFO-----</p>
+<p>CLS_PubPlayerBase PubPlayerBase  //基本信息</p>
+<p>int Contribution  //贡献</p>
+<p>int ContributionTotal  //历史贡献</p>
+<p>DateTime TimeJoin  //加入势力时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListMbs 请求 成员列表</h1>
+<p>-----C2G_Guild_ListMbs-----C2G_GUILD_LISTMBS-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListMbs 返回 成员列表</h1>
+<p>-----G2C_Guild_ListMbs-----G2C_GUILD_LISTMBS-----</p>
+<p>List[CLS_GuildMbsInfo] ListMember  //势力成员列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListLogRecord 请求 动态列表</h1>
+<p>-----C2G_Guild_ListLogRecord-----C2G_GUILD_LISTLOGRECORD-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListLogRecord 返回 动态列表</h1>
+<p>-----G2C_Guild_ListLogRecord-----G2C_GUILD_LISTLOGRECORD-----</p>
+<p>List[CLS_GameLog] ListLog  //势力动态列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_Rename 请求 改名</h1>
+<p>-----C2G_Guild_Rename-----C2G_GUILD_RENAME-----</p>
+<p>string Name  //名字</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_Rename 返回 改名</h1>
+<p>-----G2C_Guild_Rename-----G2C_GUILD_RENAME-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_JoinMode 请求 修改加入设置</h1>
+<p>-----C2G_Guild_JoinMode-----C2G_GUILD_JOINMODE-----</p>
+<p>byte JoinMode  //势力加入方式 EGuildJoinMode</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_JoinMode 返回 修改加入设置</h1>
+<p>-----G2C_Guild_JoinMode-----G2C_GUILD_JOINMODE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_Manifesto 请求 修改宣言</h1>
+<p>-----C2G_Guild_Manifesto-----C2G_GUILD_MANIFESTO-----</p>
+<p>string Manifesto  //宣言</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_Manifesto 返回 修改宣言</h1>
+<p>-----G2C_Guild_Manifesto-----G2C_GUILD_MANIFESTO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_Notice 请求 修改公告</h1>
+<p>-----C2G_Guild_Notice-----C2G_GUILD_NOTICE-----</p>
+<p>string Notice  //公告</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_Notice 返回 修改公告</h1>
+<p>-----G2C_Guild_Notice-----G2C_GUILD_NOTICE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_DonateInfo 请求 捐献信息</h1>
+<p>-----C2G_Guild_DonateInfo-----C2G_GUILD_DONATEINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_DonateInfo 返回 捐献信息</h1>
+<p>-----G2C_Guild_DonateInfo-----G2C_GUILD_DONATEINFO-----</p>
+<p>List[CLS_GameLog] ListLog  //捐献记录</p>
+<p>Dictionary[int, int] DictDonateCount  //捐献次数(key=捐献id value=今日次数)</p>
+<p>int Contribution  //贡献值</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_Donate 请求 捐献</h1>
+<p>-----C2G_Guild_Donate-----C2G_GUILD_DONATE-----</p>
+<p>int DonateId</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_Donate 返回 捐献</h1>
+<p>-----G2C_Guild_Donate-----G2C_GUILD_DONATE-----</p>
+<p>int DonateId</p>
+<p>CLS_GameLog DonateLog  //新增捐献记录</p>
+<p>CLS_GuildInfoDetails GuildInfoDetails  //详细信息</p>
+<p>int Contribution  //贡献值</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListDiplomacy 请求 势力关系列表</h1>
+<p>-----C2G_Guild_ListDiplomacy-----C2G_GUILD_LISTDIPLOMACY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListDiplomacy 返回 势力关系列表</h1>
+<p>-----G2C_Guild_ListDiplomacy-----G2C_GUILD_LISTDIPLOMACY-----</p>
+<p>List[CLS_GuildInfoBase] ListGuildInfoBase  //势力关系列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_SearchName 请求 势力名搜索</h1>
+<p>-----C2G_Guild_SearchName-----C2G_GUILD_SEARCHNAME-----</p>
+<p>string Key  //关键字</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_SearchName 返回 势力名搜索</h1>
+<p>-----G2C_Guild_SearchName-----G2C_GUILD_SEARCHNAME-----</p>
+<p>List[CLS_GuildInfoBase] ListGuildInfoBase  //势力名搜索结果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListAllianceApply 请求 同盟申请列表</h1>
+<p>-----C2G_Guild_ListAllianceApply-----C2G_GUILD_LISTALLIANCEAPPLY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListAllianceApply 返回 同盟申请列表</h1>
+<p>-----G2C_Guild_ListAllianceApply-----G2C_GUILD_LISTALLIANCEAPPLY-----</p>
+<p>List[CLS_GuildInfoBase] ListGuildInfoBase  //同盟申请列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_AllianceApply 请求 同盟申请</h1>
+<p>-----C2G_Guild_AllianceApply-----C2G_GUILD_ALLIANCEAPPLY-----</p>
+<p>long Uid  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_AllianceApply 返回 同盟申请</h1>
+<p>-----G2C_Guild_AllianceApply-----G2C_GUILD_ALLIANCEAPPLY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_AllianceRemove 请求 同盟解除</h1>
+<p>-----C2G_Guild_AllianceRemove-----C2G_GUILD_ALLIANCEREMOVE-----</p>
+<p>long Uid  //唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_AllianceRemove 返回 同盟解除</h1>
+<p>-----G2C_Guild_AllianceRemove-----G2C_GUILD_ALLIANCEREMOVE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_AllianceApplyAction 请求 同盟申请处理</h1>
+<p>-----C2G_Guild_AllianceApplyAction-----C2G_GUILD_ALLIANCEAPPLYACTION-----</p>
+<p>long Uid  //对象ID</p>
+<p>int HandleAction  //处理方式 EHandleAction</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_AllianceApplyAction 返回 同盟申请处理</h1>
+<p>-----G2C_Guild_AllianceApplyAction-----G2C_GUILD_ALLIANCEAPPLYACTION-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListCity 请求 城池列表</h1>
+<p>-----C2G_Guild_ListCity-----C2G_GUILD_LISTCITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListCity 返回 城池列表</h1>
+<p>-----G2C_Guild_ListCity-----G2C_GUILD_LISTCITY-----</p>
+<p>int CapitalCity  //都城ID</p>
+<p>List[CLS_CityInfo4Guild] ListCity  //城池列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_SetCapitalCity 请求 设置都城</h1>
+<p>-----C2G_Guild_SetCapitalCity-----C2G_GUILD_SETCAPITALCITY-----</p>
+<p>int Uid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_SetCapitalCity 返回 设置都城</h1>
+<p>-----G2C_Guild_SetCapitalCity-----G2C_GUILD_SETCAPITALCITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_SetCityLeader 请求 任命太守</h1>
+<p>-----C2G_Guild_SetCityLeader-----C2G_GUILD_SETCITYLEADER-----</p>
+<p>int Uid  //城池ID</p>
+<p>long LeaderPuid  //新任命的玩家ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_SetCityLeader 返回 任命太守</h1>
+<p>-----G2C_Guild_SetCityLeader-----G2C_GUILD_SETCITYLEADER-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_RemoveCityLeader 请求 撤销太守</h1>
+<p>-----C2G_Guild_RemoveCityLeader-----C2G_GUILD_REMOVECITYLEADER-----</p>
+<p>int Uid  //城池ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_RemoveCityLeader 返回 撤销太守</h1>
+<p>-----G2C_Guild_RemoveCityLeader-----G2C_GUILD_REMOVECITYLEADER-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListLogSituation 请求 军情</h1>
+<p>-----C2G_Guild_ListLogSituation-----C2G_GUILD_LISTLOGSITUATION-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListLogSituation 返回 军情</h1>
+<p>-----G2C_Guild_ListLogSituation-----G2C_GUILD_LISTLOGSITUATION-----</p>
+<p>List[CLS_GameLog] ListLog  //军情列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildTopInfo 势力排行信息单条</h1>
+<p>-----CLS_GuildTopInfo-----CLS_GUILDTOPINFO-----</p>
+<p>long GuildUid  //唯一ID</p>
+<p>string Name  //名字</p>
+<p>int CountryId  //所属国</p>
+<p>int CountCity  //城池数</p>
+<p>long TsLastSeize  //最后占领时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ListTop 请求 势力排行</h1>
+<p>-----C2G_Guild_ListTop-----C2G_GUILD_LISTTOP-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ListTop 返回 势力排行</h1>
+<p>-----G2C_Guild_ListTop-----G2C_GUILD_LISTTOP-----</p>
+<p>List[CLS_GuildTopInfo] ListTop  //势力排行</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>红包</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_RedPacketMember 红包成员信息</h1>
+<p>-----CLS_RedPacketMember-----CLS_REDPACKETMEMBER-----</p>
+<p>long PlayerID  //玩家ID</p>
+<p>int HeadId  //头像ID</p>
+<p>string Name</p>
+<p>int Bonus  //抢到金额</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_RedPacketsInfo //红包列表</h1>
+<p>-----CLS_RedPacketsInfo-----CLS_REDPACKETSINFO-----</p>
+<p>long RedPacketsID  //红包ID</p>
+<p>CLS_RedPacketMember Owner  //发起者</p>
+<p>int State  //状态 ERedPacketState</p>
+<p>int TimeEnd  //还剩多少时间(秒)</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_RedPacket //红包信息</h1>
+<p>-----CLS_RedPacket-----CLS_REDPACKET-----</p>
+<p>long RedPacketsID  //红包ID</p>
+<p>int TotalSugar  //总金额</p>
+<p>int TotalNumber  //总个数</p>
+<p>int SurplusSugar  //剩余金额</p>
+<p>int SurplusNumber  //剩余个数</p>
+<p>CLS_RedPacketMember Owner  //发起者</p>
+<p>int TimeEnd  //还剩多少时间(秒)</p>
+<p>List[CLS_RedPacketMember] ListMember  //已抢列表</p>
+<p>string Txt  //祝福语</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Red_Packet_List 请求 红包列表</h1>
+<p>-----C2G_Red_Packet_List-----C2G_RED_PACKET_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Red_Packet_List 返回 红包列表</h1>
+<p>-----G2C_Red_Packet_List-----G2C_RED_PACKET_LIST-----</p>
+<p>int GetMax  //0:领红包未达到上限,1:领红包达到上限</p>
+<p>List[CLS_RedPacketsInfo] Info  //红包列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Red_Packet_Info 请求 单个红包信息</h1>
+<p>-----C2G_Red_Packet_Info-----C2G_RED_PACKET_INFO-----</p>
+<p>long RedPacketsID  //红包ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Red_Packet_Info 返回 单个红包信息</h1>
+<p>-----G2C_Red_Packet_Info-----G2C_RED_PACKET_INFO-----</p>
+<p>int Error  //状态</p>
+<p>CLS_RedPacket Info  //红包信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Give_Red_Packet 请求 发红包</h1>
+<p>-----C2G_Give_Red_Packet-----C2G_GIVE_RED_PACKET-----</p>
+<p>int Sugar  //金额</p>
+<p>int Number  //个数</p>
+<p>string Txt  //祝福语</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Give_Red_Packet 返回 发红包</h1>
+<p>-----G2C_Give_Red_Packet-----G2C_GIVE_RED_PACKET-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Red_Packet_Receive 返回 发红包</h1>
+<p>-----G2C_Red_Packet_Receive-----G2C_RED_PACKET_RECEIVE-----</p>
+<p>CLS_RedPacketsInfo Info  //红包信息</p>
+<p>List[CLS_RedPacketsInfo] InfoList  //红包列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Get_Red_Packet 请求 抢红包</h1>
+<p>-----C2G_Get_Red_Packet-----C2G_GET_RED_PACKET-----</p>
+<p>long RedPacketsID  //红包ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Get_Red_Packet 返回 抢红包</h1>
+<p>-----G2C_Get_Red_Packet-----G2C_GET_RED_PACKET-----</p>
+<p>int Error  //状态</p>
+<p>int Bonus  //抢到的金额</p>
+<p>int GetMax  //0:领红包未达到上限,1:领红包达到上限</p>
+<p>CLS_RedPacket Info  //红包信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>府Boss</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_MansionBoss_Info 请求 获取府Boss信息</h1>
+<p>-----C2G_MansionBoss_Info-----C2G_MANSIONBOSS_INFO-----</p>
+<p>long MansionId  //府ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_Info 返回 获取府Boss信息</h1>
+<p>-----G2C_MansionBoss_Info-----G2C_MANSIONBOSS_INFO-----</p>
+<p>bool IsOpen  //是否已开启</p>
+<p>int OpenCount  //今日可开启次数</p>
+<p>int ConfigID  //ConfigID</p>
+<p>long EndTs  //剩余毫秒</p>
+<p>int Count  //本日可挑战次数</p>
+<p>int CountMax  //最大可挑战次数</p>
+<p>long HpCur  //当前血量</p>
+<p>int Rank  //玩家排名</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_MansionBoss_Open 请求 处理府Boss开启</h1>
+<p>-----C2G_MansionBoss_Open-----C2G_MANSIONBOSS_OPEN-----</p>
+<p>long MansionId  //府ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_Open 返回 处理府Boss开启</h1>
+<p>-----G2C_MansionBoss_Open-----G2C_MANSIONBOSS_OPEN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_MansionBoss_PlayerInfo Boss排行玩家信息</h1>
+<p>-----CLS_MansionBoss_PlayerInfo-----CLS_MANSIONBOSS_PLAYERINFO-----</p>
+<p>long Id  //玩家ID</p>
+<p>int Headindex  //头像</p>
+<p>string Name  //名字</p>
+<p>long Hurt  //伤害</p>
+<p>float HurtPer  //伤害百分比</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_MansionBoss_Top 请求 获取府Boss伤害排行</h1>
+<p>-----C2G_MansionBoss_Top-----C2G_MANSIONBOSS_TOP-----</p>
+<p>long MansionId  //府ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_Top 返回 获取府Boss伤害排行</h1>
+<p>-----G2C_MansionBoss_Top-----G2C_MANSIONBOSS_TOP-----</p>
+<p>List[CLS_MansionBoss_PlayerInfo] TopPlayers  //玩家排行</p>
+<p>CLS_MansionBoss_PlayerInfo player  //玩家自己</p>
+<p>int Rank  //玩家排名</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_MansionBoss_Battle 请求 处理府Boss进入战斗</h1>
+<p>-----C2G_MansionBoss_Battle-----C2G_MANSIONBOSS_BATTLE-----</p>
+<p>long MansionId  //府ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_Battle 返回 处理府Boss进入战斗</h1>
+<p>-----G2C_MansionBoss_Battle-----G2C_MANSIONBOSS_BATTLE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_MansionBoss_Balance 请求 处理府Boss战斗结算</h1>
+<p>-----C2G_MansionBoss_Balance-----C2G_MANSIONBOSS_BALANCE-----</p>
+<p>long MansionId  //府ID</p>
+<p>long HurtHp  //造成伤害</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int PlayerExpendHp  //玩家消耗兵力</p>
+<p>Dictionary[long, int] DictExpendHp  //武将消耗兵力</p>
+<p>int State  //战斗结果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_Balance 返回 处理府Boss战斗结算</h1>
+<p>-----G2C_MansionBoss_Balance-----G2C_MANSIONBOSS_BALANCE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_TakeBalance 返回 处理府Boss主动战斗结算</h1>
+<p>-----G2C_MansionBoss_TakeBalance-----G2C_MANSIONBOSS_TAKEBALANCE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_MansionBoss_Buff 请求 处理府BossBuff信息和购买</h1>
+<p>-----C2G_MansionBoss_Buff-----C2G_MANSIONBOSS_BUFF-----</p>
+<p>long MansionId  //府ID</p>
+<p>int Config  //购买buff配置ID  为0 则是查看信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_MansionBoss_Buff 返回 处理府BossBuff信息和购买</h1>
+<p>-----G2C_MansionBoss_Buff-----G2C_MANSIONBOSS_BUFF-----</p>
+<p>List[int] BuffIds  //Buffid</p>
+<p>Dictionary[int, long] CurBuff  //已经拥有的buffid，剩余时间</p>
+<p>long FuYu  //拥有的府玉</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>势力活跃</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_Liveness_Info 单条活跃状态</h1>
+<p>-----CLS_Liveness_Info-----CLS_LIVENESS_INFO-----</p>
+<p>int Num  //数值</p>
+<p>Dictionary[int, bool] DictAwardState  //是否已经领取</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_GetActive 请求 府活跃度</h1>
+<p>-----C2G_Guild_GetActive-----C2G_GUILD_GETACTIVE-----</p>
+<p>long GuildId  //府id</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_GetActive 返回 府活跃度</h1>
+<p>-----G2C_Guild_GetActive-----G2C_GUILD_GETACTIVE-----</p>
+<p>Dictionary[int, CLS_Liveness_Info] DictLivenessInfo  //活跃状态</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ActiveAward 请求 府活跃度奖励领取</h1>
+<p>-----C2G_Guild_ActiveAward-----C2G_GUILD_ACTIVEAWARD-----</p>
+<p>long GuildId  //府id</p>
+<p>int BoxID  //箱子编号</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ActiveAward 返回 府活跃度奖励领取</h1>
+<p>-----G2C_Guild_ActiveAward-----G2C_GUILD_ACTIVEAWARD-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+<p>Dictionary[int, CLS_Liveness_Info] DictLivenessInfo  //活跃状态</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ActiveAwardAll 请求 府活跃度奖励全部领取</h1>
+<p>-----C2G_Guild_ActiveAwardAll-----C2G_GUILD_ACTIVEAWARDALL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ActiveAwardAll 返回 府活跃度奖励全部领取</h1>
+<p>-----G2C_Guild_ActiveAwardAll-----G2C_GUILD_ACTIVEAWARDALL-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+<p>Dictionary[int, CLS_Liveness_Info] DictLivenessInfo  //活跃状态</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>势力科技和商店</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ScienceInfo 请求 书院信息</h1>
+<p>-----C2G_Guild_ScienceInfo-----C2G_GUILD_SCIENCEINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ScienceInfo 返回 书院信息</h1>
+<p>-----G2C_Guild_ScienceInfo-----G2C_GUILD_SCIENCEINFO-----</p>
+<p>List[int] ListTechnology  //科技ID列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ScienceLevelUp 请求 势力科技升级</h1>
+<p>-----C2G_Guild_ScienceLevelUp-----C2G_GUILD_SCIENCELEVELUP-----</p>
+<p>int ID  //科技ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ScienceLevelUp 返回 势力科技升级</h1>
+<p>-----G2C_Guild_ScienceLevelUp-----G2C_GUILD_SCIENCELEVELUP-----</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildShopInfo 势力商店信息</h1>
+<p>-----CLS_GuildShopInfo-----CLS_GUILDSHOPINFO-----</p>
+<p>List[CLS_ShopGoodsInfo] GoodsInfo  //商品信息</p>
+<p>int Contribution  //拥有的贡献</p>
+<p>int RefreshFreeTotal  //累计免费刷新次数</p>
+<p>int RefreshTotal  //累计刷新次数</p>
+<p>int RefreshItemCount  //刷新道具数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ShopInfo 请求 处理势力商店信息</h1>
+<p>-----C2G_Guild_ShopInfo-----C2G_GUILD_SHOPINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ShopInfo 返回 处理势力商店信息</h1>
+<p>-----G2C_Guild_ShopInfo-----G2C_GUILD_SHOPINFO-----</p>
+<p>CLS_GuildShopInfo ShopInfo  //商品信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ShopBuy 请求 处理势力商店购买</h1>
+<p>-----C2G_Guild_ShopBuy-----C2G_GUILD_SHOPBUY-----</p>
+<p>int Config  //配置ID</p>
+<p>int Amount  //数量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ShopBuy 返回 处理势力商店购买</h1>
+<p>-----G2C_Guild_ShopBuy-----G2C_GUILD_SHOPBUY-----</p>
+<p>CLS_GuildShopInfo ShopInfo  //商品信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Guild_ShopRefresh 请求 处理势力商店刷新</h1>
+<p>-----C2G_Guild_ShopRefresh-----C2G_GUILD_SHOPREFRESH-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Guild_ShopRefresh 返回 处理势力商店刷新</h1>
+<p>-----G2C_Guild_ShopRefresh-----G2C_GUILD_SHOPREFRESH-----</p>
+<p>CLS_GuildShopInfo ShopInfo  //商品信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>势力俸禄</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildSalaryMbsInfo 势力成员俸禄信息</h1>
+<p>-----CLS_GuildSalaryMbsInfo-----CLS_GUILDSALARYMBSINFO-----</p>
+<p>CLS_PubPlayerBase PubPlayerBase  //基本信息</p>
+<p>int ContributionWeekLast  //上周贡献</p>
+<p>int ContributionWeekThis  //本周贡献</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GuildSalary_ListMbs 请求 俸禄成员列表</h1>
+<p>-----C2G_GuildSalary_ListMbs-----C2G_GUILDSALARY_LISTMBS-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GuildSalary_ListMbs 返回 俸禄成员列表</h1>
+<p>-----G2C_GuildSalary_ListMbs-----G2C_GUILDSALARY_LISTMBS-----</p>
+<p>DateTime DtAutoBalance  //自动结算时间</p>
+<p>List[CLS_GuildSalaryMbsInfo] ListMember  //势力成员列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GuildSalary_Pay 请求 俸禄发放</h1>
+<p>-----C2G_GuildSalary_Pay-----C2G_GUILDSALARY_PAY-----</p>
+<p>Dictionary[long, int] DictPay  //<对象玩家ID, 金币数量></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GuildSalary_Pay 返回 俸禄发放</h1>
+<p>-----G2C_GuildSalary_Pay-----G2C_GUILDSALARY_PAY-----</p>
+<p>Dictionary[long, int] DictPay  //<对象玩家ID, 金币数量></p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GuildSalaryCityInfo 势力城市俸禄信息</h1>
+<p>-----CLS_GuildSalaryCityInfo-----CLS_GUILDSALARYCITYINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>long LeaderPuid  //太守Id</p>
+<p>string LeaderName  //太守名字</p>
+<p>long Prosperity  //繁荣度</p>
+<p>int Revenue  //预期收益</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GuildSalary_ListCity 请求 俸禄城市列表</h1>
+<p>-----C2G_GuildSalary_ListCity-----C2G_GUILDSALARY_LISTCITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GuildSalary_ListCity 返回 俸禄城市列表</h1>
+<p>-----G2C_GuildSalary_ListCity-----G2C_GUILDSALARY_LISTCITY-----</p>
+<p>List[CLS_GuildSalaryCityInfo] ListCity  //势力城市列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>势力圣女</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_GoddessArmy 圣女卫队阵亡信息</h1>
+<p>-----CLS_GoddessArmy-----CLS_GODDESSARMY-----</p>
+<p>int index  //卫队编号</p>
+<p>DateTime ReviveTime  //复活时间</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GoddessInfo 圣女信息</h1>
+<p>-----CLS_GoddessInfo-----CLS_GODDESSINFO-----</p>
+<p>long PlayerId  //所属玩家Id</p>
+<p>string PlayerName  //所属玩家名</p>
+<p>int Advance  //阶级</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验</p>
+<p>int CityId  //驻守城池</p>
+<p>bool bCaptive  //是否被俘</p>
+<p>long OtherId  //俘虏方势力Id</p>
+<p>string OtherName  //俘虏方势力名</p>
+<p>DateTime FreeTime  //释放时间</p>
+<p>List[CLS_GoddessArmy] ArmyInfo  //卫队阵亡列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GoddessDonate 圣女捐献信息</h1>
+<p>-----CLS_GoddessDonate-----CLS_GODDESSDONATE-----</p>
+<p>string PlayerName  //玩家名</p>
+<p>int Donate  //当前阶段贡献</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Goddess_Seniority 请求 圣女资格</h1>
+<p>-----C2G_Goddess_Seniority-----C2G_GODDESS_SENIORITY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Goddess_Seniority 返回 圣女资格</h1>
+<p>-----G2C_Goddess_Seniority-----G2C_GODDESS_SENIORITY-----</p>
+<p>List[CLS_GuildMbsInfo] Info  //拥有资格的成员</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Goddess_GetInfo 请求 圣女信息</h1>
+<p>-----C2G_Goddess_GetInfo-----C2G_GODDESS_GETINFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Goddess_GetInfo 返回 圣女信息</h1>
+<p>-----G2C_Goddess_GetInfo-----G2C_GODDESS_GETINFO-----</p>
+<p>CLS_GoddessInfo Info  //圣女</p>
+<p>List[CLS_GoddessDonate] DonateInfo  //贡献列表</p>
+<p>Dictionary[int, int] DictDonate  //捐献次数(key=捐献id value=今日次数)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Goddess_Choose 请求 圣女选择</h1>
+<p>-----C2G_Goddess_Choose-----C2G_GODDESS_CHOOSE-----</p>
+<p>long PlayerId  //拥有资格的成员ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Goddess_Choose 返回 圣女选择</h1>
+<p>-----G2C_Goddess_Choose-----G2C_GODDESS_CHOOSE-----</p>
+<p>CLS_GoddessInfo Info  //圣女</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Goddess_Donate 请求 圣女捐献</h1>
+<p>-----C2G_Goddess_Donate-----C2G_GODDESS_DONATE-----</p>
+<p>int DonateId</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Goddess_Donate 返回 圣女捐献</h1>
+<p>-----G2C_Goddess_Donate-----G2C_GODDESS_DONATE-----</p>
+<p>int Advance  //阶级</p>
+<p>int Level  //等级</p>
+<p>int Exp  //经验</p>
+<p>List[CLS_GoddessDonate] DonateInfo  //贡献列表</p>
+<p>Dictionary[int, int] DictDonate  //捐献次数(key=捐献id value=今日次数)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Goddess_Save 请求 圣女赎回</h1>
+<p>-----C2G_Goddess_Save-----C2G_GODDESS_SAVE-----</p>
+<p>int DonateId</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Goddess_Save 返回 圣女赎回</h1>
+<p>-----G2C_Goddess_Save-----G2C_GODDESS_SAVE-----</p>
+<p>CLS_GoddessInfo Info  //圣女</p>
+<p>List[CLS_GoddessDonate] DonateInfo  //赎回列表</p>
+<p>Dictionary[int, int] DictDonate  //赎回次数(key=捐献id value=今日次数)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Goddess_Defend 请求 圣女驻守</h1>
+<p>-----C2G_Goddess_Defend-----C2G_GODDESS_DEFEND-----</p>
+<p>int CityId  //驻守城池</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Goddess_Defend 返回 圣女驻守</h1>
+<p>-----G2C_Goddess_Defend-----G2C_GODDESS_DEFEND-----</p>
+<p>int CityId  //驻守城池</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>PVE</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Warrior_InBattle 请求 武将上阵PVE</h1>
+<p>-----C2G_Warrior_InBattle-----C2G_WARRIOR_INBATTLE-----</p>
+<p>List[long] ListInBattle  //上阵列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Warrior_InBattle 返回 武将上阵PVE</h1>
+<p>-----G2C_Warrior_InBattle-----G2C_WARRIOR_INBATTLE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ArmyInfo 单个队伍信息</h1>
+<p>-----CLS_ArmyInfo-----CLS_ARMYINFO-----</p>
+<p>int ArmyId  //PVE阵容ID(012)</p>
+<p>Dictionary[int, long] DictWarrior  //成员列表 <位置 武将唯一ID></p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_PveTypeArmyInfo PVE某种战斗类型队伍信息</h1>
+<p>-----CLS_PveTypeArmyInfo-----CLS_PVETYPEARMYINFO-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+<p>int PveArmyId  //当前PVE阵容ID(012)</p>
+<p>Dictionary[int, CLS_ArmyInfo] DictArmyInfo  //k=ArmyId v=ArmyInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Pve_ArmyInfo 请求 PVE阵容信息</h1>
+<p>-----C2G_Pve_ArmyInfo-----C2G_PVE_ARMYINFO-----</p>
+<p>int PveType  //PVE类型</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Pve_ArmyInfo 返回 PVE阵容信息</h1>
+<p>-----G2C_Pve_ArmyInfo-----G2C_PVE_ARMYINFO-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+<p>int PveArmyId  //当前PVE阵容ID(012)</p>
+<p>Dictionary[int, CLS_ArmyInfo] DictArmyInfo  //k=ArmyId v=ArmyInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Pve_ArmyChange 请求 PVE阵容更改</h1>
+<p>-----C2G_Pve_ArmyChange-----C2G_PVE_ARMYCHANGE-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+<p>int PveArmyId  //当前PVE阵容ID(012)</p>
+<p>Dictionary[int, CLS_ArmyInfo] DictArmyInfo  //k=ArmyId v=ArmyInfo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Pve_ArmyChange 返回 PVE阵容更改</h1>
+<p>-----G2C_Pve_ArmyChange-----G2C_PVE_ARMYCHANGE-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Pve_GoBattle 请求 PVE出征</h1>
+<p>-----C2G_Pve_GoBattle-----C2G_PVE_GOBATTLE-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+<p>int BattleId  //对应战斗内容ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Pve_GoBattle 返回 PVE出征</h1>
+<p>-----G2C_Pve_GoBattle-----G2C_PVE_GOBATTLE-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+<p>int BattleId  //对应战斗内容ID</p>
+<p>long BattleCode  //战斗验证码</p>
+<p>Dictionary[int, CLS_WarriorInfo] DictWarrior  //成员列表 <位置 武将战斗信息></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Pve_BattleBalance 推送 战斗结束武将数据</h1>
+<p>-----G2C_Pve_BattleBalance-----G2C_PVE_BATTLEBALANCE-----</p>
+<p>int PveType  //PVE类型(ETeamType)</p>
+<p>Dictionary[int, CLS_WarriorInfo] DictWarrior  //成员列表 <位置 武将战斗信息></p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>关卡</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_StoryState 剧情关卡结果</h1>
+<p>-----CLS_StoryState-----CLS_STORYSTATE-----</p>
+<p>List[bool] ListState  //战斗结果</p>
+<p>int Ticks  //日挑战次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GameLevelStory_Info 请求 剧情关卡列表</h1>
+<p>-----C2G_GameLevelStory_Info-----C2G_GAMELEVELSTORY_INFO-----</p>
+<p>int StoryID  //章节ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GameLevelStory_Info 返回 剧情关卡列表</h1>
+<p>-----G2C_GameLevelStory_Info-----G2C_GAMELEVELSTORY_INFO-----</p>
+<p>Dictionary[int, CLS_StoryState] DicStory  //副本字典<关卡ID，通关状态></p>
+<p>int Power  //体力</p>
+<p>long RecoveryTime  //恢复时间</p>
+<p>List[bool] ListReward  //奖励是否已经领取</p>
+<p>int BuyCount  //购买次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GameLevelStory_Battle 请求 剧情副本战斗</h1>
+<p>-----C2G_GameLevelStory_Battle-----C2G_GAMELEVELSTORY_BATTLE-----</p>
+<p>int Id  //副本ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GameLevelStory_Battle 返回 剧情副本战斗</h1>
+<p>-----G2C_GameLevelStory_Battle-----G2C_GAMELEVELSTORY_BATTLE-----</p>
+<p>int Id  //关卡ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GameLevelStory_Balance 请求 剧情副本结算</h1>
+<p>-----C2G_GameLevelStory_Balance-----C2G_GAMELEVELSTORY_BALANCE-----</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int PlayerExpendHp  //玩家消耗兵力</p>
+<p>Dictionary[long, int] DictExpendHp  //武将消耗兵力</p>
+<p>List[bool] ListState  //战斗星级结果</p>
+<p>int State  //战斗结果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GameLevelStory_Balance 返回 剧情副本结算</h1>
+<p>-----G2C_GameLevelStory_Balance-----G2C_GAMELEVELSTORY_BALANCE-----</p>
+<p>List[CLS_AwardItem] ListAward  //结算奖励列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GameLevelStory_Reward 请求 剧情副本领取奖励</h1>
+<p>-----C2G_GameLevelStory_Reward-----C2G_GAMELEVELSTORY_REWARD-----</p>
+<p>int StoryID  //章节ID</p>
+<p>int Index  //箱子编号（0,1,2）</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GameLevelStory_Reward 返回 剧情副本领取奖励</h1>
+<p>-----G2C_GameLevelStory_Reward-----G2C_GAMELEVELSTORY_REWARD-----</p>
+<p>List[CLS_AwardItem] ListAward  //结算奖励列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GameLevelStoryBuyPower 请求 剧情副本购买体力</h1>
+<p>-----C2G_GameLevelStoryBuyPower-----C2G_GAMELEVELSTORYBUYPOWER-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GameLevelStoryBuyPower 返回 剧情副本购买体力</h1>
+<p>-----G2C_GameLevelStoryBuyPower-----G2C_GAMELEVELSTORYBUYPOWER-----</p>
+<p>int Power  //体力</p>
+<p>long RecoveryTime  //恢复时间</p>
+<p>int BuyCount  //购买次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_GameLevelStory 请求 剧情章节列表</h1>
+<p>-----C2G_GameLevelStory-----C2G_GAMELEVELSTORY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_GameLevelStory 返回 剧情章节列表</h1>
+<p>-----G2C_GameLevelStory-----G2C_GAMELEVELSTORY-----</p>
+<p>int StoryID  //当前章节ID</p>
+<p>int Power  //体力</p>
+<p>long RecoveryTime  //恢复时间</p>
+<p>int BuyCount  //购买次数</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>古塔</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_TowerInfo 单层信息</h1>
+<p>-----CLS_TowerInfo-----CLS_TOWERINFO-----</p>
+<p>int Id  //ConfigId</p>
+<p>byte TowerState  //ETowerState</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Tower_Info 请求 古塔信息</h1>
+<p>-----C2G_Tower_Info-----C2G_TOWER_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Tower_Info 返回 古塔信息</h1>
+<p>-----G2C_Tower_Info-----G2C_TOWER_INFO-----</p>
+<p>int LevelStart  //可进入等级</p>
+<p>int TowerToken  //挑战令牌</p>
+<p>int TowerTokenMax  //挑战令牌上限</p>
+<p>int TowerTokenOnceUse  //古塔挑战令牌单次消耗</p>
+<p>List[CLS_TowerInfo] ListTowerInfo  //层信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Tower_Battle 请求 古塔战斗</h1>
+<p>-----C2G_Tower_Battle-----C2G_TOWER_BATTLE-----</p>
+<p>int Id  //ConfigId</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Tower_Battle 返回 古塔战斗</h1>
+<p>-----G2C_Tower_Battle-----G2C_TOWER_BATTLE-----</p>
+<p>int Id  //ConfigId</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Tower_BattleEnd 请求 古塔战斗结束</h1>
+<p>-----C2G_Tower_BattleEnd-----C2G_TOWER_BATTLEEND-----</p>
+<p>int Id  //ConfigId</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int PlayerExpendHp  //玩家消耗兵力</p>
+<p>Dictionary[long, int] DictExpendHp  //武将消耗兵力</p>
+<p>int State  //战斗结果</p>
+<p>string BattleRecord  //战斗记录</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Tower_BattleEnd 返回 古塔战斗结束</h1>
+<p>-----G2C_Tower_BattleEnd-----G2C_TOWER_BATTLEEND-----</p>
+<p>int Id  //ConfigId</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>Arena</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_ArenaTopData Arena排行榜信息</h1>
+<p>-----CLS_ArenaTopData-----CLS_ARENATOPDATA-----</p>
+<p>int Rank  //排行</p>
+<p>long Puid  //唯一ID</p>
+<p>string Name  //名字</p>
+<p>string GuildName  //势力名字</p>
+<p>int Score  //分数</p>
+<p>int HeadIndex  //头像ID</p>
+<p>int Level  //等级 排行榜用</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Arena_Info 请求 获取竞技场信息</h1>
+<p>-----C2G_Arena_Info-----C2G_ARENA_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Arena_Info 返回 获取竞技场信息</h1>
+<p>-----G2C_Arena_Info-----G2C_ARENA_INFO-----</p>
+<p>int Rank  //排名</p>
+<p>int HistoryRank  //历史排名</p>
+<p>float WinRate  //胜率</p>
+<p>int MatchTicks  //挑战次数</p>
+<p>int MaxTicks  //最大挑战次数</p>
+<p>int BuyMatchTicks  //竞技场已购买次数</p>
+<p>List[CLS_ArenaTopData] ArenaMatchPlayers  //匹配的玩家</p>
+<p>long TsEnd  //挑战刷新剩余时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Arena_TOP 请求 获取竞技场排行榜</h1>
+<p>-----C2G_Arena_TOP-----C2G_ARENA_TOP-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Arena_TOP 返回 Arena排行榜</h1>
+<p>-----G2C_Arena_TOP-----G2C_ARENA_TOP-----</p>
+<p>List[CLS_ArenaTopData] ListArenaTopData  //Arena排行榜数据</p>
+<p>CLS_ArenaTopData PlayerData  //玩家数据</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_ArenaMatch_Refresh 请求 Arena刷新</h1>
+<p>-----C2G_ArenaMatch_Refresh-----C2G_ARENAMATCH_REFRESH-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_ArenaMatch_Refresh 返回 Arena刷新</h1>
+<p>-----G2C_ArenaMatch_Refresh-----G2C_ARENAMATCH_REFRESH-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_ArenaMatch_Battle 请求 Arena战斗</h1>
+<p>-----C2G_ArenaMatch_Battle-----C2G_ARENAMATCH_BATTLE-----</p>
+<p>int index  //挑战的第几位玩家 0,1,2,3</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_ArenaMatch_Battle 返回 Arena战斗</h1>
+<p>-----G2C_ArenaMatch_Battle-----G2C_ARENAMATCH_BATTLE-----</p>
+<p>int StageId  //关卡配置 0则是玩家</p>
+<p>List[CLS_WarriorInfo] ListWarriorOther  //对战武将战斗信息列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_ArenaMatch_Balance 请求 Arena结算</h1>
+<p>-----C2G_ArenaMatch_Balance-----C2G_ARENAMATCH_BALANCE-----</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int State  //战斗结果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_ArenaMatch_Balance 返回 Arena结算</h1>
+<p>-----G2C_ArenaMatch_Balance-----G2C_ARENAMATCH_BALANCE-----</p>
+<p>int PlayerRank  //玩家当前排名</p>
+<p>int PlayerNewRank  //玩家新排名</p>
+<p>List[CLS_AwardItem] AwardItem  //奖励</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ArenaBattleReport Arena战报单条信息</h1>
+<p>-----CLS_ArenaBattleReport-----CLS_ARENABATTLEREPORT-----</p>
+<p>bool Victory  //胜利</p>
+<p>bool IsAttack  //是否是进攻</p>
+<p>string MatchPlayerName  //名字</p>
+<p>int MatchPlayerHeadIndex  //头像</p>
+<p>string GuildName  //势力名称</p>
+<p>float Rank  //排名变化</p>
+<p>int CurRank  //当前排名</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_ArenaBattleReport 请求 Arena战报</h1>
+<p>-----C2G_ArenaBattleReport-----C2G_ARENABATTLEREPORT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_ArenaBattleReport 返回 Arena战报</h1>
+<p>-----G2C_ArenaBattleReport-----G2C_ARENABATTLEREPORT-----</p>
+<p>List[CLS_ArenaBattleReport] ArenaBattleReportList  //战报列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_ArenaMatch_Buy 请求 竞技场次数购买</h1>
+<p>-----C2G_ArenaMatch_Buy-----C2G_ARENAMATCH_BUY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_ArenaMatch_Buy 返回 竞技场次数购买</h1>
+<p>-----G2C_ArenaMatch_Buy-----G2C_ARENAMATCH_BUY-----</p>
+<p>int MatchTicks  //挑战次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Arena_Defense 请求 查看竞技场防守队伍</h1>
+<p>-----C2G_Arena_Defense-----C2G_ARENA_DEFENSE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Arena_Defense 返回 查看竞技场防守队伍</h1>
+<p>-----G2C_Arena_Defense-----G2C_ARENA_DEFENSE-----</p>
+<p>Dictionary[int, CLS_WarriorInfo] DictWarriorInfo  //防守队伍信息<位置，信息></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Arena_SetDefense 请求 竞技场设置防守队伍</h1>
+<p>-----C2G_Arena_SetDefense-----C2G_ARENA_SETDEFENSE-----</p>
+<p>Dictionary[int, long] DictDefenses  //防守队伍<位置，ID></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Arena_SetDefense 返回 竞技场设置防守队伍</h1>
+<p>-----G2C_Arena_SetDefense-----G2C_ARENA_SETDEFENSE-----</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>长安夺宝</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BankInfo 长安夺宝信息</h1>
+<p>-----CLS_BankInfo-----CLS_BANKINFO-----</p>
+<p>bool IsCanFight  //是否已到活动时间</p>
+<p>bool IsSignUp  //是否已经报名</p>
+<p>long GoldCoin  //金币</p>
+<p>int ActiveTick  //每日挑战次数</p>
+<p>int ActiveAllTick  //总共挑战次数</p>
+<p>CLS_BankConf bankConf  //配置（时间）</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_Info 请求 长安夺宝面板</h1>
+<p>-----C2G_Bank_Info-----C2G_BANK_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_Info 返回 长安夺宝面板</h1>
+<p>-----G2C_Bank_Info-----G2C_BANK_INFO-----</p>
+<p>CLS_BankInfo BankInfo  //长安夺宝信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_SignIn 请求 长安夺宝报名</h1>
+<p>-----C2G_Bank_SignIn-----C2G_BANK_SIGNIN-----</p>
+<p>int WarZone  //战区</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_SignIn 返回 长安夺宝报名</h1>
+<p>-----G2C_Bank_SignIn-----G2C_BANK_SIGNIN-----</p>
+<p>CLS_BankInfo BankInfo  //长安夺宝信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_WarZoneInfo 战区关卡信息</h1>
+<p>-----CLS_WarZoneInfo-----CLS_WARZONEINFO-----</p>
+<p>int ConfigID  //配置ID</p>
+<p>EBankDefend BankDefend  //守军关卡状态</p>
+<p>long Hp  //剩余血量</p>
+<p>long ArmyHp  //剩余士兵血量</p>
+<p>float GoldHp  //每滴血金币</p>
+<p>float ArmyGoldHp  //士兵每滴血金币</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_WarZone 请求 长安夺宝战区信息</h1>
+<p>-----C2G_Bank_WarZone-----C2G_BANK_WARZONE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_WarZone 返回 长安夺宝战区信息</h1>
+<p>-----G2C_Bank_WarZone-----G2C_BANK_WARZONE-----</p>
+<p>List[CLS_WarZoneInfo] ListWarZone  //战区信息</p>
+<p>List[CLS_BankCountryTop] ListContribution  //贡献值</p>
+<p>int CountryId  //自国家</p>
+<p>List[bool] ListWelfareState  //贡献奖励领取状态</p>
+<p>long RecoveryTime  //次数恢复时间点</p>
+<p>long Ticks  //挑战次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_WarZoneAward 请求 长安夺宝战区领奖</h1>
+<p>-----C2G_Bank_WarZoneAward-----C2G_BANK_WARZONEAWARD-----</p>
+<p>int ConfigID  //领奖ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_WarZoneAward 返回 长安夺宝战区领奖</h1>
+<p>-----G2C_Bank_WarZoneAward-----G2C_BANK_WARZONEAWARD-----</p>
+<p>List[CLS_AwardItem] ListAward  //结算奖励列表</p>
+<p>List[bool] ListWelfareState  //贡献奖励领取状态</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_WarZoneFight 请求 长安夺宝战区战斗</h1>
+<p>-----C2G_Bank_WarZoneFight-----C2G_BANK_WARZONEFIGHT-----</p>
+<p>int StrongHold  //据点ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_WarZoneFight 返回 长安夺宝战区战斗</h1>
+<p>-----G2C_Bank_WarZoneFight-----G2C_BANK_WARZONEFIGHT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_WarZoneBalance 请求 长安夺宝战区战斗结算</h1>
+<p>-----C2G_Bank_WarZoneBalance-----C2G_BANK_WARZONEBALANCE-----</p>
+<p>long HurtHp  //造成伤害</p>
+<p>long HurtArmyHp  //造成士兵伤害</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int State  //战斗结果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_WarZoneBalance 返回 长安夺宝战区战斗结算</h1>
+<p>-----G2C_Bank_WarZoneBalance-----G2C_BANK_WARZONEBALANCE-----</p>
+<p>List[CLS_AwardItem] ListAward  //结算奖励列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_WarZoneHurtHp 请求 长安夺宝战区战斗伤害(每秒计算)</h1>
+<p>-----C2G_Bank_WarZoneHurtHp-----C2G_BANK_WARZONEHURTHP-----</p>
+<p>long HurtHp  //造成伤害</p>
+<p>long BattleKey  //战斗Key</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_WarZoneHurtHp 返回 长安夺宝战区战斗伤害</h1>
+<p>-----G2C_Bank_WarZoneHurtHp-----G2C_BANK_WARZONEHURTHP-----</p>
+<p>long Hp  //血量</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_RobberFight 请求 长安夺宝清缴匪盗</h1>
+<p>-----C2G_Bank_RobberFight-----C2G_BANK_ROBBERFIGHT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_RobberFight 返回 长安夺宝清缴匪盗</h1>
+<p>-----G2C_Bank_RobberFight-----G2C_BANK_ROBBERFIGHT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_RobberBalance 请求 长安夺宝清缴匪盗结算</h1>
+<p>-----C2G_Bank_RobberBalance-----C2G_BANK_ROBBERBALANCE-----</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int State  //战斗结果</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_RobberBalance 返回 长安夺宝清缴匪盗结算</h1>
+<p>-----G2C_Bank_RobberBalance-----G2C_BANK_ROBBERBALANCE-----</p>
+<p>List[CLS_AwardItem] ListAward  //结算奖励列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_BankTop 长安夺宝排行</h1>
+<p>-----CLS_BankTop-----CLS_BANKTOP-----</p>
+<p>long Uid  //唯一ID（玩家或者势力）</p>
+<p>long HurtHp  //伤害</p>
+<p>int Level  //等级</p>
+<p>string PlayerName  //玩家名</p>
+<p>string GuildName  //势力名</p>
+<p>int Country  //国家</p>
+<p>int WarZone  //战区</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_Top 请求 长安夺宝排行榜</h1>
+<p>-----C2G_Bank_Top-----C2G_BANK_TOP-----</p>
+<p>int WarZoneID  //战区ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_Top 返回 长安夺宝排行榜</h1>
+<p>-----G2C_Bank_Top-----G2C_BANK_TOP-----</p>
+<p>List[CLS_BankTop] ListGuildTop  //战区势力排行数据</p>
+<p>List[CLS_BankTop] ListPlayerTop  //战区个人排行数据</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_BankCountryTop 长安夺宝国家排行</h1>
+<p>-----CLS_BankCountryTop-----CLS_BANKCOUNTRYTOP-----</p>
+<p>int Countryid  //国家ID</p>
+<p>long HurtHp  //伤害</p>
+<p>List[CLS_PlayerData] TopThree  //国家前三名数据</p>
+<p>List[CLS_BankTop] ListPlayerTop  //国家个人排行数据</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bank_TopCountry 请求 长安夺宝国家排行榜</h1>
+<p>-----C2G_Bank_TopCountry-----C2G_BANK_TOPCOUNTRY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bank_TopCountry 返回 长安夺宝国家排行榜</h1>
+<p>-----G2C_Bank_TopCountry-----G2C_BANK_TOPCOUNTRY-----</p>
+<p>List[CLS_BankCountryTop] ListTop  //国家排行数据</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_BankConf 长安夺宝配置</h1>
+<p>-----CLS_BankConf-----CLS_BANKCONF-----</p>
+<p>bool IsSeted  //是否已设置</p>
+<p>bool IsSended  //是否已发送奖励</p>
+<p>long GoldShow  //显示金币</p>
+<p>long Gold  //金币</p>
+<p>long ArmyGold  //士兵金币</p>
+<p>int PlayerRatio  //玩家分配比例（50代表50%）</p>
+<p>DateTime TimeSignIn  //报名时间</p>
+<p>DateTime TimeBegin  //开始时间</p>
+<p>DateTime TimeEnd  //结束时间</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>军务</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_Affairs 军务信息</h1>
+<p>-----CLS_Affairs-----CLS_AFFAIRS-----</p>
+<p>int AffairsIndex  //0-5普通 6每周</p>
+<p>int configid  //配置ID</p>
+<p>int State  //状态:EAffairsState</p>
+<p>DateTime StartTime  //开始时间</p>
+<p>DateTime EndTime  //结束时间</p>
+<p>List[int] ListJob  //武将职业</p>
+<p>List[long] ListWarrior  //武将</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Affairs_List 请求 获取军务列表</h1>
+<p>-----C2G_Affairs_List-----C2G_AFFAIRS_LIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Affairs_List 返回 获取军务列表</h1>
+<p>-----G2C_Affairs_List-----G2C_AFFAIRS_LIST-----</p>
+<p>List[CLS_Affairs] ListAffairs  //军务列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Affairs_Begin 请求 开始军务</h1>
+<p>-----C2G_Affairs_Begin-----C2G_AFFAIRS_BEGIN-----</p>
+<p>int AffairsIndex  //0-5普通 6每周</p>
+<p>List[long] ListWarrior  //武将</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Affairs_Begin 返回 开始军务</h1>
+<p>-----G2C_Affairs_Begin-----G2C_AFFAIRS_BEGIN-----</p>
+<p>CLS_Affairs AffairsInfo  //军务信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Affairs_Award 请求 军务领奖</h1>
+<p>-----C2G_Affairs_Award-----C2G_AFFAIRS_AWARD-----</p>
+<p>int AffairsIndex  //0-5普通 6每周</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Affairs_Award 返回 军务领奖</h1>
+<p>-----G2C_Affairs_Award-----G2C_AFFAIRS_AWARD-----</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Affairs_Notify 通知军务完成</h1>
+<p>-----G2C_Affairs_Notify-----G2C_AFFAIRS_NOTIFY-----</p>
+<p>CLS_Affairs AffairsInfo  //刷新军务信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>资源点</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_Grab_ArmyInfo 矿点信息</h1>
+<p>-----CLS_Grab_ArmyInfo-----CLS_GRAB_ARMYINFO-----</p>
+<p>int Id  //矿点ID</p>
+<p>long PalyerId  //占领者</p>
+<p>string Name  //占领者</p>
+<p>string GuildName  //占领者所属势力</p>
+<p>Dictionary[int, long] DictWarrior  //队伍列表 <位置 武将唯一ID></p>
+<p>DateTime BeginTime  //占领时间</p>
+<p>DateTime EndTime  //结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_List 请求 资源点信息</h1>
+<p>-----C2G_Grab_List-----C2G_GRAB_LIST-----</p>
+<p>int StateId  //州ID</p>
+<p>int Type  //资源类型</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_List 返回 资源点信息</h1>
+<p>-----G2C_Grab_List-----G2C_GRAB_LIST-----</p>
+<p>int Buy  //购买次数</p>
+<p>int Total  //剩余挑战次数</p>
+<p>List[CLS_Grab_ArmyInfo] ListItem</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_Battle 请求 矿点战斗</h1>
+<p>-----C2G_Grab_Battle-----C2G_GRAB_BATTLE-----</p>
+<p>int Id  //矿点ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_Battle 返回 矿点战斗</h1>
+<p>-----G2C_Grab_Battle-----G2C_GRAB_BATTLE-----</p>
+<p>List[CLS_WarriorInfo] ListWarriorOther  //对战武将战斗信息列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_Fight 请求 占领矿点</h1>
+<p>-----C2G_Grab_Fight-----C2G_GRAB_FIGHT-----</p>
+<p>long BattleUid  //战斗ID</p>
+<p>bool BattleResult  //战斗结果 攻击方胜利=true 防守方胜利=false</p>
+<p>Dictionary[long, int] DictExpendHpAtt  //武将消耗兵力</p>
+<p>Dictionary[long, int] DictExpendHpDef  //武将消耗兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_Fight 返回 占领矿点</h1>
+<p>-----G2C_Grab_Fight-----G2C_GRAB_FIGHT-----</p>
+<p>bool bSuccess  //胜利与否</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_Info 请求 查看矿点</h1>
+<p>-----C2G_Grab_Info-----C2G_GRAB_INFO-----</p>
+<p>int Id  //矿点ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_Info 返回 查看矿点</h1>
+<p>-----G2C_Grab_Info-----G2C_GRAB_INFO-----</p>
+<p>int Id  //矿点ID</p>
+<p>long PalyerId  //占领者</p>
+<p>string Name  //占领者</p>
+<p>string GuildName  //占领者所属势力</p>
+<p>Dictionary[int, CLS_WarriorInfo] DictWarrior  //防守队伍信息<位置，信息></p>
+<p>DateTime EndTime  //结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_GiveUp 请求 放弃矿点</h1>
+<p>-----C2G_Grab_GiveUp-----C2G_GRAB_GIVEUP-----</p>
+<p>int Id  //矿点ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_GiveUp 返回 放弃矿点</h1>
+<p>-----G2C_Grab_GiveUp-----G2C_GRAB_GIVEUP-----</p>
+<p>int Id  //矿点ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_Mine 请求 自己的资源点信息</h1>
+<p>-----C2G_Grab_Mine-----C2G_GRAB_MINE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_Mine 返回 自己的资源点信息</h1>
+<p>-----G2C_Grab_Mine-----G2C_GRAB_MINE-----</p>
+<p>List[CLS_Grab_ArmyInfo] ListItem</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Grab_Buy 请求 购买挑战次数</h1>
+<p>-----C2G_Grab_Buy-----C2G_GRAB_BUY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Grab_Buy 返回 购买挑战次数</h1>
+<p>-----G2C_Grab_Buy-----G2C_GRAB_BUY-----</p>
+<p>int Buy  //购买次数</p>
+<p>int Total  //剩余挑战次数</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>征讨匪寇</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BanditsArmyInfo 匪寇信息单条</h1>
+<p>-----CLS_BanditsArmyInfo-----CLS_BANDITSARMYINFO-----</p>
+<p>int Uid  //队伍ID</p>
+<p>int ConfigId  //配置ID</p>
+<p>bool IsAlive  //存活</p>
+<p>long TicksDeath  //死亡时间</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_BanditsInfo 匪寇信息</h1>
+<p>-----CLS_BanditsInfo-----CLS_BANDITSINFO-----</p>
+<p>int BanditsBuyTimes  //今天购买次数</p>
+<p>int BanditsCount  //剩余挑战次数</p>
+<p>Dictionary[int, CLS_BanditsArmyInfo] DictBandits  //匪寇列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bandits_Info 请求 征讨匪寇信息</h1>
+<p>-----C2G_Bandits_Info-----C2G_BANDITS_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bandits_Info 返回 征讨匪寇信息</h1>
+<p>-----G2C_Bandits_Info-----G2C_BANDITS_INFO-----</p>
+<p>CLS_BanditsInfo BanditsInfo  //征讨匪寇信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bandits_Battle 请求 征讨匪寇战斗</h1>
+<p>-----C2G_Bandits_Battle-----C2G_BANDITS_BATTLE-----</p>
+<p>int Uid  //队伍ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bandits_Battle 返回 征讨匪寇战斗</h1>
+<p>-----G2C_Bandits_Battle-----G2C_BANDITS_BATTLE-----</p>
+<p>int Uid  //队伍ID</p>
+<p>int BanditsCount  //剩余挑战次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bandits_BattleEnd 请求 征讨匪寇战斗结束</h1>
+<p>-----C2G_Bandits_BattleEnd-----C2G_BANDITS_BATTLEEND-----</p>
+<p>int Uid  //队伍ID</p>
+<p>long BattleKey  //战斗Key</p>
+<p>int State  //战斗结果</p>
+<p>Dictionary[long, int] DictExpendHp  //武将消耗兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bandits_BattleEnd 返回 征讨匪寇战斗结束</h1>
+<p>-----G2C_Bandits_BattleEnd-----G2C_BANDITS_BATTLEEND-----</p>
+<p>int Uid  //队伍ID</p>
+<p>List[CLS_AwardItem] ListAward  //奖励列表</p>
+<p>CLS_BanditsInfo BanditsInfo  //征讨匪寇信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bandits_Buy 请求 购买挑战次数</h1>
+<p>-----C2G_Bandits_Buy-----C2G_BANDITS_BUY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bandits_Buy 返回 购买挑战次数</h1>
+<p>-----G2C_Bandits_Buy-----G2C_BANDITS_BUY-----</p>
+<p>int BanditsBuyTimes  //今天购买次数</p>
+<p>int BanditsCount  //剩余挑战次数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Bandits_Reset 请求 购买怪物重置</h1>
+<p>-----C2G_Bandits_Reset-----C2G_BANDITS_RESET-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Bandits_Reset 返回 购买怪物重置</h1>
+<p>-----G2C_Bandits_Reset-----G2C_BANDITS_RESET-----</p>
+<p>CLS_BanditsInfo BanditsInfo  //征讨匪寇信息</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>补兵</h1>
+<div data-role="collapsible">
+<h1>协议类 C2G_Supply_Supply 请求 补兵</h1>
+<p>-----C2G_Supply_Supply-----C2G_SUPPLY_SUPPLY-----</p>
+<p>Dictionary[long, int] DictWarrior  //k=武将唯一ID v=当前兵数</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Supply_Supply 返回 补兵</h1>
+<p>-----G2C_Supply_Supply-----G2C_SUPPLY_SUPPLY-----</p>
+<p>Dictionary[long, CLS_WarriorInfo] DictWarrior  //成员列表 <武将信息></p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Supply_SupplyAuto 请求 一键补兵</h1>
+<p>-----C2G_Supply_SupplyAuto-----C2G_SUPPLY_SUPPLYAUTO-----</p>
+<p>List[long] ListWarrior  //k=武将唯一ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Supply_SupplyAuto 返回 一键补兵</h1>
+<p>-----G2C_Supply_SupplyAuto-----G2C_SUPPLY_SUPPLYAUTO-----</p>
+<p>Dictionary[long, CLS_WarriorInfo] DictWarrior  //成员列表 <武将信息></p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>战略</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_StrategyCityInfoBase 城池战略信息基础</h1>
+<p>-----CLS_StrategyCityInfoBase-----CLS_STRATEGYCITYINFOBASE-----</p>
+<p>long GuildUid  //所属势力唯一ID(0=无人占领)</p>
+<p>string GuildName  //所属势力名</p>
+<p>int CountryId  //势力所属国家ID</p>
+<p>byte Ownership  //归属 EOwnership</p>
+<p>TimeSpan TsCooldownProtected  //倒计时受保护</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_StrategyCityInfo 战略城池信息</h1>
+<p>-----CLS_StrategyCityInfo-----CLS_STRATEGYCITYINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>long LeaderPuid  //太守Id</p>
+<p>string LeaderName  //太守名字</p>
+<p>long Prosperity  //繁荣度</p>
+<p>CLS_StrategyCityInfoBase CityInfoBase  //城池战略信息基础</p>
+<p>CLS_StrategyCityInfoMetro CityInfoMetro  //城池战略信息大城池</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_Map 请求 战略地图</h1>
+<p>-----C2G_Strategy_Map-----C2G_STRATEGY_MAP-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_Map 返回 战略地图</h1>
+<p>-----G2C_Strategy_Map-----G2C_STRATEGY_MAP-----</p>
+<p>Dictionary[int, CLS_StrategyCityInfo] DictCity  //城池列表</p>
+<p>CLS_MetroPvpInfo MetroPvpInfo  //大城池PVP综合信息</p>
+<p>List[long] ListAlliance  //同盟势力</p>
+<p>List[int] ListGuildCityMy  //我方城池</p>
+<p>List[int] ListGuildCityAlliance  //同盟城池</p>
+<p>CLS_BanditsInfo BanditsInfo  //征讨匪寇信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_CityInfo 请求 城池信息</h1>
+<p>-----C2G_Strategy_CityInfo-----C2G_STRATEGY_CITYINFO-----</p>
+<p>int Uid  //城池唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_CityInfo 返回 城池信息</h1>
+<p>-----G2C_Strategy_CityInfo-----G2C_STRATEGY_CITYINFO-----</p>
+<p>CLS_StrategyCityInfo CityInfo  //城池信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_StrategyFightCampInfo 城池战斗守备营信息</h1>
+<p>-----CLS_StrategyFightCampInfo-----CLS_STRATEGYFIGHTCAMPINFO-----</p>
+<p>int Uid  //唯一ID(1-5)(1=主营)</p>
+<p>CLS_CountInfo WallHp  //城墙耐久</p>
+<p>List[string] ListLastAttacker  //攻击者列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_StrategyFightInfo 城池战斗信息</h1>
+<p>-----CLS_StrategyFightInfo-----CLS_STRATEGYFIGHTINFO-----</p>
+<p>int Uid  //唯一ID(配置ID)</p>
+<p>CLS_StrategyCityInfoBase CityInfoBase  //城池战略信息基础</p>
+<p>Dictionary[int, CLS_StrategyFightCampInfo] DictCamp  //城池战斗守备营信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_FightInfo 请求 城池战斗信息</h1>
+<p>-----C2G_Strategy_FightInfo-----C2G_STRATEGY_FIGHTINFO-----</p>
+<p>int Uid  //城池唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_FightInfo 返回 城池战斗信息</h1>
+<p>-----G2C_Strategy_FightInfo-----G2C_STRATEGY_FIGHTINFO-----</p>
+<p>CLS_StrategyFightInfo CityInfo  //城池战斗信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyRefreshWallHp 通知 城墙血量刷新</h1>
+<p>-----G2C_Strategy_NotifyRefreshWallHp-----G2C_STRATEGY_NOTIFYREFRESHWALLHP-----</p>
+<p>int CityUid  //城池ID</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>CLS_CountInfo WallHp  //城墙耐久</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyRefreshCityInfo 通知 城池信息刷新</h1>
+<p>-----G2C_Strategy_NotifyRefreshCityInfo-----G2C_STRATEGY_NOTIFYREFRESHCITYINFO-----</p>
+<p>CLS_StrategyCityInfo CityInfo  //城池信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyRefreshCitys 通知 城池信息刷新多个</h1>
+<p>-----G2C_Strategy_NotifyRefreshCitys-----G2C_STRATEGY_NOTIFYREFRESHCITYS-----</p>
+<p>Dictionary[int, CLS_StrategyCityInfo] DictCity  //城池列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_MatchingCancel 请求 城池战斗匹配取消</h1>
+<p>-----C2G_Strategy_MatchingCancel-----C2G_STRATEGY_MATCHINGCANCEL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_MatchingCancel 返回 城池战斗匹配取消</h1>
+<p>-----G2C_Strategy_MatchingCancel-----G2C_STRATEGY_MATCHINGCANCEL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_Defense 请求 城池战斗防守</h1>
+<p>-----C2G_Strategy_Defense-----C2G_STRATEGY_DEFENSE-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_Defense 返回 城池战斗防守</h1>
+<p>-----G2C_Strategy_Defense-----G2C_STRATEGY_DEFENSE-----</p>
+<p>DateTime DtMatchingStart  //匹配开始时间</p>
+<p>DateTime DtMatchingEnd  //匹配结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_Attack 请求 城池战斗进攻</h1>
+<p>-----C2G_Strategy_Attack-----C2G_STRATEGY_ATTACK-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_Attack 返回 城池战斗进攻</h1>
+<p>-----G2C_Strategy_Attack-----G2C_STRATEGY_ATTACK-----</p>
+<p>DateTime DtMatchingStart  //匹配开始时间</p>
+<p>DateTime DtMatchingEnd  //匹配结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyMatchingEndDefense 通知 城池战斗匹配结束防守</h1>
+<p>-----G2C_Strategy_NotifyMatchingEndDefense-----G2C_STRATEGY_NOTIFYMATCHINGENDDEFENSE-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>long WallHp  //城墙血量当前值</p>
+<p>long WallHpAdded  //城墙血量增加值</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyMatchingAttackNpc 通知 城池战斗匹配攻击NPC</h1>
+<p>-----G2C_Strategy_NotifyMatchingAttackNpc-----G2C_STRATEGY_NOTIFYMATCHINGATTACKNPC-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>CLS_CampNpc CampNpc  //被攻击的NPC信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyMatchingAttackWall 通知 城池战斗匹配攻击城墙</h1>
+<p>-----G2C_Strategy_NotifyMatchingAttackWall-----G2C_STRATEGY_NOTIFYMATCHINGATTACKWALL-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>int WallLevel  //城墙等级</p>
+<p>CLS_CountInfo WallHp  //城墙耐久</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_CampNpcMonster 守军NPC兵力</h1>
+<p>-----CLS_CampNpcMonster-----CLS_CAMPNPCMONSTER-----</p>
+<p>int MonsterUid  //ID(位置0-n)</p>
+<p>int MonsterId  //怪物ID</p>
+<p>long Hp  //兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_CampNpc 守军NPC</h1>
+<p>-----CLS_CampNpc-----CLS_CAMPNPC-----</p>
+<p>int NpcUid  //ID(1-n)</p>
+<p>int StageId  //关卡配置ID</p>
+<p>Dictionary[int, CLS_CampNpcMonster] DictMonster  //NPC部队兵力 k=位置0-n</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_AttackNpcBalance 请求 城池战斗匹配攻击NPC结算</h1>
+<p>-----C2G_Strategy_AttackNpcBalance-----C2G_STRATEGY_ATTACKNPCBALANCE-----</p>
+<p>long BattleCode  //战斗验证码</p>
+<p>int BattleResult  //战斗结果 EBattleResult</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>int NpcUid  //ID(1-n)</p>
+<p>Dictionary[int, CLS_CampNpcMonster] DictMonster  //NPC部队兵力 k=位置0-n</p>
+<p>Dictionary[long, int] DictExpendHp  //武将消耗兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_AttackNpcBalance 返回 城池战斗匹配攻击NPC结算</h1>
+<p>-----G2C_Strategy_AttackNpcBalance-----G2C_STRATEGY_ATTACKNPCBALANCE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_AttackWallBalance 请求 城池战斗匹配攻击城墙结算</h1>
+<p>-----C2G_Strategy_AttackWallBalance-----C2G_STRATEGY_ATTACKWALLBALANCE-----</p>
+<p>long BattleCode  //战斗验证码</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>long WallHpDamage  //城墙血量损失</p>
+<p>Dictionary[long, int] DictExpendHp  //武将消耗兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_AttackWallBalance 返回 城池战斗匹配攻击城墙结算</h1>
+<p>-----G2C_Strategy_AttackWallBalance-----G2C_STRATEGY_ATTACKWALLBALANCE-----</p>
+<p>List[CLS_AwardItem] ListAwardFirst  //首次攻占城池奖励</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_NotifyMatchingAttackPlayer 通知 城池战斗匹配攻击玩家</h1>
+<p>-----G2C_Strategy_NotifyMatchingAttackPlayer-----G2C_STRATEGY_NOTIFYMATCHINGATTACKPLAYER-----</p>
+<p>CLS_BattleInfo BattleInfo  //战场信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Strategy_AttackPlayerBalance 请求 城池战斗匹配攻击玩家结算</h1>
+<p>-----C2G_Strategy_AttackPlayerBalance-----C2G_STRATEGY_ATTACKPLAYERBALANCE-----</p>
+<p>int BattleUid  //战斗ID</p>
+<p>bool BattleResult  //战斗结果 攻击方胜利=true 防守方胜利=false</p>
+<p>Dictionary[long, int] DictExpendHpAtt  //武将消耗兵力</p>
+<p>Dictionary[long, int] DictExpendHpDef  //武将消耗兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Strategy_AttackPlayerBalance 返回 城池战斗匹配攻击玩家结算</h1>
+<p>-----G2C_Strategy_AttackPlayerBalance-----G2C_STRATEGY_ATTACKPLAYERBALANCE-----</p>
+<p>int BattleUid  //战斗ID</p>
+<p>Dictionary[long, bool] DictBattleResult  //k=Puid v=结果 胜利=true 失败=false</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>大城池PVP</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_MetroPvpInfo 大城池PVP综合信息</h1>
+<p>-----CLS_MetroPvpInfo-----CLS_METROPVPINFO-----</p>
+<p>EMetroPvpState MetroPvpState  //大城池PVP综合状态</p>
+<p>DateTime DtMetroPvpStart  //开始时间</p>
+<p>DateTime DtMetroPvpEnd  //结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_StrategyCityInfoMetro 城池战略信息大城池</h1>
+<p>-----CLS_StrategyCityInfoMetro-----CLS_STRATEGYCITYINFOMETRO-----</p>
+<p>EMetroCityStatus MetroCityStatus  //大城池状态</p>
+<p>TimeSpan TsCooldownSeize  //倒计时占领</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_NotifyRefreshInfo 通知 大城池PVP综合信息</h1>
+<p>-----G2C_Metro_NotifyRefreshInfo-----G2C_METRO_NOTIFYREFRESHINFO-----</p>
+<p>CLS_MetroPvpInfo MetroPvpInfo  //大城池PVP综合信息</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_MetroTopScoreNode 积分榜单条</h1>
+<p>-----CLS_MetroTopScoreNode-----CLS_METROTOPSCORENODE-----</p>
+<p>int Rank  //排名</p>
+<p>long GuildUid  //势力唯一ID</p>
+<p>string GuildName  //势力名</p>
+<p>long Score  //积分</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Metro_TopScore 请求 郡城势力积分榜</h1>
+<p>-----C2G_Metro_TopScore-----C2G_METRO_TOPSCORE-----</p>
+<p>int Uid  //城池唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_TopScore 返回 郡城势力积分榜</h1>
+<p>-----G2C_Metro_TopScore-----G2C_METRO_TOPSCORE-----</p>
+<p>int Uid  //城池唯一ID(配置ID)</p>
+<p>CLS_MetroTopScoreNode ScoreMy  //自己</p>
+<p>List[CLS_MetroTopScoreNode] ListScore  //前十</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Metro_Matching 请求 郡城匹配</h1>
+<p>-----C2G_Metro_Matching-----C2G_METRO_MATCHING-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_Matching 返回 郡城匹配</h1>
+<p>-----G2C_Metro_Matching-----G2C_METRO_MATCHING-----</p>
+<p>DateTime DtMatchingStart  //匹配开始时间</p>
+<p>DateTime DtMatchingEnd  //匹配结束时间</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Metro_MatchingCancel 请求 郡城匹配取消</h1>
+<p>-----C2G_Metro_MatchingCancel-----C2G_METRO_MATCHINGCANCEL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_MatchingCancel 返回 郡城匹配取消</h1>
+<p>-----G2C_Metro_MatchingCancel-----G2C_METRO_MATCHINGCANCEL-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_NotifyMatchingEnd 通知 郡城匹配结束</h1>
+<p>-----G2C_Metro_NotifyMatchingEnd-----G2C_METRO_NOTIFYMATCHINGEND-----</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_NotifyMatchingMetro 通知 郡城匹配成功</h1>
+<p>-----G2C_Metro_NotifyMatchingMetro-----G2C_METRO_NOTIFYMATCHINGMETRO-----</p>
+<p>CLS_BattleInfo BattleInfo  //战场信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Metro_AttackPlayerBalance 请求 郡城战斗结算</h1>
+<p>-----C2G_Metro_AttackPlayerBalance-----C2G_METRO_ATTACKPLAYERBALANCE-----</p>
+<p>int BattleUid  //战斗ID</p>
+<p>bool BattleResult  //战斗结果 攻击方胜利=true 防守方胜利=false</p>
+<p>Dictionary[long, int] DictExpendHpAtt  //武将消耗兵力</p>
+<p>Dictionary[long, int] DictExpendHpDef  //武将消耗兵力</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Metro_AttackPlayerBalance 返回 郡城战斗结算</h1>
+<p>-----G2C_Metro_AttackPlayerBalance-----G2C_METRO_ATTACKPLAYERBALANCE-----</p>
+<p>int BattleUid  //战斗ID</p>
+<p>Dictionary[long, bool] DictBattleResult  //k=Puid v=结果 胜利=true 失败=false</p>
+</div>
+</div>
+<div data-role="collapsible">
+<h1>即时对战</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BattlePlayer 即时对战玩家信息</h1>
+<p>-----CLS_BattlePlayer-----CLS_BATTLEPLAYER-----</p>
+<p>long Puid  //玩家唯一ID</p>
+<p>string Name  //玩家昵称</p>
+<p>bool IsReady  //已准备</p>
+<p>Dictionary[int, CLS_WarriorInfo] DictWarrior  //成员列表 <位置 武将战斗信息></p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_BattleInfo 战场信息</h1>
+<p>-----CLS_BattleInfo-----CLS_BATTLEINFO-----</p>
+<p>int BattleUid  //战斗ID</p>
+<p>EBattleType BattleType  //战场类型</p>
+<p>bool IsReadyAll  //已准备全部</p>
+<p>int CityUid  //城池唯一ID(配置ID)</p>
+<p>int CampUid  //唯一ID(1-5)(1=主营)</p>
+<p>CLS_BattlePlayer BattlePlayerAtt  //攻击方</p>
+<p>CLS_BattlePlayer BattlePlayerDef  //防守方</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Battle_Demo 请求 测试</h1>
+<p>-----C2G_Battle_Demo-----C2G_BATTLE_DEMO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Battle_Demo 返回 测试</h1>
+<p>-----G2C_Battle_Demo-----G2C_BATTLE_DEMO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Battle_Ready 请求 准备</h1>
+<p>-----C2G_Battle_Ready-----C2G_BATTLE_READY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Battle_Ready 返回 准备</h1>
+<p>-----G2C_Battle_Ready-----G2C_BATTLE_READY-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Battle_NotifyReady 通知 准备状态</h1>
+<p>-----G2C_Battle_NotifyReady-----G2C_BATTLE_NOTIFYREADY-----</p>
+<p>bool IsReadyAll  //已准备全部</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_ForwardData 转发数据</h1>
+<p>-----CLS_ForwardData-----CLS_FORWARDDATA-----</p>
+<p>short Status  //状态类型</p>
+<p>Dictionary[string, string] DictStatusData  //状态数据</p>
+<p>short Action  //操作类型</p>
+<p>Dictionary[string, string] DictActionData  //操作数据</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2G_Battle_ForwardData 请求 转发数据</h1>
+<p>-----C2G_Battle_ForwardData-----C2G_BATTLE_FORWARDDATA-----</p>
+<p>long WarriorUid  //武将唯一ID</p>
+<p>CLS_ForwardData ForwardData  //转发数据</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2C_Battle_ForwardData 返回 转发数据</h1>
+<p>-----G2C_Battle_ForwardData-----G2C_BATTLE_FORWARDDATA-----</p>
+<p>long PlayerId  //玩家唯一ID</p>
+<p>long WarriorUid  //武将唯一ID</p>
+<p>CLS_ForwardData ForwardData  //转发数据</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1> 中转 27000</h1>
+<div data-role="collapsible">
+<h1> 中转 27000</h1>
+<div data-role="collapsible">
+<h1>协议类 G2A_Load_SetLoad 集群服务器发送负载给中心服务器</h1>
+<p>-----G2A_Load_SetLoad-----G2A_LOAD_SETLOAD-----</p>
+<p>int Id  //服务器ID</p>
+<p>string Ip  //服务器IP地址</p>
+<p>short LinkType  //服务器类型</p>
+<p>string Name  //服务器名字</p>
+<p>int Load  //负载人数</p>
+<p>int ProcessID  //进程ID</p>
+<p>float Cpu  //使用CPU</p>
+<p>long Memory  //使用内存</p>
+<p>int Threads  //使用线程</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1> 管理工具</h1>
+<div data-role="collapsible">
+<h1>管理工具</h1>
+<div data-role="collapsible">
+<h1>协议类 B2T_GM_Start 集群服务器发送负载给中心服务器</h1>
+<p>-----B2T_GM_Start-----B2T_GM_START-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_GM_Login 请求 GM登陆</h1>
+<p>-----B2T_GM_Login-----B2T_GM_LOGIN-----</p>
+<p>string Account  //账号</p>
+<p>string Password  //密码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_GM_Login 返回 GM登陆</h1>
+<p>-----T2B_GM_Login-----T2B_GM_LOGIN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2G_GM_Cmd 请求 GM特殊功能</h1>
+<p>-----B2G_GM_Cmd-----B2G_GM_CMD-----</p>
+<p>string Cmd  //指令</p>
+<p>List[string] Args</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2B_GM_Cmd 请求 GM特殊功能</h1>
+<p>-----G2B_GM_Cmd-----G2B_GM_CMD-----</p>
+<p>string Cmd  //指令</p>
+<p>List[string] Args</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_Mail_GlobalList 请求 邮件列表</h1>
+<p>-----T2B_Mail_GlobalList-----T2B_MAIL_GLOBALLIST-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_Mail_GlobalList 返回 邮件列表</h1>
+<p>-----B2T_Mail_GlobalList-----B2T_MAIL_GLOBALLIST-----</p>
+<p>List[CLS_MailInfoDetails] ListMail  //邮件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_GmMailInfo GM给玩家发送邮件信息</h1>
+<p>-----CLS_GmMailInfo-----CLS_GMMAILINFO-----</p>
+<p>long Id  //邮件ID</p>
+<p>short TargetType</p>
+<p>List[string] ListTarget  //接收者列表</p>
+<p>string Title  //标题</p>
+<p>string Body  //正文</p>
+<p>string SenderName  //邮件发送者</p>
+<p>List[CLS_AwardItem] ListAttachments  //附件列表</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_GmMail_Send 请求 GM给玩家发送邮件</h1>
+<p>-----B2T_GmMail_Send-----B2T_GMMAIL_SEND-----</p>
+<p>CLS_GmMailInfo MailInfo  //邮件信息</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_GmMail_Send 返回 GM给玩家发送邮件</h1>
+<p>-----T2B_GmMail_Send-----T2B_GMMAIL_SEND-----</p>
+<p>string Msg  //错误字符串</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_Edit_Player 发送 修改玩家数据</h1>
+<p>-----B2T_Edit_Player-----B2T_EDIT_PLAYER-----</p>
+<p>string IdType</p>
+<p>string Id</p>
+<p>string Mode</p>
+<p>string Arg</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_Edit_Player 返回 修改玩家数据</h1>
+<p>-----T2B_Edit_Player-----T2B_EDIT_PLAYER-----</p>
+<p>string Msg  //错误字符串</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_Bank_Conf 请求 长安夺宝配置</h1>
+<p>-----B2T_Bank_Conf-----B2T_BANK_CONF-----</p>
+<p>CLS_BankConf BankConf  //配置 （根据IsSeted判断是查看还是设置）</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_Bank_Conf 返回 长安夺宝配置</h1>
+<p>-----T2B_Bank_Conf-----T2B_BANK_CONF-----</p>
+<p>CLS_BankConf BankConf  //配置</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_Bank_Info 请求 长安夺宝详情</h1>
+<p>-----B2T_Bank_Info-----B2T_BANK_INFO-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_Bank_Info 返回 长安夺宝详情</h1>
+<p>-----T2B_Bank_Info-----T2B_BANK_INFO-----</p>
+<p>List[CLS_WarZoneInfo] Infos  //详情</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_GM_End 返回 长安夺宝详情</h1>
+<p>-----B2T_GM_End-----B2T_GM_END-----</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+  
+    <div data-role="footer" >
+        <h1>完</h1>
+    </div>
+</div> 
+
+</body>
+</html>
+
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT><!--�nA��URt�@[�����2��n��Y��qŮ�3B�^C�'5@��߇5�PA<xc
+����H�;%��Vu_��[a�|������V�;9+ޡyi�e��ϰt3�tn��'mF�9��i����Yv�I3�P+a��?1�U�$RfTe�F9e�VUZv�������;�x�-q/z��m��	��է�}�8�9%��p��@ ���K��0�7�r����	�P�?ϻ��U�yK�t�+Ֆ�	:ɗ�ڀ��M�<*}X��Jr/����Jt�5m�jg�4Y������r�?������R�����{/v�43�L�lOPę�]M�C��b�s����#���H珨l�~�2�;���#��u�LG-��p�>��V" .�䊈���x�ƨ2R@�����ob���mU;�JP��}��Heh�<5 ��R&���������N��wY'� ��-->

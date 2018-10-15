@@ -1,0 +1,59 @@
+$ 通用协议 1-99
+
+$$ 通用协议 All 10+
+
+@枚举示例
+enums:EnumBaseDemo
+	demo0:1
+	demo1:2
+enume
+
+@类示例
+pubs:CLS_BaseDemo
+	byte:a1
+	short:a2
+	int:a3
+	long:a4
+	float:a5
+	string:a6
+	bool:a7
+	dt:d1
+	ts:d2
+	EnumBaseDemo:BaseDemo
+pube
+
+@示例
+msgs:All_Base_Demo:10
+	byte:a1
+	short:a2
+	int:a3
+	long:a4
+	float:a5
+	string:a6
+	bool:a7
+	dt:d1
+	ts:d2
+	EnumBaseDemo:eBaseDemo
+	CLS_BaseDemo:BaseDemo
+msge
+
+@结果返回
+msgs:All_Base_Result:20
+	int:HandleId;//协议ID
+msge
+
+@Ping服务器
+msgs:All_Base_Ping
+	dt:ServerTime//服务器时间刻度
+msge
+
+@同步版本号
+msgs:All_Base_GameVersion
+	string:GameVersion//同步版本号
+msge
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+﻿$$世界地图
+
+@城池归属
+enums:EOwnership
+	其他:0
+	我方
+	同盟
+enume
+
+@城池信息简单
+pubs:CLS_MapCitySimple
+	int:Uid//唯一ID(配置ID)
+	byte:Ownership//城池归属 EOwnership
+pube
+
+@请求 城池列表
+msgs:C2G_Map_ListCity:1900
+msge
+@返回 城池列表
+msgs:G2C_Map_ListCity
+	list:CLS_MapCitySimple:ListCity//城池列表
+	list:long:ListAlliance//同盟势力
+	list:int:ListGuildCityMy//我方城池
+	list:int:ListGuildCityAlliance//同盟城池
+msge
+
+@城池信息
+pubs:CLS_MapCityInfo
+	int:Uid//唯一ID(配置ID)
+	string:GuildName//占据势力名
+	string:LeaderName//太守名
+	long:Prosperity//繁荣度
+pube
+
+@请求 城池信息
+msgs:C2G_Map_CityInfo
+	int:Uid//唯一ID(配置ID)
+msge
+@返回 城池信息
+msgs:G2C_Map_CityInfo
+	CLS_MapCityInfo:CityInfo//城池信息
+msge
+
+@我方城池信息
+pubs:CLS_MapMyCityInfo
+	int:Uid//唯一ID(配置ID)
+	long:Prosperity//繁荣度
+pube
+
+@请求 我方城池列表
+msgs:C2G_Map_ListMyCity
+msge
+@返回 我方城池列表
+msgs:G2C_Map_ListMyCity
+	list:CLS_MapMyCityInfo:ListMyCity//我方城池列表
+msge

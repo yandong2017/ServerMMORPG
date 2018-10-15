@@ -1,0 +1,64 @@
+﻿$$城池城墙
+
+@守备营城墙信息
+pubs:CLS_CampWallInfo
+	int:Uid//唯一ID(1-5)(1=主营)
+	CLS_CountInfo:WallHp//城墙耐久
+	ts:TsCooldownRepair//可修复CD
+	int:Bowls//滚木
+	int:Frise//拒马
+	int:Trap//陷阱
+	dict:int:CLS_ItemNeedInfo:DictNeedInfo//建筑道具需求
+pube
+
+@城墙信息
+pubs:CLS_WallInfo
+	int:Uid//唯一ID(配置ID)
+	int:Level//等级
+	dict:int:CLS_CampWallInfo:DictCampWall//守备营城墙信息
+pube
+
+@请求 城墙信息
+msgs:C2G_Wall_Info:2600
+	int:CityUid//城池ID
+msge
+@返回 城墙信息
+msgs:G2C_Wall_Info
+	int:CityUid//城池ID
+	CLS_WallInfo:WallInfo//城墙信息
+msge
+
+@请求 城墙修复
+msgs:C2G_Wall_Repair
+	int:CityUid//城池ID
+	int:CampUid//唯一ID(1-5)(1=主营)
+msge
+@返回 城墙修复
+msgs:G2C_Wall_Repair
+	int:CityUid//城池ID
+	int:CampUid//唯一ID(1-5)(1=主营)
+	CLS_WallInfo:WallInfo//城墙信息
+msge
+
+@城墙器械类型
+enums:EWallWorkType
+	滚木:0
+	拒马:1
+	陷阱:2
+enume
+
+@请求 城墙建造器械
+msgs:C2G_Wall_MakeWork
+	int:CityUid//城池ID
+	int:CampUid//唯一ID(1-5)(1=主营)
+	int:WallWorkType//城墙器械类型 EWallWorkType
+	int:MakeCount//建造数目
+msge
+@返回 城墙建造器械
+msgs:G2C_Wall_MakeWork
+	int:CityUid//城池ID
+	int:CampUid//唯一ID(1-5)(1=主营)
+	int:WallWorkType//城墙器械类型 EWallWorkType
+	int:MakeCount//建造数目
+	CLS_WallInfo:WallInfo//城墙信息
+msge

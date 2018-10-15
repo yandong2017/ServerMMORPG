@@ -1,0 +1,31 @@
+﻿$$玩家进入游戏时弹出的游戏公告
+
+@走马灯类型
+enums:ENoticeRollingType
+	玩家走马灯:0
+	临时走马灯
+	公告走马灯
+enume
+
+@请求 系统公告
+msgs:C2G_Notice_System:1200
+msge
+@返回 系统公告
+msgs:G2C_Notice_System
+	string:Text//内容
+msge
+
+@请求 活动公告
+msgs:C2G_Notice_Activity
+msge
+@返回 活动公告
+msgs:G2C_Notice_Activity
+	list:string:ListText//内容
+msge
+
+@发送 走马灯
+msgs:G2C_Notice_Rolling
+	byte:Type//走马灯类型 见ENoticeRollingType
+	string:Text//内容
+	int:Count//播放次数
+msge

@@ -1,0 +1,54 @@
+﻿
+$$军务
+
+@军务状态
+enums:EAffairsState
+	未激活:0
+	进行中
+	已完成
+	已领奖
+enume
+
+@军务信息
+pubs:CLS_Affairs	
+	int:AffairsIndex//0-5普通 6每周	
+	int:configid//配置ID
+	int:State//状态:EAffairsState
+	dt:StartTime//开始时间
+	dt:EndTime//结束时间
+	list:int:ListJob//武将职业
+	list:long:ListWarrior//武将
+pube
+
+@请求 获取军务列表
+msgs:C2G_Affairs_List:8500
+msge
+@返回 获取军务列表
+msgs:G2C_Affairs_List
+	list:CLS_Affairs:ListAffairs//军务列表
+msge
+
+@请求 开始军务
+msgs:C2G_Affairs_Begin
+	int:AffairsIndex//0-5普通 6每周
+	list:long:ListWarrior//武将
+msge
+@返回 开始军务
+msgs:G2C_Affairs_Begin
+	CLS_Affairs:AffairsInfo//军务信息	
+msge
+
+@请求 军务领奖
+msgs:C2G_Affairs_Award
+	int:AffairsIndex//0-5普通 6每周	
+msge
+
+@返回 军务领奖
+msgs:G2C_Affairs_Award
+	list:CLS_AwardItem:ListAward//奖励列表	
+msge
+
+@通知军务完成
+msgs:G2C_Affairs_Notify
+	CLS_Affairs:AffairsInfo//刷新军务信息
+msge

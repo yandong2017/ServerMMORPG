@@ -1,0 +1,177 @@
+﻿$$武将
+
+@技能信息
+pubs:CLS_SkillInfo
+	int:SkillId//技能ID(配置ID SkillId)
+	int:Level//等级
+	int:Exp//经验值
+pube
+
+@组合信息
+pubs:CLS_WarriorCollect
+	int:CollectId//组合ID(配置ID)
+	bool:Valid//是否生效
+	dict:int:bool:DictHas//已有武将配置ID<武将ID 是否有>
+pube
+
+@武将信息
+pubs:CLS_WarriorInfo
+	long:Id//唯一ID
+	int:ConfigId//配置ID
+	int:Level//等级
+	int:Exp//经验
+	string:MarkName//武将自定义名称
+	bool:Lock//锁定
+	bool:InRecruit//募兵
+	bool:InBattle//上阵
+	bool:Captive//被俘虏
+	bool:Employed//被雇佣
+	bool:InArmy//出征PVP
+	bool:InAffairs//军务中
+	bool:InGrab//矿点占领
+	list:CLS_SkillInfo:ListSkill//武将技能列表
+	int:AdvanceLv//进阶等级
+
+	float:BaseAtk//固定攻击
+	float:BaseDef//固定防御
+	int:BaseHp//固定生命
+	float:BaseInte//固定谋略
+	float:BaseBreak//固定攻城
+
+	dict:int:float:CombatProperty//战斗属性
+	int:CurrentHp//当前兵力
+	int:CombatPower//战斗力
+
+	dict:int:CLS_EquipInfo:DictEquiped//武将已装备列表<装备位置, 信息>
+	int:Satr//星级
+	int:WakeLevel//觉醒等级
+	dict:int:int:DictWake//武将觉醒列表<觉醒位置, 等级>
+
+	dict:int:float:DictStremgthen//武将强化列表<强化id, 值>
+
+	dict:int:CLS_WarriorCollect:DictWarriorCollect//武将组合列表<组合id, 组合内容>
+pube
+
+@请求 武将列表
+msgs:C2G_Warrior_WarriorList:2200
+msge
+@返回 武将列表
+msgs:G2C_Warrior_WarriorList
+	list:CLS_WarriorInfo:ListWarrior//武将列表
+	list:long:ListInBattle//上阵列表
+msge
+
+@请求 武将锁定/解锁
+msgs:C2G_Warrior_Lock
+	long:Id//唯一ID
+msge
+@返回 武将锁定/解锁
+msgs:G2C_Warrior_Lock
+	long:Id//唯一ID
+msge
+
+@请求 武将进阶
+msgs:C2G_Warrior_Advance
+	long:Id//唯一ID	
+	list:long:MateriaWarriorID//材料武将ID
+msge
+@返回 武将进阶
+msgs:G2C_Warrior_Advance
+	CLS_WarriorInfo:WarriorInfo//武将信息	
+msge
+
+@请求 武将修改昵称
+msgs:C2G_Warrior_Rename
+	long:Id//唯一ID
+	string:MarkName//武将自定义名称
+msge
+@返回 武将修改昵称
+msgs:G2C_Warrior_Rename
+msge
+
+@请求 武将升级
+msgs:C2G_Warrior_UpLevel
+	long:Id//唯一ID
+	list:long:ListWarrior//使用武将信息
+msge
+@返回 武将升级
+msgs:G2C_Warrior_UpLevel
+	long:Id//唯一ID
+	int:Level//等级
+	int:Exp//经验
+msge
+
+@通知 武将升级
+msgs:G2C_Warrior_NotifyLevelUp
+msge
+
+@请求 武将培养信息
+msgs:C2G_Warrior_ImproveInfo
+msge
+@返回 武将培养信息
+msgs:G2C_Warrior_ImproveInfo
+	list:CLS_ItemInfo:ListItem//道具列表(武将培养类)
+msge
+
+@请求 武将培养
+msgs:C2G_Warrior_Improve
+	long:Id//唯一ID
+	CLS_ItemInfo:ItemInfo//使用道具信息
+msge
+@返回 武将培养
+msgs:G2C_Warrior_Improve	
+msge
+
+@请求 武将升星
+msgs:C2G_Warrior_Star
+	long:Id//升星武将唯一ID
+	list:long:MateriaWarriorID//材料武将ID
+msge
+@返回 武将升星
+msgs:G2C_Warrior_Star	
+msge
+
+@请求 武将技能
+msgs:C2G_Warrior_Skill
+	long:Id//武将唯一ID
+	int:Skill//技能ID
+msge
+@返回 武将技能
+msgs:G2C_Warrior_Skill	
+msge
+
+@请求 武将觉醒条件激活
+msgs:C2G_Warrior_WakeUnlock
+	long:Id//武将唯一ID
+	int:Type//激活类型  EWakeDataType
+msge
+@返回 武将觉醒条件激活
+msgs:G2C_Warrior_WakeUnlock
+msge
+
+@请求 武将觉醒材料信息
+msgs:C2G_Warrior_WakeInfo
+	long:Id//武将唯一ID
+	int:Type//激活类型  EWakeDataType
+msge
+@返回 武将觉醒材料信息
+msgs:G2C_Warrior_WakeInfo
+	list:CLS_ItemNeedInfo:ListItemNeedInfo//需求道具列表
+	int:maxStoryId//最大关卡ID
+msge
+
+@请求 武将觉醒
+msgs:C2G_Warrior_WakeUp
+	long:Id//唯一ID
+msge
+@返回 武将觉醒
+msgs:G2C_Warrior_WakeUp
+msge
+@请求 武将出售
+msgs:C2G_Warrior_Sell
+	list:long:ListIds//唯一ID
+msge
+@返回 武将出售
+msgs:G2C_Warrior_Sell
+	int:Money//卖店价格
+msge

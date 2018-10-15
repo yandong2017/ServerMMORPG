@@ -1,0 +1,85 @@
+﻿$$道具
+
+
+@道具信息
+pubs:CLS_ItemInfo
+	int:Id//ID(配置ID)
+	int:Count//数量
+pube
+
+@请求 道具列表
+msgs:C2G_Item_List:2000
+msge
+@返回 道具列表
+msgs:G2C_Item_List
+	list:CLS_ItemInfo:ListItem//道具列表
+msge
+
+@请求 道具卖店
+msgs:C2G_Item_Sell
+	int:Id//ID(配置ID)
+	int:Count//数量
+msge
+@返回 道具卖店
+msgs:G2C_Item_Sell
+	list:CLS_ItemInfo:ListItem//道具列表
+msge
+
+@请求 道具使用
+msgs:C2G_Item_Use
+	int:Id//ID(配置ID)
+	int:Type//类型0:使用，1:合成
+	int:Count//数量
+msge
+@返回 道具使用
+msgs:G2C_Item_Use
+	int:Type//类型0:使用，1:合成
+	list:CLS_ItemInfo:ListItem//道具列表
+	list:CLS_AwardItem:ListAward//奖励项
+msge
+
+@请求 资源道具列表
+msgs:C2G_Item_ResourcesList
+	int:Type//道具类型 EUseEffect
+msge
+@返回 资源道具列表
+msgs:G2C_Item_ResourcesList
+	list:CLS_ItemInfo:ListItem//道具列表
+msge
+
+@请求 资源道具使用
+msgs:C2G_Item_ResourcesUse
+	list:CLS_ItemInfo:Items//道具
+	int:Type//道具类型 EUseEffect
+msge
+@返回 资源道具使用
+msgs:G2C_Item_ResourcesUse
+	list:CLS_ItemInfo:ListItem//道具列表
+	list:CLS_AwardItem:ListAward//奖励项
+msge
+
+@请求 资源道具购买
+msgs:C2G_Item_ResourcesBuy
+	int:ID//道具ID ShopSpeedUp表里的ID
+	int:Amount//数量
+	int:Type//道具类型 EUseEffect
+msge
+@返回 资源道具购买
+msgs:G2C_Item_ResourcesBuy
+	list:CLS_ItemInfo:ListItem//道具列表
+	list:CLS_AwardItem:ListAward//奖励项
+msge
+
+@请求 战斗使用道具
+msgs:C2G_Item_CombatUse
+	int:Id//ID(配置ID)
+	int:Count//数量
+	int:CombatType//转发战斗效果
+msge
+@返回 战斗使用道具
+msgs:G2C_Item_CombatUse
+	int:Id//ID(配置ID)
+	int:Count//数量
+	int:CombatType//转发战斗效果
+	list:CLS_ItemInfo:ListItem//道具列表
+msge

@@ -1,0 +1,11 @@
+F:\AmilyServerBase\APublish\表格工具\表格工具.exe.config
+F:\AmilyServerBase\APublish\表格工具\表格工具.exe
+F:\AmilyServerBase\APublish\表格工具\表格工具.pdb
+F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csprojAssemblyReference.cache
+F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.FormTool.resources
+F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.Properties.Resources.resources
+F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.GenerateResource.cache
+F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.CoreCompileInputs.cache
+F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.CopyComplete
+F:\AmilyServerBase\ExcelTool\obj\Debug\表格工具.exe
+F:\AmilyServerBase\ExcelTool\obj\Debug\表格工具.pdb

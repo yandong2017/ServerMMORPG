@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Data>
+	<Node>
+		<Id>89000001</Id>
+		<AwardType>7</AwardType>
+		<Type>62020201</Type>
+		<DropLimitTime>日</DropLimitTime>
+		<DropLimit>20</DropLimit>
+	</Node>
+	<Node>
+		<Id>89000002</Id>
+		<AwardType>7</AwardType>
+		<Type>62020402</Type>
+		<DropLimitTime>日</DropLimitTime>
+		<DropLimit>10</DropLimit>
+	</Node>
+	<Node>
+		<Id>89000003</Id>
+		<AwardType>10</AwardType>
+		<Type>32010301</Type>
+		<DropLimitTime>周</DropLimitTime>
+		<DropLimit>3</DropLimit>
+	</Node>
+	<Node>
+		<Id>89000004</Id>
+		<AwardType>10</AwardType>
+		<Type>32020301</Type>
+		<DropLimitTime>月</DropLimitTime>
+		<DropLimit>3</DropLimit>
+	</Node>
+	<Node>
+		<Id>89000005</Id>
+		<AwardType>装备</AwardType>
+		<Type>51001510</Type>
+		<DropLimitTime>季</DropLimitTime>
+		<DropLimit>3</DropLimit>
+	</Node>
+	<Node>
+		<Id>89000006</Id>
+		<AwardType>装备</AwardType>
+		<Type>51002510</Type>
+		<DropLimitTime>年</DropLimitTime>
+		<DropLimit>1</DropLimit>
+	</Node>
+</Data>

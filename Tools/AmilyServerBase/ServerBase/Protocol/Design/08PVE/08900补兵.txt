@@ -1,0 +1,19 @@
+﻿$$补兵
+
+@请求 补兵
+msgs:C2G_Supply_Supply:8900
+	dict:long:int:DictWarrior//k=武将唯一ID v=当前兵数
+msge
+@返回 补兵
+msgs:G2C_Supply_Supply
+	dict:long:CLS_WarriorInfo:DictWarrior//成员列表 <武将信息>
+msge
+
+@请求 一键补兵
+msgs:C2G_Supply_SupplyAuto
+	list:long:ListWarrior//k=武将唯一ID
+msge
+@返回 一键补兵
+msgs:G2C_Supply_SupplyAuto
+	dict:long:CLS_WarriorInfo:DictWarrior//成员列表 <武将信息>
+msge

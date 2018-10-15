@@ -1,0 +1,38 @@
+﻿
+$$签到
+
+@签到信息
+pubs:CLS_SignInfo
+	bool:IsSigned//今天是否已签
+	int:SignDays//本轮签到总数
+	int:ReSignDays//本轮补签次数
+	int:SignIndex//本轮天数索引
+	long:AliveTime//剩余秒数
+	long:TotalTime//周期秒数
+pube
+
+@请求 获取签到信息
+msgs:C2G_Sign_Info:4300
+msge
+@返回 获取签到信息
+msgs:G2C_Sign_Info
+	CLS_SignInfo:SignInfo//签到信息
+msge
+
+@请求 处理签到
+msgs:C2G_Sign
+msge
+@返回 处理签到
+msgs:G2C_Sign
+	CLS_SignInfo:SignInfo//签到信息
+	list:CLS_AwardItem:ListAward //奖励信息
+msge
+
+@请求 处理补签
+msgs:C2G_ReSign
+msge
+@返回 处理补签
+msgs:G2C_ReSign
+	CLS_SignInfo:SignInfo//签到信息
+	list:CLS_AwardItem:ListAward //奖励信息
+msge

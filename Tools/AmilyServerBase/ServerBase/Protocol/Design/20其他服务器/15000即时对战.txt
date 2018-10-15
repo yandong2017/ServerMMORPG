@@ -1,0 +1,79 @@
+﻿$$即时对战
+
+@玩家状态
+enums:EStatusBp
+	未知
+	等待准备
+	准备完成
+enume
+
+@战场状态
+enums:EStatusBf
+	未知
+	等待准备
+	准备完成
+enume
+
+@战场类型
+enums:EBattleType
+	城池攻打:0
+	郡城战斗:1
+enume
+
+@即时对战玩家信息
+pubs:CLS_BattlePlayer
+	long:Puid//玩家唯一ID
+	string:Name//玩家昵称
+	bool:IsReady//已准备
+	dict:int:CLS_WarriorInfo:DictWarrior//成员列表 <位置 武将战斗信息>
+pube
+
+@战场信息
+pubs:CLS_BattleInfo
+	int:BattleUid//战斗ID
+	EBattleType:BattleType//战场类型
+	bool:IsReadyAll//已准备全部
+	int:CityUid//城池唯一ID(配置ID)
+	int:CampUid//唯一ID(1-5)(1=主营)
+	CLS_BattlePlayer:BattlePlayerAtt//攻击方
+	CLS_BattlePlayer:BattlePlayerDef//防守方
+pube
+
+@请求 测试
+msgs:C2G_Battle_Demo:15000
+msge
+@返回 测试
+msgs:G2C_Battle_Demo
+msge
+
+@请求 准备
+msgs:C2G_Battle_Ready
+msge
+@返回 准备
+msgs:G2C_Battle_Ready
+msge
+
+@通知 准备状态
+msgs:G2C_Battle_NotifyReady
+	bool:IsReadyAll//已准备全部
+msge
+
+@转发数据
+pubs:CLS_ForwardData
+	short:Status//状态类型
+	dict:string:string:DictStatusData//状态数据
+	short:Action//操作类型
+	dict:string:string:DictActionData//操作数据
+pube
+
+@请求 转发数据
+msgs:C2G_Battle_ForwardData
+	long:WarriorUid//武将唯一ID
+	CLS_ForwardData:ForwardData//转发数据
+msge
+@返回 转发数据
+msgs:G2C_Battle_ForwardData
+	long:PlayerId//玩家唯一ID
+	long:WarriorUid//武将唯一ID
+	CLS_ForwardData:ForwardData//转发数据
+msge

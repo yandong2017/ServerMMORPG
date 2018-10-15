@@ -1,0 +1,91 @@
+﻿$$大城池PVP
+
+@大城池PVP综合状态
+enums:EMetroPvpState
+	未开放:0
+	开放中:1
+enume
+
+@大城池状态
+enums:EMetroCityStatus
+	未开放:0
+	开放中:1
+	被占领:2
+enume
+
+@大城池PVP综合信息
+pubs:CLS_MetroPvpInfo
+	EMetroPvpState:MetroPvpState//大城池PVP综合状态
+	dt:DtMetroPvpStart//开始时间
+	dt:DtMetroPvpEnd//结束时间
+pube
+
+@城池战略信息大城池
+pubs:CLS_StrategyCityInfoMetro
+	EMetroCityStatus:MetroCityStatus//大城池状态
+	ts:TsCooldownSeize//倒计时占领
+pube
+
+@通知 大城池PVP综合信息
+msgs:G2C_Metro_NotifyRefreshInfo:9200
+	CLS_MetroPvpInfo:MetroPvpInfo//大城池PVP综合信息
+msge
+
+@积分榜单条
+pubs:CLS_MetroTopScoreNode
+	int:Rank//排名
+	long:GuildUid//势力唯一ID
+	string:GuildName//势力名
+	long:Score//积分
+pube
+
+@请求 郡城势力积分榜
+msgs:C2G_Metro_TopScore
+	int:Uid//城池唯一ID(配置ID)
+msge
+@返回 郡城势力积分榜
+msgs:G2C_Metro_TopScore
+	int:Uid//城池唯一ID(配置ID)
+	CLS_MetroTopScoreNode:ScoreMy//自己
+	list:CLS_MetroTopScoreNode:ListScore//前十
+msge
+
+@请求 郡城匹配
+msgs:C2G_Metro_Matching
+	int:CityUid//城池唯一ID(配置ID)
+msge
+@返回 郡城匹配
+msgs:G2C_Metro_Matching
+	dt:DtMatchingStart//匹配开始时间
+	dt:DtMatchingEnd//匹配结束时间
+msge
+
+@请求 郡城匹配取消
+msgs:C2G_Metro_MatchingCancel
+msge
+@返回 郡城匹配取消
+msgs:G2C_Metro_MatchingCancel
+msge
+
+@通知 郡城匹配结束
+msgs:G2C_Metro_NotifyMatchingEnd
+	int:CityUid//城池唯一ID(配置ID)
+msge
+
+@通知 郡城匹配成功
+msgs:G2C_Metro_NotifyMatchingMetro
+	CLS_BattleInfo:BattleInfo//战场信息
+msge
+
+@请求 郡城战斗结算
+msgs:C2G_Metro_AttackPlayerBalance
+	int:BattleUid//战斗ID
+	bool:BattleResult//战斗结果 攻击方胜利=true 防守方胜利=false
+	dict:long:int:DictExpendHpAtt//武将消耗兵力//攻击方
+	dict:long:int:DictExpendHpDef//武将消耗兵力//防守方
+msge
+@返回 郡城战斗结算
+msgs:G2C_Metro_AttackPlayerBalance
+	int:BattleUid//战斗ID
+	dict:long:bool:DictBattleResult//k=Puid v=结果 胜利=true 失败=false
+msge

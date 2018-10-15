@@ -1,0 +1,86 @@
+﻿
+$$府Boss
+
+@请求 获取府Boss信息
+msgs:C2G_MansionBoss_Info:6300
+	long:MansionId//府ID
+msge
+@返回 获取府Boss信息
+msgs:G2C_MansionBoss_Info
+	bool:IsOpen//是否已开启
+	int:OpenCount//今日可开启次数		
+	int:ConfigID//ConfigID
+
+	long:EndTs//剩余毫秒
+	int:Count//本日可挑战次数
+	int:CountMax//最大可挑战次数	
+	long:HpCur//当前血量	
+	int:Rank//玩家排名
+msge
+
+@请求 处理府Boss开启
+msgs:C2G_MansionBoss_Open
+	long:MansionId//府ID
+msge
+@返回 处理府Boss开启
+msgs:G2C_MansionBoss_Open	
+msge
+
+@Boss排行玩家信息
+pubs:CLS_MansionBoss_PlayerInfo
+	long:Id//玩家ID
+	int:Headindex//头像
+	string:Name//名字
+	long:Hurt//伤害
+	float:HurtPer//伤害百分比
+pube
+
+@请求 获取府Boss伤害排行
+msgs:C2G_MansionBoss_Top
+	long:MansionId//府ID
+msge
+@返回 获取府Boss伤害排行
+msgs:G2C_MansionBoss_Top
+	list:CLS_MansionBoss_PlayerInfo:TopPlayers//玩家排行
+	CLS_MansionBoss_PlayerInfo:player//玩家自己
+	int:Rank//玩家排名
+msge
+
+@请求 处理府Boss进入战斗
+msgs:C2G_MansionBoss_Battle
+	long:MansionId//府ID
+msge
+@返回 处理府Boss进入战斗
+msgs:G2C_MansionBoss_Battle	
+msge
+
+@请求 处理府Boss战斗结算
+msgs:C2G_MansionBoss_Balance
+	long:MansionId//府ID
+	long:HurtHp//造成伤害
+	long:BattleKey//战斗Key
+	int:PlayerExpendHp//玩家消耗兵力
+	dict:long:int:DictExpendHp//武将消耗兵力
+	int:State//战斗结果
+msge
+@返回 处理府Boss战斗结算
+msgs:G2C_MansionBoss_Balance
+msge
+
+@返回 处理府Boss主动战斗结算
+msgs:G2C_MansionBoss_TakeBalance	
+msge
+
+
+
+@请求 处理府BossBuff信息和购买
+msgs:C2G_MansionBoss_Buff
+	long:MansionId//府ID	
+	int:Config//购买buff配置ID  为0 则是查看信息
+msge
+@返回 处理府BossBuff信息和购买
+msgs:G2C_MansionBoss_Buff
+	list:int:BuffIds//Buffid
+	dict:int:long:CurBuff//已经拥有的buffid，剩余时间
+	long:FuYu//拥有的府玉
+msge

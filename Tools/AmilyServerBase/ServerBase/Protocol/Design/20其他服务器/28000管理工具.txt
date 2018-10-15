@@ -1,0 +1,89 @@
+$ 管理工具
+
+$$管理工具
+
+msgs:B2T_GM_Start:28000
+msge
+
+@请求 GM登陆
+msgs:B2T_GM_Login
+	string:Account//账号
+	string:Password//密码
+msge
+@返回 GM登陆
+msgs:T2B_GM_Login
+msge
+
+@请求 GM特殊功能
+msgs:B2G_GM_Cmd
+	string:Cmd//指令
+	list:string:Args
+msge
+@请求 GM特殊功能
+msgs:G2B_GM_Cmd
+	string:Cmd//指令
+	list:string:Args
+msge
+
+
+@请求 邮件列表
+msgs:T2B_Mail_GlobalList
+msge
+@返回 邮件列表
+msgs:B2T_Mail_GlobalList
+	list:CLS_MailInfoDetails:ListMail//邮件列表
+msge
+
+@GM给玩家发送邮件信息
+pubs:CLS_GmMailInfo
+	long:Id//邮件ID
+	short:TargetType
+	list:string:ListTarget//接收者列表
+	string:Title//标题
+	string:Body//正文
+	string:SenderName//邮件发送者
+	list:CLS_AwardItem:ListAttachments//附件列表
+pube
+
+@请求 GM给玩家发送邮件
+msgs:B2T_GmMail_Send
+	CLS_GmMailInfo:MailInfo//邮件信息
+msge
+@返回 GM给玩家发送邮件
+msgs:T2B_GmMail_Send
+	string:Msg//错误字符串
+msge
+
+
+@发送 修改玩家数据
+msgs:B2T_Edit_Player
+	string:IdType
+	string:Id
+	string:Mode
+	string:Arg
+msge
+
+@返回 修改玩家数据
+msgs:T2B_Edit_Player
+	string:Msg//错误字符串
+msge
+
+@请求 长安夺宝配置
+msgs:B2T_Bank_Conf	
+	CLS_BankConf:BankConf//配置 （根据IsSeted判断是查看还是设置）
+msge
+@返回 长安夺宝配置
+msgs:T2B_Bank_Conf		
+	CLS_BankConf:BankConf//配置
+msge
+
+@请求 长安夺宝详情
+msgs:B2T_Bank_Info		
+msge
+@返回 长安夺宝详情
+msgs:T2B_Bank_Info		
+	list:CLS_WarZoneInfo:Infos//详情
+msge
+
+msgs:B2T_GM_End
+msge

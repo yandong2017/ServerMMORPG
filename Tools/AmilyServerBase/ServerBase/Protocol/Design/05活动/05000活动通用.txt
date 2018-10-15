@@ -1,0 +1,18 @@
+﻿
+$$活动通用
+
+@城池信息
+pubs:CLS_AcitvityInfo
+	int:Id//活动ID(配置ID)
+	bool:IsOpen//是否开启
+	dt:TimeOpen//开启时间
+	dt:TimeEnd//截止时间
+pube
+
+@请求 获取活动列表
+msgs:C2G_Acitvity_List:5000
+msge
+@返回 获取活动列表
+msgs:G2C_Acitvity_List
+	dict:int:CLS_AcitvityInfo:ListInfo//信息列表
+msge

@@ -1,0 +1,36 @@
+﻿$$势力活跃
+
+@单条活跃状态
+pubs:CLS_Liveness_Info
+	int:Num//数值
+	dict:int:bool:DictAwardState//是否已经领取
+pube
+
+@请求 府活跃度
+msgs:C2G_Guild_GetActive:6400
+	long:GuildId//府id
+msge
+@返回 府活跃度
+msgs:G2C_Guild_GetActive
+	dict:int:CLS_Liveness_Info:DictLivenessInfo//活跃状态
+msge
+
+@请求 府活跃度奖励领取
+msgs:C2G_Guild_ActiveAward
+	long:GuildId//府id
+	int:BoxID//箱子编号
+msge
+@返回 府活跃度奖励领取
+msgs:G2C_Guild_ActiveAward
+	list:CLS_AwardItem:ListAward//奖励列表
+	dict:int:CLS_Liveness_Info:DictLivenessInfo//活跃状态
+msge
+
+@请求 府活跃度奖励全部领取
+msgs:C2G_Guild_ActiveAwardAll
+msge
+@返回 府活跃度奖励全部领取
+msgs:G2C_Guild_ActiveAwardAll
+	list:CLS_AwardItem:ListAward//奖励列表
+	dict:int:CLS_Liveness_Info:DictLivenessInfo//活跃状态
+msge

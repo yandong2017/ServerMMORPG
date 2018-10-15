@@ -1,0 +1,42 @@
+﻿$$七日活动
+
+@请求 获取七日试炼
+msgs:C2G_Acitvity_7Day:5200
+msge
+@返回 获取七日试炼
+msgs:G2C_Acitvity_7Day
+	list:CLS_TaskInfo:ListTask//任务列表
+msge
+
+@请求 七日试炼领奖
+msgs:C2G_Acitvity_7DayGet	
+	int:confID//配置ID
+msge
+@返回 七日试炼领奖
+msgs:G2C_Acitvity_7DayGet
+	list:CLS_AwardItem:ListAward//奖励项
+msge
+
+@七日登录状态
+enums:E7DayLoginState
+	已领取奖励:1
+	无法领取奖励
+	未领取奖励
+enume
+
+@请求 获取七日登录信息
+msgs:C2G_Acitvity_7DayLoginInfo
+msge
+@返回 获取七日登录信息
+msgs:G2C_Acitvity_7DayLoginInfo
+	dict:int:byte:DictData//七日登录信息<k=日1-7 value=E7DayLoginState>
+msge
+
+@请求 七日登录领奖
+msgs:C2G_Acitvity_7DayLoginGet	
+	int:Day//日1-7
+msge
+@返回 七日登录领奖
+msgs:G2C_Acitvity_7DayLoginGet
+	list:CLS_AwardItem:ListAward//奖励项
+msge

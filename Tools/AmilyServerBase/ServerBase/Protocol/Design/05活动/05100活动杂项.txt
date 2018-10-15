@@ -1,0 +1,11 @@
+﻿
+$$活动杂项
+
+@请求 返利信息
+msgs:C2G_Acitvity_RebateInfo:5100
+msge
+@返回 返利信息
+msgs:G2C_Acitvity_RebateInfo
+	long:Rebate//本周返利
+	long:RebateTotal//历史返利
+msge

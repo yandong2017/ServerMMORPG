@@ -1,0 +1,165 @@
+﻿
+$$长安夺宝
+
+@长安夺宝信息
+pubs:CLS_BankInfo	
+	bool:IsCanFight//是否已到活动时间
+	bool:IsSignUp//是否已经报名
+	long:GoldCoin//金币
+	int:ActiveTick//每日挑战次数
+	int:ActiveAllTick//总共挑战次数
+	CLS_BankConf:bankConf//配置（时间）
+pube
+
+@请求 长安夺宝面板
+msgs:C2G_Bank_Info:8400
+msge
+@返回 长安夺宝面板
+msgs:G2C_Bank_Info
+	CLS_BankInfo:BankInfo//长安夺宝信息
+msge
+@请求 长安夺宝报名
+msgs:C2G_Bank_SignIn
+	int:WarZone//战区
+msge
+@返回 长安夺宝报名
+msgs:G2C_Bank_SignIn
+	CLS_BankInfo:BankInfo//长安夺宝信息
+msge
+
+@守军关卡状态
+enums:EBankDefend
+	未解锁
+	已解锁
+	已攻陷
+enume
+
+@战区关卡信息
+pubs:CLS_WarZoneInfo
+	int:ConfigID//配置ID
+	EBankDefend:BankDefend//守军关卡状态
+	long:Hp//剩余血量
+	long:ArmyHp//剩余士兵血量
+	float:GoldHp//每滴血金币	
+	float:ArmyGoldHp//士兵每滴血金币
+pube
+
+@请求 长安夺宝战区信息
+msgs:C2G_Bank_WarZone
+msge
+@返回 长安夺宝战区信息
+msgs:G2C_Bank_WarZone
+	list:CLS_WarZoneInfo:ListWarZone//战区信息
+	list:CLS_BankCountryTop:ListContribution//贡献值
+	int:CountryId//自国家
+	list:bool:ListWelfareState//贡献奖励领取状态
+	long:RecoveryTime//次数恢复时间点
+	long:Ticks//挑战次数
+msge
+
+@请求 长安夺宝战区领奖
+msgs:C2G_Bank_WarZoneAward
+	int:ConfigID//领奖ID
+msge
+@返回 长安夺宝战区领奖
+msgs:G2C_Bank_WarZoneAward
+	list:CLS_AwardItem:ListAward//结算奖励列表
+	list:bool:ListWelfareState//贡献奖励领取状态	
+msge
+
+@请求 长安夺宝战区战斗
+msgs:C2G_Bank_WarZoneFight
+	int:StrongHold//据点ID
+msge
+@返回 长安夺宝战区战斗
+msgs:G2C_Bank_WarZoneFight
+msge
+
+@请求 长安夺宝战区战斗结算
+msgs:C2G_Bank_WarZoneBalance
+	long:HurtHp//造成伤害
+	long:HurtArmyHp//造成士兵伤害
+	long:BattleKey//战斗Key
+	int:State//战斗结果
+msge
+@返回 长安夺宝战区战斗结算
+msgs:G2C_Bank_WarZoneBalance
+	list:CLS_AwardItem:ListAward//结算奖励列表
+msge
+
+@请求 长安夺宝战区战斗伤害(每秒计算)
+msgs:C2G_Bank_WarZoneHurtHp
+	long:HurtHp//造成伤害
+	long:BattleKey//战斗Key
+msge
+@返回 长安夺宝战区战斗伤害
+msgs:G2C_Bank_WarZoneHurtHp
+	long:Hp//血量
+msge
+
+@请求 长安夺宝清缴匪盗
+msgs:C2G_Bank_RobberFight
+msge
+@返回 长安夺宝清缴匪盗
+msgs:G2C_Bank_RobberFight
+msge
+
+@请求 长安夺宝清缴匪盗结算
+msgs:C2G_Bank_RobberBalance
+	long:BattleKey//战斗Key
+	int:State//战斗结果
+msge
+@返回 长安夺宝清缴匪盗结算
+msgs:G2C_Bank_RobberBalance
+	list:CLS_AwardItem:ListAward//结算奖励列表
+msge
+
+@长安夺宝排行
+pubs:CLS_BankTop	
+	long:Uid//唯一ID（玩家或者势力）	
+	long:HurtHp//伤害
+	int:Level//等级
+	string:PlayerName//玩家名
+	string:GuildName//势力名
+	int:Country//国家
+	int:WarZone//战区
+pube
+
+@请求 长安夺宝排行榜
+msgs:C2G_Bank_Top
+	int:WarZoneID//战区ID
+msge
+@返回 长安夺宝排行榜
+msgs:G2C_Bank_Top
+	list:CLS_BankTop:ListGuildTop//战区势力排行数据
+	list:CLS_BankTop:ListPlayerTop//战区个人排行数据
+msge
+
+@长安夺宝国家排行
+pubs:CLS_BankCountryTop	
+	int:Countryid//国家ID	
+	long:HurtHp//伤害
+	list:CLS_PlayerData:TopThree//国家前三名数据
+	list:CLS_BankTop:ListPlayerTop//国家个人排行数据
+pube
+
+@请求 长安夺宝国家排行榜
+msgs:C2G_Bank_TopCountry	
+msge
+@返回 长安夺宝国家排行榜
+msgs:G2C_Bank_TopCountry	
+	list:CLS_BankCountryTop:ListTop//国家排行数据		
+msge
+
+@长安夺宝配置
+pubs:CLS_BankConf
+	bool:IsSeted//是否已设置
+	bool:IsSended//是否已发送奖励
+	long:GoldShow//显示金币
+	long:Gold//金币	
+	long:ArmyGold//士兵金币
+	int:PlayerRatio//玩家分配比例（50代表50%）
+	dt:TimeSignIn//报名时间
+	dt:TimeBegin//开始时间
+	dt:TimeEnd//结束时间		
+pube

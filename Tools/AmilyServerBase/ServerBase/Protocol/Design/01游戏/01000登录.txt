@@ -1,0 +1,67 @@
+﻿$$角色登录和创建
+
+@连接成功
+msgs:G2C_Login_Connect:1000
+msge
+
+@请求 登陆用户账号
+msgs:C2L_Login_UserLogin
+	string:Account//账号
+	string:Password//密码
+msge
+@返回 登陆用户账号
+msgs:L2C_Login_UserLogin
+	long:Uuid//用户id
+	long:Code//验证码
+	bool:NeedAgree//是否需要显示协议
+msge
+
+@请求 登陆玩家
+msgs:C2G_Login_PlayerLogin
+	long:Uuid//用户id
+	long:Code//验证码
+msge
+@返回 登陆玩家
+msgs:G2C_Login_PlayerLogin
+msge
+
+@请求 玩家创建
+msgs:C2G_Login_PlayerCreate
+	string:Name//玩家名字
+	int:Head//头像
+	int:StateId//所属州ID
+msge
+@返回 玩家创建
+msgs:G2C_Login_PlayerCreate
+msge
+
+@通知玩家被取代连接
+msgs:G2C_Login_Replaced
+msge
+
+@通知玩家被封号
+msgs:G2C_Login_Ban
+msge
+
+@州信息
+pubs:CLS_LoginStateInfo
+	int:Uid//唯一ID(配置ID)
+	long:Population//人口数
+pube
+
+@请求 州信息
+msgs:C2G_Login_ListState
+msge
+@返回 州信息
+msgs:G2C_Login_ListState
+	list:CLS_LoginStateInfo:ListState//州信息
+msge
+
+@请求 检测名字
+msgs:C2G_Login_CheckName
+	string:Name//玩家名字
+msge
+@返回 检测名字
+msgs:G2C_Login_CheckName
+msge
+

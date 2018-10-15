@@ -1,0 +1,55 @@
+﻿$$排行榜
+
+@排行榜单条信息
+pubs:CLS_TopData
+	int:Rank//排行
+	long:Puid//唯一ID
+	string:Name//名字
+	long:Score//分数
+	string:Other//存储其他信息，身份或武将名称或道具名称
+	int:ConfigId//配置ID
+pube
+
+enums:ETopEquipType
+	admin_rank_RoleLevel:1
+	admin_rank_RoleGrade
+	admin_rank_WarriorLevel
+	admin_rank_WarriorGrade
+	admin_rank_type1
+	admin_rank_type2
+	admin_rank_type3
+	admin_rank_type4
+	admin_rank_type5
+	admin_rank_type6
+	admin_rank_type11
+	admin_rank_type12
+	admin_rank_type13
+	admin_rank_type14
+enume
+
+@请求 排行榜
+msgs:C2G_Top_Toplist:4000
+	int:type//排行榜类型
+	int:PageIndex//页码
+msge
+
+@返回 排行榜
+msgs:G2C_Top_Toplist
+	list:CLS_TopData:TopDataList//排行榜数据
+	CLS_TopData:playerTopData//玩家数据
+	int:type//排行榜类型
+msge
+
+@请求 排行榜单条具体数据信息
+msgs:C2G_Top_Info
+	int:type//排行榜类型
+	long:ID//唯一ID
+msge
+
+@返回 排行榜单条具体数据信息
+msgs:G2C_Top_Info
+	int:type//排行榜类型
+	CLS_EquipInfo:EquipInfo//装备信息
+	CLS_WarriorInfo:WarriorInfo//武将信息
+	CLS_PlayerData:PlayerInfo//主角信息
+msge

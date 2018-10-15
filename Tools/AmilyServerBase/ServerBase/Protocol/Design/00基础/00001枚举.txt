@@ -1,0 +1,25 @@
+
+@排序方式
+enums:EOrder
+	Ascending:0//升序
+	Descending:1//降序
+enume
+
+@处理方式
+enums:EHandleAction
+	同意:0
+	拒绝:1
+	同意全部:2
+enume
+
+@语言
+enums:ELanguage
+	Chinese:0//中文
+	English:1//英文
+enume
+
+@战斗结果 胜负
+enums:EBattleResult
+	失败:0
+	胜利:1
+enume

@@ -1,0 +1,16 @@
+$ 中转 27000
+
+$$ 中转 27000
+
+@集群服务器发送负载给中心服务器
+msgs:G2A_Load_SetLoad:27000
+	int:Id//服务器ID
+	string:Ip//服务器IP地址
+	short:LinkType//服务器类型
+	string:Name//服务器名字
+	int:Load//负载人数
+	int:ProcessID//进程ID
+	float:Cpu//使用CPU
+	long:Memory//使用内存
+	int:Threads//使用线程
+msge

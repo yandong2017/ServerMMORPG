@@ -1,0 +1,73 @@
+﻿$$关卡
+
+@剧情关卡结果
+pubs:CLS_StoryState
+	list:bool:ListState//战斗结果
+	int:Ticks//日挑战次数
+pube
+
+@请求 剧情关卡列表
+msgs:C2G_GameLevelStory_Info:8100
+	int:StoryID//章节ID
+msge
+@返回 剧情关卡列表
+msgs:G2C_GameLevelStory_Info
+	dict:int:CLS_StoryState:DicStory//副本字典<关卡ID，通关状态>
+	int:Power//体力
+	long:RecoveryTime//恢复时间
+	list:bool:ListReward//奖励是否已经领取
+	int:BuyCount//购买次数
+msge
+
+@请求 剧情副本战斗
+msgs:C2G_GameLevelStory_Battle
+	int:Id//副本ID
+msge
+@返回 剧情副本战斗
+msgs:G2C_GameLevelStory_Battle
+	int:Id//关卡ID
+msge
+
+@请求 剧情副本结算
+msgs:C2G_GameLevelStory_Balance
+	long:BattleKey//战斗Key
+	int:PlayerExpendHp//玩家消耗兵力
+	dict:long:int:DictExpendHp//武将消耗兵力
+	list:bool:ListState//战斗星级结果
+	int:State//战斗结果
+msge
+@返回 剧情副本结算
+msgs:G2C_GameLevelStory_Balance
+	list:CLS_AwardItem:ListAward//结算奖励列表
+msge
+
+@请求 剧情副本领取奖励
+msgs:C2G_GameLevelStory_Reward
+	int:StoryID//章节ID
+	int:Index//箱子编号（0,1,2）
+msge
+@返回 剧情副本领取奖励
+msgs:G2C_GameLevelStory_Reward
+	list:CLS_AwardItem:ListAward//结算奖励列表
+msge
+
+@请求 剧情副本购买体力
+msgs:C2G_GameLevelStoryBuyPower
+msge
+@返回 剧情副本购买体力
+msgs:G2C_GameLevelStoryBuyPower
+	int:Power//体力
+	long:RecoveryTime//恢复时间
+	int:BuyCount//购买次数
+msge
+
+@请求 剧情章节列表
+msgs:C2G_GameLevelStory
+msge
+@返回 剧情章节列表
+msgs:G2C_GameLevelStory
+	int:StoryID//当前章节ID
+	int:Power//体力
+	long:RecoveryTime//恢复时间
+	int:BuyCount//购买次数
+msge

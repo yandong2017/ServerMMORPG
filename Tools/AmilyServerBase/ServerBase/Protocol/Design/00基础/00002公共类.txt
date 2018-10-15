@@ -1,0 +1,107 @@
+$公共类
+$$公共类
+
+
+
+@奖励物品
+pubs:CLS_AwardItem
+	short:Type//类型 对应 EAwardType
+	int:ConfigId//奖励配置ID
+	long:Count//奖励数量
+	int:Level//等级
+pube
+
+@当前数量和上限数量
+pubs:CLS_CountInfo
+	long:Value//当前
+	long:Limit//上限
+pube
+
+@需求数量和当前数量
+pubs:CLS_NeedInfo
+	long:Need//需求
+	long:Value//当前
+pube
+
+@当前数量和原来数量
+pubs:CLS_ValueChangeInfo
+	long:ValueOld//原数值
+	long:ValueNew//当前
+pube
+
+@道具需求信息
+pubs:CLS_ItemNeedInfo
+	int:Id//ID(配置ID)
+	int:Count//数量
+	int:CountNeed//需求数量
+pube
+
+@玩家公共信息
+pubs:CLS_PubPlayerBase
+	long:Puid//玩家唯一ID
+	string:Name//名字
+	int:HeadIndex//头像序号
+	int:StateId//所属州ID
+	int:Level//等级
+	long:GuildUid//所属势力唯一ID
+	int:GuildOffice//势力官职 EGuildOffice
+	int:CombatPower//战斗力
+	long:TickTimeLastLogin//上次登录时间
+	bool:bGoddess//圣女资格
+pube
+
+@快照数据
+pubs:CLS_DataSnap
+	long:Puid//玩家唯一ID
+	int:ServerID//服务器ID
+	string:Name//昵称
+	int:HeadIndex//头像序号(序号为0时使用图像数据)
+	int:StateId//所属州ID
+	long:Gem//元宝
+	int:Level//等级
+	long:TickTimeLastLogin//上次登录时间
+	int:ActivityLevel//活跃度状态 见EActivityLevel
+	long:Mansion//所属府ID
+	long:GuildUid//所属势力唯一ID
+	int:GuildOffice//势力官职 EGuildOffice
+	int:Contribution//贡献
+	int:ContributionTotal//历史贡献
+	int:CombatPower//战斗力
+	int:AllArenaCombatPower//主角加竞技场武将战力
+	CLS_PlayerData:PlayerData//玩家单条信息
+	bool:bGoddess//圣女资格
+pube
+
+
+@玩家单条信息
+pubs:CLS_PlayerData
+	long:Puid//玩家唯一ID
+	int:HeadIndex//头像序号(序号为0时使用图像数据)
+	string:Name//名字
+	long:Score//分数
+	int:Level//等级	
+	dict:int:CLS_WarriorInfo:DictArenaWarrior//防守队伍信息<位置，信息>
+	string:Signature//个人签名
+	string:GuildName//势力名称
+pube
+
+@动态日志类型
+enums:EGameLogType
+	加入势力:1
+	脱离势力
+	被踢出势力
+	任命太守
+	撤销太守
+	势力捐献
+	正在进攻:20//攻击者名称 对象城池ID
+	正在被进攻//攻击者名称 对象城池ID
+	城池攻破//攻击者名称 对象城池ID
+	城池被攻破//攻击者名称 对象城池ID
+enume
+
+@动态日志
+pubs:CLS_GameLog
+	dt:GameLogTime
+	EGameLogType:GameLogType//动态日志类型 EGameLogType
+	list:string:Args//参数
+pube

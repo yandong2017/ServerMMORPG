@@ -1,0 +1,61 @@
+﻿$$聊天
+
+@聊天频道
+enums:EChatChannel
+	世界:0
+	势力
+	私聊
+enume
+
+@聊天玩家信息
+pubs:CLS_ChatPlayerBase
+	long:Puid//玩家唯一ID
+	string:Name//名字
+	int:HeadIndex//头像序号
+pube
+
+@聊天信息
+pubs:CLS_ChatMsg
+	dt:ChatTime//消息时间
+	short:Channel//聊天频道 见EChatChannel
+	CLS_ChatPlayerBase:SenderInfo//发送者信息
+	string:Text//文本
+pube
+
+@私聊记录
+pubs:CLS_ChatList
+	CLS_ChatPlayerBase:Info//对方信息
+	list:CLS_ChatMsg:ListChatMsgs
+pube
+
+@请求 聊天信息发送
+msgs:C2G_Chat_Send:1400
+	short:Channel//聊天频道 见EChatChannel
+	string:Text//文本
+	long:Uid//对方唯一ID
+msge
+@返回 聊天信息发送
+msgs:G2C_Chat_Send
+msge
+
+@通知 聊天信息接收
+msgs:G2C_Chat_Receive
+	list:CLS_ChatMsg:ListChatMsgs//聊天信息列表
+msge
+
+@请求 请求私聊数据
+msgs:C2G_Chat_GetPrivateChat
+msge
+@返回 聊天信息发送
+msgs:G2C_Chat_GetPrivateChat
+	dict:long:CLS_ChatList:DictChatInfo
+msge
+
+@请求 删除最近联系人
+msgs:C2G_Chat_Remove
+	long:Uid
+msge
+@返回 删除最近联系人
+msgs:G2C_Chat_Remove
+	long:Uid
+msge

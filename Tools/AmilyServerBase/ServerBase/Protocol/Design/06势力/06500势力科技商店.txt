@@ -1,0 +1,53 @@
+﻿$$势力科技和商店
+
+@请求 书院信息
+msgs:C2G_Guild_ScienceInfo:6500
+msge
+@返回 书院信息
+msgs:G2C_Guild_ScienceInfo
+	list:int:ListTechnology//科技ID列表
+msge
+
+@请求 势力科技升级
+msgs:C2G_Guild_ScienceLevelUp
+	int:ID//科技ID
+msge
+@返回 势力科技升级
+msgs:G2C_Guild_ScienceLevelUp
+msge
+
+@势力商店信息
+pubs:CLS_GuildShopInfo
+	list:CLS_ShopGoodsInfo:GoodsInfo//商品信息
+	int:Contribution//拥有的贡献
+	int:RefreshFreeTotal//累计免费刷新次数
+	int:RefreshTotal//累计刷新次数
+	int:RefreshItemCount//刷新道具数量
+pube
+
+@请求 处理势力商店信息
+msgs:C2G_Guild_ShopInfo	
+msge
+@返回 处理势力商店信息
+msgs:G2C_Guild_ShopInfo
+	CLS_GuildShopInfo:ShopInfo//商品信息	
+msge
+
+@请求 处理势力商店购买
+msgs:C2G_Guild_ShopBuy	
+	int:Config//配置ID
+	int:Amount//数量
+msge
+@返回 处理势力商店购买
+msgs:G2C_Guild_ShopBuy
+	CLS_GuildShopInfo:ShopInfo//商品信息	
+msge
+@请求 处理势力商店刷新
+msgs:C2G_Guild_ShopRefresh	
+msge
+@返回 处理势力商店刷新
+msgs:G2C_Guild_ShopRefresh
+	CLS_GuildShopInfo:ShopInfo//商品信息	
+msge
+
+

@@ -1,0 +1,88 @@
+﻿$$势力圣女
+
+@圣女卫队阵亡信息
+pubs:CLS_GoddessArmy
+	int:index//卫队编号
+	dt:ReviveTime//复活时间
+pube
+
+@圣女信息
+pubs:CLS_GoddessInfo
+	long:PlayerId//所属玩家Id
+	string:PlayerName//所属玩家名
+	int:Advance//阶级
+	int:Level//等级
+	int:Exp//经验
+	int:CityId//驻守城池
+	bool:bCaptive//是否被俘
+	long:OtherId//俘虏方势力Id
+	string:OtherName//俘虏方势力名
+	dt:FreeTime//释放时间
+	list:CLS_GoddessArmy:ArmyInfo//卫队阵亡列表
+pube
+
+@圣女捐献信息
+pubs:CLS_GoddessDonate
+	string:PlayerName//玩家名
+	int:Donate//当前阶段贡献
+pube
+
+@请求 圣女资格
+msgs:C2G_Goddess_Seniority:6700
+msge
+@返回 圣女资格
+msgs:G2C_Goddess_Seniority
+	list:CLS_GuildMbsInfo:Info//拥有资格的成员
+msge
+
+@请求 圣女信息
+msgs:C2G_Goddess_GetInfo
+msge
+@返回 圣女信息
+msgs:G2C_Goddess_GetInfo
+	CLS_GoddessInfo:Info//圣女
+	list:CLS_GoddessDonate:DonateInfo//贡献列表
+	dict:int:int:DictDonate//捐献次数(key=捐献id value=今日次数)
+msge
+
+@请求 圣女选择
+msgs:C2G_Goddess_Choose
+	long:PlayerId//拥有资格的成员ID
+msge
+@返回 圣女选择
+msgs:G2C_Goddess_Choose
+	CLS_GoddessInfo:Info//圣女
+msge
+
+@请求 圣女捐献
+msgs:C2G_Goddess_Donate
+	int:DonateId
+msge
+@返回 圣女捐献
+msgs:G2C_Goddess_Donate
+	int:Advance//阶级
+	int:Level//等级
+	int:Exp//经验
+	list:CLS_GoddessDonate:DonateInfo//贡献列表
+	dict:int:int:DictDonate//捐献次数(key=捐献id value=今日次数)
+msge
+
+@请求 圣女赎回
+msgs:C2G_Goddess_Save
+	int:DonateId
+msge
+@返回 圣女赎回
+msgs:G2C_Goddess_Save
+	CLS_GoddessInfo:Info//圣女
+	list:CLS_GoddessDonate:DonateInfo//赎回列表
+	dict:int:int:DictDonate//赎回次数(key=捐献id value=今日次数)
+msge
+
+@请求 圣女驻守
+msgs:C2G_Goddess_Defend
+	int:CityId//驻守城池
+msge
+@返回 圣女驻守
+msgs:G2C_Goddess_Defend
+	int:CityId//驻守城池
+msge

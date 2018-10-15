@@ -1,0 +1,52 @@
+﻿
+$$古塔
+
+
+@古塔状态
+enums:ETowerState
+	未解锁:0
+	已解锁:1 
+	已完成:2
+enume
+
+@单层信息
+pubs:CLS_TowerInfo
+	int:Id//ConfigId
+	byte:TowerState//ETowerState
+pube
+
+@请求 古塔信息
+msgs:C2G_Tower_Info:8200
+msge
+@返回 古塔信息
+msgs:G2C_Tower_Info
+	int:LevelStart//可进入等级
+	int:TowerToken//挑战令牌
+	int:TowerTokenMax//挑战令牌上限
+	int:TowerTokenOnceUse//古塔挑战令牌单次消耗
+	list:CLS_TowerInfo:ListTowerInfo//层信息
+msge
+
+@请求 古塔战斗
+msgs:C2G_Tower_Battle
+	int:Id//ConfigId
+msge
+@返回 古塔战斗
+msgs:G2C_Tower_Battle
+	int:Id//ConfigId
+msge
+
+@请求 古塔战斗结束
+msgs:C2G_Tower_BattleEnd
+	int:Id//ConfigId
+	long:BattleKey//战斗Key
+	int:PlayerExpendHp//玩家消耗兵力
+	dict:long:int:DictExpendHp//武将消耗兵力
+	int:State//战斗结果
+	string:BattleRecord//战斗记录
+msge
+@返回 古塔战斗结束
+msgs:G2C_Tower_BattleEnd
+	int:Id//ConfigId
+	list:CLS_AwardItem:ListAward//奖励列表
+msge

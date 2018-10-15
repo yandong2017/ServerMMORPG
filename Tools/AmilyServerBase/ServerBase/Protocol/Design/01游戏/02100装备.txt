@@ -1,0 +1,133 @@
+﻿$$装备
+
+
+@装备高级属性
+pubs:CLS_EquipSuffix
+	int:ConfigId//配置ID
+	int:PassiveType//属性类型 见EPassiveType
+	float:SuffixValue//属性制
+pube
+
+@装备信息
+pubs:CLS_EquipInfo
+	long:Id//装备唯一ID
+	int:ConfigId//配置ID
+	int:EquipType//装备类型 见EEquipType
+	int:Intensify//强化等级
+	dict:int:float:CombatProperty//战斗属性
+	string:MarkName//自定义名称
+	list:CLS_EquipSuffix:SuffixProperty
+pube
+
+@请求 装备列表
+msgs:C2G_Equip_List:2100
+msge
+@返回 装备列表
+msgs:G2C_Equip_List
+	int:PageIndex//页码1-n (返回每页100条) (0=结束)
+	dict:long:CLS_EquipInfo:DictEquip//装备列表
+msge
+
+@请求 武将装备列表
+msgs:C2G_Equip_WarriorList
+	long:Id//武将唯一ID
+msge
+@返回 武将装备列表
+msgs:G2C_Equip_WarriorList
+	dict:int:CLS_EquipInfo:DictEquiped//武将已装备列表<装备位置, 信息>
+	dict:long:CLS_EquipInfo:DictEquip//武将装备列表
+	CLS_WarriorInfo:WarriorInfo//武将现信息
+msge
+
+@请求 所有武将装备列表
+msgs:C2G_Equip_WarriorAll	
+msge
+@返回 所有武将装备列表
+msgs:G2C_Equip_WarriorAll	
+	dict:long:CLS_EquipInfo:DictEquip//武将装备列表
+msge
+
+@请求 武将装备运用
+msgs:C2G_Equip_WarriorWield
+	long:WarriorId//武将唯一ID
+	long:Id//装备唯一ID
+msge
+@返回 武将装备运用
+msgs:G2C_Equip_WarriorWield
+	dict:int:CLS_EquipInfo:DictEquiped//武将已装备列表<装备位置, 信息>
+	dict:long:CLS_EquipInfo:DictEquip//武将装备列表
+	CLS_WarriorInfo:WarriorInfo//武将现信息
+msge
+
+@请求 武将装备卸下
+msgs:C2G_Equip_WarriorRemove
+	long:WarriorId//武将唯一ID
+	int:EquipType//装备位置(装备类型)
+msge
+@返回 武将装备卸下
+msgs:G2C_Equip_WarriorRemove
+	dict:int:CLS_EquipInfo:DictEquiped//武将已装备列表<装备位置, 信息>
+	dict:long:CLS_EquipInfo:DictEquip//武将装备列表
+	CLS_WarriorInfo:WarriorInfo//武将现信息
+msge
+
+@请求 武将装备分解
+msgs:C2G_Equip_WarriorResolve
+	list:long:Id//分解装备列表唯一ID
+msge
+@返回 武将装备分解
+msgs:G2C_Equip_WarriorResolve
+	list:CLS_AwardItem:ListAward
+msge
+
+@请求 装备修改名称
+msgs:C2G_Equip_Rename
+	string:MarkName//装备自定义名称
+msge
+@返回 装备修改名称
+msgs:G2C_Equip_Rename
+msge
+
+@请求 装备强化信息
+msgs:C2G_Equip_IntensifyInfo
+	long:EquipID//装备ID
+msge
+@返回 装备强化信息
+msgs:G2C_Equip_IntensifyInfo
+	CLS_EquipIntensifyInfo:IntensityInfo//强化信息	
+msge
+
+
+@装备强化结果
+enums:EIntensifyResult
+	成功:0
+	强化等级不发生变化
+	强化等级减1
+	装备碎裂
+enume
+@请求 装备强化
+msgs:C2G_Equip_Intensify
+	long:EquipID//装备ID
+msge
+
+@返回 装备强化
+msgs:G2C_Equip_Intensify
+	CLS_EquipIntensifyInfo:IntensityInfo//强化信息
+	int:IntensifyResult//结果 对应EIntensifyResult
+	list:CLS_AwardItem:AwardItem//产物
+msge
+
+@装备强化信息
+pubs:CLS_EquipIntensifyInfo
+	int:IntensityId//强化等级
+	float:Atk //攻击
+	float:Def //防御
+	int:Hp //兵力
+	float:Inte //谋略
+	float:IntensityAtk //强化后攻击
+	float:IntensityDef //强化后防御
+	float:IntensityInte //强化后谋略
+	int:IntensityHp //强化后兵力
+	int:Gold //银两消耗
+	list:CLS_ItemNeedInfo:ListItemNeedInfo//需求道具列表
+pube
