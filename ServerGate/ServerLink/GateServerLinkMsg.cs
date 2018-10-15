@@ -51,21 +51,32 @@ namespace ServerGate.ServerLink
             {
                 return;
             }
-            if (Dispatcher.DictPuidSession.TryGetValue(((ProtocolMsgBase)objMsg).Puid, out var session))
+            long puid = ((ProtocolMsgBase)objMsg).Puid;
+            if (puid == 0 && ((ProtocolMsgBase)objMsg).RspPuids.Count==0)
             {
-                //var session = Dispatcher.GetSession(sessionID);
-                if (session == null)
-                {
-                    loger.Error($"客户端未找到！{((ProtocolMsgBase)objMsg).Puid}");
-                    return;
-                }
-                session.Send(objMsg);
-                //BaseDispatch.Send(session, objMsg);
+                loger.Error($"发送客户端消息错误，无发送目标！");
+                return;
             }
-            else
+            List<long> rspId = new List<long>();
+            if (puid != 0)
             {
-                //客户端断开连接
-                //loger.Error($"客户端ID错误！{((ProtocolMsgBase)objMsg).Puid}");
+                rspId.Add(puid);
+            }
+            if (((ProtocolMsgBase)objMsg).RspPuids.Count > 0)
+            {
+                rspId.AddRange(((ProtocolMsgBase)objMsg).RspPuids);
+            }
+            SendMsg(objMsg, rspId);
+        }
+        public static void SendMsg(INbsSerializer msg,List<long> puids)
+        {
+            foreach (var puid in puids)
+            {
+                if (Dispatcher.DictPuidSession.TryGetValue(puid.ToString(), out var session))
+                {
+                    //session.Send(msg);
+                    BaseDispatch.Send(session, msg);
+                }
             }
         }
     }

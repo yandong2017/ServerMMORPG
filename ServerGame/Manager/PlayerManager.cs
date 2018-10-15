@@ -33,25 +33,16 @@ namespace ServerGame.Manager
             DictPlayerOnline.TryGetValue(Req.Puid,out var player);
             Req.PlayerXY.Uid = player.XY.Uid;
             player.XY = Req.PlayerXY;
-            
-            //Thread.Sleep(1000);
-            foreach (var item in DictPlayerOnline.Values)
-            {
-                if (item.Id == player.Id)
-                {
-                    continue;
-                }
-                var rsp = new G2E_Game_PlayerXYOther();
-                rsp.PlayerXY = Req.PlayerXY;
-                rsp.Puid = item.Id;                
-                session.SendMerge(rsp);
-            }
-            var rspself = new G2E_Game_PlayerXY();
-            rspself.Puid = Req.Puid;
+
+            var rsp = new G2E_Game_PlayerXYOther();
+            rsp.PlayerXY = Req.PlayerXY;
+            SendAll(session, rsp, player.Id);
+
+            var rspself = new G2E_Game_PlayerXY();            
             rspself.PlayerXY = Req.PlayerXY;
-            session.Send(rspself);
-            //m_DictPlayerXY[player.Id] =  Req.PlayerXY;
-            //isMove = true;
+            rspself.Puid = Req.Puid;
+
+            session.Send(rspself);            
         }
 
         internal static void Heartbeat()
@@ -103,22 +94,11 @@ namespace ServerGame.Manager
 
             DictPlayerOnline[Req.Puid] = player;  
             
-            
-            foreach (var item in DictPlayerOnline.Values)
-            {
-                if (item.Id == player.Id)
-                {
-                    continue;
-                }
-                var rsp = new G2E_Game_MapIn();
-                rsp.PlayerXY = player.XY;
-                //rsp.Shuttle = Req.Shuttle;
-                rsp.Puid = item.Id;
-                session.Send(rsp);
-            }
+            var rsp = new G2E_Game_MapIn();
+            rsp.PlayerXY = player.XY;
+            SendAll(session, rsp, player.Id);            
 
-            var rsp2 = new G2E_Game_MapInOther();
-            
+            var rsp2 = new G2E_Game_MapInOther();            
             foreach (var item in DictPlayerOnline.Values)
             {
                 if (item.Id == player.Id)
@@ -127,8 +107,7 @@ namespace ServerGame.Manager
                 }
                 item.XY.Uid = item.Id;
                 rsp2.ListPlayerXY.Add(item.XY);
-                //rsp.Shuttle = Req.Shuttle;
-                
+                //rsp.Shuttle = Req.Shuttle;                
             }
             rsp2.Puid = player.Id;
             session.Send(rsp2);
@@ -137,6 +116,21 @@ namespace ServerGame.Manager
         internal static void OnRegister(LunarSession session, LunarRequestInfo requestInfo)
         {
             
+        }
+
+        public static void SendAll(LunarSession session, INbsSerializer objMsg,long selfid = 0)
+        {
+            foreach (var item in DictPlayerOnline.Values)
+            {
+                if (item.Id == selfid)
+                {
+                    continue;
+                }
+                ((ProtocolMsgBase)objMsg).RspPuids.Add(item.Id);
+            }
+            ((ProtocolMsgBase)objMsg).Puid = selfid;
+            if (((ProtocolMsgBase)objMsg).RspPuids.Count > 0 || ((ProtocolMsgBase)objMsg).Puid != 0)
+            { session.Send(objMsg); }
         }
     }
 }

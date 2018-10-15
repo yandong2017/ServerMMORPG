@@ -95,8 +95,11 @@
     <Compile Include="IniFile\IniConf.cs" />
     <Compile Include="IniFile\IniFiles.cs" />
     <Compile Include="IniFile\IniRead.cs" />
-    <Compile Include="Protocol\ProtocolDump.cs" />
     <Compile Include="BaseManagers\BaseProgram.cs" />
+    <Compile Include="Protocol\ProtocolClass.cs" />
+    <Compile Include="Protocol\ProtocolDump.cs" />
+    <Compile Include="Protocol\ProtocolEnum.cs" />
+    <Compile Include="Protocol\ProtocolId.cs" />
     <Compile Include="Service\BaseDriverCmds.cs" />
     <Compile Include="Config\Conf.cs" />
     <Compile Include="DataBaseMysql\DbMysql.cs" />
@@ -107,10 +110,6 @@
     <Compile Include="ServerLoger\Record.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\NetBitStream.cs" />
-    <Compile Include="Protocol\ProtocolClass.cs" />
-    <Compile Include="Protocol\ProtocolEnum.cs" />
-    <Compile Include="Protocol\ProtocolId.cs" />
-    <Compile Include="Protocol\ProtocolSerialization.cs" />
     <Compile Include="Service\BaseServerInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -150,7 +150,7 @@ namespace ProtocolTool
                             break;
 
                         default:
-                            sb.Append($"k.Serialize(ref nbs);");
+                            sb.Append($"k.Serialize(nbs);");
                             break;
                     }
                     break;
@@ -173,7 +173,7 @@ namespace ProtocolTool
                             break;
 
                         default:
-                            sb.Append($"kvp.Value.Serialize(ref nbs);");
+                            sb.Append($"kvp.Value.Serialize(nbs);");
                             break;
                     }
                     break;
@@ -226,7 +226,7 @@ namespace ProtocolTool
                     }
                     else
                     {
-                        sb.Append($"{space}{v.Body}.Serialize(ref nbs);\r\n");
+                        sb.Append($"{space}{v.Body}.Serialize(nbs);\r\n");
                     }
                     break;
             }
@@ -265,7 +265,7 @@ namespace ProtocolTool
                             sb.Append($"{v.Ctype1} {varname} = nbs.ReadTimeSpan();"); break;
 
                         default:
-                            sb.Append($"var {varname} = new {v.Ctype1}(); {varname}.Unserialize(ref nbs);");
+                            sb.Append($"var {varname} = new {v.Ctype1}(); {varname}.Unserialize(nbs);");
                             break;
                     }
                     sb.Append($"{v.Body}.Add({varname});");
@@ -292,7 +292,7 @@ namespace ProtocolTool
                             sb.Append($"{v.Ctype1} {varname} = nbs.ReadString(); "); break;
 
                         default:
-                            sb.Append($"var {varname} = new {v.Ctype1}(); {varname}.Unserialize(ref nbs); ");
+                            sb.Append($"var {varname} = new {v.Ctype1}(); {varname}.Unserialize(nbs); ");
                             break;
                     }
                     string varname2 = GetVariablesId();
@@ -320,7 +320,7 @@ namespace ProtocolTool
                             sb.Append($"{v.Ctype2} {varname2} = nbs.ReadTimeSpan(); "); break;
 
                         default:
-                            sb.Append($"var {varname2} = new {v.Ctype2}(); {varname2}.Unserialize(ref nbs); ");
+                            sb.Append($"var {varname2} = new {v.Ctype2}(); {varname2}.Unserialize(nbs); ");
                             break;
                     }
                     sb.Append($"{v.Body}.Add({varname}, {varname2}); ");
@@ -375,7 +375,7 @@ namespace ProtocolTool
                     }
                     else
                     {
-                        sb.Append($"{space}{v.Body}.Unserialize(ref nbs);\r\n");
+                        sb.Append($"{space}{v.Body}.Unserialize(nbs);\r\n");
                     }
                     break;
             }

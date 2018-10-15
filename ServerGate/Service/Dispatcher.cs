@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using ServerBase.Config;
 using ServerBase.Dispatch;
@@ -32,7 +33,7 @@ namespace ServerGate.Service
                 var rsp = new E2G_Game_LoginOut();
                 rsp.Puid = session.SessionUuid;
                 SendToGame(rsp);
-                DictPuidSession.Remove(rsp.Puid);
+                DictPuidSession.TryRemove(rsp.Puid.ToString(),out var t);
             }
         }
 
@@ -47,8 +48,8 @@ namespace ServerGate.Service
                 return null;
             }
         }
-        //public static Dictionary<long, string> DictPuidSession = new Dictionary<long, string>();
-        public static Dictionary<long, LunarSession> DictPuidSession = new Dictionary<long, LunarSession>();
+        //public static Dictionary<long, string> DictPuidSession = new Dictionary<long, string>(); 
+        public static ConcurrentDictionary<string, LunarSession> DictPuidSession = new ConcurrentDictionary<string, LunarSession>();
         internal static void OnDispatch(LunarSession session, LunarRequestInfo requestInfo)
         {
             if (!session.Connected)
@@ -74,7 +75,6 @@ namespace ServerGate.Service
                 loger.Warn("错误协议！");
                 return;
             }
-            ((ProtocolMsgBase)objMsg).Shuttle = session.SessionID;
             
             //登录服务器消息
             if (id > EProtocolId.L2E_GAME_START && id < EProtocolId.L2E_GAME_END)
@@ -88,6 +88,7 @@ namespace ServerGate.Service
                 }
                 else
                 {   //后期人多则会添加登录服务器获取人少的服
+                    ((ProtocolMsgBase)objMsg).Shuttle = session.SessionID;
                     SendToLogin(objMsg);
                 }
             }            
@@ -103,7 +104,6 @@ namespace ServerGate.Service
             else
             {                
                 ((ProtocolMsgBase)objMsg).Puid = session.SessionUuid;
-                //DictPuidSession.TryGetValue(session.SessionID,out ((ProtocolMsgBase)objMsg).Puid);
                 SendToGame(objMsg);
             }
         }

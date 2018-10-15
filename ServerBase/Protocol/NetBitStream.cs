@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
@@ -12,12 +13,12 @@ namespace ServerBase.Protocol
         public short _protocol;
         [Desc("结果码")]
         public short _result;
-        [Desc("Pin码")]
-        public long Pin;
-        [Desc("玩家唯一ID")]
+        [Desc("玩家ID")]
         public long Puid;
-        [Desc("附加中转信息")]
-        public string Shuttle = "";
+        [Desc("发送玩家ID")]
+        public List<long> RspPuids = new List<long>();
+        [Desc("附加信息")]
+        public string Shuttle = string.Empty; 
         public EProtocolId ProtocolId
         {
             get { return (EProtocolId)_protocol; }
@@ -32,20 +33,7 @@ namespace ServerBase.Protocol
         public bool Success
         {
             get { return (_result == 0); }
-        }
-        //同步中转数据
-        public void Sync(ProtocolMsgBase v)
-        {
-            _result = v._result;
-            Pin = v.Pin;
-            Puid = v.Puid;
-            Shuttle = v.Shuttle;
-        }
-        //同步中转数据
-        public void ShuttleAppend(object v)
-        {
-            Shuttle = string.Format("{0}|{1}", Shuttle, v);
-        }
+        }        
     }
 
     /// <summary>
@@ -72,7 +60,7 @@ namespace ServerBase.Protocol
     /// <summary>
     /// 数据体类
     /// </summary>
-    public class NetBitStream
+    public class NetBitStream: MemoryStream
     {
         //单位容量长度
         public const int capacity_length = 1024;

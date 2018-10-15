@@ -20,10 +20,9 @@ namespace ProtocolTool
 
             try
             {
-                if (DateTime.Now >= new DateTime(2020, 7, 1))
+                if (DateTime.Now >= new DateTime(2019, 5 ,1))
                 {
-                    Show("\n生成 C# 文件成功！\n\n");
-                    Show("\n生成 协议大纲文档 成功！\n\n");
+                    Show("\n已过期\n\n");                   
                     Show("\n按任意键关闭......");
                     Console.ReadKey();
                 }
@@ -34,7 +33,7 @@ namespace ProtocolTool
                 ProtocolConverterEnum();
                 ProtocolConverterClassId();
                 ProtocolConverterClassBase();
-                ProtocolConverterClassSerialization();
+                //ProtocolConverterClassSerialization();
                 ProtocolConverterDump();
                 Show("\n生成 C# 文件成功！\n");
 

@@ -9,3 +9,14 @@ F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.CoreCompileInputs.cache
 F:\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.CopyComplete
 F:\AmilyServerBase\ExcelTool\obj\Debug\表格工具.exe
 F:\AmilyServerBase\ExcelTool\obj\Debug\表格工具.pdb
+F:\GameServer\Server\Tools\AmilyServerBase\APublish\表格工具\表格工具.exe.config
+F:\GameServer\Server\Tools\AmilyServerBase\APublish\表格工具\表格工具.exe
+F:\GameServer\Server\Tools\AmilyServerBase\APublish\表格工具\表格工具.pdb
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csprojAssemblyReference.cache
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.FormTool.resources
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.Properties.Resources.resources
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.GenerateResource.cache
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.CoreCompileInputs.cache
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\ExcelTool.csproj.CopyComplete
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\表格工具.exe
+F:\GameServer\Server\Tools\AmilyServerBase\ExcelTool\obj\Debug\表格工具.pdb

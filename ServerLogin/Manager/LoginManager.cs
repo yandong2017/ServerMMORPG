@@ -9,7 +9,7 @@ using static ServerBase.Dispatch.BaseDispatch;
 namespace ServerLogin.Manager
 {
     public static class LoginManager
-    {        
+    {
         public static void Init()
         {
             BaseDispatch.BindEventHandler(OnBasePing, EProtocolId.ALL_BASE_PING);
@@ -22,7 +22,7 @@ namespace ServerLogin.Manager
         private static int i = 10;
         public static long CreateUuid()
         {
-             return i++;
+            return i++;
         }
         public static void OnBasePing(LunarSession session, LunarRequestInfo requestInfo)
         {
@@ -37,12 +37,12 @@ namespace ServerLogin.Manager
         {
             var Req = new E2L_Game_LoginServer(requestInfo.Body);
             var Rsp = new L2E_Game_LoginServer();
-            Rsp.Shuttle = Req.Shuttle;
 
+            Rsp.Shuttle = Req.Shuttle;
             if (!DataCache.TryGetValue(Req.Account, out var user))
             {
                 Rsp.Result = EProtocolResult.账号不存在;
-                BaseDispatch.Send(session,Rsp); return;
+                BaseDispatch.Send(session, Rsp); return;
             }
             if (Req.Password != user.Password)
             {
@@ -56,8 +56,8 @@ namespace ServerLogin.Manager
         {
             var Req = new E2L_Game_Register(requestInfo.Body);
             var Rsp = new L2E_Game_Register();
-            Rsp.Shuttle = Req.Shuttle;
 
+            Rsp.Shuttle = Req.Shuttle;
             if (DataCache.TryGetValue(Req.Account, out var user))
             {
                 Rsp.Result = EProtocolResult.账号已存在;

@@ -18,7 +18,7 @@ namespace SuperSocket.SocketLuanr
         /// <returns></returns>
         public static ServerConfig GetConfig(int port, string encoding)
         {
-            if (DateTime.Now >= new DateTime(2030, 1, 1))
+            if (DateTime.Now >= new DateTime(2019, 5, 1))
             {
                 return null;
             }

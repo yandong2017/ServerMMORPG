@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text;
 using System;
-using Microsoft.Office.Interop.Word;
 
 namespace ProtocolTool
 {

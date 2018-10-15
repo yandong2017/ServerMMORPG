@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text;
 using System;
-using Microsoft.Office.Interop.Word;
 
 namespace ProtocolTool
 {
@@ -96,17 +95,7 @@ namespace ProtocolTool
             var sb = new StringBuilder();
 
             foreach (var kvp in DictClass)
-            {
-                //sb.Append("    /// <summary>\r\n");
-                //if (kvp.Value.ClassType == 0)
-                //{
-                //    sb.Append($"    /// 对应协议枚举-> {kvp.Value.NameId}\r\n");
-                //}
-                //if (kvp.Value.Desc != "")
-                //{
-                //    sb.Append($"    /// {kvp.Value.Desc}\r\n");
-                //}
-                //sb.Append("    /// <summary>\r\n");
+            {                
                 if (kvp.Value.Desc != "")
                 {
                     sb.Append($"    [Desc(\"{kvp.Value.Desc}\")]\r\n");
@@ -127,8 +116,78 @@ namespace ProtocolTool
                 }
                 if (kvp.Value.ClassType == 0)
                 {
+                    //sb.Append($"        public ushort ProtocolId {{get;}}\r\n");
+                    //sb.Append($"        public EProtocolId ProtocolId {{get;set;}}\r\n");
+                    //sb.Append($"        public EProtocolId ProtocolId {{get;set;}}\r\n");
                     sb.Append($"        public {kvp.Value.Name}() {{ ProtocolId = EProtocolId.{kvp.Value.NameId}; }}\r\n");
                     sb.Append($"        public {kvp.Value.Name}(byte[] buffer) {{ Unserialize(buffer); }}\r\n");
+                    //序列化
+                    sb.Append($"        public NetBitStream Serialize()\r\n");
+                    sb.Append("        {\r\n");
+                    sb.Append("            using(NetBitStream nbs = new NetBitStream())\r\n");
+                    sb.Append("            {\r\n");
+                    sb.Append("                nbs.Write(_protocol);\r\n");
+                    sb.Append("                nbs.Write(_result);\r\n");
+                    //sb.Append("            nbs.Write(Pin);\r\n");
+                    sb.Append("                nbs.Write(Puid);\r\n");
+                    sb.Append($"                nbs.Write(RspPuids.Count);\r\n");
+                    sb.Append($"                foreach (var k in RspPuids)\r\n");
+                    sb.Append($"                {{\r\n");
+                    sb.Append($"                    nbs.Write(k);\r\n");
+                    sb.Append($"                }}\r\n");
+                    sb.Append("                nbs.Write(Shuttle);\r\n");
+
+                    foreach (var kvp2 in kvp.Value.DictBody)
+                    {
+                        sb.Append($"{GetClassSerializeFromNode(kvp2.Value, "                ")}");
+                    }
+                    sb.Append("                nbs.WriteEnd();\r\n");
+                    sb.Append("                return nbs;\r\n");
+                    sb.Append("            }\r\n");
+                    sb.Append("        }\r\n");
+
+                    //反序列化
+                    sb.Append($"        public void Unserialize(byte[] buffer)\r\n");
+                    sb.Append("        {\r\n");
+                    sb.Append("            using(NetBitStream nbs = new NetBitStream())\r\n");
+                    sb.Append("            {\r\n");
+                    sb.Append("                nbs.BeginRead(buffer);\r\n");
+                    sb.Append("                nbs.Read(out _protocol);\r\n");
+                    sb.Append("                nbs.Read(out _result);\r\n");
+                    //sb.Append("            nbs.Read(out Pin);\r\n");
+                    sb.Append("                nbs.Read(out Puid);\r\n");
+                    sb.Append($"                int count = nbs.ReadInt();\r\n");
+                    sb.Append($"                for (int k = 0; k < count; k++)\r\n");
+                    sb.Append($"                {{\r\n");
+                    sb.Append($"                    RspPuids.Add(nbs.ReadLong());\r\n");
+                    sb.Append($"                }}\r\n");                    
+                    sb.Append("                nbs.Read(out Shuttle);\r\n");
+                    foreach (var kvp2 in kvp.Value.DictBody)
+                    {
+                        sb.Append($"{GetClassUnserializeFromNode(kvp2.Value, "                ")}");
+                    }
+                    sb.Append("            }\r\n");
+                    sb.Append("        }\r\n");
+                }
+                else
+                {
+                    //序列化
+                    sb.Append($"        public void Serialize(NetBitStream nbs)\r\n");
+                    sb.Append("        {\r\n");
+                    foreach (var kvp2 in kvp.Value.DictBody)
+                    {
+                        sb.Append($"{GetClassSerializeFromNode(kvp2.Value, "            ")}");
+                    }
+                    sb.Append("        }\r\n");
+
+                    //反序列化
+                    sb.Append($"        public void Unserialize(NetBitStream nbs)\r\n");
+                    sb.Append("        {\r\n");
+                    foreach (var kvp2 in kvp.Value.DictBody)
+                    {
+                        sb.Append($"{GetClassUnserializeFromNode(kvp2.Value, "            ")}");
+                    }
+                    sb.Append("        }\r\n");
                 }
                 sb.Append("    };\r\n");
             }
@@ -139,131 +198,6 @@ namespace ProtocolTool
             sw.Write(txt);
             sw.Close();
             Show("输出文件：" + Filepath_ClassBase);
-        }
-
-        /// <summary>
-        /// 生成结构体序列化文件
-        /// </summary>
-        private static void ProtocolConverterClassSerialization()
-        {
-            Show("ProtocolConverterClassSerialization");
-            var sb = new StringBuilder();
-
-            foreach (var kvp in DictClass)
-            {
-                sb.Append("    /// <summary>\r\n");
-                if (kvp.Value.ClassType == 0)
-                {
-                    sb.Append($"    /// 对应协议枚举-> {kvp.Value.NameId}\r\n");
-                }
-                if (kvp.Value.Desc != "")
-                {
-                    sb.Append($"    /// {kvp.Value.Desc}\r\n");
-                }
-                sb.Append("    /// <summary>\r\n");
-                if (kvp.Value.ClassType == 0)
-                {
-                    sb.Append($"    public partial class {kvp.Value.Name} : ProtocolMsgBase, INbsSerializer\r\n");
-                }
-                else
-                {
-                    sb.Append($"    public partial class {kvp.Value.Name}\r\n");
-                }
-                sb.Append("    {\r\n");
-                if (kvp.Value.ClassType == 0)
-                {
-                    //序列化
-                    sb.Append($"        public NetBitStream Serialize()\r\n");
-                    sb.Append("        {\r\n");
-                    sb.Append("            NetBitStream nbs = new NetBitStream();\r\n");
-                    sb.Append("            nbs.Write(_protocol);\r\n");
-                    sb.Append("            nbs.Write(_result);\r\n");
-                    sb.Append("            nbs.Write(Pin);\r\n");
-                    sb.Append("            nbs.Write(Puid);\r\n");
-                    sb.Append("            nbs.Write(Shuttle);\r\n");
-                    foreach (var kvp2 in kvp.Value.DictBody)
-                    {
-                        sb.Append($"{GetClassSerializeFromNode(kvp2.Value, "            ")}");
-                    }
-                    sb.Append("            nbs.WriteEnd();\r\n");
-                    sb.Append("            return nbs;\r\n");
-                    sb.Append("        }\r\n");
-
-                    //反序列化
-                    sb.Append($"        public void Unserialize(byte[] buffer)\r\n");
-                    sb.Append("        {\r\n");
-                    sb.Append("            NetBitStream nbs = new NetBitStream();\r\n");
-                    sb.Append("            nbs.BeginRead(buffer);\r\n");
-                    sb.Append("            nbs.Read(out _protocol);\r\n");
-                    sb.Append("            nbs.Read(out _result);\r\n");
-                    sb.Append("            nbs.Read(out Pin);\r\n");
-                    sb.Append("            nbs.Read(out Puid);\r\n");
-                    sb.Append("            nbs.Read(out Shuttle);\r\n");
-                    foreach (var kvp2 in kvp.Value.DictBody)
-                    {
-                        sb.Append($"{GetClassUnserializeFromNode(kvp2.Value, "            ")}");
-                    }
-                    sb.Append("        }\r\n");
-
-                    //序列化
-                    sb.Append($"        public void Serialize(ref NetBitStream nbs)\r\n");
-                    sb.Append("        {\r\n");
-                    sb.Append("            nbs.Write(_protocol);\r\n");
-                    sb.Append("            nbs.Write(_result);\r\n");
-                    sb.Append("            nbs.Write(Pin);\r\n");
-                    sb.Append("            nbs.Write(Puid);\r\n");
-                    sb.Append("            nbs.Write(Shuttle);\r\n");
-                    foreach (var kvp2 in kvp.Value.DictBody)
-                    {
-                        sb.Append($"{GetClassSerializeFromNode(kvp2.Value, "            ")}");
-                    }
-                    sb.Append("        }\r\n");
-
-                    //反序列化
-                    sb.Append($"        public void Unserialize(ref NetBitStream nbs)\r\n");
-                    sb.Append("        {\r\n");
-                    sb.Append("            nbs.Read(out _protocol);\r\n");
-                    sb.Append("            nbs.Read(out _result);\r\n");
-                    sb.Append("            nbs.Read(out Pin);\r\n");
-                    sb.Append("            nbs.Read(out Puid);\r\n");
-                    sb.Append("            nbs.Read(out Shuttle);\r\n");
-                    foreach (var kvp2 in kvp.Value.DictBody)
-                    {
-                        sb.Append($"{GetClassUnserializeFromNode(kvp2.Value, "            ")}");
-                    }
-                    sb.Append("        }\r\n");
-
-                }
-                else
-                {
-                    //序列化
-                    sb.Append($"        public void Serialize(ref NetBitStream nbs)\r\n");
-                    sb.Append("        {\r\n");
-                    foreach (var kvp2 in kvp.Value.DictBody)
-                    {
-                        sb.Append($"{GetClassSerializeFromNode(kvp2.Value, "            ")}");
-                    }
-                    sb.Append("        }\r\n");
-
-                    //反序列化
-                    sb.Append($"        public void Unserialize(ref NetBitStream nbs)\r\n");
-                    sb.Append("        {\r\n");
-                    foreach (var kvp2 in kvp.Value.DictBody)
-                    {
-                        sb.Append($"{GetClassUnserializeFromNode(kvp2.Value, "            ")}");
-                    }
-                    sb.Append("        }\r\n");
-
-                }
-                sb.Append("    };\r\n");
-            }
-            string txt = Template_ClassSerialization;
-            FileStream fs = new FileStream(PathCurrent + Filepath_ClassSerialization, FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-            txt = txt.Replace("$Class$", sb.ToString());
-            sw.Write(txt);
-            sw.Close();
-            Show("输出文件：" + Filepath_ClassSerialization);
         }
 
 

@@ -6,3 +6,14 @@ F:\AmilyServerBase\ProtocolTool\obj\Debug\ProtocolTool.csproj.ResolveComReferenc
 F:\AmilyServerBase\ProtocolTool\obj\Debug\ProtocolTool.csproj.CoreCompileInputs.cache
 F:\AmilyServerBase\ProtocolTool\obj\Debug\协议工具.exe
 F:\AmilyServerBase\ProtocolTool\obj\Debug\协议工具.pdb
+F:\GameServer\Server\Tools\AmilyServerBase\APublish\协议工具\协议工具.exe.config
+F:\GameServer\Server\Tools\AmilyServerBase\APublish\协议工具\协议工具.exe
+F:\GameServer\Server\Tools\AmilyServerBase\APublish\协议工具\协议工具.pdb
+F:\GameServer\Server\Tools\AmilyServerBase\ProtocolTool\obj\Debug\ProtocolTool.csprojAssemblyReference.cache
+F:\GameServer\Server\Tools\AmilyServerBase\ProtocolTool\obj\Debug\ProtocolTool.csproj.ResolveComReference.cache
+F:\GameServer\Server\Tools\AmilyServerBase\ProtocolTool\obj\Debug\ProtocolTool.csproj.CoreCompileInputs.cache
+F:\GameServer\Server\Tools\AmilyServerBase\ProtocolTool\obj\Debug\协议工具.exe
+F:\GameServer\Server\Tools\AmilyServerBase\ProtocolTool\obj\Debug\协议工具.pdb
+F:\GameServer\Server\Tools\协议工具\协议工具.exe.config
+F:\GameServer\Server\Tools\协议工具\协议工具.exe
+F:\GameServer\Server\Tools\协议工具\协议工具.pdb

@@ -94,7 +94,7 @@ namespace ServerBase.Dispatch
                     while (session.ListReq.TryDequeue(out var msg))
                     {
                         ProcessMessage(session, msg);
-                        loger.Info($"处理{session.ListReq.Count}消息 {(EProtocolId)msg.ProtocolID}");
+                        loger.Info($"处理{session.ListReq.Count+1}消息 {(EProtocolId)msg.ProtocolID}");
                     }
                 }
             }
