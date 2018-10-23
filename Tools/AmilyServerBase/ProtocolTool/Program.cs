@@ -13,9 +13,9 @@ namespace ProtocolTool
         {
             var path = Directory.GetCurrentDirectory();
             path = GetParentFolder(path, 2);
-            PathCurrent = path + @"\ServerBase\Protocol\";
-            PathCurrentDesign = path + @"\ServerBase\Protocol\Design\";
-            PathCurrentLua = path + @"\ServerBase\Protocol\Lua\";
+            PathCurrent = path + @"\GameServerApp\ServerBase\Protocol\";
+            PathCurrentDesign = path + @"\GameServerApp\ServerBase\Protocol\Design\";
+            PathCurrentLua = path + @"\GameServerApp\ServerBase\Protocol\Lua\";
             //PathCurrentDesign = path + @"\ServerPublic\ProtocolDesign\";
 
             try

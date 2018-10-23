@@ -1,30 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A62F86A-8AB7-4F55-9B3B-E8700FD15E18}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{C9BA69C6-B717-4E6F-8FAF-2CC1947FB52D}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameServerApp</RootNamespace>
-    <AssemblyName>GameServerApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ServerBase</RootNamespace>
+    <AssemblyName>ServerBase</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\APublish\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,24 +41,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllSession.cs" />
-    <Compile Include="ClientSocket.cs" />
-    <Compile Include="MMO_MemoryStream.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Client\ClientSocket.cs" />
+    <Compile Include="GameObject\Player.cs" />
+    <Compile Include="Net\MMO_MemoryStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\ProtocolClass.cs" />
+    <Compile Include="Protocol\ProtocolDump.cs" />
+    <Compile Include="Protocol\ProtocolEnum.cs" />
+    <Compile Include="Protocol\ProtocolId.cs" />
+    <Compile Include="Server\ServerSocket.cs" />
+    <Compile Include="Server\LinkManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
+    <Folder Include="Config\" />
+    <Folder Include="Protocol\Design\05网关服务器\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol\Design\Readme" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Protocol\Design\00基础\0000错误码.txt" />
+    <Content Include="Protocol\Design\00基础\0001日志.txt" />
+    <Content Include="Protocol\Design\00基础\0010基本.txt" />
+    <Content Include="Protocol\Design\01GM\0100管理工具.txt" />
+    <Content Include="Protocol\Design\03数据服务器\0300游戏服务器.txt" />
+    <Content Include="Protocol\Design\04登录服务器\0400登录服务器.txt" />
+    <Content Include="Protocol\Design\06游戏服务器\0600游戏服务器.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

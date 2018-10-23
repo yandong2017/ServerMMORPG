@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerBase.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,15 @@ namespace ConsoleAppClient
 {
     public class Program
     {
-        public static int maxnum = 0;
+        
         private static string m_ServerIP = "127.0.0.1";
         private static int m_Port = 1038;
-        static List<NetWorkSocket> netWorkSockets = new List<NetWorkSocket>();
+        static List<ClientSocket> netWorkSockets = new List<ClientSocket>();
         static void Main(string[] args)
         {
-            for (int i = 0; i < 500; i++)
-            {                
-                NetWorkSocket nt = new NetWorkSocket(i);
+            for (int i = 0; i < 1; i++)
+            {
+                ClientSocket nt = new ClientSocket(i);
                 nt.Connect(m_ServerIP, m_Port);
                 netWorkSockets.Add(nt);
             }
@@ -26,7 +27,8 @@ namespace ConsoleAppClient
             {
                 foreach (var item in netWorkSockets)
                 {
-                    item.SendMsg(new byte[] { 5, 1, 1, 1, 1, 1 });
+                    var all = new All_Base_Ping();                    
+                    item.SendMsg(all.Serialize());
                 }
                 Thread.Sleep(100);
                 退出 += 100;
@@ -37,7 +39,7 @@ namespace ConsoleAppClient
                     {
                         item.DisConnect();
                     }
-                    
+
                     break;
                 }
             }

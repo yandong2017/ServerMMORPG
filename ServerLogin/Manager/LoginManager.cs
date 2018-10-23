@@ -19,7 +19,7 @@ namespace ServerLogin.Manager
 
         private static Dictionary<string, User> DataCache = new Dictionary<string, User>();
 
-        private static int i = 10;
+        private static int i = 1;
         public static long CreateUuid()
         {
             return i++;

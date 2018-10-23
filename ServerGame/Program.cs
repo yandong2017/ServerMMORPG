@@ -106,6 +106,10 @@ namespace ServerGame
             BaseServerInfo.threadSend.Start();
             Thread.Sleep(1000);
 
+            BaseServerInfo.threadSend = new Thread(new ThreadStart(BaseDispatch.ThreadSendMergeMain));
+            BaseServerInfo.threadSend.Start();
+            Thread.Sleep(1000);
+
             #endregion
 
             BaseProgram.StartThreadDbMysqlSecond();

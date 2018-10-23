@@ -41,11 +41,10 @@ namespace SuperSocket.SocketLuanr
 
         public ConcurrentQueue<LunarRequestInfo> ListReq = new ConcurrentQueue<LunarRequestInfo>();
         public ConcurrentQueue<INbsSerializer> ListSend = new ConcurrentQueue<INbsSerializer>();
-        
+
         //可合并消息
         public ConcurrentQueue<G2E_Game_PlayerXYOther> ListSendMerge = new ConcurrentQueue<G2E_Game_PlayerXYOther>();
-        public ConcurrentQueue<G2E_Game_PlayerXYOther> ListSendMerge2 = new ConcurrentQueue<G2E_Game_PlayerXYOther>();
-        public int duilie = 0;
+        public ConcurrentQueue<G2E_Game_PlayerXYOther> ListSendMergeTemp = new ConcurrentQueue<G2E_Game_PlayerXYOther>();
         // 发送消息
         public void Send(INbsSerializer objMsg)
         {
@@ -54,30 +53,20 @@ namespace SuperSocket.SocketLuanr
                 ListSend.Enqueue(objMsg);
             }
         }
-        public void SendMerge(G2E_Game_PlayerXYOther msg)
+        public void SendMerge(INbsSerializer msg)
         {
-            if (duilie==0)
+            if (msg is G2E_Game_PlayerXYOther)
             {
-                var merge = ListSendMerge.FirstOrDefault(p => p.Puid == msg.Puid && p.PlayerXY.Uid == msg.PlayerXY.Uid);
+                var msgPlayerXY = msg as G2E_Game_PlayerXYOther;
+
+                var merge = ListSendMerge.FirstOrDefault(p => p.Puid == msgPlayerXY.Puid && p.PlayerXY.Uid == msgPlayerXY.PlayerXY.Uid);
                 if (merge != null)
                 {
-                    merge = msg;
+                    merge = msgPlayerXY;
                 }
                 else
                 {
-                    ListSendMerge.Enqueue(msg);
-                }
-            }
-            else
-            {
-                var merge = ListSendMerge2.FirstOrDefault(p => p.Puid == msg.Puid && p.PlayerXY.Uid == msg.PlayerXY.Uid);
-                if (merge != null)
-                {
-                    merge = msg;
-                }
-                else
-                {
-                    ListSendMerge2.Enqueue(msg);
+                    ListSendMerge.Enqueue(msgPlayerXY);
                 }
             }
         }

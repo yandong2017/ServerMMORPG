@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerBase.Protocol;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GameServerApp
+namespace ServerBase.Server
 {
     /// <summary>
     /// 客户端连接对象 负责和客户端进行通讯的
     /// </summary>
-    public class ClientSocket
+    public abstract class ServerSocket
     {       
         //客户端Socket
         private Socket m_Socket;
@@ -34,10 +35,7 @@ namespace GameServerApp
         private ConcurrentQueue<byte[]> m_SendQueue = new ConcurrentQueue<byte[]>();
 
         //检查队列的委托
-        private Action m_CheckSendQuene;
-
-        //压缩数组的长度界限
-        private const int m_CompressLen = 200;
+        private Action m_CheckSendQuene;               
         #endregion
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace GameServerApp
         /// </summary>
         /// <param name="socket"></param>
         /// <param name="role"></param>
-        public ClientSocket(Socket socket)
+        public ServerSocket(Socket socket)
         {
             m_Socket = socket;
             
@@ -99,7 +97,7 @@ namespace GameServerApp
                             m_ReceiveMS.Position = 0;
 
                             //currMsgLen = 包体的长度
-                            int currMsgLen = m_ReceiveMS.ReadUShort();
+                            m_ReceiveMS.Read(out ushort currMsgLen);
 
                             //currFullMsgLen 总包的长度=包头长度+包体长度
                             int currFullMsgLen = 2 + currMsgLen;
@@ -107,44 +105,30 @@ namespace GameServerApp
                             //如果数据流的长度>=整包的长度 说明至少收到了一个完整包
                             if (m_ReceiveMS.Length >= currFullMsgLen)
                             {
-                                //至少收到一个完整包
-
-                                //定义包体的byte[]数组
-                                byte[] buffer = new byte[currMsgLen];
+                                //至少收到一个完整包                                                                
+                                //读出协议号
+                                var protoCodeArr = new byte[2];
+                                m_ReceiveMS.Read(protoCodeArr, 0, 2);
 
                                 //把数据流指针放到2的位置 也就是包体的位置
                                 m_ReceiveMS.Position = 2;
 
+                                //定义包体的byte[]数组
+                                byte[] buffer = new byte[currMsgLen];
+
                                 //把包体读到byte[]数组
                                 m_ReceiveMS.Read(buffer, 0, currMsgLen);
-
-                                //===================================================
-                                //异或之后的数组
-                                byte[] bufferNew = new byte[buffer.Length];                                                               
-                                using (MMO_MemoryStream ms = new MMO_MemoryStream(buffer))
-                                {                                    
-                                    ms.Read(bufferNew, 0, bufferNew.Length);
-                                }
-
-                                //先crc
-                                                                 
-
-                                    //协议编号
-                                    ushort protoCode = 0;
-                                    byte[] protoContent = new byte[bufferNew.Length - 2];
-
-                                    using (MMO_MemoryStream ms = new MMO_MemoryStream(bufferNew))
-                                    {
-                                        protoCode = ms.ReadUShort();
-                                        ms.Read(protoContent, 0, protoContent.Length);
-                                    }
-                                    
-                                foreach (var item in AllSession.All)
-                                {
-                                    item.SendMsg(protoContent);
-                                }
-                                    //EventDispatcher.Instance.Dispatch(protoCode, m_Role, protoContent);
                                 
+                                //===================================================
+
+                                //协议编号
+                                ushort protoCode = BitConverter.ToUInt16(protoCodeArr, 0);                                
+                                if (protoCode == (short)EProtocolId.ALL_BASE_PING)
+                                {
+                                    var all = new All_Base_Ping(buffer);
+                                    Console.WriteLine($"收到消息{all.ServerTime}");
+                                }
+                                //EventDispatcher.Instance.Dispatch(protoCode, m_Role, protoContent);                                
 
                                 //==============处理剩余字节数组===================
 
@@ -247,7 +231,7 @@ namespace GameServerApp
 
             using (MMO_MemoryStream ms = new MMO_MemoryStream())
             {
-                ms.WriteUShort((ushort)(data.Length));                
+                ms.Write((ushort)(data.Length));                
                 ms.Write(data, 0, data.Length);
 
                 retBuffer = ms.ToArray();
@@ -284,7 +268,14 @@ namespace GameServerApp
         /// <param name="buffer"></param>
         private void Send(byte[] buffer)
         {
-            m_Socket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallBack, m_Socket);
+            try
+            {
+                m_Socket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, SendCallBack, m_Socket);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} 发送错误！{ex.Message}");
+            }
         }
         #endregion
 

@@ -88,13 +88,12 @@ $Class$
 */
 
 using System.Text;
-using ServerBase.BaseManagers;
 
 namespace ServerBase.Protocol
 {
     public static class ProtocolDump
     {
-        public static INbsSerializer Dump(EProtocolId id, byte[] buffer)
+        public static ProtocolMsgBase Dump(EProtocolId id, byte[] buffer)
         {            
             switch (id)
             {

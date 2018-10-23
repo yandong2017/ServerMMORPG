@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerBase.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GameServerApp
+namespace ServerGame
 {
     class Program
     {
@@ -57,17 +58,12 @@ namespace GameServerApp
                 Socket socket = m_ServerSocket.Accept();
 
                 Console.WriteLine("客户端{0}已经连接", socket.RemoteEndPoint.ToString());
-
                 //Console.WriteLine("客户端{0}已经连接", ((IPEndPoint)socket.RemoteEndPoint).Address.ToString());
-
-               
                 {
-
                     //一个角色 就相当于一个客户端                    
-                    ClientSocket clientSocket = new ClientSocket(socket);
-                    AllSession.All.Enqueue(clientSocket);
-                    Console.WriteLine($"客户端个数{AllSession.All.Count}");
-
+                    PlayerClientSocket clientSocket = new PlayerClientSocket(socket,null);
+                    LinkManager.ListClientLink.Add(clientSocket);
+                    Console.WriteLine($"客户端个数{LinkManager.ListClientLink.Count}");
                 }
             }
         }

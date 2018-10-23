@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" >
+<script src = "http://code.jquery.com/jquery-1.8.3.min.js"></script >
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js" ></script>
+</head>
+<body>
+
+<div data-role="page" id="pageone" >
+    <div data-role="header" >
+        <h1>协议大纲</h1>
+    </div>
+
+    <div data-role="content" >
+
+<div data-role="collapsible">
+<h1> 通用协议 1-99</h1>
+<div data-role="collapsible">
+<h1> 通用协议 All 10+</h1>
+<div data-role="collapsible">
+<h1>公共类 CLS_BaseDemo 类示例</h1>
+<p>-----CLS_BaseDemo-----CLS_BASEDEMO-----</p>
+<p>short a2</p>
+<p>int a3</p>
+<p>long a4</p>
+<p>float a5</p>
+<p>string a6</p>
+<p>bool a7</p>
+<p>DateTime d1</p>
+<p>TimeSpan d2</p>
+<p>EnumBaseDemo BaseDemo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_Demo 示例</h1>
+<p>-----All_Base_Demo-----ALL_BASE_DEMO-----</p>
+<p>byte a1</p>
+<p>short a2</p>
+<p>int a3</p>
+<p>long a4</p>
+<p>float a5</p>
+<p>string a6</p>
+<p>bool a7</p>
+<p>DateTime d1</p>
+<p>TimeSpan d2</p>
+<p>EnumBaseDemo eBaseDemo</p>
+<p>CLS_BaseDemo BaseDemo</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_Result 结果返回</h1>
+<p>-----All_Base_Result-----ALL_BASE_RESULT-----</p>
+<p>int HandleId  //协议ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_Ping Ping服务器</h1>
+<p>-----All_Base_Ping-----ALL_BASE_PING-----</p>
+<p>DateTime ServerTime  //服务器时间刻度</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 All_Base_GameVersion 同步版本号</h1>
+<p>-----All_Base_GameVersion-----ALL_BASE_GAMEVERSION-----</p>
+<p>string GameVersion  //同步版本号</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 S2C_Server_Connect 服务器类型</h1>
+<p>-----S2C_Server_Connect-----S2C_SERVER_CONNECT-----</p>
+<p>int ServerID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 C2S_Server_Connect 服务器类型</h1>
+<p>-----C2S_Server_Connect-----C2S_SERVER_CONNECT-----</p>
+<p>short SessionType</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1> 管理工具</h1>
+<div data-role="collapsible">
+<h1>管理工具</h1>
+<div data-role="collapsible">
+<h1>协议类 B2T_GM_Start 服务器类型</h1>
+<p>-----B2T_GM_Start-----B2T_GM_START-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_GM_Login 请求 GM登陆</h1>
+<p>-----B2T_GM_Login-----B2T_GM_LOGIN-----</p>
+<p>string Account  //账号</p>
+<p>string Password  //密码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 T2B_GM_Login 返回 GM登陆</h1>
+<p>-----T2B_GM_Login-----T2B_GM_LOGIN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2G_GM_Cmd 请求 GM特殊功能</h1>
+<p>-----B2G_GM_Cmd-----B2G_GM_CMD-----</p>
+<p>string Cmd  //指令</p>
+<p>List[string] Args</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2B_GM_Cmd 请求 GM特殊功能</h1>
+<p>-----G2B_GM_Cmd-----G2B_GM_CMD-----</p>
+<p>string Cmd  //指令</p>
+<p>List[string] Args</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 B2T_GM_End 请求 GM特殊功能</h1>
+<p>-----B2T_GM_End-----B2T_GM_END-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2D_Game_Server 请求 GM特殊功能</h1>
+<p>-----G2D_Game_Server-----G2D_GAME_SERVER-----</p>
+<p>int ServerID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 D2G_Game_Server 请求 GM特殊功能</h1>
+<p>-----D2G_Game_Server-----D2G_GAME_SERVER-----</p>
+<p>string Data</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1> 登录服务器</h1>
+<div data-role="collapsible">
+<h1>管理工具</h1>
+<div data-role="collapsible">
+<h1>协议类 L2E_Game_Start 请求 GM特殊功能</h1>
+<p>-----L2E_Game_Start-----L2E_GAME_START-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2L_Game_LoginServer 请求 GM特殊功能</h1>
+<p>-----E2L_Game_LoginServer-----E2L_GAME_LOGINSERVER-----</p>
+<p>string Account  //账号</p>
+<p>string Password  //密码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 L2E_Game_LoginServer 请求 GM特殊功能</h1>
+<p>-----L2E_Game_LoginServer-----L2E_GAME_LOGINSERVER-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2L_Game_Register 请求 GM特殊功能</h1>
+<p>-----E2L_Game_Register-----E2L_GAME_REGISTER-----</p>
+<p>string Account  //账号</p>
+<p>string Password  //密码</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 L2E_Game_Register 请求 GM特殊功能</h1>
+<p>-----L2E_Game_Register-----L2E_GAME_REGISTER-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2L_Game_Create 请求 GM特殊功能</h1>
+<p>-----E2L_Game_Create-----E2L_GAME_CREATE-----</p>
+<p>string Name</p>
+<p>int HeroID  //角色ID</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 L2E_Game_Create 请求 GM特殊功能</h1>
+<p>-----L2E_Game_Create-----L2E_GAME_CREATE-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 L2E_Game_End 请求 GM特殊功能</h1>
+<p>-----L2E_Game_End-----L2E_GAME_END-----</p>
+</div>
+</div>
+</div>
+<div data-role="collapsible">
+<h1> 游戏服务器</h1>
+<div data-role="collapsible">
+<h1>管理工具</h1>
+<div data-role="collapsible">
+<h1>协议类 E2G_Game_Start 请求 GM特殊功能</h1>
+<p>-----E2G_Game_Start-----E2G_GAME_START-----</p>
+</div>
+<div data-role="collapsible">
+<h1>公共类 CLS_PlayerXY 类示例</h1>
+<p>-----CLS_PlayerXY-----CLS_PLAYERXY-----</p>
+<p>long Uid</p>
+<p>int Left</p>
+<p>int Top</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2G_Game_PlayerXY 类示例</h1>
+<p>-----E2G_Game_PlayerXY-----E2G_GAME_PLAYERXY-----</p>
+<p>CLS_PlayerXY PlayerXY</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2E_Game_PlayerXY 类示例</h1>
+<p>-----G2E_Game_PlayerXY-----G2E_GAME_PLAYERXY-----</p>
+<p>CLS_PlayerXY PlayerXY</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2E_Game_PlayerXYOther 类示例</h1>
+<p>-----G2E_Game_PlayerXYOther-----G2E_GAME_PLAYERXYOTHER-----</p>
+<p>CLS_PlayerXY PlayerXY</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2G_Game_MapIn 类示例</h1>
+<p>-----E2G_Game_MapIn-----E2G_GAME_MAPIN-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2E_Game_MapIn 类示例</h1>
+<p>-----G2E_Game_MapIn-----G2E_GAME_MAPIN-----</p>
+<p>CLS_PlayerXY PlayerXY</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2E_Game_MapInOther 类示例</h1>
+<p>-----G2E_Game_MapInOther-----G2E_GAME_MAPINOTHER-----</p>
+<p>List[CLS_PlayerXY] ListPlayerXY</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2G_Game_MapOut 类示例</h1>
+<p>-----E2G_Game_MapOut-----E2G_GAME_MAPOUT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2E_Game_MapOut 类示例</h1>
+<p>-----G2E_Game_MapOut-----G2E_GAME_MAPOUT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2G_Game_LoginOut 类示例</h1>
+<p>-----E2G_Game_LoginOut-----E2G_GAME_LOGINOUT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 G2E_Game_LoginOut 类示例</h1>
+<p>-----G2E_Game_LoginOut-----G2E_GAME_LOGINOUT-----</p>
+</div>
+<div data-role="collapsible">
+<h1>协议类 E2G_Game_End 类示例</h1>
+<p>-----E2G_Game_End-----E2G_GAME_END-----</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+  
+    <div data-role="footer" >
+        <h1>完</h1>
+    </div>
+</div> 
+
+</body>
+</html>
+

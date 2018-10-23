@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Net.Sockets;
-using System;
-using System.Net;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System;
 using System.Collections.Concurrent;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
-/// <summary>
+/// <summary>>
 /// 网络传输Socket
 /// </summary>
-public class NetWorkSocket
+public class ClientSocket
 {
     #region 发送消息所需变量
     //发送消息队列
@@ -50,7 +47,7 @@ public class NetWorkSocket
 
     public Action OnConnectOK;
     Thread thread;
-    public NetWorkSocket(int Id = 0)
+    public ClientSocket(int Id = 0)
     {
         id = Id;
         thread = new Thread(OnUpdate);
@@ -59,6 +56,7 @@ public class NetWorkSocket
     }
     int id = 0;
     int num = 0;
+    public static int maxnum = 0;
     protected void OnUpdate()
     {
         while (true)
@@ -76,10 +74,10 @@ public class NetWorkSocket
             #region 从队列中获取数据
             while (m_ReceiveQueue.Count > 0)
             {
-                if (m_ReceiveQueue.Count > ConsoleAppClient.Program.maxnum)
+                if (m_ReceiveQueue.Count > maxnum)
                 {
-                    ConsoleAppClient.Program.maxnum = m_ReceiveQueue.Count;
-                    Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} {id}接收队列{ConsoleAppClient.Program.maxnum}");
+                    maxnum = m_ReceiveQueue.Count;
+                    Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} {id}接收队列{maxnum}");
                 }
                 if (!m_ReceiveQueue.TryDequeue(out var buffer))
                 {
@@ -88,22 +86,13 @@ public class NetWorkSocket
 
                 //异或之后的数组
                 byte[] bufferNew = new byte[buffer.Length];
-
-                bool isCompress = false;
-                ushort crc = 0;
-
+                                
+                short protoCode = 0;
+                byte[] protoContent = new byte[bufferNew.Length - 2];
                 using (MMO_MemoryStream ms = new MMO_MemoryStream(buffer))
                 {
-                    isCompress = ms.ReadBool();
-                    crc = ms.ReadUShort();
-                    ms.Read(bufferNew, 0, bufferNew.Length);
-                }
-                ushort protoCode = 0;
-                byte[] protoContent = new byte[bufferNew.Length - 2];
-                using (MMO_MemoryStream ms = new MMO_MemoryStream(bufferNew))
-                {
                     //协议编号
-                    protoCode = ms.ReadUShort();
+                    ms.Read(out protoCode);
                     ms.Read(protoContent, 0, protoContent.Length);
 
                     //处理消息
@@ -112,7 +101,7 @@ public class NetWorkSocket
             }
             are.Reset();
             /*队列为空等待200毫秒继续*/
-            are.WaitOne(200);
+            are.WaitOne(100);
         }
         #endregion
     }
@@ -207,10 +196,8 @@ public class NetWorkSocket
 
         using (MMO_MemoryStream ms = new MMO_MemoryStream())
         {
-            ms.WriteUShort((ushort)(data.Length + 3));
-
+            ms.Write((ushort)(data.Length));
             ms.Write(data, 0, data.Length);
-
             retBuffer = ms.ToArray();
         }
         return retBuffer;
@@ -310,7 +297,7 @@ public class NetWorkSocket
                         m_ReceiveMS.Position = 0;
 
                         //currMsgLen = 包体的长度
-                        int currMsgLen = m_ReceiveMS.ReadUShort();
+                        m_ReceiveMS.Read(out ushort currMsgLen);
 
                         //currFullMsgLen 总包的长度=包头长度+包体长度
                         int currFullMsgLen = 2 + currMsgLen;
@@ -389,7 +376,7 @@ public class NetWorkSocket
         catch
         {
             //客户端断开连接
-            Console.WriteLine(string.Format("服务器{0}断开连接", m_Client.RemoteEndPoint.ToString()));
+            Console.WriteLine(string.Format("服务器断开连接"));
         }
     }
     #endregion

@@ -1,0 +1,11 @@
+$ 管理工具
+
+$$管理工具
+
+msgs:G2D_Game_Server:300
+	int:ServerID
+msge
+
+msgs:D2G_Game_Server
+	string:Data
+msge

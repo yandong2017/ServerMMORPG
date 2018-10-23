@@ -16,24 +16,24 @@ namespace ProtocolTool
 
             foreach (var kvp in DictEnum)
             {
-                if (kvp.Value.Desc != "")
-                {
-                    //sb.Append("    /// <summary>\r\n");
-                    //sb.Append($"    /// {kvp.Value.Desc}\r\n");
-                    //sb.Append("    /// <summary>\r\n");
-                    sb.Append($"    [Desc(\"{kvp.Value.Desc}\")]\r\n");
-                }
+                //if (kvp.Value.Desc != "")
+                //{
+                //    //sb.Append("    /// <summary>\r\n");
+                //    //sb.Append($"    /// {kvp.Value.Desc}\r\n");
+                //    //sb.Append("    /// <summary>\r\n");
+                //    sb.Append($"    [Desc(\"{kvp.Value.Desc}\")]\r\n");
+                //}
                 sb.Append($"    public enum {kvp.Value.Name}\r\n");
                 sb.Append("    {\r\n");
                 foreach (var kvp2 in kvp.Value.DictBody)
                 {
-                    if (kvp2.Value.Desc != "")
-                    {
-                        //sb.Append("        /// <summary>\r\n");
-                        //sb.Append($"        /// {kvp2.Value.Desc}\r\n");
-                        //sb.Append("        /// <summary>\r\n");
-                        sb.Append($"        [Desc(\"{kvp2.Value.Desc}\")]\r\n");
-                    }
+                    //if (kvp2.Value.Desc != "")
+                    //{
+                    //    //sb.Append("        /// <summary>\r\n");
+                    //    //sb.Append($"        /// {kvp2.Value.Desc}\r\n");
+                    //    //sb.Append("        /// <summary>\r\n");
+                    //    sb.Append($"        [Desc(\"{kvp2.Value.Desc}\")]\r\n");
+                    //}
                     sb.Append($"        {kvp2.Value.Body}");
                     if (kvp2.Value.Value != -100000)
                     {
@@ -96,13 +96,13 @@ namespace ProtocolTool
 
             foreach (var kvp in DictClass)
             {                
-                if (kvp.Value.Desc != "")
-                {
-                    sb.Append($"    [Desc(\"{kvp.Value.Desc}\")]\r\n");
-                }
+                //if (kvp.Value.Desc != "")
+                //{
+                //    sb.Append($"    [Desc(\"{kvp.Value.Desc}\")]\r\n");
+                //}
                 if (kvp.Value.ClassType == 0)
                 {
-                    sb.Append($"    public partial class {kvp.Value.Name} : ProtocolMsgBase, INbsSerializer\r\n");
+                    sb.Append($"    public partial class {kvp.Value.Name} : ProtocolMsgBase\r\n");
                 }
                 else
                 {
@@ -122,9 +122,9 @@ namespace ProtocolTool
                     sb.Append($"        public {kvp.Value.Name}() {{ ProtocolId = EProtocolId.{kvp.Value.NameId}; }}\r\n");
                     sb.Append($"        public {kvp.Value.Name}(byte[] buffer) {{ Unserialize(buffer); }}\r\n");
                     //序列化
-                    sb.Append($"        public NetBitStream Serialize()\r\n");
+                    sb.Append($"        public byte[] Serialize()\r\n");
                     sb.Append("        {\r\n");
-                    sb.Append("            using(NetBitStream nbs = new NetBitStream())\r\n");
+                    sb.Append("            using(MMO_MemoryStream nbs = new MMO_MemoryStream())\r\n");
                     sb.Append("            {\r\n");
                     sb.Append("                nbs.Write(_protocol);\r\n");
                     sb.Append("                nbs.Write(_result);\r\n");
@@ -141,25 +141,26 @@ namespace ProtocolTool
                     {
                         sb.Append($"{GetClassSerializeFromNode(kvp2.Value, "                ")}");
                     }
-                    sb.Append("                nbs.WriteEnd();\r\n");
-                    sb.Append("                return nbs;\r\n");
+                    //sb.Append("                nbs.WriteEnd();\r\n");
+                    sb.Append("                return nbs.ToArray();\r\n");
                     sb.Append("            }\r\n");
                     sb.Append("        }\r\n");
 
                     //反序列化
                     sb.Append($"        public void Unserialize(byte[] buffer)\r\n");
                     sb.Append("        {\r\n");
-                    sb.Append("            using(NetBitStream nbs = new NetBitStream())\r\n");
+                    sb.Append("            using(MMO_MemoryStream nbs = new MMO_MemoryStream(buffer))\r\n");
                     sb.Append("            {\r\n");
-                    sb.Append("                nbs.BeginRead(buffer);\r\n");
+                    //sb.Append("                nbs.BeginRead(buffer);\r\n");
                     sb.Append("                nbs.Read(out _protocol);\r\n");
                     sb.Append("                nbs.Read(out _result);\r\n");
                     //sb.Append("            nbs.Read(out Pin);\r\n");
                     sb.Append("                nbs.Read(out Puid);\r\n");
-                    sb.Append($"                int count = nbs.ReadInt();\r\n");
+                    sb.Append($"                nbs.Read(out int count);\r\n");
                     sb.Append($"                for (int k = 0; k < count; k++)\r\n");
                     sb.Append($"                {{\r\n");
-                    sb.Append($"                    RspPuids.Add(nbs.ReadLong());\r\n");
+                    sb.Append($"                    nbs.Read(out long longnum);\r\n");
+                    sb.Append($"                    RspPuids.Add(longnum);\r\n");
                     sb.Append($"                }}\r\n");                    
                     sb.Append("                nbs.Read(out Shuttle);\r\n");
                     foreach (var kvp2 in kvp.Value.DictBody)
@@ -172,7 +173,7 @@ namespace ProtocolTool
                 else
                 {
                     //序列化
-                    sb.Append($"        public void Serialize(NetBitStream nbs)\r\n");
+                    sb.Append($"        public void Serialize(MMO_MemoryStream nbs)\r\n");
                     sb.Append("        {\r\n");
                     foreach (var kvp2 in kvp.Value.DictBody)
                     {
@@ -181,7 +182,7 @@ namespace ProtocolTool
                     sb.Append("        }\r\n");
 
                     //反序列化
-                    sb.Append($"        public void Unserialize(NetBitStream nbs)\r\n");
+                    sb.Append($"        public void Unserialize(MMO_MemoryStream nbs)\r\n");
                     sb.Append("        {\r\n");
                     foreach (var kvp2 in kvp.Value.DictBody)
                     {

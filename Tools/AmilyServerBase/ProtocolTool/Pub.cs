@@ -77,10 +77,10 @@ namespace ProtocolTool
         {
             var sb = new StringBuilder();
             
-            if (v.Desc != "")
-            {
-                sb.Append($"        [Desc(\"{v.Desc}\")]\r\n");
-            }
+            //if (v.Desc != "")
+            //{
+            //    sb.Append($"        [Desc(\"{v.Desc}\")]\r\n");
+            //}
             switch (v.Ctype)
             {
                 case "bool":
@@ -244,26 +244,16 @@ namespace ProtocolTool
                     switch (v.Ctype1)
                     {
                         case "bool":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadBool();"); break;
                         case "byte":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadByte();"); break;
                         case "short":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadShort();"); break;
                         case "int":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadInt();"); break;
                         case "uint":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadUint();"); break;
                         case "long":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadLong();"); break;
                         case "float":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadFloat();"); break;
                         case "string":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadString();"); break;
                         case "DateTime":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadDateTime();"); break;
                         case "TimeSpan":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadTimeSpan();"); break;
-
+                            sb.Append($"nbs.Read(out {v.Ctype1} {varname});"); break;
                         default:
                             sb.Append($"var {varname} = new {v.Ctype1}(); {varname}.Unserialize(nbs);");
                             break;
@@ -275,22 +265,14 @@ namespace ProtocolTool
                     switch (v.Ctype1)
                     {
                         case "bool":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadBool(); "); break;
                         case "byte":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadByte(); "); break;
                         case "short":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadShort(); "); break;
                         case "int":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadInt(); "); break;
                         case "uint":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadUint(); "); break;
                         case "long":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadLong(); "); break;
                         case "float":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadFloat(); "); break;
-                        case "string":
-                            sb.Append($"{v.Ctype1} {varname} = nbs.ReadString(); "); break;
-
+                        case "string":                            
+                            sb.Append($"nbs.Read(out {v.Ctype1} {varname}); "); break;
                         default:
                             sb.Append($"var {varname} = new {v.Ctype1}(); {varname}.Unserialize(nbs); ");
                             break;
@@ -299,25 +281,16 @@ namespace ProtocolTool
                     switch (v.Ctype2)
                     {
                         case "bool":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadBool(); "); break;
                         case "byte":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadByte(); "); break;
                         case "short":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadShort(); "); break;
                         case "int":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadInt(); "); break;
                         case "uint":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadUint(); "); break;
                         case "long":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadLong(); "); break;
                         case "float":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadFloat(); "); break;
                         case "string":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadString(); "); break;
                         case "DateTime":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadDateTime(); "); break;
                         case "TimeSpan":
-                            sb.Append($"{v.Ctype2} {varname2} = nbs.ReadTimeSpan(); "); break;
+                            sb.Append($"nbs.Read(out {v.Ctype2} {varname2}); "); break;
 
                         default:
                             sb.Append($"var {varname2} = new {v.Ctype2}(); {varname2}.Unserialize(nbs); ");
@@ -353,7 +326,7 @@ namespace ProtocolTool
                     break;
 
                 case "list":
-                    sb.Append($"{space}int {varname} = nbs.ReadInt();\r\n");
+                    sb.Append($"{space}nbs.Read(out int {varname});\r\n");
                     sb.Append($"{space}for (int k = 0; k < {varname}; k++)\r\n");
                     sb.Append($"{space}{{\r\n");
                     sb.Append($"    {space}{GetClassUnserializeFromNodeType(v)}\r\n");
@@ -361,7 +334,7 @@ namespace ProtocolTool
                     break;
 
                 case "dict":
-                    sb.Append($"{space}int {varname} = nbs.ReadInt();\r\n");
+                    sb.Append($"{space}nbs.Read(out int {varname});\r\n");
                     sb.Append($"{space}for (int k = 0; k < {varname}; k++)\r\n");
                     sb.Append($"{space}{{\r\n");
                     sb.Append($"    {space}{GetClassUnserializeFromNodeType(v)}\r\n");
@@ -371,7 +344,7 @@ namespace ProtocolTool
                 default:
                     if (v.Ctype.Length > 0 && v.Ctype[0] == 'E')
                     {
-                        sb.Append($"{space}if (true) {{ var etemp = nbs.ReadShort(); {v.Body} = ({v.Ctype})etemp; }}\r\n");
+                        sb.Append($"{space}if (true) {{ nbs.Read(out short etemp); {v.Body} = ({v.Ctype})etemp; }}\r\n");
                     }
                     else
                     {

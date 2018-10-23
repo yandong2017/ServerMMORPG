@@ -1,0 +1,49 @@
+$ 游戏服务器
+
+msgs:E2G_Game_Start:600
+msge
+
+@类示例
+pubs:CLS_PlayerXY	
+	long:Uid
+	int:Left
+	int:Top
+pube
+
+msgs:E2G_Game_PlayerXY
+	CLS_PlayerXY:PlayerXY
+msge
+
+msgs:G2E_Game_PlayerXY
+	CLS_PlayerXY:PlayerXY
+msge
+
+msgs:G2E_Game_PlayerXYOther
+	CLS_PlayerXY:PlayerXY
+msge
+
+msgs:E2G_Game_MapIn
+msge
+
+msgs:G2E_Game_MapIn
+	CLS_PlayerXY:PlayerXY
+msge
+
+msgs:G2E_Game_MapInOther
+	list:CLS_PlayerXY:ListPlayerXY
+msge
+
+msgs:E2G_Game_MapOut
+msge
+
+msgs:G2E_Game_MapOut
+msge
+
+msgs:E2G_Game_LoginOut
+msge
+
+msgs:G2E_Game_LoginOut
+msge
+
+msgs:E2G_Game_End
+msge

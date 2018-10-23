@@ -65,6 +65,7 @@ namespace ServerGate
             BaseServerInfo.threadSend.Start();
             Thread.Sleep(1000);
 
+            
             #endregion
 
             #region 进入主循环

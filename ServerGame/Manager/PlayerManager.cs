@@ -130,7 +130,7 @@ namespace ServerGame.Manager
             }
             ((ProtocolMsgBase)objMsg).Puid = selfid;
             if (((ProtocolMsgBase)objMsg).RspPuids.Count > 0 || ((ProtocolMsgBase)objMsg).Puid != 0)
-            { session.Send(objMsg); }
+            { session.SendMerge(objMsg); }
         }
     }
 }

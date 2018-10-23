@@ -168,7 +168,7 @@ namespace ServerBase.Dispatch
             {
                 try
                 {
-                    Thread.CurrentThread.Join(BaseServerInfo.ServerHeartbeat);
+                    //Thread.CurrentThread.Join(BaseServerInfo.ServerHeartbeat);
                     Send();
                 }
                 catch (Exception ex)
@@ -186,27 +186,40 @@ namespace ServerBase.Dispatch
                 {  
                     while (session.ListSend.TryDequeue(out var msg))
                     {
-                        loger.Info($"消息发送线程{session.ListSend.Count}");
+                        loger.Info($"消息发送线程{session.ListSend.Count+1}");
                         Send(session, msg);
-                    }
-                    if (session.duilie == 0)
+                    }                   
+                }
+            }
+        }
+        public static void ThreadSendMergeMain()
+        {
+            while (true)
+            {
+                try
+                {
+                    //Thread.CurrentThread.Join(BaseServerInfo.ServerHeartbeat);
+                    SendMerge();
+                }
+                catch (Exception ex)
+                {
+                    loger.Fatal("消息发送线程 执行失败", ex);
+                }
+            }
+        }
+
+        public static void SendMerge()
+        {
+            foreach (var session in BaseServerInfo.AllSessions.Values)
+            {
+                if (session != null && session.Connected)
+                {   
+                    while (session.ListSendMerge.TryDequeue(out var msg))
                     {
-                        session.duilie = 1;
-                        while (session.ListSendMerge.TryDequeue(out var msg))
-                        {
-                            loger.Info($"合并消息发送线程{session.ListSendMerge.Count}");
-                            Send(session, msg);
-                        }
+                        loger.Info($"合并消息发送线程{session.ListSendMerge.Count+1}");
+                        Send(session, msg);                        
                     }
-                    else
-                    {
-                        session.duilie = 0;
-                        while (session.ListSendMerge2.TryDequeue(out var msg))
-                        {
-                            loger.Info($"合并2消息发送线程{session.ListSendMerge2.Count}");
-                            Send(session, msg);
-                        }
-                    }
+
                 }
             }
         }
