@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ServerBase.Server
+namespace ServerBase
 {
     /// <summary>
     /// 客户端连接对象 负责和客户端进行通讯的
@@ -35,7 +35,8 @@ namespace ServerBase.Server
         private ConcurrentQueue<byte[]> m_SendQueue = new ConcurrentQueue<byte[]>();
 
         //检查队列的委托
-        private Action m_CheckSendQuene;               
+        private Action m_CheckSendQuene;
+        
         #endregion
 
         /// <summary>
@@ -105,11 +106,7 @@ namespace ServerBase.Server
                             //如果数据流的长度>=整包的长度 说明至少收到了一个完整包
                             if (m_ReceiveMS.Length >= currFullMsgLen)
                             {
-                                //至少收到一个完整包                                                                
-                                //读出协议号
-                                var protoCodeArr = new byte[2];
-                                m_ReceiveMS.Read(protoCodeArr, 0, 2);
-
+                                //至少收到一个完整包
                                 //把数据流指针放到2的位置 也就是包体的位置
                                 m_ReceiveMS.Position = 2;
 
@@ -118,16 +115,17 @@ namespace ServerBase.Server
 
                                 //把包体读到byte[]数组
                                 m_ReceiveMS.Read(buffer, 0, currMsgLen);
-                                
+
                                 //===================================================
 
                                 //协议编号
-                                ushort protoCode = BitConverter.ToUInt16(protoCodeArr, 0);                                
-                                if (protoCode == (short)EProtocolId.ALL_BASE_PING)
-                                {
-                                    var all = new All_Base_Ping(buffer);
-                                    Console.WriteLine($"收到消息{all.ServerTime}");
-                                }
+                                //BaseServer.ReceiveQueue.Enqueue(buffer);
+                                var protoCodeArr = new byte[2];
+                                Array.Copy(buffer, protoCodeArr, protoCodeArr.Length);
+                                //异或之后的数组
+                                short protoCode = BitConverter.ToInt16(protoCodeArr, 0);
+
+                                ProcessMessage(protoCode,buffer);
                                 //EventDispatcher.Instance.Dispatch(protoCode, m_Role, protoContent);                                
 
                                 //==============处理剩余字节数组===================
@@ -179,17 +177,19 @@ namespace ServerBase.Server
                 else
                 {
                     //客户端断开连接
-                    Console.WriteLine("客户端{0}断开连接", m_Socket.RemoteEndPoint.ToString());
+                    Loger.Debug($"客户端{m_Socket.RemoteEndPoint.ToString()}断开连接");
                     
                 }
             }
             catch(Exception ex)
             {
                 //客户端断开连接
-                Console.WriteLine("客户端{0}断开连接 原因{1}", m_Socket.RemoteEndPoint.ToString(), ex.Message);
+                Loger.Debug($"客户端{m_Socket.RemoteEndPoint.ToString()}断开连接 原因{1}", ex);
                 
             }
         }
+
+        public abstract void ProcessMessage(short protoCode, byte[] buffer);        
         #endregion
 
 
@@ -274,7 +274,7 @@ namespace ServerBase.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} 发送错误！{ex.Message}");
+                Loger.Debug($"{DateTime.Now}:{DateTime.Now.Millisecond} 发送错误！{ex.Message}");
             }
         }
         #endregion

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ServerBase
 {
-    public class Player
+    public class GateInfo
     {
-        //玩家连接的网关
-        public GameServerSocket gateInfo;
+        public int ID;
     }
 }

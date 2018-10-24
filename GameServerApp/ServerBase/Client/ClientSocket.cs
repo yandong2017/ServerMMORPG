@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ServerBase;
+using ServerBase.Protocol;
+using System;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
@@ -7,7 +9,7 @@ using System.Threading;
 /// <summary>>
 /// 网络传输Socket
 /// </summary>
-public class ClientSocket
+public abstract class ClientSocket
 {
     #region 发送消息所需变量
     //发送消息队列
@@ -21,7 +23,17 @@ public class ClientSocket
     #endregion
 
     //是否连接成功
-    private bool m_IsConnectedOk;
+    public bool IsConnectedOk
+    {
+        get
+        {
+            if (m_Client == null)
+            {
+                return false;
+            }
+            return m_Client.Connected;
+        }
+    }
 
     #region 接收消息所需变量
     //接收数据包的字节数组缓冲区
@@ -50,26 +62,24 @@ public class ClientSocket
     public ClientSocket(int Id = 0)
     {
         id = Id;
-        thread = new Thread(OnUpdate);
-        thread.Start();
+        
 
     }
-    int id = 0;
-    int num = 0;
+    public int id = 0;
     public static int maxnum = 0;
     protected void OnUpdate()
     {
         while (true)
         {
-            if (m_IsConnectedOk)
-            {
-                m_IsConnectedOk = false;
-                if (OnConnectOK != null)
-                {
-                    OnConnectOK();
-                }
-                //Console.WriteLine("连接成功");
-            }
+            //if (m_IsConnectedOk)
+            //{
+            //    m_IsConnectedOk = false;
+            //    if (OnConnectOK != null)
+            //    {
+            //        OnConnectOK();
+            //    }
+            //    //Console.WriteLine("连接成功");
+            //}
 
             #region 从队列中获取数据
             while (m_ReceiveQueue.Count > 0)
@@ -77,27 +87,17 @@ public class ClientSocket
                 if (m_ReceiveQueue.Count > maxnum)
                 {
                     maxnum = m_ReceiveQueue.Count;
-                    Console.WriteLine($"{DateTime.Now}:{DateTime.Now.Millisecond} {id}接收队列{maxnum}");
+                    Loger.Debug($"{DateTime.Now}:{DateTime.Now.Millisecond} {id}接收队列{maxnum}");
                 }
                 if (!m_ReceiveQueue.TryDequeue(out var buffer))
                 {
                     break;
                 }
-
+                var protoCodeArr = new byte[2];
+                Array.Copy(buffer, protoCodeArr, protoCodeArr.Length);                
                 //异或之后的数组
-                byte[] bufferNew = new byte[buffer.Length];
-                                
-                short protoCode = 0;
-                byte[] protoContent = new byte[bufferNew.Length - 2];
-                using (MMO_MemoryStream ms = new MMO_MemoryStream(buffer))
-                {
-                    //协议编号
-                    ms.Read(out protoCode);
-                    ms.Read(protoContent, 0, protoContent.Length);
-
-                    //处理消息
-                    //SocketDispatcher.Instance.Dispatch(protoCode, protoContent);
-                }                
+                short protoCode = BitConverter.ToInt16(protoCodeArr, 0);
+                ProcessMessage(protoCode, buffer);
             }
             are.Reset();
             /*队列为空等待200毫秒继续*/
@@ -105,7 +105,15 @@ public class ClientSocket
         }
         #endregion
     }
-       
+    public void ProcessMessage(short protoCode, byte[] buffer)
+    {        
+        if (protoCode == (short)EProtocolId.ALL_BASE_PING)
+        {
+            All_Base_Ping all = new All_Base_Ping(buffer);
+            Loger.Debug(all.ServerTime.ToString());
+        }
+    }
+
     #region Connect 连接到socket服务器
     /// <summary>
     /// 连接到socket服务器
@@ -118,6 +126,10 @@ public class ClientSocket
         if (m_Client != null && m_Client.Connected) return;
 
         m_Client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        if (thread != null)
+        {
+            thread.Abort();
+        }
 
         try
         {
@@ -126,7 +138,7 @@ public class ClientSocket
         }
         catch (Exception ex)
         {
-            Console.WriteLine("连接失败=" + ex.Message);
+            Loger.Error("连接失败=" + ex.Message);
         }
     }
 
@@ -134,18 +146,21 @@ public class ClientSocket
     {
         if (m_Client.Connected)
         {
-            //Console.WriteLine("socket连接成功");
+            Loger.Debug("socket连接成功");
+            thread = new Thread(OnUpdate);
+            thread.Start();
 
             m_CheckSendQuene = OnCheckSendQueueCallBack;
 
             ReceiveMsg();
-            m_IsConnectedOk = true;
+            
+            m_Client.EndConnect(ar);
         }
         else
         {
-            Console.WriteLine("socket连接失败");
+            Loger.Error("socket连接失败");
         }
-        m_Client.EndConnect(ar);
+        
     }
     #endregion
 
@@ -265,7 +280,7 @@ public class ClientSocket
     }
     #endregion
 
-    #region ReceiveCallBack 接收数据回调
+    #region ReceiveCallBack 接收数据回调    
     /// <summary>
     /// 接收数据回调
     /// </summary>
@@ -370,13 +385,13 @@ public class ClientSocket
             else
             {
                 //客户端断开连接
-                Console.WriteLine(string.Format("服务器{0}断开连接", m_Client.RemoteEndPoint.ToString()));
+                Loger.Debug(string.Format("服务器{0}断开连接", m_Client.RemoteEndPoint.ToString()));
             }
         }
         catch
         {
             //客户端断开连接
-            Console.WriteLine(string.Format("服务器断开连接"));
+            Loger.Debug(string.Format("服务器断开连接"));
         }
     }
     #endregion

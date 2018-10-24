@@ -8,26 +8,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ServerGame
+namespace ServerGate
 {
     class Program
     {
-        private static int m_Port = 1038;
-        private static string ServerType = "场景";
-
-        /// <summary>
-        /// 初始化所有控制器
-        /// </summary>
-        static void InitAllController()
-        {
-            
-        }
-
+        private static int m_Port = 1035;
+        private static string ServerType = "网关";        
 
         static void Main(string[] args)
         {
-            InitAllController();
-
             #region 1、日志,配置,建立Socket,监听端口
             BaseProgram.PubMain1(ServerType, m_Port);
             #endregion
@@ -35,6 +24,11 @@ namespace ServerGame
             #region 2、连接事件
             Thread mThread = new Thread(ListenClientCallBack);
             mThread.Start();
+            #endregion
+
+            #region 连接其他服务器
+            GateClientManager.Start();
+
             #endregion
 
             #region 主循环
@@ -52,7 +46,6 @@ namespace ServerGame
             }
             #endregion
         }
-
         /// <summary>
         /// 监听客户端连接
         /// </summary>
@@ -64,9 +57,10 @@ namespace ServerGame
                 Socket socket = BaseServer.ServerSocket.Accept();
 
                 Loger.Debug($"客户端{socket.RemoteEndPoint.ToString()}已经连接");
-                GameServerSocket clientSocket = new GameServerSocket(socket,null);
-                GameLinkManager.ListClientLink.Add(clientSocket);
-                Loger.Debug($"网关个数{GameLinkManager.ListClientLink.Count}");                
+
+                GateServerSocket clientSocket = new GateServerSocket(socket, null);
+                GateLinkManager.ListClientLink.Add(clientSocket);
+                Loger.Debug($"客户端个数{GateLinkManager.ListClientLink.Count}");                
             }
         }
     }

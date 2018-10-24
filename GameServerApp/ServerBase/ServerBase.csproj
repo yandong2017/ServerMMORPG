@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,21 +45,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\ClientSocket.cs" />
+    <Compile Include="GameObject\GateInfo.cs" />
     <Compile Include="GameObject\Player.cs" />
+    <Compile Include="GameObject\PlayerGate.cs" />
+    <Compile Include="Loger\Loger.cs" />
     <Compile Include="Net\MMO_MemoryStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\ProtocolClass.cs" />
     <Compile Include="Protocol\ProtocolDump.cs" />
     <Compile Include="Protocol\ProtocolEnum.cs" />
     <Compile Include="Protocol\ProtocolId.cs" />
-    <Compile Include="Server\ServerSocket.cs" />
-    <Compile Include="Server\LinkManager.cs" />
+    <Compile Include="Server\BaseManager\BaseProgram.cs" />
+    <Compile Include="Server\BaseManager\BaseServer.cs" />
+    <Compile Include="Server\LinkManager\LoginLinkManager.cs" />
+    <Compile Include="Server\LinkManager\GateLinkManager.cs" />
+    <Compile Include="Server\LinkManager\GameLinkManager.cs" />
+    <Compile Include="Server\Scoket\GateServerSocket.cs" />
+    <Compile Include="Server\Scoket\GameServerSocket.cs" />
+    <Compile Include="Server\Scoket\ServerSocket.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
     <Folder Include="Protocol\Design\05网关服务器\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Protocol\Design\Readme" />
   </ItemGroup>
   <ItemGroup>

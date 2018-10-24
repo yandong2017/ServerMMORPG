@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServerBase
+namespace ServerGame
 {
-    public class Player
+    public class GameClientManager
     {
-        //玩家连接的网关
-        public GameServerSocket gateInfo;
     }
 }
