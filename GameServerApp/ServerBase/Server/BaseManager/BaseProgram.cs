@@ -17,7 +17,7 @@ namespace ServerBase
             {
                 try
                 {
-                    var log4netXmlFs = new FileStream("log4net_tpl.config", FileMode.Open);
+                    var log4netXmlFs = new FileStream("..\\log4net_tpl.config", FileMode.Open);
                     var log4netXmlSr = new StreamReader(log4netXmlFs);
                     var log4netXmlStr = log4netXmlSr.ReadToEnd();
                     log4netXmlStr = log4netXmlStr.Replace("$$$$$", $"{ServerType}服务器{ServerID}");
